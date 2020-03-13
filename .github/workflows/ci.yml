@@ -1,0 +1,45 @@
+name: Swift
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  macOS:
+    name: Test macOS 
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: macOS
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
+  iOS:
+    name: Test iOS 
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: iOS
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
+  tvOS:
+    name: Test tvOS 
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: tvOS
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
+  watchOS:
+    name: Test watchOS 
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: watchOS
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
