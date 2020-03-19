@@ -8,7 +8,7 @@ on:
 
 jobs:
   macOS:
-    name: Test macOS 
+    name: Test macOS
     runs-on: macos-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_11.3.1.app/Contents/Developer
@@ -17,19 +17,20 @@ jobs:
     - name: macOS
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Contentstack.xcodeproj" -scheme "Contentstack macOS" -destination "platform=macOS" clean test | xcpretty
   iOS:
-    name: Test iOS 
+    name: Test iOS
     runs-on: macos-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_11.3.1.app/Contents/Developer
     strategy:
       matrix:
         destination: ["OS=13.3,name=iPhone 11 Pro"]
+    steps:
     - uses: actions/checkout@v1
     - name: iOS - ${{ matrix.destination }}
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Contentstack.xcodeproj" -scheme "Contentstack iOS" -destination "${{ matrix.destination }}" clean test | xcpretty
 
   tvOS:
-    name: Test tvOS 
+    name: Test tvOS
     runs-on: macos-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_11.3.1.app/Contents/Developer
@@ -42,7 +43,7 @@ jobs:
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Contentstack.xcodeproj" -scheme "Contentstack tvOS" -destination "${{ matrix.destination }}" clean test | xcpretty
 
   watchOS:
-    name: Test watchOS 
+    name: Test watchOS
     runs-on: macos-latest
     env:
       DEVELOPER_DIR: /Applications/Xcode_11.3.1.app/Contents/Developer
