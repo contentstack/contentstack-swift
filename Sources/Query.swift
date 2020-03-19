@@ -7,120 +7,21 @@
 
 import Foundation
 
-internal enum QueryConstants {
-    internal static let maxLimit: UInt               = 1000
-}
-
-/// Use types that conform to QueryableRange to perform queries with the four Range operators
-public protocol QueryableRange {
-    /// A string representation of a query value that can be used in an API query.
-    var stringValue: String { get }
-}
-
-extension Int: QueryableRange {
-
-    public var stringValue: String {
-        return String(self)
-    }
-}
-
-extension Double: QueryableRange {
-
-    public var stringValue: String {
-        return String(self)
-    }
-}
-
-extension String: QueryableRange {
-
-    public var stringValue: String {
-        return self
-    }
-}
-
-extension Date: QueryableRange {
-
-    /// The ISO8601 string representation of the receiving Date object.
-    public var stringValue: String {
-        return self.iso8601String
-    }
-}
-
-internal protocol QueryProtocol: class, CachePolicyAccessible {
-    associatedtype ResourceType
-
-    var stack: Stack { get set }
-
-    var parameters: [String: String] { get set }
-
-    var queryParameter: [String: Any] { get set }
-
-    var cachePolicy: CachePolicy { get set }
-}
-
-extension QueryProtocol {
-    public func find<ResourceType>(_ completion: @escaping ResultsHandler<ContentstackResponse<ResourceType>>)
-        where ResourceType: Decodable & EndpointAccessible {
-            if let query = self.queryParameter.jsonString {
-                self.parameters[QueryParameter.query] = query
-            }
-//            stack!.fetch(endpoint: ResourceType.endpoint, c
-            //achePolicy: self.cachePolicy, parameters: self.parameters, then: completion)
-    }
-}
-
-internal protocol ChainableQuery: QueryProtocol {}
-extension ChainableQuery {
-
-    public func `where`(valueAtKeyPath keyPath: String, _ operation: Query.Operation) -> Self {
-           // Create parameter for this query operation.
-        let parameter = keyPath + operation.string
-        self.queryParameter[parameter] = operation.value
-        return self
-    }
-
-    @discardableResult
-    public func skip(theFirst numberOfResults: UInt) -> Self {
-        self.parameters[QueryParameter.skip] = String(numberOfResults)
-        return self
-    }
-
-    @discardableResult
-    public func limit(to numberOfResults: UInt) -> Self {
-        let limit = min(numberOfResults, QueryConstants.maxLimit)
-        self.parameters[QueryParameter.limit] = String(limit)
-        return self
-    }
-
-    @discardableResult
-    public func orderByAscending(keyPath: String) -> Self {
-        self.parameters[QueryParameter.asc] = keyPath
-        return self
-    }
-
-    @discardableResult
-    public func orderByDecending(keyPath: String) -> Self {
-        self.parameters[QueryParameter.desc] = keyPath
-        return self
-    }
-}
-
 public class Query: ChainableQuery {
-
     internal typealias ResourceType = Entry
 
-    internal required init(stack: Stack, parameters: [String: String] = [:]) {
-        self.stack = stack
-        self.parameters = parameters
-        self.cachePolicy = stack.cachePolicy
-    }
     internal var stack: Stack
-
-    internal var parameters: [String: String]
-
+    internal var contentTypeUid: String
+    internal var parameters: [String: String] = [:]
     internal var queryParameter: [String: Any] = [:]
 
     public var cachePolicy: CachePolicy
+
+    internal required init(contentType: ContentType) {
+        self.stack = contentType.stack
+        self.contentTypeUid = contentType.uid!
+        self.cachePolicy = contentType.cachePolicy
+    }
 
     public func `where`(queryableCodingKey: Entry.FieldKeys, _ operation: Query.Operation) -> Query {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
@@ -173,8 +74,8 @@ public class Query: ChainableQuery {
         self.parameters[QueryParameter.tags] = text
         return self
     }
-    
-    public func include(params: Query.Include) -> Self {
+
+    public func include(params: Include) -> Self {
         if params.contains(Query.Include.count) {
             self.parameters[QueryParameter.includeCount] = "true"
         }
@@ -195,14 +96,14 @@ public class Query: ChainableQuery {
         return self
     }
 
-//    public func includeReferenceField(with keys: [String]) -> Self {
-//        if let array = self.queryParams [QueryParameter.include] as? [String] {
-//            self.query[QueryParameter.include] = array + keys
-//        } else {
-//            self.query[QueryParameter.include] = keys
-//        }
-//        return self
-//    }
+    public func includeReferenceField(with keys: [String]) -> Self {
+        if let array = self.queryParameter[QueryParameter.include] as? [String] {
+            self.queryParameter[QueryParameter.include] = array + keys
+        } else {
+            self.queryParameter[QueryParameter.include] = keys
+        }
+        return self
+    }
 
     public func includeReferenceField(with key: String, only fields: [String]) -> Self {
         var query = self.includeReferenceField(with: [key])
@@ -228,7 +129,7 @@ public class Query: ChainableQuery {
     }
 
     public func addQuery(with key: String, value: Any) -> Self {
-        self.query[key] = value
+        self.queryParameter[key] = value
         return self
     }
 }
@@ -254,15 +155,14 @@ public final class ContentTypeQuery: ChainableQuery {
 
     internal var stack: Stack
 
-    internal var parameters: [String: String]
+    internal var parameters: [String: String] = [:]
 
     internal var queryParameter: [String: Any] = [:]
 
     public var cachePolicy: CachePolicy
 
-    internal required init(stack: Stack, parameters: [String: String] = [:]) {
+    internal required init(stack: Stack) {
         self.stack = stack
-        self.parameters = parameters
         self.cachePolicy = stack.cachePolicy
     }
 
@@ -289,15 +189,14 @@ public final class AssetQuery: ChainableQuery {
 
     internal var stack: Stack
 
-    internal var parameters: [String: String]
+    internal var parameters: [String: String] = [:]
 
     internal var queryParameter: [String: Any] = [:]
 
     public var cachePolicy: CachePolicy
 
-    internal required init(stack: Stack, parameters: [String: String] = [:]) {
+    internal required init(stack: Stack) {
         self.stack = stack
-        self.parameters = parameters
         self.cachePolicy = stack.cachePolicy
     }
 

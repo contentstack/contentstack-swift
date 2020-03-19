@@ -46,7 +46,10 @@ public class Entry: ChainableQuery, CachePolicyAccessible {
     }
 
     func query() -> Query {
-        let query = Query(stack: self.contentType.stack)
+        if self.contentType.uid == nil {
+            fatalError("Please provide ContentType uid")
+        }
+        let query = Query(contentType: self.contentType)
         if let uid = self.uid {
            _ = query.where(queryableCodingKey: .uid, .equals(uid))
         }
@@ -55,7 +58,7 @@ public class Entry: ChainableQuery, CachePolicyAccessible {
 
     public func query<EntryType>(_ entry: EntryType.Type) -> QueryOn<EntryType>
         where EntryType: EntryDecodable & FieldKeysQueryable {
-        return QueryOn<EntryType>(stack: self.contentType.stack)
+        return QueryOn<EntryType>(contentType: self.contentType)
     }
 }
 

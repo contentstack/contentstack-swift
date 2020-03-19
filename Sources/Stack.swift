@@ -15,6 +15,9 @@ public enum Host {
 public typealias ResultsHandler<T> = (_ result: Result<T, Error>, ResponseType) -> Void
 
 public class Stack: CachePolicyAccessible {
+    internal var urlSession: URLSession
+
+    private let config: ContentstackConfig
 
     /// `API Key` is a unique key assigned to each stack.
     public let apiKey: String
@@ -26,15 +29,10 @@ public class Stack: CachePolicyAccessible {
     public let host: String
     /// `Region` refers to the location of the data centers where your organization's data resides.
     public let region: ContentstackRegion
-    // Stack api version point
+    /// Stack api version point
     public let apiVersion: String
-
-    internal var urlSession: URLSession
-
-    private let config: ContentstackConfig
-
+    /// `CachePolicy` allows you to cache request
     public var cachePolicy: CachePolicy = .networkOnly
-
     /// The JSONDecoder that the receiving client instance uses to deserialize JSON. The SDK will
     /// inject information about the locales to this decoder and use this information to normalize
     /// the fields dictionary of entries and assets.

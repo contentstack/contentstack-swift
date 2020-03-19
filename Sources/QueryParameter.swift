@@ -7,6 +7,10 @@
 
 import Foundation
 
+internal enum QueryConstants {
+    internal static let maxLimit: UInt               = 1000
+}
+
 internal enum QueryParameter {
 
     /// `limit` parameter will return a specific number of items.
@@ -105,7 +109,7 @@ extension AssetQuery {
         public static let totalCount: Include = Include(rawValue: 1 << 1)
         public static let relativeURL: Include = Include(rawValue: 1 << 2)
         public static let dimention: Include = Include(rawValue: 1 << 3)
-        
+
         public static let all: Include = [.count,
                                           .totalCount,
                                           .relativeURL,
