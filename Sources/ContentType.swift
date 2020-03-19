@@ -11,10 +11,12 @@ public protocol ContentTypeDecodable: SystemFields, Decodable {
     var schema: [String: Any]? { get }
 }
 
-public class ContentType: FieldKeysQueryable {
+public class ContentType: FieldKeysQueryable, CachePolicyAccessible {
 
-    internal var stack: Stack
     var uid: String?
+    internal var stack: Stack
+
+    public var cachePolicy: CachePolicy = .networkOnly
 
     internal required init(_ uid: String?, stack: Stack) {
        self.uid = uid
