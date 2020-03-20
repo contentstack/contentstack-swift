@@ -28,12 +28,25 @@ final class ContentTypeTests: XCTestCase {
         XCTAssertEqual(entry.uid, uid)
     }
 
+    func testContentTypeQuery() {
+        let contentTypeQuery = makeContentTypeSut().query()
+        XCTAssertNotNil(contentTypeQuery)
+    }
+
+    func testContentTypeQuery_withContentTypeUID() {
+        let uid = "contentTypeUID"
+        let contentTypeQuery = makeContentTypeSut(uid: uid).query()
+        XCTAssertEqual(contentTypeQuery.queryParameter[ContentType.FieldKeys.uid.rawValue] as? String, uid)
+    }
+
     static var allTests = [
         ("testEntry_ContentTypeUidNotProvided_FatalError",
          testEntry_ContentTypeUidNotProvided_FatalError),
         ("testEntry_UidNotProvided_ShouldReturnEntry",
          testEntry_UidNotProvided_ShouldReturnEntry),
         ("testEntry_UidProvided_ShouldReturnEntryWithUID",
-         testEntry_UidProvided_ShouldReturnEntryWithUID)
+         testEntry_UidProvided_ShouldReturnEntryWithUID),
+        ("testContentTypeQuery_withContentTypeUID",
+         testContentTypeQuery_withContentTypeUID)
     ]
 }

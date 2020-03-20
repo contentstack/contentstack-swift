@@ -7,12 +7,12 @@
 
 import Foundation
 
-public class Query: ChainableQuery {
+public class Query: BaseQuery {
     internal typealias ResourceType = Entry
 
     internal var stack: Stack
     internal var contentTypeUid: String
-    internal var parameters: [String: String] = [:]
+    internal var parameters: Parameters = [:]
     internal var queryParameter: [String: Any] = [:]
 
     public var cachePolicy: CachePolicy
@@ -27,19 +27,10 @@ public class Query: ChainableQuery {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
-    @discardableResult
-    public func only(fields: [String]) -> Self {
-        return self.includeQuery(parameter: QueryParameter.only, key: QueryParameter.base, fields: fields)
-    }
-
-    @discardableResult
-    public func exept(fields: [String]) -> Self {
-        return self.includeQuery(parameter: QueryParameter.except, key: QueryParameter.base, fields: fields)
-    }
-
-    @discardableResult
-    public func search(for text: String) -> Self {
-        self.parameters[QueryParameter.typeahead] = text
+    public func `where`(referenceAtKeyPath keyPath: String, _ operation: Query.Reference) -> Self {
+        if let query = operation.query {
+           self.queryParameter[keyPath] = query
+        }
         return self
     }
 
@@ -56,6 +47,22 @@ public class Query: ChainableQuery {
             }
         }
         self.queryParameter[parameter] = baseDict
+        return self
+    }
+
+    @discardableResult
+    public func only(fields: [String]) -> Self {
+        return self.includeQuery(parameter: QueryParameter.only, key: QueryParameter.base, fields: fields)
+    }
+
+    @discardableResult
+    public func except(fields: [String]) -> Self {
+        return self.includeQuery(parameter: QueryParameter.except, key: QueryParameter.base, fields: fields)
+    }
+
+    @discardableResult
+    public func search(for text: String) -> Self {
+        self.parameters[QueryParameter.typeahead] = text
         return self
     }
 
@@ -96,7 +103,7 @@ public class Query: ChainableQuery {
         return self
     }
 
-    public func includeReferenceField(with keys: [String]) -> Self {
+    public func includeReference(with keys: [String]) -> Self {
         if let array = self.queryParameter[QueryParameter.include] as? [String] {
             self.queryParameter[QueryParameter.include] = array + keys
         } else {
@@ -106,31 +113,19 @@ public class Query: ChainableQuery {
     }
 
     public func includeReferenceField(with key: String, only fields: [String]) -> Self {
-        var query = self.includeReferenceField(with: [key])
-        if fields.isEmpty {
+        var query = self.includeReference(with: [key])
+        if !fields.isEmpty {
             query = query.includeQuery(parameter: QueryParameter.only, key: key, fields: fields)
         }
         return query
     }
 
     public func includeReferenceField(with key: String, except fields: [String]) -> Self {
-        var query = self.includeReferenceField(with: [key])
-        if fields.isEmpty {
+        var query = self.includeReference(with: [key])
+        if !fields.isEmpty {
             query = query.includeQuery(parameter: QueryParameter.except, key: key, fields: fields)
         }
         return query
-    }
-
-    public func addParams(dictionary: [String: Any]) -> Self {
-        for (key, value) in dictionary {
-            _ = addQuery(with: key, value: value)
-        }
-        return self
-    }
-
-    public func addQuery(with key: String, value: Any) -> Self {
-        self.queryParameter[key] = value
-        return self
     }
 }
 
@@ -150,12 +145,12 @@ public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
     }
 }
 
-public final class ContentTypeQuery: ChainableQuery {
+public final class ContentTypeQuery: BaseQuery {
     internal typealias ResourceType = ContentType
 
     internal var stack: Stack
 
-    internal var parameters: [String: String] = [:]
+    internal var parameters: Parameters = [:]
 
     internal var queryParameter: [String: Any] = [:]
 
@@ -184,12 +179,12 @@ public final class ContentTypeQuery: ChainableQuery {
     }
 }
 
-public final class AssetQuery: ChainableQuery {
+public final class AssetQuery: BaseQuery {
     internal typealias ResourceType = Asset
 
     internal var stack: Stack
 
-    internal var parameters: [String: String] = [:]
+    internal var parameters: Parameters = [:]
 
     internal var queryParameter: [String: Any] = [:]
 
@@ -200,7 +195,7 @@ public final class AssetQuery: ChainableQuery {
         self.cachePolicy = stack.cachePolicy
     }
 
-    public func `where`(queryableCodingKey: Asset.QueryableCodingKey, _ operation: Query.Operation) -> AssetQuery {
+    public func `where`(queryableCodingKey: Asset.FieldKeys, _ operation: Query.Operation) -> AssetQuery {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
