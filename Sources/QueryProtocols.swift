@@ -12,7 +12,7 @@ internal protocol QueryProtocol: class, Queryable, CachePolicyAccessible {
 
     var stack: Stack { get set }
 
-    var parameters: [String: String] { get set }
+    var parameters: Parameters { get set }
 
     var queryParameter: [String: Any] { get set }
 
@@ -28,13 +28,11 @@ extension QueryProtocol {
     }
 }
 
-internal protocol ChainableQuery: QueryProtocol {}
-extension ChainableQuery {
+internal protocol BaseQuery: QueryProtocol {}
+extension BaseQuery {
 
     public func `where`(valueAtKeyPath keyPath: String, _ operation: Query.Operation) -> Self {
-           // Create parameter for this query operation.
-        let parameter = keyPath + operation.string
-        self.queryParameter[parameter] = operation.value
+        self.queryParameter[keyPath] = operation.query
         return self
     }
 
@@ -60,6 +58,30 @@ extension ChainableQuery {
     @discardableResult
     public func orderByDecending(keyPath: String) -> Self {
         self.parameters[QueryParameter.desc] = keyPath
+        return self
+    }
+
+    public func addURIParam(dictionary: [String: String]) -> Self {
+        for (key, value) in dictionary {
+            _ = addURIParam(with: key, value: value)
+        }
+        return self
+    }
+
+    public func addURIParam(with key: String, value: String) -> Self {
+        self.parameters[key] = value
+        return self
+    }
+
+    public func addQuery(dictionary: [String: Any]) -> Self {
+        for (key, value) in dictionary {
+            _ = addQuery(with: key, value: value)
+        }
+        return self
+    }
+
+    public func addQuery(with key: String, value: Any) -> Self {
+        self.queryParameter[key] = value
         return self
     }
 }

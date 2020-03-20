@@ -9,6 +9,31 @@ import Foundation
 
 extension Query {
 
+    public enum Reference {
+        /// Reference Search Equals: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#reference-search-equals>
+        case include(Query)
+        /// Reference Search Not-equals: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#reference-search-not-equals>
+        case notInclude(Query)
+
+        internal var string: String {
+            switch self {
+            case .include:      return "$in"
+            case .notInclude:   return "$nin"
+            }
+        }
+
+        internal var value: String? {
+            switch self {
+            case .include(let query):       return query.queryParameter.jsonString
+            case .notInclude(let query):    return query.queryParameter.jsonString
+            }
+        }
+
+        internal var query: String? {
+            return [self.string: self.value].jsonString
+        }
+    }
+
     public enum Operation {
         ///Equals Operator: <https://www.contentstack.com/docs/apis/content-delivery-api/#equals-operator>
         case equals(String)
@@ -58,6 +83,14 @@ extension Query {
             case .isGreaterThanOrEqual(let value):  return value.stringValue
             case .exists(let value):                return String(value)
             case .matches(let value):               return value
+            }
+        }
+        internal var query: Any {
+            switch self {
+            case .equals:
+                return self.value
+            default:
+                return [self.string: self.value]
             }
         }
     }

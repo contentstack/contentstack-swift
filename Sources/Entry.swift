@@ -16,7 +16,7 @@ public extension EndpointAccessible where Self: EntryDecodable {
         return Endpoint.entries
     }
 }
-public class Entry: ChainableQuery, CachePolicyAccessible {
+public class Entry: BaseQuery, CachePolicyAccessible {
     typealias ResourceType = Entry
 
     public var cachePolicy: CachePolicy = .networkOnly
@@ -27,7 +27,7 @@ public class Entry: ChainableQuery, CachePolicyAccessible {
 
     internal var stack: Stack
 
-    internal var parameters: [String: String] = [:]
+    internal var parameters: Parameters = [:]
 
     internal var queryParameter: [String: Any] = [:]
 

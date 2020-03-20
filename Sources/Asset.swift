@@ -48,10 +48,6 @@ public class Asset: FieldKeysQueryable {
         }
         return query
     }
-
-    public enum QueryableCodingKey: String, CodingKey {
-        case uid, name, description
-    }
 }
 
 extension Asset: EndpointAccessible {
