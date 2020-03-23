@@ -6,7 +6,7 @@
 //
 
 import Foundation
-internal typealias Parameters = [String: String]
+internal typealias Parameters = [String: Any]
 
 extension Parameters {
     internal func query() -> String {
