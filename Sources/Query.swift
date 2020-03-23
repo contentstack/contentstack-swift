@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Query: EntryQueryable {
+public class Query: BaseQuery, EntryQueryable {
     internal typealias ResourceType = Entry
 
     internal var stack: Stack
@@ -23,24 +23,71 @@ public class Query: EntryQueryable {
         self.cachePolicy = contentType.cachePolicy
     }
 
-    public func `operator`(_ operator: Query.Operator) -> Self {
+    public func `where`(valueAtKey path: String, _ operation: Query.Operation) -> Query {
+        return self.where(valueAtKeyPath: path, operation)
+    }
+
+    public func `where`(queryableCodingKey: Entry.FieldKeys, _ operation: Query.Operation) -> Query {
+        return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
+    }
+
+    public func `where`(referenceAtKeyPath keyPath: String, _ operation: Query.Reference) -> Query {
+        if let query = operation.query {
+            self.queryParameter[keyPath] = query
+        }
+        return self
+    }
+
+//    @discardableResult
+//    public func orderByAscending(key path: String) -> Query {
+//        return self.orderByAscending(keyPath: path)
+//    }
+//
+//    @discardableResult
+//    public func orderByDecending(key path: String) -> Query {
+//        return self.orderByDecending(keyPath: path)
+//    }
+
+    @discardableResult
+    public func orderByAscending(propertyName: Entry.FieldKeys) -> Query {
+        return self.orderByAscending(keyPath: propertyName.stringValue)
+    }
+
+    @discardableResult
+    public func orderByDecending(propertyName: Entry.FieldKeys) -> Query {
+        return self.orderByDecending(keyPath: propertyName.stringValue)
+    }
+
+    @discardableResult
+    public func search(for text: String) -> Query {
+        self.parameters[QueryParameter.typeahead] = text
+        return self
+    }
+
+    @discardableResult
+    public func tags(for text: String) -> Query {
+        self.parameters[QueryParameter.tags] = text
+        return self
+    }
+
+    public func `operator`(_ operator: Query.Operator) -> Query {
         self.queryParameter[`operator`.string] = `operator`.value
         return self
     }
 }
 
 public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
-    public func `where`(queryableCodingKey: EntryType.FieldKeys, _ operation: Query.Operation) -> Query {
+    public func `where`(queryableCodingKey: EntryType.FieldKeys, _ operation: Query.Operation) -> QueryOn<EntryType> {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
     @discardableResult
-    public func orderByAscending(propertyName: EntryType.FieldKeys) -> Self {
+    public func orderByAscending(propertyName: EntryType.FieldKeys) -> QueryOn<EntryType> {
         return self.orderByAscending(keyPath: propertyName.stringValue)
     }
 
     @discardableResult
-    public func orderByDecending(propertyName: EntryType.FieldKeys) -> Self {
+    public func orderByDecending(propertyName: EntryType.FieldKeys) -> QueryOn<EntryType> {
         return self.orderByDecending(keyPath: propertyName.stringValue)
     }
 }
@@ -67,13 +114,13 @@ public final class ContentTypeQuery: BaseQuery {
 
     public func include(params: Include) -> Self {
         if params.contains(.count) {
-            self.parameters[QueryParameter.includeCount] = "true"
+            self.parameters[QueryParameter.includeCount] = true
         }
         if params.contains(.totalCount) {
-            self.parameters[QueryParameter.count] = "true"
+            self.parameters[QueryParameter.count] = true
         }
         if params.contains(.globalFields) {
-            self.parameters[QueryParameter.includeGloablField] = "true"
+            self.parameters[QueryParameter.includeGloablField] = true
         }
         return self
     }
@@ -99,19 +146,19 @@ public final class AssetQuery: BaseQuery {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
-    public func include(params: Include) -> Self {
+    public func include(params: Include) -> AssetQuery {
         if params.contains(.count) {
-            self.parameters[QueryParameter.includeCount] = "true"
+            self.parameters[QueryParameter.includeCount] = true
         }
         if params.contains(.totalCount) {
-            self.parameters[QueryParameter.count] = "true"
+            self.parameters[QueryParameter.count] = true
         }
 
         if params.contains(.relativeURL) {
-            self.parameters[QueryParameter.relativeUrls] = "true"
+            self.parameters[QueryParameter.relativeUrls] = true
         }
         if params.contains(.dimention) {
-            self.parameters[QueryParameter.includeDimension] = "true"
+            self.parameters[QueryParameter.includeDimension] = true
         }
         return self
     }

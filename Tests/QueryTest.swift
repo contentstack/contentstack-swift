@@ -27,7 +27,7 @@ class QueryTest: XCTestCase {
             if let params = query.queryParameter[key.rawValue] as? String {
                 XCTAssertEqual(params, value)
                 return
-                }
+            }
         default:
             if let params = query.queryParameter[key.rawValue] as? [String: String],
                 let queryParam = operation.query as? [String: String] {
@@ -39,6 +39,11 @@ class QueryTest: XCTestCase {
     }
 
     func testCTQuery_whereCondition() {
+        let query = makeQuerySUT().where(valueAtKey: "ref.uid", .equals(refUID))
+        if let params = query.queryParameter["ref.uid"] as? String {
+            XCTAssertEqual(params, refUID)
+            return
+        }
         queryWhere(.uid, operation: .equals(testStringValue))
         queryWhere(.uid, operation: .notEquals(testStringValue))
         queryWhere(.title, operation: .includes(["one", "two"]))
@@ -170,26 +175,26 @@ class QueryTest: XCTestCase {
     func testQuery_OnlyAndExcept() {
         let fields = ["Title", "uid", "created_at"]
         let onlyQuery = makeQuerySUT().only(fields: fields)
-        if let param = onlyQuery.queryParameter[QueryParameter.only] as? [String: [String]],
-            let array = param[QueryParameter.base] {
-            XCTAssertEqual(array, fields)
-        }
+        XCTAssertEqual(onlyQuery.parameters.query(),
+                       ([
+                        QueryParameter.only:
+                            [QueryParameter.base: fields]
+                        ] as Parameters).query())
 
         let exceptQuery = makeQuerySUT().except(fields: fields)
-        if let param = exceptQuery.queryParameter[QueryParameter.except] as? [String: [String]],
-            let array = param[QueryParameter.base] {
-            XCTAssertEqual(array, fields)
-        }
+        XCTAssertEqual(exceptQuery.parameters.query(),
+                       ([
+                       QueryParameter.except:
+                           [QueryParameter.base: fields]
+                       ] as Parameters).query())
 
         let query = makeQuerySUT().only(fields: fields).except(fields: fields)
-        if let param = query.queryParameter[QueryParameter.only] as? [String: [String]],
-            let array = param[QueryParameter.base] {
-            XCTAssertEqual(array, fields)
-        }
-        if let param = query.queryParameter[QueryParameter.except] as? [String: [String]],
-            let array = param[QueryParameter.base] {
-            XCTAssertEqual(array, fields)
-        }
+        XCTAssertEqual(query.parameters.query(),
+                       ([
+                        QueryParameter.only:
+                        [QueryParameter.base: fields],
+                        QueryParameter.except:
+                        [QueryParameter.base: fields]] as Parameters).query())
     }
 
     func testQuery_seachTag() {
@@ -218,38 +223,50 @@ class QueryTest: XCTestCase {
         let referenceAll = reference + reference2
 
         let includeRefQuery = makeQuerySUT().includeReference(with: reference)
-        XCTAssertEqual(includeRefQuery.queryParameter[QueryParameter.include] as? [String], reference)
+        XCTAssertEqual(includeRefQuery.parameters.query(),
+                       ([QueryParameter.include: reference] as Parameters).query())
 
         _ = includeRefQuery.includeReference(with: reference2)
-        XCTAssertEqual(includeRefQuery.queryParameter[QueryParameter.include] as? [String], referenceAll)
+        XCTAssertEqual(includeRefQuery.parameters.query(),
+                       ([QueryParameter.include: referenceAll] as Parameters).query())
     }
 
     func testQuery_includeReferenceFieldOnly() {
         let onlyRefQuery = makeQuerySUT()
             .includeReferenceField(with: refUID, only: reference)
-        if let param = onlyRefQuery.queryParameter[QueryParameter.only] as? [String: [String]],
-            let array = param[refUID] {
-            XCTAssertEqual(array, reference)
-        }
+        XCTAssertEqual(onlyRefQuery.parameters.query(),
+                              ([
+                                QueryParameter.include: [refUID],
+                                QueryParameter.only:
+                                    [refUID: reference]
+                                ] as Parameters).query())
+
         _ = onlyRefQuery.includeReferenceField(with: refUID, only: reference2)
-        if let param = onlyRefQuery.queryParameter[QueryParameter.only] as? [String: [String]],
-            let array = param[refUID] {
-            XCTAssertEqual(array, referenceAll)
-        }
+        XCTAssertEqual(onlyRefQuery.parameters.query(),
+                              ([
+                              QueryParameter.include: [refUID],
+                              QueryParameter.only:
+                                  [refUID: referenceAll]
+                              ] as Parameters).query())
     }
 
     func testQuery_includeReferenceFieldExcept() {
         let exceptRefQuery = makeQuerySUT()
             .includeReferenceField(with: refUID, except: reference)
-        if let param = exceptRefQuery.queryParameter[QueryParameter.except] as? [String: [String]],
-            let array = param[refUID] {
-            XCTAssertEqual(array, reference)
-        }
+        XCTAssertEqual(exceptRefQuery.parameters.query(),
+                                     ([
+                                       QueryParameter.include: [refUID],
+                                       QueryParameter.except:
+                                           [refUID: reference]
+                                       ] as Parameters).query())
+
         _ = exceptRefQuery.includeReferenceField(with: refUID, except: reference2)
-        if let param = exceptRefQuery.queryParameter[QueryParameter.except] as? [String: [String]],
-            let array = param[refUID] {
-            XCTAssertEqual(array, referenceAll)
-        }
+        XCTAssertEqual(exceptRefQuery.parameters.query(),
+                              ([
+                              QueryParameter.include: [refUID],
+                              QueryParameter.except:
+                                  [refUID: referenceAll]
+                              ] as Parameters).query())
     }
 
     func testQuery_includeReferenceFieldBoth() {

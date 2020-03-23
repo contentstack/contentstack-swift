@@ -19,6 +19,12 @@ extension Int: QueryableRange {
     }
 }
 
+extension Bool: QueryableRange {
+    public var stringValue: String {
+        return self ? "true": "false"
+    }
+}
+
 extension Double: QueryableRange {
     public var stringValue: String {
         return String(self)

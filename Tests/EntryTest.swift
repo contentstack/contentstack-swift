@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import Contentstack
+@testable import Contentstack
 class EntryTest: XCTestCase {
 
 }
