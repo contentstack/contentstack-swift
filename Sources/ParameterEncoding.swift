@@ -31,12 +31,12 @@ extension Parameters {
             }
          } else if let value = value as? NSNumber {
             if let boolvalue = value as? Bool {
-                components.append((escape(key), escape(boolvalue.encode())))
+                components.append((escape(key), escape(boolvalue.stringValue)))
             } else {
                 components.append((escape(key), escape("\(value)")))
             }
          } else if let bool = value as? Bool {
-            components.append((escape(key), escape(bool.encode())))
+            components.append((escape(key), escape(bool.stringValue)))
          } else {
             components.append((escape(key), escape("\(value)")))
         }
@@ -49,11 +49,5 @@ extension Parameters {
 
     private func encode(key: String) -> String {
         return "\(key)[]"
-    }
-}
-
-extension Bool {
-    internal func encode() -> String {
-        return self ? "true" : "false"
     }
 }

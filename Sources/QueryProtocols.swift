@@ -86,34 +86,25 @@ extension BaseQuery {
     }
 }
 
-internal protocol EntryQueryable: BaseQuery {}
+internal protocol EntryQueryable: QueryProtocol {}
 
 extension EntryQueryable {
-
-    public func `where`(queryableCodingKey: Entry.FieldKeys, _ operation: Query.Operation) -> Self {
-        return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
-    }
-
-    public func `where`(referenceAtKeyPath keyPath: String, _ operation: Query.Reference) -> Self {
-        if let query = operation.query {
-           self.queryParameter[keyPath] = query
-        }
-        return self
-    }
 
     @discardableResult
     fileprivate func includeQuery(parameter: String, key: String, fields: [String]) -> Self {
         var baseDict = [key: fields]
-        if let dict = self.queryParameter[parameter] as? [String: [String]] {
+        if let dict = self.parameters[parameter] as? [String: [String]] {
             for (keys, value) in dict {
                 if keys != key {
                     baseDict[keys] = value
                 } else {
-                    baseDict[keys] = value + fields
+                    baseDict[keys] = (value + fields.filter({ (string) -> Bool in
+                        return value.contains(string) ? false : true
+                    }))
                 }
             }
         }
-        self.queryParameter[parameter] = baseDict
+        self.parameters[parameter] = baseDict
         return self
     }
 
@@ -127,54 +118,34 @@ extension EntryQueryable {
         return self.includeQuery(parameter: QueryParameter.except, key: QueryParameter.base, fields: fields)
     }
 
-    @discardableResult
-    public func search(for text: String) -> Self {
-        self.parameters[QueryParameter.typeahead] = text
-        return self
-    }
-
-    @discardableResult
-    public func orderByAscending(propertyName: Entry.FieldKeys) -> Self {
-        return self.orderByAscending(keyPath: propertyName.stringValue)
-    }
-
-    @discardableResult
-    public func orderByDecending(propertyName: Entry.FieldKeys) -> Self {
-        return self.orderByDecending(keyPath: propertyName.stringValue)
-    }
-
-    @discardableResult
-    public func tags(for text: String) -> Self {
-        self.parameters[QueryParameter.tags] = text
-        return self
-    }
-
     public func include(params: Query.Include) -> Self {
         if params.contains(Query.Include.count) {
-            self.parameters[QueryParameter.includeCount] = "true"
+            self.parameters[QueryParameter.includeCount] = true
         }
         if params.contains(Query.Include.totalCount) {
-            self.parameters[QueryParameter.count] = "true"
+            self.parameters[QueryParameter.count] = true
         }
         if params.contains(Query.Include.contentType) {
-            self.parameters[QueryParameter.includeContentType] = "true"
-            self.parameters[QueryParameter.includeGloablField] = "false"
+            self.parameters[QueryParameter.includeContentType] = true
+            self.parameters[QueryParameter.includeGloablField] = false
         }
         if params.contains(Query.Include.globalField) {
-            self.parameters[QueryParameter.includeContentType] = "true"
-            self.parameters[QueryParameter.includeGloablField] = "true"
+            self.parameters[QueryParameter.includeContentType] = true
+            self.parameters[QueryParameter.includeGloablField] = true
         }
         if params.contains(Query.Include.refContentTypeUID) {
-            self.parameters[QueryParameter.includeRefContentTypeUID] = "true"
+            self.parameters[QueryParameter.includeRefContentTypeUID] = true
         }
         return self
     }
 
     public func includeReference(with keys: [String]) -> Self {
-        if let array = self.queryParameter[QueryParameter.include] as? [String] {
-            self.queryParameter[QueryParameter.include] = array + keys
+        if let array = self.parameters[QueryParameter.include] as? [String] {
+            self.parameters[QueryParameter.include] = (array + keys.filter({ (string) -> Bool in
+                return array.contains(string) ? false : true
+            }))
         } else {
-            self.queryParameter[QueryParameter.include] = keys
+            self.parameters[QueryParameter.include] = keys
         }
         return self
     }

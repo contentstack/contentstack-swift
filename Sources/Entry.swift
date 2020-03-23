@@ -7,15 +7,10 @@
 
 import Foundation
 
-public protocol EntryDecodable: SystemFields, Decodable, FieldKeysQueryable, EndpointAccessible {
+public protocol EntryDecodable: SystemFields, Decodable, FieldKeysQueryable {
     var locale: String? {get}
 }
 
-public extension EndpointAccessible where Self: EntryDecodable {
-    static var endpoint: Endpoint {
-        return Endpoint.entries
-    }
-}
 public class Entry: EntryQueryable, CachePolicyAccessible {
     typealias ResourceType = Entry
 
@@ -45,7 +40,7 @@ public class Entry: EntryQueryable, CachePolicyAccessible {
         self.stack = contentType.stack
     }
 
-    func query() -> Query {
+    public func query() -> Query {
         if self.contentType.uid == nil {
             fatalError("Please provide ContentType uid")
         }
