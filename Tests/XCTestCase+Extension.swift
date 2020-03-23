@@ -31,4 +31,9 @@ extension XCTestCase {
             RunLoop.current.run()
         } while (true)
     }
+
+    internal func isEqual<T: Equatable>(type: T.Type, _ lhs: Any, _ rhs: Any) -> Bool {
+        guard let lhs = lhs as? T, let rhs = rhs as? T else { return false }
+        return lhs == rhs
+    }
 }

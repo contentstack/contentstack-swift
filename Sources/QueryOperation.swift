@@ -9,6 +9,33 @@ import Foundation
 
 extension Query {
 
+    public enum Operator {
+        /// And Operator: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#and-operator>
+        case and([Query])
+        /// Or Operator: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#or-operator>
+        case or([Query])
+
+        internal var string: String {
+            switch self {
+            case .and:      return "$and"
+            case .or:   return "$or"
+            }
+        }
+        internal var value: [[String: Any]] {
+            switch self {
+            case .and(let queries):
+                return queryParamArray(from: queries)
+            case .or(let queries):
+                return queryParamArray(from: queries)
+            }
+        }
+        internal func queryParamArray(from queries: [Query]) -> [[String: Any]] {
+            return queries.map { (query: Query) -> [String: Any] in
+                return query.queryParameter
+            }
+        }
+    }
+
     public enum Reference {
         /// Reference Search Equals: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#reference-search-equals>
         case include(Query)

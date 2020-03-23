@@ -55,35 +55,33 @@ class QueryTest: XCTestCase {
         let value = 10
         let limitQuery = makeQuerySUT()
         limitQuery.limit(to: UInt(value))
-        XCTAssertEqual(limitQuery.parameters[QueryParameter.limit], value.stringValue)
+        XCTAssertEqual(limitQuery.parameters.query(), "\(QueryParameter.limit)=\(value)")
 
         let skipQuery = makeQuerySUT()
         skipQuery.skip(theFirst: UInt(value))
-        XCTAssertEqual(skipQuery.parameters[QueryParameter.skip], value.stringValue)
+        XCTAssertEqual(skipQuery.parameters.query(), "\(QueryParameter.skip)=\(value)")
     }
 
     func testCTQuery_Order() {
         let key = "keyPath"
         let ascQuery = makeQuerySUT()
         ascQuery.orderByAscending(keyPath: key)
-        XCTAssertEqual(ascQuery.parameters[QueryParameter.asc], key)
+        XCTAssertEqual(ascQuery.parameters.query(), "\(QueryParameter.asc)=\(key)")
         let descQuery = makeQuerySUT()
         descQuery.orderByDecending(keyPath: key)
-        XCTAssertEqual(descQuery.parameters[QueryParameter.desc], key)
+        XCTAssertEqual(descQuery.parameters.query(), "\(QueryParameter.desc)=\(key)")
     }
 
     func testCTQuery_addURIParam() {
         let dictionary = ["key1": "value1",
                           "ket2": "value2"]
         let addParamQuery = makeQuerySUT().addURIParam(dictionary: dictionary)
-        for (key, value) in dictionary {
-            XCTAssertEqual(addParamQuery.parameters[key], value)
-        }
+        XCTAssertEqual(addParamQuery.parameters.query(), (dictionary as Parameters).query())
 
         let key = "keyPath"
         let value = "value"
         let addParamQueryKeyVal = makeQuerySUT().addURIParam(with: key, value: value)
-        XCTAssertEqual(addParamQueryKeyVal.parameters[key], value)
+        XCTAssertEqual(addParamQueryKeyVal.parameters.query(), "\(key)=\(value)")
     }
 
     func testCTQuery_addQueryParam() {
@@ -102,46 +100,50 @@ class QueryTest: XCTestCase {
 
     func testCTQuery_Include() {
         let countQuery = makeQuerySUT().include(params: [.count])
-        XCTAssertEqual(countQuery.parameters[QueryParameter.includeCount], "true")
+        XCTAssertEqual(countQuery.parameters.query(), "\(QueryParameter.includeCount)=true")
         for key in countQuery.parameters.keys {
             XCTAssertEqual(key, QueryParameter.includeCount)
         }
 
         let totalountQuery = makeQuerySUT().include(params: [.totalCount])
-        XCTAssertEqual(totalountQuery.parameters[QueryParameter.count], "true")
+        XCTAssertEqual(totalountQuery.parameters.query(), "\(QueryParameter.count)=true")
         for key in totalountQuery.parameters.keys {
             XCTAssertEqual(key, QueryParameter.count)
         }
 
         let refContentTypeQuery = makeQuerySUT().include(params: [.refContentTypeUID])
-        XCTAssertEqual(refContentTypeQuery.parameters[QueryParameter.includeRefContentTypeUID], "true")
+        XCTAssertEqual(refContentTypeQuery.parameters.query(), "\(QueryParameter.includeRefContentTypeUID)=true")
         for key in refContentTypeQuery.parameters.keys {
                 XCTAssertEqual(key, QueryParameter.includeRefContentTypeUID)
         }
 
+        let incContentType: Parameters = [QueryParameter.includeContentType: true,
+                                      QueryParameter.includeGloablField: false]
         let contentTypeQuery = makeQuerySUT().include(params: [.contentType])
-        XCTAssertEqual(contentTypeQuery.parameters[QueryParameter.includeContentType], "true")
-        XCTAssertEqual(contentTypeQuery.parameters[QueryParameter.includeGloablField], "false")
+        XCTAssertEqual(contentTypeQuery.parameters.query(), incContentType.query())
         for key in contentTypeQuery.parameters.keys {
             if ![QueryParameter.includeContentType, QueryParameter.includeGloablField].contains(key) {
                 XCTAssertFalse(true, "Key outof range")
             }
         }
+        let incglobalField: Parameters = [QueryParameter.includeContentType: true,
+                                      QueryParameter.includeGloablField: true]
+
         let globalFieldQuery = makeQuerySUT().include(params: [.globalField])
-        XCTAssertEqual(globalFieldQuery.parameters[QueryParameter.includeContentType], "true")
-        XCTAssertEqual(globalFieldQuery.parameters[QueryParameter.includeGloablField], "true")
+        XCTAssertEqual(globalFieldQuery.parameters.query(), incglobalField.query())
         for key in globalFieldQuery.parameters.keys {
             if ![QueryParameter.includeContentType, QueryParameter.includeGloablField].contains(key) {
                 XCTAssertFalse(true, "Key outof range")
             }
         }
 
+        let param: Parameters = [QueryParameter.count: true,
+                                        QueryParameter.includeCount: true,
+                                        QueryParameter.includeContentType: true,
+                                        QueryParameter.includeGloablField: true,
+                                        QueryParameter.includeRefContentTypeUID: true]
         let allQuery = makeQuerySUT().include(params: [.all])
-        XCTAssertEqual(allQuery.parameters[QueryParameter.count], "true")
-        XCTAssertEqual(allQuery.parameters[QueryParameter.includeCount], "true")
-        XCTAssertEqual(allQuery.parameters[QueryParameter.includeContentType], "true")
-        XCTAssertEqual(allQuery.parameters[QueryParameter.includeGloablField], "true")
-        XCTAssertEqual(allQuery.parameters[QueryParameter.includeRefContentTypeUID], "true")
+        XCTAssertEqual(allQuery.parameters.query(), param.query())
     }
 
     func testQuery_ReferenceSearch() {
@@ -193,19 +195,21 @@ class QueryTest: XCTestCase {
     func testQuery_seachTag() {
         let searchString = "test string to search"
         let searchQuery = makeQuerySUT().search(for: searchString)
-        XCTAssertEqual(searchQuery.parameters[QueryParameter.typeahead], searchString)
-
         let tagQuery = makeQuerySUT().tags(for: searchString)
-        XCTAssertEqual(tagQuery.parameters[QueryParameter.tags], searchString)
+
+        if let search = searchString.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics) {
+            XCTAssertEqual(searchQuery.parameters.query(), "\(QueryParameter.typeahead)=\(search)")
+            XCTAssertEqual(tagQuery.parameters.query(), "\(QueryParameter.tags)=\(search)")
+        }
     }
 
     func testQuery_OrderBy() {
         let orderKey = Entry.FieldKeys.title
         let ascQuery = makeQuerySUT().orderByAscending(propertyName: orderKey)
-        XCTAssertEqual(ascQuery.parameters[QueryParameter.asc], orderKey.stringValue)
+        XCTAssertEqual(ascQuery.parameters.query(), "\(QueryParameter.asc)=\(orderKey.stringValue)")
 
         let descQuery = makeQuerySUT().orderByDecending(propertyName: orderKey)
-        XCTAssertEqual(descQuery.parameters[QueryParameter.desc], orderKey.stringValue)
+        XCTAssertEqual(descQuery.parameters.query(), "\(QueryParameter.desc)=\(orderKey.stringValue)")
     }
 
     func testQuery_IncludeReference() {
@@ -261,6 +265,35 @@ class QueryTest: XCTestCase {
             XCTAssertEqual(array, reference2)
         }
     }
+
+    func testQuery_andOrOperator() {
+        let query1 = makeQuerySUT().where(valueAtKeyPath: "title", Query.Operation.equals("Gold"))
+        let query2 = makeQuerySUT().where(valueAtKeyPath: "name", Query.Operation.equals("John"))
+
+        let andQuery = makeQuerySUT().operator(.and([query1, query2]))
+        XCTAssertEqual(andQuery.queryParameter.jsonString!, "{\n  \"$and\" : [\n    {\n      \"title\" : \"Gold\"\n    },\n    {\n      \"name\" : \"John\"\n    }\n  ]\n}")
+
+        let orQuery = makeQuerySUT().operator(.or([query1, query2]))
+        XCTAssertEqual(orQuery.queryParameter.jsonString!, "{\n  \"$or\" : [\n    {\n      \"title\" : \"Gold\"\n    },\n    {\n      \"name\" : \"John\"\n    }\n  ]\n}")
+    }
+
+    static var allTests = [
+           ("testCTQuery_whereCondition", testCTQuery_whereCondition),
+           ("testCTQuery_SkipLimit", testCTQuery_SkipLimit),
+           ("testCTQuery_Order", testCTQuery_Order),
+           ("testCTQuery_addURIParam", testCTQuery_addURIParam),
+           ("testCTQuery_addQueryParam", testCTQuery_addQueryParam),
+           ("testCTQuery_Include", testCTQuery_Include),
+           ("testQuery_ReferenceSearch", testQuery_ReferenceSearch),
+           ("testQuery_OnlyAndExcept", testQuery_OnlyAndExcept),
+           ("testQuery_seachTag", testQuery_seachTag),
+           ("testQuery_OrderBy", testQuery_OrderBy),
+           ("testQuery_IncludeReference", testQuery_IncludeReference),
+           ("testQuery_includeReferenceFieldOnly", testQuery_includeReferenceFieldOnly),
+           ("testQuery_includeReferenceFieldExcept", testQuery_includeReferenceFieldExcept),
+           ("testQuery_includeReferenceFieldBoth", testQuery_includeReferenceFieldBoth),
+           ("testQuery_andOrOperator", testQuery_andOrOperator)
+       ]
 }
 
 func makeQuerySUT() -> Query {

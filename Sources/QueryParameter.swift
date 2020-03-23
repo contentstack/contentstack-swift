@@ -63,7 +63,7 @@ internal enum QueryParameter {
 
 extension Query {
     public struct Include: OptionSet {
-        public init(rawValue: Include.RawValue) { self.rawValue = rawValue }
+        public init(rawValue: Int) { self.rawValue = rawValue }
 
         public let rawValue: Int
 
@@ -85,7 +85,7 @@ extension Query {
 
 extension ContentTypeQuery {
     public struct Include: OptionSet {
-        public init(rawValue: Include.RawValue) { self.rawValue = rawValue }
+        public init(rawValue: Int) { self.rawValue = rawValue }
 
         public let rawValue: Int
 
@@ -101,7 +101,7 @@ extension ContentTypeQuery {
 
 extension AssetQuery {
     public struct Include: OptionSet {
-        public init(rawValue: Include.RawValue) { self.rawValue = rawValue }
+        public init(rawValue: Int) { self.rawValue = rawValue }
 
         public let rawValue: Int
 

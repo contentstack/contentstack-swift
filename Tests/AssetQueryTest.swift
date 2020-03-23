@@ -50,35 +50,33 @@ class AssetQueryTest: XCTestCase {
         let value = 10
         let limitQuery = makeAssetQuerySUT()
         limitQuery.limit(to: UInt(value))
-        XCTAssertEqual(limitQuery.parameters[QueryParameter.limit], value.stringValue)
+        XCTAssertEqual(limitQuery.parameters.query(), "\(QueryParameter.limit)=\(value)")
 
         let skipQuery = makeAssetQuerySUT()
         skipQuery.skip(theFirst: UInt(value))
-        XCTAssertEqual(skipQuery.parameters[QueryParameter.skip], value.stringValue)
+        XCTAssertEqual(skipQuery.parameters.query(), "\(QueryParameter.skip)=\(value)")
     }
 
     func testCTQuery_Order() {
         let key = "keyPath"
         let ascQuery = makeAssetQuerySUT()
         ascQuery.orderByAscending(keyPath: key)
-        XCTAssertEqual(ascQuery.parameters[QueryParameter.asc], key)
+        XCTAssertEqual(ascQuery.parameters.query(), "\(QueryParameter.asc)=\(key)")
         let descQuery = makeAssetQuerySUT()
         descQuery.orderByDecending(keyPath: key)
-        XCTAssertEqual(descQuery.parameters[QueryParameter.desc], key)
+        XCTAssertEqual(descQuery.parameters.query(), "\(QueryParameter.desc)=\(key)")
     }
 
     func testCTQuery_addURIParam() {
         let dictionary = ["key1": "value1",
                           "ket2": "value2"]
         let addParamQuery = makeAssetQuerySUT().addURIParam(dictionary: dictionary)
-        for (key, value) in dictionary {
-            XCTAssertEqual(addParamQuery.parameters[key], value)
-        }
+        XCTAssertEqual(addParamQuery.parameters.query(), (dictionary as Parameters).query())
 
         let key = "keyPath"
         let value = "value"
         let addParamQueryKeyVal = makeAssetQuerySUT().addURIParam(with: key, value: value)
-        XCTAssertEqual(addParamQueryKeyVal.parameters[key], value)
+        XCTAssertEqual(addParamQueryKeyVal.parameters.query(), "\(key)=\(value)")
     }
 
     func testCTQuery_addQueryParam() {
@@ -97,35 +95,45 @@ class AssetQueryTest: XCTestCase {
 
     func testCTQuery_Include() {
         let countQuery = makeAssetQuerySUT().include(params: [.count])
-        XCTAssertEqual(countQuery.parameters[QueryParameter.includeCount], "true")
+        XCTAssertEqual(countQuery.parameters.query(), "\(QueryParameter.includeCount)=true")
         for key in countQuery.parameters.keys {
             XCTAssertEqual(key, QueryParameter.includeCount)
         }
 
         let totalountQuery = makeAssetQuerySUT().include(params: [.totalCount])
-        XCTAssertEqual(totalountQuery.parameters[QueryParameter.count], "true")
+        XCTAssertEqual(totalountQuery.parameters.query(), "\(QueryParameter.count)=true")
         for key in totalountQuery.parameters.keys {
             XCTAssertEqual(key, QueryParameter.count)
         }
 
         let relativeURLQuery = makeAssetQuerySUT().include(params: [.relativeURL])
-        XCTAssertEqual(relativeURLQuery.parameters[QueryParameter.relativeUrls], "true")
+        XCTAssertEqual(relativeURLQuery.parameters.query(), "\(QueryParameter.relativeUrls)=true")
         for key in relativeURLQuery.parameters.keys {
             XCTAssertEqual(key, QueryParameter.relativeUrls)
         }
 
         let dimentionQuery = makeAssetQuerySUT().include(params: [.dimention])
-        XCTAssertEqual(dimentionQuery.parameters[QueryParameter.includeDimension], "true")
+        XCTAssertEqual(dimentionQuery.parameters.query(), "\(QueryParameter.includeDimension)=true")
         for key in dimentionQuery.parameters.keys {
             XCTAssertEqual(key, QueryParameter.includeDimension)
         }
 
+        let param: Parameters = [QueryParameter.count: true,
+                                 QueryParameter.includeCount: true,
+                                 QueryParameter.relativeUrls: true,
+                                 QueryParameter.includeDimension: true]
         let allQuery = makeAssetQuerySUT().include(params: [.all])
-        XCTAssertEqual(allQuery.parameters[QueryParameter.count], "true")
-        XCTAssertEqual(allQuery.parameters[QueryParameter.includeCount], "true")
-        XCTAssertEqual(allQuery.parameters[QueryParameter.relativeUrls], "true")
-        XCTAssertEqual(allQuery.parameters[QueryParameter.includeDimension], "true")
+        XCTAssertEqual(allQuery.parameters.query(), param.query())
     }
+
+    static var allTests = [
+        ("testCTQuery_whereCondition", testCTQuery_whereCondition),
+        ("testCTQuery_SkipLimit", testCTQuery_SkipLimit),
+        ("testCTQuery_Order", testCTQuery_Order),
+        ("testCTQuery_addURIParam", testCTQuery_addURIParam),
+        ("testCTQuery_addQueryParam", testCTQuery_addQueryParam),
+        ("testCTQuery_Include", testCTQuery_Include)
+    ]
 }
 
 func makeAssetQuerySUT() -> AssetQuery {

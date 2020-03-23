@@ -16,7 +16,7 @@ public extension EndpointAccessible where Self: EntryDecodable {
         return Endpoint.entries
     }
 }
-public class Entry: BaseQuery, CachePolicyAccessible {
+public class Entry: EntryQueryable, CachePolicyAccessible {
     typealias ResourceType = Entry
 
     public var cachePolicy: CachePolicy = .networkOnly

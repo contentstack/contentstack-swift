@@ -49,35 +49,33 @@ class ContentTypeQueryTest: XCTestCase {
         let value = 10
         let limitQuery = makeContentTypeQuerySUT()
         limitQuery.limit(to: UInt(value))
-        XCTAssertEqual(limitQuery.parameters[QueryParameter.limit], value.stringValue)
+        XCTAssertEqual(limitQuery.parameters.query(), "\(QueryParameter.limit)=\(value)")
 
         let skipQuery = makeContentTypeQuerySUT()
         skipQuery.skip(theFirst: UInt(value))
-        XCTAssertEqual(skipQuery.parameters[QueryParameter.skip], value.stringValue)
+        XCTAssertEqual(skipQuery.parameters.query(), "\(QueryParameter.skip)=\(value)")
     }
 
     func testCTQuery_Order() {
         let key = "keyPath"
         let ascQuery = makeContentTypeQuerySUT()
         ascQuery.orderByAscending(keyPath: key)
-        XCTAssertEqual(ascQuery.parameters[QueryParameter.asc], key)
+        XCTAssertEqual(ascQuery.parameters.query(), "\(QueryParameter.asc)=\(key)")
         let descQuery = makeContentTypeQuerySUT()
         descQuery.orderByDecending(keyPath: key)
-        XCTAssertEqual(descQuery.parameters[QueryParameter.desc], key)
+        XCTAssertEqual(descQuery.parameters.query(), "\(QueryParameter.desc)=\(key)")
     }
 
     func testCTQuery_addURIParam() {
         let dictionary = ["key1": "value1",
                           "ket2": "value2"]
         let addParamQuery = makeContentTypeQuerySUT().addURIParam(dictionary: dictionary)
-        for (key, value) in dictionary {
-            XCTAssertEqual(addParamQuery.parameters[key], value)
-        }
+        XCTAssertEqual(addParamQuery.parameters.query(), (dictionary as Parameters).query())
 
         let key = "keyPath"
         let value = "value"
         let addParamQueryKeyVal = makeContentTypeQuerySUT().addURIParam(with: key, value: value)
-        XCTAssertEqual(addParamQueryKeyVal.parameters[key], value)
+        XCTAssertEqual(addParamQueryKeyVal.parameters.query(), "\(key)=\(value)")
     }
 
     func testCTQuery_addQueryParam() {
@@ -96,28 +94,39 @@ class ContentTypeQueryTest: XCTestCase {
 
     func testCTQuery_Include() {
         let countQuery = makeContentTypeQuerySUT().include(params: [.count])
-        XCTAssertEqual(countQuery.parameters[QueryParameter.includeCount], "true")
+        XCTAssertEqual(countQuery.parameters.query(), "\(QueryParameter.includeCount)=true")
         for key in countQuery.parameters.keys {
             XCTAssertEqual(key, QueryParameter.includeCount)
         }
 
         let totalountQuery = makeContentTypeQuerySUT().include(params: [.totalCount])
-        XCTAssertEqual(totalountQuery.parameters[QueryParameter.count], "true")
+        XCTAssertEqual(totalountQuery.parameters.query(), "\(QueryParameter.count)=true")
         for key in totalountQuery.parameters.keys {
             XCTAssertEqual(key, QueryParameter.count)
         }
 
         let globalFieldQuery = makeContentTypeQuerySUT().include(params: [.globalFields])
-        XCTAssertEqual(globalFieldQuery.parameters[QueryParameter.includeGloablField], "true")
+        XCTAssertEqual(globalFieldQuery.parameters.query(), "\(QueryParameter.includeGloablField)=true")
         for key in globalFieldQuery.parameters.keys {
             XCTAssertEqual(key, QueryParameter.includeGloablField)
         }
 
+        let param: Parameters = [QueryParameter.count: true,
+                                 QueryParameter.includeCount: true,
+                                 QueryParameter.includeGloablField: true]
+
         let allQuery = makeContentTypeQuerySUT().include(params: [.all])
-        XCTAssertEqual(allQuery.parameters[QueryParameter.count], "true")
-        XCTAssertEqual(allQuery.parameters[QueryParameter.includeCount], "true")
-        XCTAssertEqual(allQuery.parameters[QueryParameter.includeGloablField], "true")
+        XCTAssertEqual(allQuery.parameters.query(), param.query())
     }
+
+    static var allTests = [
+        ("testCTQuery_whereCondition", testCTQuery_whereCondition),
+        ("testCTQuery_SkipLimit", testCTQuery_SkipLimit),
+        ("testCTQuery_Order", testCTQuery_Order),
+        ("testCTQuery_addURIParam", testCTQuery_addURIParam),
+        ("testCTQuery_addQueryParam", testCTQuery_addQueryParam),
+        ("testCTQuery_Include", testCTQuery_Include)
+    ]
 }
 
 func makeContentTypeQuerySUT() -> ContentTypeQuery {
