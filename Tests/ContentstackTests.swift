@@ -33,6 +33,13 @@ final class ContentstackTests: XCTestCase {
         XCTAssertEqual(stack.host, host)
     }
 
+    func testStack_DecodingStrategy_tobesetToJsonDecoder () {
+        var config = ContentstackConfig.default
+        config.dateDecodingStrategy = JSONDecoder.DateDecodingStrategy.custom(Date.variableISO8601Strategy)
+        let stack = makeStackSut(config: config)
+        XCTAssertNotNil(stack.jsonDecoder.dateDecodingStrategy)
+    }
+
     static var allTests = [
         ("testStackToken_RequireFieldProvided_ReturnStack", testStackToken_RequireFieldProvided_ReturnStack),
         ("testStack_DefaultHostRegion_ReturnStackWithDefaultValue",

@@ -53,7 +53,7 @@ extension ContentType: EndpointAccessible {
     }
 
     public func endPoint(components: inout URLComponents) {
-        components.path = "\(components.path)/\(Endpoint.contenttype)"
+        components.path = "\(components.path)/\(Endpoint.contenttype.pathComponent)"
         if let uid = uid {
             components.path = "\(components.path)/\(uid)"
         }

@@ -53,7 +53,14 @@ public class Entry: EntryQueryable, CachePolicyAccessible {
 
     public func query<EntryType>(_ entry: EntryType.Type) -> QueryOn<EntryType>
         where EntryType: EntryDecodable & FieldKeysQueryable {
-        return QueryOn<EntryType>(contentType: self.contentType)
+            if self.contentType.uid == nil {
+                fatalError("Please provide ContentType uid")
+            }
+            let query = QueryOn<EntryType>(contentType: self.contentType)
+            if let uid = self.uid {
+              _ =  query.where(queryableCodingKey: .uid, Query.Operation.equals(uid))
+            }
+            return query
     }
 }
 
@@ -65,7 +72,7 @@ extension Entry: EndpointAccessible {
     public func endPoint( components: inout URLComponents) {
         guard let contentTypeUID = contentType.uid else {return}
         components.path = "\(components.path)/\(Endpoint.contenttype.pathComponent)"
-        components.path = "\(components.path)/\(contentTypeUID)\(Endpoint.entries))"
+        components.path = "\(components.path)/\(contentTypeUID)/\(Endpoint.entries.pathComponent)"
         if let uid = uid {
             components.path = "\(components.path)/\(uid)"
         }
