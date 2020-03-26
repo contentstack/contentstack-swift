@@ -56,7 +56,7 @@ extension Asset: EndpointAccessible {
     }
 
     public func endPoint(components: inout URLComponents) {
-        components.path = "\(components.path)/\(Endpoint.assets)"
+        components.path = "\(components.path)/\(Endpoint.assets.pathComponent)"
         if let uid = uid {
             components.path = "\(components.path)/\(uid)"
         }
