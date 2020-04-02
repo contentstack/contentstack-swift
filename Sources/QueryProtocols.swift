@@ -107,6 +107,12 @@ extension EntryQueryable {
         self.parameters[parameter] = baseDict
         return self
     }
+    
+    @discardableResult
+    public func locale(_ locale: String) -> Self {
+        self.parameters["locale"] = locale
+        return self
+    }
 
     @discardableResult
     public func only(fields: [String]) -> Self {
