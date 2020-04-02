@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol AssetDecodable: SystemFields, Decodable {
+public protocol AssetProtocol: SystemFields {
     var fileName: String? { get }
 
     var fileSize: Double? { get }
@@ -16,6 +16,8 @@ public protocol AssetDecodable: SystemFields, Decodable {
 
     var url: String? { get }
 }
+
+public protocol AssetDecodable: AssetProtocol, Decodable {}
 
 public class Asset: FieldKeysQueryable {
 
@@ -62,3 +64,7 @@ extension Asset: EndpointAccessible {
         }
     }
 }
+
+//extension AssetProtocol {
+//    internal 
+//}
