@@ -78,4 +78,13 @@ internal extension String {
         }
         return url
     }
+    
+    func isHexColor() -> Bool {
+        let hexColorRegex3Deci = "[0-9A-Fa-f]{3}"
+        let hexColorPred3Deci = NSPredicate(format:"SELF MATCHES %@", hexColorRegex3Deci)
+
+        let hexColorRegex = "[0-9A-Fa-f]{6}"
+        let hexColorPred = NSPredicate(format:"SELF MATCHES %@", hexColorRegex)
+        return hexColorPred.evaluate(with: self) || hexColorPred3Deci.evaluate(with: self)
+    }
 }
