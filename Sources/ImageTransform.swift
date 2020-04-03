@@ -99,4 +99,45 @@ public class ImageTransform {
            self.imageOperation.append(.pad(padding))
            return self
     }
+    ///The `bg-color` parameter lets you set a backgroud color for the given image.
+    ///See [Background Color](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#background-color)
+    public func backgroundColor(_ color: Color) -> ImageTransform {
+        self.imageOperation.append(.color(color))
+        return self
+    }
+    ///The `dpr` parameter lets you deliver images with appropriate size
+    ///to devices that come with a defined device pixel ratio.
+    ///See [Device Pixel Ratio](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#device-pixel-ratio)
+    public func dpr(_ dpr: UInt, resize: Resize) -> ImageTransform {
+        self.imageOperation.append(.resize(resize))
+        self.imageOperation.append(.dpr(dpr))
+        return self
+    }
+    ///The `blur` parameter allows you to decrease the focus and clarity of a given image.
+    ///See [Blur](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#blur)
+    public func blur(_ blur: UInt) -> ImageTransform {
+        self.imageOperation.append(.blur(blur))
+        return self
+    }
+    ///The `saturation` parameter allows you to increase or decrease
+    ///the intensity of the colors in a given image.
+    ///See [Saturation](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#saturation)
+    public func saturation(_ value: Double) -> ImageTransform {
+        self.imageOperation.append(.saturation(value))
+        return self
+    }
+    ///The `contrast` parameter allows you to increase or decrease
+    ///the difference between the darkest and lightest tones in a given image.
+    ///See [Contrast](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#contrast)
+    public func contrast(_ value: Double) -> ImageTransform {
+        self.imageOperation.append(.contrast(value))
+        return self
+    }
+    ///The `brightness` parameter allows you to increase or decrease
+    ///the intensity with which an image reflects or radiates perceived light.
+    ///See [Brightness](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#brightness)
+    public func brightness(_ value: Double) -> ImageTransform {
+        self.imageOperation.append(.brightness(value))
+        return self
+    }
 }

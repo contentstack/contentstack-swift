@@ -69,4 +69,9 @@ class EntryTest: XCTestCase {
         XCTAssertEqual(query.parameters.query(), "")
         XCTAssertEqual(query.queryParameter.jsonString, "{\n  \"uid\" : \"entry_uid\"\n}")
     }
+
+    func testEntryLocale() {
+        let entry = makeEntrySut(contentTypeuid: "Content_type").locale("en-gb")
+        XCTAssertEqual(entry.parameters.query(), "locale=en-gb")
+    }
 }

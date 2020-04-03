@@ -121,4 +121,284 @@ class ImageTransformTestAdditional: XCTestCase {
         } catch {XCTAssertFalse(true)}
 
     }
+
+    func testBackgroundColorHex_withInvalidValues_shouldThrowError() {
+        let message = """
+        Invalid Hexadecimal value,
+        it should be 3-digit or 6-digit hexadecimal value.
+        """
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.hex("k")))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.hex("AAAA")))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.hex("AAR")))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.hex("AAAA##")))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.hex("AAAAAAA")))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+
+    }
+
+    func  testBackgroundColorRGB_withInvalidValues_shouldThrowError() {
+        let message = """
+        Invalid Red or Blue or Green or alpha value,
+        the value ranging anywhere between 0 and 255 for each.
+        """
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.rgb(red: 300, green: 20, blue: 20)))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.rgb(red: 30, green: 2000, blue: 20)))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.rgb(red: 30, green: 20, blue: 256)))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+    }
+
+    func  testBackgroundColorRGBA_withInvalidValues_shouldThrowError() {
+        let message = """
+        Invalid Red or Blue or Green or alpha value,
+        the value ranging anywhere between 0 and 255 for each
+        and the alpha value with 0.0 being fully transparent
+        and 1.0 being completely opaque.
+        """
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.rgba(red: 300, green: 20, blue: 20, alpha: 0.1)))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.rgba(red: 30, green: 2000, blue: 20, alpha: 0.1)))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.rgba(red: 30, green: 20, blue: 256, alpha: 0.1)))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.rgba(red: 30, green: 20, blue: 26, alpha: 2)))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+    }
+
+    func testBackgroundColor_URLQueryParam() {
+        let hex = "AAFF00", red: UInt = 23, green: UInt = 253, blue: UInt = 66, alpha = 0.5
+        do {
+            let hexURL = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.hex(hex)))
+            XCTAssertEqual(hexURL.absoluteString, urlString + "?bg-color=\(hex)")
+            let rgbURL = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.rgb(red: red, green: green, blue: blue)))
+            XCTAssertEqual(rgbURL.absoluteString, urlString + "?bg-color=\(red)\(green)\(blue)")
+            let rgbaURL = try urlString.url(with: makeImageTransformSUT()
+                .backgroundColor(.rgba(red: red, green: green, blue: blue, alpha: alpha)))
+            XCTAssertEqual(rgbaURL.absoluteString, urlString + "?bg-color=\(red)\(green)\(blue)\(alpha)")
+
+        } catch {
+            XCTAssertFalse(true)
+        }
+    }
+
+    func testDPR_InvalidParam_shouldThrow() {
+        let message = """
+        The value for dpr parameter could be a whole number (between 0 and 10000)
+        or any decimal number (between 0.0 and 9999.9999...).
+        """
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .dpr(10000000, resize: Resize(size: Size())))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+    }
+
+    func testDPR_validParam() {
+        do {
+            let dprValue: UInt = 1000
+            let dprUrl = try urlString.url(with: makeImageTransformSUT()
+                .dpr(dprValue, resize: Resize(size: Size(width: width))))
+            XCTAssertEqual(dprUrl.absoluteString, urlString + "?width=\(width)&dpr=\(dprValue)")
+        } catch {
+            XCTAssertFalse(true)
+        }
+    }
+
+    func testBlur_InvalidParam_shouldThrow() {
+        let message = """
+        The value for blur parameter could be a whole decimal number (between 1 and 1000).
+        """
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .blur(10000000))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+    }
+
+    func testBlur_validParam() {
+        do {
+            let blurValue: UInt = 100
+            let blurUrl = try urlString.url(with: makeImageTransformSUT()
+                .blur(blurValue))
+            XCTAssertEqual(blurUrl.absoluteString, urlString + "?blur=\(blurValue)")
+        } catch {
+            XCTAssertFalse(true)
+        }
+    }
+
+    func testSaturation_InvalidParam_shouldThrow() {
+        let message = """
+        The value for saturation parameter could be a whole decimal number (between -100 and 100).
+        """
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .saturation(10000000))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+    }
+
+    func testSaturation_validParam() {
+        do {
+            let value: Double = 10
+            let saturationUrl = try urlString.url(with: makeImageTransformSUT()
+                .saturation(value))
+            XCTAssertEqual(saturationUrl.absoluteString, urlString + "?saturation=\(value)")
+        } catch {
+            XCTAssertFalse(true)
+        }
+    }
+    func testContrast_InvalidParam_shouldThrow() {
+        let message = """
+        The value for contrast parameter could be a whole decimal number (between -100 and 100).
+        """
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .contrast(10000000))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+    }
+
+    func testContrast_validParam() {
+        do {
+            let value: Double = 10
+            let contrastUrl = try urlString.url(with: makeImageTransformSUT()
+                .contrast(value))
+            XCTAssertEqual(contrastUrl.absoluteString, urlString + "?contrast=\(value)")
+        } catch {
+            XCTAssertFalse(true)
+        }
+    }
+
+    func testBrightness_InvalidParam_shouldThrow() {
+        let message = """
+        The value for brightness parameter could be a whole decimal number (between -100 and 100).
+        """
+        do {
+            _ = try urlString.url(with: makeImageTransformSUT()
+                .brightness(10000000))
+            XCTAssertFalse(true)
+        } catch let error {
+            if let error = error as? ImageTransformError {
+                XCTAssertEqual(error.message, message)
+            }
+        }
+    }
+
+    func testBrightness_validParam() {
+        do {
+            let value: Double = 10
+            let brightnessUrl = try urlString.url(with: makeImageTransformSUT()
+                .brightness(value))
+            XCTAssertEqual(brightnessUrl.absoluteString, urlString + "?brightness=\(value)")
+        } catch {
+            XCTAssertFalse(true)
+        }
+    }
 }

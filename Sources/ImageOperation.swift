@@ -60,7 +60,28 @@ internal enum ImageOperation: Equatable, Hashable {
     ///The value for this parameter can be given in pixels or percentage.
     ///See [Pad](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#pad)
     case pad(NSEdgeInsets)
-
+    ///The `bg-color` parameter lets you set a backgroud color for the given image.
+    ///See [Background Color](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#background-color)
+    case color(Color)
+    ///The `dpr` parameter lets you deliver images with appropriate size
+    ///to devices that come with a defined device pixel ratio.
+    ///See [Device Pixel Ratio](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#device-pixel-ratio)
+    case dpr(UInt)
+    ///The `blur` parameter allows you to decrease the focus and clarity of a given image.
+    ///See [Blur](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#blur)
+    case blur(UInt)
+    ///The `saturation` parameter allows you to increase or decrease
+    ///the intensity of the colors in a given image.
+    ///See [Saturation](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#saturation)
+    case saturation(Double)
+    ///The `contrast` parameter allows you to increase or decrease
+    ///the difference between the darkest and lightest tones in a given image.
+    ///See [Contrast](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#contrast)
+    case contrast(Double)
+    ///The `brightness` parameter allows you to increase or decrease
+    ///the intensity with which an image reflects or radiates perceived light.
+    ///See [Brightness](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#brightness)
+    case brightness(Double)
     internal func urlQueryItem() throws -> [URLQueryItem] {
         switch self {
         case .auto:
@@ -101,6 +122,45 @@ internal enum ImageOperation: Equatable, Hashable {
         case .pad(let edgeInset):
             return [URLQueryItem(name: ImageParameter.pad,
                                  value: "\(edgeInset.top),\(edgeInset.right),\(edgeInset.bottom),\(edgeInset.left)")]
+        case .color(let color):
+            return try color.urlQueryItem()
+        case .dpr(let dprValue) where dprValue >= 0 && dprValue < 10000:
+            return [URLQueryItem(name: ImageParameter.dpr, value: String(dprValue))]
+        case .dpr:
+            let message = """
+            The value for dpr parameter could be a whole number (between 0 and 10000)
+            or any decimal number (between 0.0 and 9999.9999...).
+            """
+            throw ImageTransformError(message: message)
+        case .blur(let blurvalue) where blurvalue >= 1 && blurvalue < 1000:
+            return [URLQueryItem(name: ImageParameter.blur, value: String(blurvalue))]
+        case .blur:
+            let message = """
+            The value for blur parameter could be a whole decimal number (between 1 and 1000).
+            """
+            throw ImageTransformError(message: message)
+        case .saturation(let value) where value >= -100 && value <= 100:
+            return [URLQueryItem(name: ImageParameter.saturation, value: value.stringValue)]
+        case .saturation:
+            let message = """
+            The value for saturation parameter could be a whole decimal number (between -100 and 100).
+            """
+            throw ImageTransformError(message: message)
+        case .contrast(let value) where value >= -100 && value <= 100:
+            return [URLQueryItem(name: ImageParameter.contrast, value: value.stringValue)]
+        case .contrast:
+            let message = """
+            The value for contrast parameter could be a whole decimal number (between -100 and 100).
+            """
+            throw ImageTransformError(message: message)
+        case .brightness(let value) where value >= -100 && value <= 100:
+            return [URLQueryItem(name: ImageParameter.brightness, value: value.stringValue)]
+        case .brightness:
+            let message = """
+            The value for brightness parameter could be a whole decimal number (between -100 and 100).
+            """
+            throw ImageTransformError(message: message)
+
         }
     }
 
@@ -121,6 +181,12 @@ internal enum ImageOperation: Equatable, Hashable {
         case .overlay:              hasher.combine(9)
         case .overlayPad:           hasher.combine(10)
         case .pad:                  hasher.combine(11)
+        case .color:                hasher.combine(12)
+        case .dpr:                  hasher.combine(13)
+        case .blur:                 hasher.combine(14)
+        case .saturation:           hasher.combine(14)
+        case .contrast:             hasher.combine(15)
+        case .brightness:           hasher.combine(16)
         }
     }
 }
@@ -151,6 +217,18 @@ internal func == (lhs: ImageOperation, rhs: ImageOperation) -> Bool {
     case (.overlayPad, .overlayPad):
         return true
     case (.pad, .pad):
+        return true
+    case (.color, .color):
+        return true
+    case (.dpr, .dpr):
+        return true
+    case (.blur, .blur):
+        return true
+    case (.saturation, .saturation):
+        return true
+    case (.contrast, .contrast):
+        return true
+    case (.brightness, .brightness):
         return true
     default:
         return false
@@ -425,4 +503,52 @@ public enum OverlayRepeat: String {
     internal func urlQueryItem() -> URLQueryItem {
            return URLQueryItem(name: ImageParameter.overlayRepeat, value: self.rawValue)
        }
+}
+
+public enum Color {
+    ///Hexadecimal valuet should be `3-digit` or `6-digit`.
+    case hex(String)
+    /// `Red`, `Blue`, `Green` value which defines the intensity of the corresponding color,
+    /// with the value ranging anywhere between `0` and `255` for each.
+    case rgb(red: UInt, green: UInt, blue: UInt)
+    /// `Red`, `Blue`, `Green` value which defines the intensity of the corresponding color,
+    /// with the value ranging anywhere between `0` and `255` for each.
+    /// The `alpha` value defines the transparency, with `0.0` being fully transparent
+    /// and `1.0` being completely opaque.
+    case rgba(red: UInt, green: UInt, blue: UInt, alpha: Double)
+    internal func urlQueryItem() throws -> [URLQueryItem] {
+        switch self {
+        case .hex(let hexColor) where hexColor.isHexColor():
+            return [URLQueryItem(name: ImageParameter.backgroundColor, value: hexColor)]
+        case .rgb(red: let red, green: let green, blue: let blue)
+            where red >= 0 && red <= 255 && green >= 0 &&  green <= 255 && blue >= 0 && blue <= 255:
+            return [URLQueryItem(name: ImageParameter.backgroundColor, value: "\(red)\(green)\(blue)")]
+        case .rgba(red: let red, green: let green, blue: let blue, alpha: let alpha)
+            where red >= 0 && red <= 255
+                && green >= 0 && green <= 255
+                && blue >= 0 && blue <= 255
+                && alpha >= 0.0 && alpha <= 1.0:
+            return [URLQueryItem(name: ImageParameter.backgroundColor, value: "\(red)\(green)\(blue)\(alpha)")]
+        case .hex:
+            let message = """
+            Invalid Hexadecimal value,
+            it should be 3-digit or 6-digit hexadecimal value.
+            """
+            throw ImageTransformError(message: message)
+        case .rgb:
+            let message = """
+            Invalid Red or Blue or Green or alpha value,
+            the value ranging anywhere between 0 and 255 for each.
+            """
+            throw ImageTransformError(message: message)
+        case .rgba:
+            let message = """
+            Invalid Red or Blue or Green or alpha value,
+            the value ranging anywhere between 0 and 255 for each
+            and the alpha value with 0.0 being fully transparent
+            and 1.0 being completely opaque.
+            """
+            throw ImageTransformError(message: message)
+        }
+    }
 }

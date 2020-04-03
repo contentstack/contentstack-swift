@@ -26,4 +26,10 @@ internal enum ImageParameter {
     internal static let overlayHeight       = "overlay-height"
     internal static let pad                 = "pad"
     internal static let overlayPad          = "overlay-pad"
+    internal static let backgroundColor     = "bg-color"
+    internal static let dpr                 = "dpr"
+    internal static let blur                = "blur"
+    internal static let saturation          = "saturation"
+    internal static let contrast            = "contrast"
+    internal static let brightness          = "brightness"
 }
