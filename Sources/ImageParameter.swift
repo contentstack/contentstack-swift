@@ -32,4 +32,7 @@ internal enum ImageParameter {
     internal static let saturation          = "saturation"
     internal static let contrast            = "contrast"
     internal static let brightness          = "brightness"
+    internal static let frame               = "frame"
+    internal static let sharpen             = "sharpen"
+    internal static let resizeFilter        = "resize-filter"
 }

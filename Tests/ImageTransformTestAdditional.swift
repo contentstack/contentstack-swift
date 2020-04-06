@@ -401,4 +401,13 @@ class ImageTransformTestAdditional: XCTestCase {
             XCTAssertFalse(true)
         }
     }
+
+    func testFetchFirstFrame() {
+        do {
+            let frameURL = try urlString.url(with: makeImageTransformSUT().fetchFirstFrame())
+            XCTAssertEqual(frameURL.absoluteString, urlString + "?frame=1")
+        } catch {
+            XCTAssertFalse(true)
+        }
+    }
 }

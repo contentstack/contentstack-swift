@@ -82,6 +82,13 @@ internal enum ImageOperation: Equatable, Hashable {
     ///the intensity with which an image reflects or radiates perceived light.
     ///See [Brightness](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#brightness)
     case brightness(Double)
+    ///The frame parameter fetches the first frame from an animated GIF
+    ///(Graphics Interchange Format) file that comprises a sequence of moving images.
+    ///See [Fetch first frame](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#fetch-first-frame)
+    case fetchFirstFrame
+    ///The `sharpen` parameter allows you to increase the definition of the edges of objects in an image.
+    ///See [Sharpen](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#sharpen)
+    case sharpen(amount: UInt, radius: UInt, threshold: UInt)
     internal func urlQueryItem() throws -> [URLQueryItem] {
         switch self {
         case .auto:
@@ -160,7 +167,20 @@ internal enum ImageOperation: Equatable, Hashable {
             The value for brightness parameter could be a whole decimal number (between -100 and 100).
             """
             throw ImageTransformError(message: message)
-
+        case .fetchFirstFrame:
+            return [URLQueryItem(name: ImageParameter.frame, value: "1")]
+        case .sharpen(amount: let amount, radius: let radius, threshold: let threshold)
+            where amount >= 0 && amount <= 10
+                && radius >= 1 && radius <= 1000
+                && threshold >= 0 && threshold <= 255:
+            return [URLQueryItem(name: ImageParameter.sharpen, value: "a\(amount),r\(radius),t\(threshold)")]
+        case .sharpen:
+            let message = """
+            The value for `amount` parameter could be a whole decimal number (between 0 and 10).
+            The value for `radius` parameter could be a whole decimal number (between 1 and 1000).
+            The value for `threshold` parameter could be a whole decimal number (between 0 and 255).
+            """
+            throw ImageTransformError(message: message)
         }
     }
 
@@ -187,6 +207,8 @@ internal enum ImageOperation: Equatable, Hashable {
         case .saturation:           hasher.combine(14)
         case .contrast:             hasher.combine(15)
         case .brightness:           hasher.combine(16)
+        case .fetchFirstFrame:      hasher.combine(17)
+        case .sharpen:              hasher.combine(18)
         }
     }
 }
@@ -230,20 +252,46 @@ internal func == (lhs: ImageOperation, rhs: ImageOperation) -> Bool {
         return true
     case (.brightness, .brightness):
         return true
+    case (.fetchFirstFrame, .fetchFirstFrame):
+        return true
+    case (.sharpen, .sharpen):
+        return true
     default:
         return false
+    }
+}
+
+///The `resize-filter` parameter allows you to use the resizing filter to increase or decrease the number of pixels in a given image.
+///See [Resize-filter](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#resize-filter)
+public enum ResizeFilter: String {
+    case none
+    case nearest
+    case bilinare
+    case bicubic
+    case lanczos2
+    case lanczos3
+
+    internal func urlQueryItem(queryItems: inout [URLQueryItem]) {
+        switch self {
+        case .nearest, .bilinare, .bicubic, .lanczos2, .lanczos3:
+            queryItems.append(URLQueryItem(name: ImageParameter.resizeFilter, value: self.rawValue))
+        default:
+            return
+        }
     }
 }
 
 public struct Resize {
     public let size: Size
     public var disableUpscale: Bool = false
+    public var filter: ResizeFilter = .none
     internal func urlQueryItem() -> [URLQueryItem] {
         var queryItems = [URLQueryItem]()
         size.urlQueryItem(queryItems: &queryItems)
         if disableUpscale {
             queryItems.append(URLQueryItem(name: ImageParameter.disable, value: "upscale"))
         }
+        self.filter.urlQueryItem(queryItems: &queryItems)
         return queryItems
     }
 }
