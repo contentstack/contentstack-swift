@@ -140,4 +140,17 @@ public class ImageTransform {
         self.imageOperation.append(.brightness(value))
         return self
     }
+    ///The frame parameter fetches the first frame from an animated GIF
+    ///(Graphics Interchange Format) file that comprises a sequence of moving images.
+    ///See [Fetch first frame](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#fetch-first-frame)
+    public func fetchFirstFrame() -> ImageTransform {
+        self.imageOperation.append(.fetchFirstFrame)
+        return self
+    }
+    ///The `sharpen` parameter allows you to increase the definition of the edges of objects in an image.
+    ///See [Sharpen](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#sharpen)
+    public func sharpen(amount: UInt, radius: UInt, threshold: UInt) -> ImageTransform {
+        self.imageOperation.append(.sharpen(amount: amount, radius: radius, threshold: threshold))
+        return self
+    }
 }
