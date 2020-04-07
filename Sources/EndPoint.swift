@@ -19,7 +19,7 @@ public enum Endpoint: String {
     /// The asset endpoint.
     case assets
     /// The synchronization endpoint.
-    case sync
+    case sync = "stacks/sync"
     /// The path component string for the current endpoint.
     public var pathComponent: String {
         return rawValue

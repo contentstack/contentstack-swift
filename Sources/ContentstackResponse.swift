@@ -39,7 +39,14 @@ where ItemType: EndpointAccessible & Decodable {
         self.limit = try container.decodeIfPresent(UInt.self, forKey: ResponseCodingKeys.limit)
         self.totalCount = try container.decodeIfPresent(UInt.self, forKey: ResponseCodingKeys.totalCount)
         self.skip = try container.decodeIfPresent(UInt.self, forKey: ResponseCodingKeys.skip)
-
+        
+//        if let assets =  try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.assets) {
+//            self.items = assets
+//        }else if let contentType = try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.contentTypes) {
+//            self.items = contentType
+//        }else {
+//            self.items = try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.entries) ??  []
+//        }
         switch ItemType.endPoint {
         case .assets:
             self.items = try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.assets) ??  []

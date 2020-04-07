@@ -38,13 +38,13 @@ public class Stack: CachePolicyAccessible {
     /// the fields dictionary of entries and assets.
     public private(set) var jsonDecoder: JSONDecoder
 
-    init(apiKey: String,
-         deliveryToken: String,
-         environment: String,
-         region: ContentstackRegion,
-         host: String,
-         apiVersion: String,
-         config: ContentstackConfig) {
+    internal init(apiKey: String,
+                  deliveryToken: String,
+                  environment: String,
+                  region: ContentstackRegion,
+                  host: String,
+                  apiVersion: String,
+                  config: ContentstackConfig) {
 
         self.apiKey = apiKey
         self.deliveryToken = deliveryToken
@@ -83,19 +83,174 @@ public class Stack: CachePolicyAccessible {
         return Asset(uid, stack: self)
     }
 
-    private func url(endpointAccessible: EndpointAccessible, parameters: [String: String] = [:]) -> URL {
-        var components: URLComponents = URLComponents(string: "https://\(self.host)/\(self.apiVersion)")!
-        endpointAccessible.endPoint(components: &components)
+    private func url(endpointAccessible: EndpointAccessible, parameters: Parameters = [:]) -> URL {
+        var urlComponents: URLComponents = URLComponents(string: "https://\(self.host)/\(self.apiVersion)")!
+        endpointAccessible.endPoint(components: &urlComponents)
 
-        var queryItems: [URLQueryItem] = [URLQueryItem]()
-
-        for (key, value) in parameters {
-            queryItems.append(URLQueryItem(name: key, value: value))
+        if !parameters.isEmpty {
+            let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "") + parameters.query()
+            urlComponents.percentEncodedQuery = percentEncodedQuery
         }
+        let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "") + "environment=\(self.environment)"
+        urlComponents.percentEncodedQuery = percentEncodedQuery
 
-        components.queryItems = queryItems
-
-        return components.url!
+        return urlComponents.url!
     }
 
+    internal func fetch<ResourceType>(endpoint: EndpointAccessible,
+                                      cachePolicy: CachePolicy,
+                                      parameters: [String: String] = [:],
+                                      then completion: @escaping ResultsHandler<ResourceType>)
+        where ResourceType: Decodable {
+        let url = self.url(endpointAccessible: endpoint, parameters: parameters)
+            self.fetchUrl(url,
+                          cachePolicy: cachePolicy,
+                          then: { (result: Result<Data, Error>, responseType: ResponseType) in
+            switch result {
+            case .success(let data):
+                do {
+                    let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
+                    completion(Result.success(jsonParse), responseType)
+                } catch let error {
+                    completion(Result.failure(error), responseType)
+                }
+            case .failure(let error):
+                completion(Result.failure(error), responseType)
+            }
+        })
+    }
+
+    private func fetchUrl(_ url: URL, cachePolicy: CachePolicy, then completion: @escaping ResultsHandler<Data>) {
+        var dataTask: URLSessionDataTask?
+        dataTask = urlSession.dataTask(with: url,
+                                       completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            if let data = data {
+                // TODO:  Handle Ratelimiting
+
+                if let response = response as? HTTPURLResponse {
+                    if response.statusCode != 200 {
+                        if cachePolicy == .networkElseCache,
+                            self.canFullfillRequestWithCache(dataTask!.originalRequest!) {
+                            self.fullfillRequestWithCache(dataTask!.originalRequest!, then: completion)
+                            return
+                        }
+                        completion(Result.failure(
+                            APIError.handleError(for: url,
+                                                 jsonDecoder: self.jsonDecoder,
+                                                 data: data,
+                                                 response: response)),
+                                   .network
+                        )
+                        return
+                    }
+                    let successMessage = "Success: 'GET' (\(response.statusCode)) \(url.absoluteString)"
+                    ContentstackLogger.log(.info, message: successMessage)
+                    URLCache.shared.storeCachedResponse(
+                        CachedURLResponse(response: response,
+                                          data: data),
+                        for: dataTask!.originalRequest!
+                    )
+                }
+                completion(Result.success(data), .network)
+                return
+            }
+
+            if let error = error {
+                if self.cachePolicy == .networkElseCache,
+                    self.canFullfillRequestWithCache(dataTask!.originalRequest!) {
+                    self.fullfillRequestWithCache(dataTask!.originalRequest!, then: completion)
+                    return
+                }
+                let errorMessage = """
+                Errored: 'GET' \(url.absoluteString)
+                Message: \(error.localizedDescription)
+                """
+                ContentstackLogger.log(.error, message: errorMessage)
+                completion(Result.failure(error), .network)
+                return
+            }
+
+        })
+        performDataTask(dataTask!, cachePolicy: cachePolicy, then: completion)
+    }
+
+    private func performDataTask(_ dataTask: URLSessionDataTask,
+                                 cachePolicy: CachePolicy,
+                                 then completion: @escaping ResultsHandler<Data>) {
+        switch cachePolicy {
+        case .networkOnly:
+            dataTask.resume()
+        case .cacheOnly:
+            fullfillRequestWithCache(dataTask.originalRequest!, then: completion)
+        case .cacheElseNetwork:
+            fullfillRequestWithCache(
+            dataTask.originalRequest!
+            ) { (cacheResult: Result<Data, Error>, responseType: ResponseType) in
+                switch cacheResult {
+                case Result.success(_):
+                    completion(cacheResult, responseType)
+                case Result.failure(_):
+                    dataTask.resume()
+                }
+            }
+        case .networkElseCache:
+            dataTask.resume()
+        case .cacheThenNetwork:
+            fullfillRequestWithCache(
+            dataTask.originalRequest!
+            ) { (cacheResult: Result<Data, Error>, responseType: ResponseType) in
+                completion(cacheResult, responseType)
+                dataTask.resume()
+            }
+        }
+    }
+    //Cache handling methods
+    private func fullfillRequestWithCache(_ request: URLRequest, then completion: @escaping ResultsHandler<Data>) {
+        if let data = self.cachedResponse(for: request) {
+            completion(Result.success(data), .cache)
+            return
+        }
+        completion(Result.failure(SDKError.cacheError), .cache)
+    }
+
+    private func canFullfillRequestWithCache(_ request: URLRequest) -> Bool {
+        return self.cachedResponse(for: request) != nil ? true : false
+    }
+
+    private func cachedResponse(for request: URLRequest) -> Data? {
+        if let response = URLCache.shared.cachedResponse(for: request) {
+            return response.data
+        }
+        return nil
+    }
+}
+
+extension Stack {
+    public func sync(_ syncStack: SyncStack = SyncStack(),
+                     syncType: SyncStack.SyncableTypes = .all,
+                     then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {
+        var parameter = syncStack.parameter
+        if syncStack.isInitialSync {
+            parameter = syncStack.parameter + syncType.parameters
+        }
+        let url = self.url(endpointAccessible: syncStack, parameters: parameter)
+
+        fetchUrl(url,
+                 cachePolicy: .networkOnly) { (result: Result<Data, Error>, _: ResponseType) in
+            switch result {
+            case .success(let data):
+                do {
+                    let syncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
+                    completion(.success(syncStack))
+                    if  syncStack.hasMorePages {
+                        self.sync(syncStack, then: completion)
+                    }
+                } catch let error {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }
