@@ -8,6 +8,18 @@
 import Foundation
 internal typealias Parameters = [String: Any]
 
+/// Utility method to add two dictionaries of the same time.
+public func +=<K, V> (left: [K: V], right: [K: V]) -> [K: V] {
+    var result = left
+    right.forEach { key, value in result[key] = value }
+    return result
+}
+
+/// Utility method to add two dictionaries of the same time.
+public func +<K, V> (left: [K: V], right: [K: V]) -> [K: V] {
+    return left += right
+}
+
 extension Parameters {
     internal func query() -> String {
         var components: [(String, String)] = []
@@ -37,7 +49,9 @@ extension Parameters {
             }
          } else if let bool = value as? Bool {
             components.append((escape(key), escape(bool.stringValue)))
-         } else {
+         } else if let date = value as? Date {
+            components.append((escape(key), date.stringValue))
+        } else {
             components.append((escape(key), escape("\(value)")))
         }
         return components
