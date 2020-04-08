@@ -122,7 +122,8 @@ public class Stack: CachePolicyAccessible {
 
     private func fetchUrl(_ url: URL, cachePolicy: CachePolicy, then completion: @escaping ResultsHandler<Data>) {
         var dataTask: URLSessionDataTask?
-        dataTask = urlSession.dataTask(with: url,
+        let request = URLRequest(url: url)
+        dataTask = urlSession.dataTask(with: request,
                                        completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
             if let data = data {
                 // TODO:  Handle Ratelimiting
@@ -130,8 +131,8 @@ public class Stack: CachePolicyAccessible {
                 if let response = response as? HTTPURLResponse {
                     if response.statusCode != 200 {
                         if cachePolicy == .networkElseCache,
-                            self.canFullfillRequestWithCache(dataTask!.originalRequest!) {
-                            self.fullfillRequestWithCache(dataTask!.originalRequest!, then: completion)
+                            self.canFullfillRequestWithCache(request) {
+                            self.fullfillRequestWithCache(request, then: completion)
                             return
                         }
                         completion(Result.failure(
@@ -145,10 +146,11 @@ public class Stack: CachePolicyAccessible {
                     }
                     let successMessage = "Success: 'GET' (\(response.statusCode)) \(url.absoluteString)"
                     ContentstackLogger.log(.info, message: successMessage)
+                    
                     URLCache.shared.storeCachedResponse(
                         CachedURLResponse(response: response,
                                           data: data),
-                        for: dataTask!.originalRequest!
+                        for: request
                     )
                 }
                 completion(Result.success(data), .network)
@@ -157,8 +159,8 @@ public class Stack: CachePolicyAccessible {
 
             if let error = error {
                 if self.cachePolicy == .networkElseCache,
-                    self.canFullfillRequestWithCache(dataTask!.originalRequest!) {
-                    self.fullfillRequestWithCache(dataTask!.originalRequest!, then: completion)
+                    self.canFullfillRequestWithCache(request) {
+                    self.fullfillRequestWithCache(request, then: completion)
                     return
                 }
                 let errorMessage = """
@@ -227,11 +229,13 @@ public class Stack: CachePolicyAccessible {
 
 extension Stack {
     public func sync(_ syncStack: SyncStack = SyncStack(),
-                     syncType: SyncStack.SyncableTypes = .all,
+                     syncTypes: [SyncStack.SyncableTypes] = [.all],
                      then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {
         var parameter = syncStack.parameter
         if syncStack.isInitialSync {
-            parameter = syncStack.parameter + syncType.parameters
+            for syncType in syncTypes {
+                parameter = parameter + syncType.parameters
+            }
         }
         let url = self.url(endpointAccessible: syncStack, parameters: parameter)
 
