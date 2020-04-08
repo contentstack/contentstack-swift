@@ -7,11 +7,13 @@
 
 import XCTest
 @testable import Contentstack
-
+import DVR
 private var _stackSharedInstance: Stack?
+#if !API_TEST
 class TestContentstackClient {
 
     static func config() -> [String: Any] {
+        #if API_TEST
         if let path = Bundle(for: TestContentstackClient.self).path(forResource: "config", ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.mappedIfSafe),
             let jsonDictionary = try? JSONSerialization.jsonObject(with: data,
@@ -19,9 +21,16 @@ class TestContentstackClient {
                 return jsonDictionary
         }
         return [:]
+        #else
+        return [
+            "api_key": "blt477ba55f9a67bcdf",
+            "delivery_token": "cs7731f03a2feef7713546fde5",
+            "environment": "web"
+        ]
+        #endif
     }
 
-    static var stack: Stack {
+    static func testStack(cassetteName: String) -> Stack {
         if _stackSharedInstance == nil {
             let stackConfig = config()
             if let apiKey = stackConfig["api_key"] as? String,
@@ -33,11 +42,11 @@ class TestContentstackClient {
                                                           host: stackConfig["host"] as? String ??  Host.delivery)
             }
         }
+        #if !API_TEST
+        let dvrSession = DVR.Session(cassetteName: cassetteName, backingSession: _stackSharedInstance!.urlSession)
+        _stackSharedInstance?.urlSession = dvrSession
+        #endif
         return _stackSharedInstance!
     }
 }
-
-class ContentstackTest: XCTestCase {
-
-
-}
+#endif
