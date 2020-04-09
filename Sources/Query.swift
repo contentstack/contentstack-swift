@@ -8,7 +8,7 @@
 import Foundation
 
 public class Query: BaseQuery, EntryQueryable {
-    internal typealias ResourceType = Entry
+    internal typealias ResourceType = EntryModel
 
     internal var stack: Stack
     internal var contentTypeUid: String
@@ -21,13 +21,14 @@ public class Query: BaseQuery, EntryQueryable {
         self.stack = contentType.stack
         self.contentTypeUid = contentType.uid!
         self.cachePolicy = contentType.cachePolicy
+        self.parameters[QueryParameter.contentType] = contentTypeUid
     }
 
     public func `where`(valueAtKey path: String, _ operation: Query.Operation) -> Query {
         return self.where(valueAtKeyPath: path, operation)
     }
 
-    public func `where`(queryableCodingKey: Entry.FieldKeys, _ operation: Query.Operation) -> Query {
+    public func `where`(queryableCodingKey: EntryModel.FieldKeys, _ operation: Query.Operation) -> Query {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
@@ -38,23 +39,13 @@ public class Query: BaseQuery, EntryQueryable {
         return self
     }
 
-//    @discardableResult
-//    public func orderByAscending(key path: String) -> Query {
-//        return self.orderByAscending(keyPath: path)
-//    }
-//
-//    @discardableResult
-//    public func orderByDecending(key path: String) -> Query {
-//        return self.orderByDecending(keyPath: path)
-//    }
-
     @discardableResult
-    public func orderByAscending(propertyName: Entry.FieldKeys) -> Query {
+    public func orderByAscending(propertyName: EntryModel.FieldKeys) -> Query {
         return self.orderByAscending(keyPath: propertyName.stringValue)
     }
 
     @discardableResult
-    public func orderByDecending(propertyName: Entry.FieldKeys) -> Query {
+    public func orderByDecending(propertyName: EntryModel.FieldKeys) -> Query {
         return self.orderByDecending(keyPath: propertyName.stringValue)
     }
 
@@ -76,7 +67,13 @@ public class Query: BaseQuery, EntryQueryable {
     }
 }
 
-public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
+extension Query: EndpointAccessible {
+    public static var endpoint: Endpoint {
+        return .entries
+    }
+}
+
+public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable, EntryType: FieldKeysQueryable {
     public func `where`(queryableCodingKey: EntryType.FieldKeys, _ operation: Query.Operation) -> QueryOn<EntryType> {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
@@ -93,7 +90,7 @@ public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
 }
 
 public final class ContentTypeQuery: BaseQuery {
-    internal typealias ResourceType = ContentType
+    internal typealias ResourceType = ContentTypeModel
 
     internal var stack: Stack
 
@@ -108,7 +105,8 @@ public final class ContentTypeQuery: BaseQuery {
         self.cachePolicy = stack.cachePolicy
     }
 
-    public func `where`(queryableCodingKey: ContentType.FieldKeys, _ operation: Query.Operation) -> ContentTypeQuery {
+    public func `where`(queryableCodingKey: ContentTypeModel.QueryableCodingKey, _
+        operation: Query.Operation) -> ContentTypeQuery {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
@@ -126,8 +124,14 @@ public final class ContentTypeQuery: BaseQuery {
     }
 }
 
+extension ContentTypeQuery: EndpointAccessible {
+    public static var endpoint: Endpoint {
+        return .contenttype
+    }
+}
+
 public final class AssetQuery: BaseQuery {
-    internal typealias ResourceType = Asset
+    internal typealias ResourceType = AssetModel
 
     internal var stack: Stack
 
@@ -142,7 +146,7 @@ public final class AssetQuery: BaseQuery {
         self.cachePolicy = stack.cachePolicy
     }
 
-    public func `where`(queryableCodingKey: Asset.FieldKeys, _ operation: Query.Operation) -> AssetQuery {
+    public func `where`(queryableCodingKey: AssetModel.QueryableCodingKey, _ operation: Query.Operation) -> AssetQuery {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
@@ -163,4 +167,10 @@ public final class AssetQuery: BaseQuery {
         return self
     }
 
+}
+
+extension AssetQuery: EndpointAccessible {
+    public static var endpoint: Endpoint {
+        return .assets
+    }
 }

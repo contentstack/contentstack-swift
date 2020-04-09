@@ -7,36 +7,14 @@
 
 import Foundation
 
-public protocol AssetProtocol: SystemFields {
-    var fileName: String? { get }
+public protocol AssetDecodable: AssetFields, FieldKeysQueryable, Decodable {}
 
-    var fileSize: Double? { get }
-
-    var fileType: String? { get }
-
-    var url: String? { get }
-}
-
-public protocol AssetDecodable: AssetProtocol, Decodable {}
-
-public class Asset: FieldKeysQueryable {
+public class Asset: CachePolicyAccessible {
+    public var cachePolicy: CachePolicy = .networkOnly
 
     internal var stack: Stack
 
     var uid: String?
-
-    var endPoint: Endpoint = .assets
-
-    public enum FieldKeys: String, CodingKey {
-        case title, uid, url, dimension
-        case fileName = "filename"
-        case fileType = "content_type"
-        case fileSize = "file_size"
-        case createdAt = "created_at"
-        case createdBy = "created_by"
-        case updatedAt = "updated_at"
-        case updatedBy = "updated_by"
-    }
 
     internal required init(_ uid: String?, stack: Stack) {
         self.uid = uid
@@ -52,19 +30,13 @@ public class Asset: FieldKeysQueryable {
     }
 }
 
-extension Asset: EndpointAccessible {
-    public static var endPoint: Endpoint {
-        return .assets
-    }
-
-    public func endPoint(components: inout URLComponents) {
-        components.path = "\(components.path)/\(Endpoint.assets.pathComponent)"
-        if let uid = uid {
-            components.path = "\(components.path)/\(uid)"
-        }
+extension Asset: ResourceQueryable {
+    public func fetch<ResourceType>(_ completion: @escaping (Result<ResourceType, Error>, ResponseType) -> Void)
+        where ResourceType: EndpointAccessible, ResourceType: Decodable {
+        guard let uid = self.uid else { fatalError("Please provide Asset uid") }
+        self.stack.fetch(endpoint: ResourceType.endpoint,
+                         cachePolicy: self.cachePolicy,
+                         parameters: [QueryParameter.uid: uid],
+                         then: completion)
     }
 }
-
-//extension AssetProtocol {
-//    internal 
-//}

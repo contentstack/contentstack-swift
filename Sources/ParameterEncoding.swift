@@ -24,7 +24,9 @@ extension Parameters {
     internal func query() -> String {
         var components: [(String, String)] = []
         for key in self.keys.sorted(by: <) {
-            if let value = self[key] {
+            if key == QueryParameter.query || key == QueryParameter.uid || key == QueryParameter.contentType {
+                continue
+            } else if let value = self[key] {
                 components += queryComponents(with: key, value: value)
             }
         }
@@ -33,7 +35,7 @@ extension Parameters {
 
     private func queryComponents(with key: String, value: Any) -> [(String, String)] {
         var components: [(String, String)] = []
-         if let dictionary = value as? [String: Any] {
+        if let dictionary = value as? [String: Any] {
             for (nestedKey, value) in dictionary {
                 components += queryComponents(with: "\(key)[\(nestedKey)]", value: value)
             }

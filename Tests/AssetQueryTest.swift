@@ -14,7 +14,7 @@ class AssetQueryTest: XCTestCase {
     let testDoubleValue = 1.9
     let testDateValue = Date()
 
-    func queryWhere(_ key: Asset.FieldKeys, operation: Query.Operation) {
+    func queryWhere(_ key: AssetModel.QueryableCodingKey, operation: Query.Operation) {
         let query = makeAssetQuerySUT().where(queryableCodingKey: key, operation)
 
         switch operation {

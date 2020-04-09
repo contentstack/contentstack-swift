@@ -13,7 +13,7 @@ class ContentTypeQueryTest: XCTestCase {
     let testDoubleValue = 1.9
     let testDateValue = Date()
 
-    func queryWhere(_ key: ContentType.FieldKeys, operation: Query.Operation) {
+    func queryWhere(_ key: ContentTypeModel.QueryableCodingKey, operation: Query.Operation) {
         let query = makeContentTypeQuerySUT().where(queryableCodingKey: key, operation)
 
         switch operation {

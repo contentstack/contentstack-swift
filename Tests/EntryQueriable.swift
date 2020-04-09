@@ -18,19 +18,25 @@ class EntryQueriable: XCTestCase {
         let countQuery = makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.count])
         XCTAssertEqual(countQuery.parameters.query(), "\(QueryParameter.includeCount)=true")
         for key in countQuery.parameters.keys {
-            XCTAssertEqual(key, QueryParameter.includeCount)
+            if key != QueryParameter.contentType {
+                XCTAssertEqual(key, QueryParameter.includeCount)
+            }
         }
 
         let totalountQuery = makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.totalCount])
         XCTAssertEqual(totalountQuery.parameters.query(), "\(QueryParameter.count)=true")
         for key in totalountQuery.parameters.keys {
-            XCTAssertEqual(key, QueryParameter.count)
+            if key != QueryParameter.contentType {
+                XCTAssertEqual(key, QueryParameter.count)
+            }
         }
 
         let refContentTypeQuery = makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.refContentTypeUID])
         XCTAssertEqual(refContentTypeQuery.parameters.query(), "\(QueryParameter.includeRefContentTypeUID)=true")
         for key in refContentTypeQuery.parameters.keys {
+            if key != QueryParameter.contentType {
                 XCTAssertEqual(key, QueryParameter.includeRefContentTypeUID)
+            }
         }
 
         let incContentType: Parameters = [QueryParameter.includeContentType: true,
@@ -38,7 +44,7 @@ class EntryQueriable: XCTestCase {
         let contentTypeQuery = makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.contentType])
         XCTAssertEqual(contentTypeQuery.parameters.query(), incContentType.query())
         for key in contentTypeQuery.parameters.keys {
-            if ![QueryParameter.includeContentType, QueryParameter.includeGloablField].contains(key) {
+            if ![QueryParameter.includeContentType, QueryParameter.includeGloablField, QueryParameter.contentType].contains(key) {
                 XCTAssertFalse(true, "Key outof range")
             }
         }
@@ -48,7 +54,7 @@ class EntryQueriable: XCTestCase {
         let globalFieldQuery = makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.globalField])
         XCTAssertEqual(globalFieldQuery.parameters.query(), incglobalField.query())
         for key in globalFieldQuery.parameters.keys {
-            if ![QueryParameter.includeContentType, QueryParameter.includeGloablField].contains(key) {
+            if ![QueryParameter.includeContentType, QueryParameter.includeGloablField, QueryParameter.contentType].contains(key) {
                 XCTAssertFalse(true, "Key outof range")
             }
         }

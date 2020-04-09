@@ -43,8 +43,8 @@ class TestContentstackClient {
             }
         }
         #if !API_TEST
-        let dvrSession = DVR.Session(cassetteName: cassetteName, backingSession: _stackSharedInstance!.urlSession)
-        _stackSharedInstance?.urlSession = dvrSession
+//        let dvrSession = DVR.Session(cassetteName: cassetteName, backingSession: _stackSharedInstance!.urlSession)
+//        _stackSharedInstance?.urlSession = dvrSession
         #endif
         return _stackSharedInstance!
     }

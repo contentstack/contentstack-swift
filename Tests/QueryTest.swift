@@ -19,7 +19,7 @@ class QueryTest: XCTestCase {
     let reference2 = ["ref 3"]
     let referenceAll = ["ref 1", "ref 2", "ref 3"]
 
-    func queryWhere(_ key: Entry.FieldKeys, operation: Query.Operation) {
+    func queryWhere(_ key: EntryModel.FieldKeys, operation: Query.Operation) {
         let query = makeQuerySUT().where(queryableCodingKey: key, operation)
 
         switch operation {
@@ -107,19 +107,25 @@ class QueryTest: XCTestCase {
         let countQuery = makeQuerySUT().include(params: [.count])
         XCTAssertEqual(countQuery.parameters.query(), "\(QueryParameter.includeCount)=true")
         for key in countQuery.parameters.keys {
-            XCTAssertEqual(key, QueryParameter.includeCount)
+            if key != QueryParameter.contentType {
+                XCTAssertEqual(key, QueryParameter.includeCount)
+            }
         }
 
         let totalountQuery = makeQuerySUT().include(params: [.totalCount])
         XCTAssertEqual(totalountQuery.parameters.query(), "\(QueryParameter.count)=true")
         for key in totalountQuery.parameters.keys {
-            XCTAssertEqual(key, QueryParameter.count)
+            if key != QueryParameter.contentType {
+                XCTAssertEqual(key, QueryParameter.count)
+            }
         }
 
         let refContentTypeQuery = makeQuerySUT().include(params: [.refContentTypeUID])
         XCTAssertEqual(refContentTypeQuery.parameters.query(), "\(QueryParameter.includeRefContentTypeUID)=true")
         for key in refContentTypeQuery.parameters.keys {
+            if key != QueryParameter.contentType {
                 XCTAssertEqual(key, QueryParameter.includeRefContentTypeUID)
+            }
         }
 
         let incContentType: Parameters = [QueryParameter.includeContentType: true,
@@ -127,7 +133,7 @@ class QueryTest: XCTestCase {
         let contentTypeQuery = makeQuerySUT().include(params: [.contentType])
         XCTAssertEqual(contentTypeQuery.parameters.query(), incContentType.query())
         for key in contentTypeQuery.parameters.keys {
-            if ![QueryParameter.includeContentType, QueryParameter.includeGloablField].contains(key) {
+            if ![QueryParameter.includeContentType, QueryParameter.includeGloablField, QueryParameter.contentType].contains(key) {
                 XCTAssertFalse(true, "Key outof range")
             }
         }
@@ -137,7 +143,7 @@ class QueryTest: XCTestCase {
         let globalFieldQuery = makeQuerySUT().include(params: [.globalField])
         XCTAssertEqual(globalFieldQuery.parameters.query(), incglobalField.query())
         for key in globalFieldQuery.parameters.keys {
-            if ![QueryParameter.includeContentType, QueryParameter.includeGloablField].contains(key) {
+            if ![QueryParameter.includeContentType, QueryParameter.includeGloablField, QueryParameter.contentType].contains(key) {
                 XCTAssertFalse(true, "Key outof range")
             }
         }
@@ -154,7 +160,7 @@ class QueryTest: XCTestCase {
     func testQuery_ReferenceSearch() {
         let referenceUID = "reference_uid"
         let referenceQuery = makeQuerySUT().where(
-            queryableCodingKey: Entry.FieldKeys.title,
+            queryableCodingKey: EntryModel.FieldKeys.title,
             Query.Operation.equals("10"))
 
         let inReference = Query.Reference.include(referenceQuery)
@@ -209,7 +215,7 @@ class QueryTest: XCTestCase {
     }
 
     func testQuery_OrderBy() {
-        let orderKey = Entry.FieldKeys.title
+        let orderKey = EntryModel.FieldKeys.title
         let ascQuery = makeQuerySUT().orderByAscending(propertyName: orderKey)
         XCTAssertEqual(ascQuery.parameters.query(), "\(QueryParameter.asc)=\(orderKey.stringValue)")
 

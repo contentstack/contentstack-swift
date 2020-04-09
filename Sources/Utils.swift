@@ -18,6 +18,17 @@ public extension Dictionary {
     }
 }
 
+public extension Array {
+    internal var jsonString: String? {
+        if let data = try? JSONSerialization.data(withJSONObject: self,
+                                                  options: JSONSerialization.WritingOptions.prettyPrinted),
+            let string = String(data: data, encoding: String.Encoding.utf8) {
+            return string
+        }
+        return nil
+    }
+}
+
 internal extension String {
     // Will make a `URL` from the current `String` instance if possible.
     func toURL() throws -> URL {
@@ -78,13 +89,13 @@ internal extension String {
         }
         return url
     }
-    
+
     func isHexColor() -> Bool {
         let hexColorRegex3Deci = "[0-9A-Fa-f]{3}"
-        let hexColorPred3Deci = NSPredicate(format:"SELF MATCHES %@", hexColorRegex3Deci)
+        let hexColorPred3Deci = NSPredicate(format: "SELF MATCHES %@", hexColorRegex3Deci)
 
         let hexColorRegex = "[0-9A-Fa-f]{6}"
-        let hexColorPred = NSPredicate(format:"SELF MATCHES %@", hexColorRegex)
+        let hexColorPred = NSPredicate(format: "SELF MATCHES %@", hexColorRegex)
         return hexColorPred.evaluate(with: self) || hexColorPred3Deci.evaluate(with: self)
     }
 }

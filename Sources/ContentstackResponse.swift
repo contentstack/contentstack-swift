@@ -19,8 +19,8 @@ private protocol HomogeneousResponse: ResponseParams {
 }
 
 internal enum ResponseCodingKeys: String, CodingKey {
-    case entries, assets, skip, limit, errors
-    case contentTypes = "content_types"
+    case entries, entry, assets, asset, skip, limit, errors
+    case contentTypes = "content_types", contentType = "content_type"
     case totalCount = "total_count"
 }
 
@@ -39,21 +39,29 @@ where ItemType: EndpointAccessible & Decodable {
         self.limit = try container.decodeIfPresent(UInt.self, forKey: ResponseCodingKeys.limit)
         self.totalCount = try container.decodeIfPresent(UInt.self, forKey: ResponseCodingKeys.totalCount)
         self.skip = try container.decodeIfPresent(UInt.self, forKey: ResponseCodingKeys.skip)
-        
-//        if let assets =  try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.assets) {
-//            self.items = assets
-//        }else if let contentType = try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.contentTypes) {
-//            self.items = contentType
-//        }else {
-//            self.items = try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.entries) ??  []
-//        }
-        switch ItemType.endPoint {
+
+        self.items = []
+        switch ItemType.endpoint {
         case .assets:
-            self.items = try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.assets) ??  []
+            if let assets =  try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.assets) {
+                self.items = assets
+            } else if let asset =  try container.decodeIfPresent(ItemType.self, forKey: ResponseCodingKeys.asset) {
+                self.items = [asset]
+            }
         case .contenttype:
-            self.items = try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.contentTypes) ??  []
+            if let contentTypes =  try container
+                .decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.contentTypes) {
+                self.items = contentTypes
+            } else if let contentType =  try container
+                .decodeIfPresent(ItemType.self, forKey: ResponseCodingKeys.contentType) {
+                self.items = [contentType]
+            }
         case  .entries:
-            self.items = try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.entries) ??  []
+            if let entries =  try container.decodeIfPresent([ItemType].self, forKey: ResponseCodingKeys.entries) {
+                self.items = entries
+            } else if let entry =  try container.decodeIfPresent(ItemType.self, forKey: ResponseCodingKeys.entry) {
+                self.items = [entry]
+            }
         default:
             print("sync")
         }

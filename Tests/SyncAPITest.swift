@@ -43,7 +43,7 @@ class SyncAPITest: XCTestCase {
 
     func testSyncInit() {
         let networkExpectation = expectation(description: "Sync test exception")
-        sync(networkExpectation: networkExpectation) {[weak self] (syncStack) in
+        sync(networkExpectation: networkExpectation) { (syncStack) in
             if !syncStack.hasMorePages {
                 XCTAssertEqual(syncStack.items.count, 23)
                 XCTAssertFalse(syncStack.syncToken.isEmpty)

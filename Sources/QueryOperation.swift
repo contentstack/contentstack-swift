@@ -102,13 +102,13 @@ extension Query {
             switch self {
             case .equals(let value):                return value
             case .notEquals(let value):             return value
-            case .includes(let value):              return value.joined(separator: ",")
-            case .excludes(let value):              return value.joined(separator: ",")
+            case .includes(let value):              return value.jsonString ?? ""
+            case .excludes(let value):              return value.jsonString ?? ""
             case .isLessThan(let value):            return value.stringValue
             case .isLessThanOrEqual(let value):     return value.stringValue
             case .isGreaterThan(let value):         return value.stringValue
             case .isGreaterThanOrEqual(let value):  return value.stringValue
-            case .exists(let value):                return String(value)
+            case .exists(let value):                return value.stringValue
             case .matches(let value):               return value
             }
         }
