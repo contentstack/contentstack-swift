@@ -216,52 +216,32 @@ internal enum ImageOperation: Equatable, Hashable {
 /// Equatable implementation for `ImageOperation`
 internal func == (lhs: ImageOperation, rhs: ImageOperation) -> Bool {
     switch (lhs, rhs) {
-    case (.auto, .auto):
-        return true
-    case (.format, .format):
-        return true
-    case (.qualiy, .qualiy):
-        return true
-    case (.resize, .resize):
-        return true
-    case (.crop, .crop):
-        return true
-    case (.canvas, .canvas):
-        return true
-    case (.fit, .fit):
-        return true
-    case (.trim, .trim):
-        return true
-    case (.orient, .orient):
-        return true
-    case (.overlay, .overlay):
-        return true
-    case (.overlayPad, .overlayPad):
-        return true
-    case (.pad, .pad):
-        return true
-    case (.color, .color):
-        return true
-    case (.dpr, .dpr):
-        return true
-    case (.blur, .blur):
-        return true
-    case (.saturation, .saturation):
-        return true
-    case (.contrast, .contrast):
-        return true
-    case (.brightness, .brightness):
-        return true
-    case (.fetchFirstFrame, .fetchFirstFrame):
-        return true
-    case (.sharpen, .sharpen):
-        return true
-    default:
-        return false
+    case (.auto, .auto): return true
+    case (.format, .format): return true
+    case (.qualiy, .qualiy): return true
+    case (.resize, .resize): return true
+    case (.crop, .crop): return true
+    case (.canvas, .canvas): return true
+    case (.fit, .fit): return true
+    case (.trim, .trim): return true
+    case (.orient, .orient): return true
+    case (.overlay, .overlay): return true
+    case (.overlayPad, .overlayPad): return true
+    case (.pad, .pad): return true
+    case (.color, .color): return true
+    case (.dpr, .dpr): return true
+    case (.blur, .blur): return true
+    case (.saturation, .saturation): return true
+    case (.contrast, .contrast): return true
+    case (.brightness, .brightness): return true
+    case (.fetchFirstFrame, .fetchFirstFrame): return true
+    case (.sharpen, .sharpen): return true
+    default: return false
     }
 }
 
-///The `resize-filter` parameter allows you to use the resizing filter to increase or decrease the number of pixels in a given image.
+///The `resize-filter` parameter allows you to use the r
+///esizing filter to increase or decrease the number of pixels in a given image.
 ///See [Resize-filter](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#resize-filter)
 public enum ResizeFilter: String {
     case none

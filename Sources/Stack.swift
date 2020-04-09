@@ -83,26 +83,52 @@ public class Stack: CachePolicyAccessible {
         return Asset(uid, stack: self)
     }
 
-    private func url(endpointAccessible: EndpointAccessible, parameters: Parameters = [:]) -> URL {
+    private func url(endpoint: Endpoint, parameters: Parameters = [:]) -> URL {
         var urlComponents: URLComponents = URLComponents(string: "https://\(self.host)/\(self.apiVersion)")!
-        endpointAccessible.endPoint(components: &urlComponents)
+        switch endpoint {
+        case .entries:
+            urlComponents.path = "\(urlComponents.path)/\(Endpoint.contenttype.pathComponent)/\(String(describing: parameters[QueryParameter.contentType]!))"
+        default: break
+        }
+        urlComponents.path = "\(urlComponents.path)/\(endpoint.pathComponent)"
 
-        if !parameters.isEmpty {
-            let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "") + parameters.query()
+        if let uid = parameters[QueryParameter.uid] {
+            urlComponents.path = "\(urlComponents.path)/\(uid)"
+        }
+
+        //To Remove not required parameters
+        var queryParameter = parameters
+        queryParameter.removeValue(forKey: QueryParameter.contentType)
+        queryParameter.removeValue(forKey: QueryParameter.uid)
+
+        var queryItems = [URLQueryItem]()
+        if let query = parameters[QueryParameter.query] as? String {
+            queryItems.append(URLQueryItem(name: QueryParameter.query, value: query))
+            queryParameter.removeValue(forKey: QueryParameter.query)
+        }
+
+        if !queryParameter.isEmpty {
+            let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "")
+                + queryParameter.query()
             urlComponents.percentEncodedQuery = percentEncodedQuery
         }
-        let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "") + "environment=\(self.environment)"
+        let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "")
+            + "environment=\(self.environment)"
         urlComponents.percentEncodedQuery = percentEncodedQuery
 
+        if let percentEncodeingQueryItem = urlComponents.percentEncodedQueryItems {
+            queryItems.append(contentsOf: percentEncodeingQueryItem)
+        }
+        urlComponents.queryItems = queryItems
         return urlComponents.url!
     }
 
-    internal func fetch<ResourceType>(endpoint: EndpointAccessible,
+    internal func fetch<ResourceType>(endpoint: Endpoint,
                                       cachePolicy: CachePolicy,
-                                      parameters: [String: String] = [:],
+                                      parameters: Parameters = [:],
                                       then completion: @escaping ResultsHandler<ResourceType>)
         where ResourceType: Decodable {
-        let url = self.url(endpointAccessible: endpoint, parameters: parameters)
+        let url = self.url(endpoint: endpoint, parameters: parameters)
             self.fetchUrl(url,
                           cachePolicy: cachePolicy,
                           then: { (result: Result<Data, Error>, responseType: ResponseType) in
@@ -146,7 +172,7 @@ public class Stack: CachePolicyAccessible {
                     }
                     let successMessage = "Success: 'GET' (\(response.statusCode)) \(url.absoluteString)"
                     ContentstackLogger.log(.info, message: successMessage)
-                    
+
                     URLCache.shared.storeCachedResponse(
                         CachedURLResponse(response: response,
                                           data: data),
@@ -237,7 +263,7 @@ extension Stack {
                 parameter = parameter + syncType.parameters
             }
         }
-        let url = self.url(endpointAccessible: syncStack, parameters: parameter)
+        let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
 
         fetchUrl(url,
                  cachePolicy: .networkOnly) { (result: Result<Data, Error>, _: ResponseType) in

@@ -77,10 +77,10 @@ internal extension KeyedDecodingContainer {
                 dictionary[key.stringValue] = intValue
             } else if let doubleValue = try? decode(Double.self, forKey: key) {
                 dictionary[key.stringValue] = doubleValue
-//            } else if let asset = try? decode(Asset.self, forKey: key) {
-//                dictionary[key.stringValue] = asset
-//            } else if let entry = try? decode(Entry.self, forKey: key) {
-//                dictionary[key.stringValue] = entry
+            } else if let asset = try? decode(AssetModel.self, forKey: key) {
+                dictionary[key.stringValue] = asset
+            } else if let entry = try? decode(EntryModel.self, forKey: key) {
+                dictionary[key.stringValue] = entry
             } else if let nestedDictionary = try? decode(Dictionary<String, Any>.self, forKey: key) {
                 dictionary[key.stringValue] = nestedDictionary
             } else if let nestedArray = try? decode(Array<Any>.self, forKey: key) {
@@ -106,10 +106,10 @@ internal extension UnkeyedDecodingContainer {
                 array.append(value)
             } else if let value = try? decode(String.self) {
                 array.append(value)
-//            } else if let asset = try? decode(Asset.self) {
-//                array.append(asset)
-//            } else if let entry = try? decode(Entry.self) {
-//                array.append(entry)
+            } else if let asset = try? decode(AssetModel.self) {
+                array.append(asset)
+            } else if let entry = try? decode(EntryModel.self) {
+                array.append(entry)
             } else if let nestedDictionary = try? decode(Dictionary<String, Any>.self) {
                 array.append(nestedDictionary)
             } else if let nestedArray = try? decode(Array<Any>.self) {

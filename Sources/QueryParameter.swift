@@ -14,51 +14,55 @@ internal enum QueryConstants {
 internal enum QueryParameter {
 
     /// `limit` parameter will return a specific number of items.
-    public static let limit            = "limit"
+    internal static let limit            = "limit"
     /// `skip` parameter will skip a specific number of items.
-    public static let skip             = "skip"
+    internal static let skip             = "skip"
     /// `locale` in the query to get entry/entries of a particular locale
-    public static let locale           = "locale"
+    internal static let locale           = "locale"
     /// `asc`can sort them in the ascending order
-    public static let asc              = "asc"
+    internal static let asc              = "asc"
     /// `desc` can sort them in the descending orde
-    public static let desc             = "desc"
+    internal static let desc             = "desc"
     /// `query` to search accross all text and symbol fields in your space
-    public static let query            = "query"
+    internal static let query            = "query"
 
-    public static let typeahead        = "typeahead"
+    internal static let typeahead        = "typeahead"
 
-    public static let tags             = "tags"
+    internal static let tags             = "tags"
+
+    internal static let contentType      = "content_type"
+
+    internal static let uid              = "uid"
 
     /// `only` parameter will include the data of only the specified fields for each entry
-    public static let only             = "only"
+    internal static let only             = "only"
     /// `BASE` is the default value and refers to the top-level fields of the schema
-    public static let base             = "BASE"
+    internal static let base             = "BASE"
 
     /// `except` parameter will exclude the data of the specified fields
-    public static let except           = "except"
+    internal static let except           = "except"
 
     /// `include` parameter wish to fetch the content
     /// of the entry that is included in the reference field
-    public static let include          = "include"
+    internal static let include          = "include"
 
     /// `count` retrieves entries details and total count
-    public static let count     = "count"
+    internal static let count     = "count"
 
     /// `include_count` retrieves entries details and their count
-    public static let includeCount     = "include_count"
+    internal static let includeCount     = "include_count"
 
-    public static let relativeUrls = "relative_urls"
+    internal static let relativeUrls = "relative_urls"
 
-    public static let includeDimension = "include_dimension"
-    /// `include_global_field_schema` 
-    public static let includeGloablField    = "include_global_field_schema"
+    internal static let includeDimension = "include_dimension"
 
-    public static let includeUnpublished        = "include_unpublished"
+    internal static let includeGloablField    = "include_global_field_schema"
 
-    public static let includeContentType        = "include_content_type"
+    internal static let includeUnpublished        = "include_unpublished"
 
-    public static let includeRefContentTypeUID  = "include_reference_content_type_uid"
+    internal static let includeContentType        = "include_content_type"
+
+    internal static let includeRefContentTypeUID  = "include_reference_content_type_uid"
 }
 
 extension Query {

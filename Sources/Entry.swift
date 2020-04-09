@@ -7,37 +7,27 @@
 
 import Foundation
 
-public protocol EntryDecodable: SystemFields, Decodable, FieldKeysQueryable {
-    var locale: String? {get}
-}
-
 public class Entry: EntryQueryable, CachePolicyAccessible {
-    typealias ResourceType = Entry
-
-    public var cachePolicy: CachePolicy = .networkOnly
-
-    var contentType: ContentType
+    typealias ResourceType = EntryModel
 
     var uid: String?
 
+    public var cachePolicy: CachePolicy = .networkOnly
+
     internal var stack: Stack
+
+    internal var contentType: ContentType
 
     internal var parameters: Parameters = [:]
 
     internal var queryParameter: [String: Any] = [:]
 
-    public enum FieldKeys: String, CodingKey {
-        case title, uid, locale
-        case createdAt = "created_at"
-        case updatedAt = "updated_at"
-        case createdBy = "created_by"
-        case updatedBy = "updated_by"
-    }
-
     internal required init(_ uid: String?, contentType: ContentType) {
         self.uid = uid
         self.contentType = contentType
         self.stack = contentType.stack
+        self.parameters[QueryParameter.contentType] = contentType.uid
+        self.parameters[QueryParameter.uid] = uid
     }
 
     public func query() -> Query {
@@ -64,17 +54,13 @@ public class Entry: EntryQueryable, CachePolicyAccessible {
     }
 }
 
-extension Entry: EndpointAccessible {
-    public static var endPoint: Endpoint {
-        return .entries
-    }
-
-    public func endPoint( components: inout URLComponents) {
-        guard let contentTypeUID = contentType.uid else {return}
-        components.path = "\(components.path)/\(Endpoint.contenttype.pathComponent)"
-        components.path = "\(components.path)/\(contentTypeUID)/\(Endpoint.entries.pathComponent)"
-        if let uid = uid {
-            components.path = "\(components.path)/\(uid)"
-        }
-    }
+extension Entry: ResourceQueryable {
+    public func fetch<ResourceType>(_ completion: @escaping (Result<ResourceType, Error>, ResponseType) -> Void)
+        where ResourceType: EndpointAccessible, ResourceType: Decodable {
+        guard let uid = self.uid else { fatalError("Please provide Entry uid") }
+        self.stack.fetch(endpoint: ResourceType.endpoint,
+                         cachePolicy: self.cachePolicy,
+                         parameters: [QueryParameter.uid: uid, QueryParameter.contentType: self.contentType.uid!],
+                         then: completion)
+       }
 }

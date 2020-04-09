@@ -22,9 +22,11 @@ internal protocol QueryProtocol: class, Queryable, CachePolicyAccessible {
 extension QueryProtocol {
     public func find<ResourceType>(_ completion: @escaping ResultsHandler<ContentstackResponse<ResourceType>>)
         where ResourceType: Decodable & EndpointAccessible {
-        if let query = self.queryParameter.jsonString {
-            self.parameters[QueryParameter.query] = query
-        }
+            if let query = self.queryParameter.jsonString {
+                self.parameters[QueryParameter.query] = query
+            }
+            self.stack.fetch(endpoint: ResourceType.endpoint,
+                    cachePolicy: self.cachePolicy, parameters: parameters, then: completion)
     }
 }
 

@@ -9,27 +9,36 @@ import Foundation
 
 public protocol SystemFields: class {
 
-    var title: String? { get }
+    var title: String { get }
 
     var uid: String { get }
 
-    var createdAt: Date? { get }
+    var createdAt: Date { get }
 
-    var updatedAt: Date? { get }
+    var updatedAt: Date { get }
+}
 
-    var createdBy: String? {get}
+public protocol EntryFields: SystemFields {
+    var locale: String {get}
 
-    var updatedBy: String? {get}
+    var createdBy: String {get}
+
+    var updatedBy: String {get}
 }
 
 public protocol AssetFields: SystemFields {
-    var fileName: String? { get }
 
-    var fileSize: Double? { get }
+    var createdBy: String {get}
 
-    var fileType: String? { get }
+    var updatedBy: String {get}
 
-    var url: String? { get }
+    var fileName: String { get }
+
+    var fileSize: Double { get }
+
+    var fileType: String { get }
+
+    var url: String { get }
 }
 
 // Classes conforming to this protocol are accessible via an `Endpoint`.
@@ -47,7 +56,6 @@ public protocol FieldKeysQueryable {
 
 // Classes conforming to this protocol are accessible via an `Endpoint`.
 public protocol EndpointAccessible {
-    static var endPoint: Endpoint { get }
+    static var endpoint: Endpoint { get }
     /// The endpoint component that `EndpointAccessible` types are accessible from.
-    func endPoint(components: inout URLComponents)
 }

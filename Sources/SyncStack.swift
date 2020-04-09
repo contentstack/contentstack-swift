@@ -112,9 +112,5 @@ public final class SyncStack: Decodable {
 }
 
 extension SyncStack: EndpointAccessible {
-    public static var endPoint: Endpoint = .sync
-
-    public func endPoint(components: inout URLComponents) {
-        components.path = "\(components.path)/\(SyncStack.endPoint.pathComponent)"
-    }
+    public static var endpoint: Endpoint = .sync
 }

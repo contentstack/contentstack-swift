@@ -18,6 +18,10 @@ public enum SDKError: Error, CustomDebugStringConvertible {
     /// - Parameter string: The invalid URL string.
     case invalidURL(string: String)
 
+    /// Thrown when attempting to construct an invalid URL.
+    /// - Parameter string: The invalid URL string.
+    case invalidUID(string: String)
+
     /// Thrown when receiving unparseable JSON responses.
     /// - Parameters:
     ///   - data: The data being parsed.
@@ -27,7 +31,7 @@ public enum SDKError: Error, CustomDebugStringConvertible {
     case stackError
 
     case cacheError
-    
+
     case syncError
 
     public var debugDescription: String {
@@ -40,6 +44,8 @@ public enum SDKError: Error, CustomDebugStringConvertible {
             return "The HTTP request returned a corrupted HTTP response: \(response.debugDescription)"
         case .invalidURL(let string):
             return string
+        case .invalidUID(let string):
+            return "The uid \(string) is not valid."
         case .stackError:
             return "The Stack not found."
         case .syncError:
