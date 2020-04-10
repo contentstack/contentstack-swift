@@ -15,7 +15,7 @@ public class ContentType: CachePolicyAccessible {
 
     var uid: String?
     internal var stack: Stack
-
+    internal var parameters: Parameters = [:]
     public var cachePolicy: CachePolicy = .networkOnly
 
     internal required init(_ uid: String?, stack: Stack) {
@@ -28,6 +28,11 @@ public class ContentType: CachePolicyAccessible {
             fatalError("Please provide ContentType uid")
         }
         return Entry(uid, contentType: self)
+    }
+
+    public func includeGlobalFields() -> ContentType {
+        self.parameters[QueryParameter.includeGloablField] = true
+        return self
     }
 
     func query() -> ContentTypeQuery {
@@ -45,7 +50,7 @@ extension ContentType: ResourceQueryable {
         guard let uid = self.uid else { fatalError("Please provide ContentType uid") }
         self.stack.fetch(endpoint: ResourceType.endpoint,
                          cachePolicy: self.cachePolicy,
-                         parameters: [QueryParameter.uid: uid],
+                         parameters: parameters + [QueryParameter.uid: uid],
                          then: { (result: Result<ContentstackResponse<ResourceType>, Error>, response: ResponseType) in
                             switch result {
                             case .success(let contentStackResponse):

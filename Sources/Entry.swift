@@ -60,7 +60,8 @@ extension Entry: ResourceQueryable {
         guard let uid = self.uid else { fatalError("Please provide Entry uid") }
         self.stack.fetch(endpoint: ResourceType.endpoint,
                          cachePolicy: self.cachePolicy,
-                         parameters: [QueryParameter.uid: uid, QueryParameter.contentType: self.contentType.uid!],
+                         parameters: parameters + [QueryParameter.uid: uid,
+                                                   QueryParameter.contentType: self.contentType.uid!],
                          then: completion)
        }
 }

@@ -111,6 +111,9 @@ public class APIError: Decodable, Error, CustomDebugStringConvertible {
             if let environment = self.environment {
                 debugDescription += "Environment \(environment.joined(separator: ", ")) \n"
             }
+            if let uid = self.uid {
+                debugDescription += "UID \(uid.joined(separator: ", ")) \n"
+            }
             return debugDescription
         }
         public let apiKey: [String]?
