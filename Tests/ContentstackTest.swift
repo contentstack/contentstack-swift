@@ -23,9 +23,9 @@ class TestContentstackClient {
         return [:]
         #else
         return [
-            "api_key": "blt477ba55f9a67bcdf",
-            "delivery_token": "cs7731f03a2feef7713546fde5",
-            "environment": "web"
+            "api_key": "bltc94709340b84bdd2",
+            "delivery_token": "csd2e69747f83e59e327d19962",
+            "environment": "development"
         ]
         #endif
     }
@@ -43,8 +43,8 @@ class TestContentstackClient {
             }
         }
         #if !API_TEST
-//        let dvrSession = DVR.Session(cassetteName: cassetteName, backingSession: _stackSharedInstance!.urlSession)
-//        _stackSharedInstance?.urlSession = dvrSession
+        let dvrSession = DVR.Session(cassetteName: cassetteName, backingSession: _stackSharedInstance!.urlSession)
+        _stackSharedInstance?.urlSession = dvrSession
         #endif
         return _stackSharedInstance!
     }

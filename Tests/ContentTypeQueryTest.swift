@@ -99,20 +99,13 @@ class ContentTypeQueryTest: XCTestCase {
             XCTAssertEqual(key, QueryParameter.includeCount)
         }
 
-        let totalountQuery = makeContentTypeQuerySUT().include(params: [.totalCount])
-        XCTAssertEqual(totalountQuery.parameters.query(), "\(QueryParameter.count)=true")
-        for key in totalountQuery.parameters.keys {
-            XCTAssertEqual(key, QueryParameter.count)
-        }
-
         let globalFieldQuery = makeContentTypeQuerySUT().include(params: [.globalFields])
         XCTAssertEqual(globalFieldQuery.parameters.query(), "\(QueryParameter.includeGloablField)=true")
         for key in globalFieldQuery.parameters.keys {
             XCTAssertEqual(key, QueryParameter.includeGloablField)
         }
 
-        let param: Parameters = [QueryParameter.count: true,
-                                 QueryParameter.includeCount: true,
+        let param: Parameters = [QueryParameter.includeCount: true,
                                  QueryParameter.includeGloablField: true]
 
         let allQuery = makeContentTypeQuerySUT().include(params: [.all])

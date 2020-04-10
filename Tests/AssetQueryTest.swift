@@ -100,12 +100,6 @@ class AssetQueryTest: XCTestCase {
             XCTAssertEqual(key, QueryParameter.includeCount)
         }
 
-        let totalountQuery = makeAssetQuerySUT().include(params: [.totalCount])
-        XCTAssertEqual(totalountQuery.parameters.query(), "\(QueryParameter.count)=true")
-        for key in totalountQuery.parameters.keys {
-            XCTAssertEqual(key, QueryParameter.count)
-        }
-
         let relativeURLQuery = makeAssetQuerySUT().include(params: [.relativeURL])
         XCTAssertEqual(relativeURLQuery.parameters.query(), "\(QueryParameter.relativeUrls)=true")
         for key in relativeURLQuery.parameters.keys {
@@ -118,8 +112,7 @@ class AssetQueryTest: XCTestCase {
             XCTAssertEqual(key, QueryParameter.includeDimension)
         }
 
-        let param: Parameters = [QueryParameter.count: true,
-                                 QueryParameter.includeCount: true,
+        let param: Parameters = [QueryParameter.includeCount: true,
                                  QueryParameter.relativeUrls: true,
                                  QueryParameter.includeDimension: true]
         let allQuery = makeAssetQuerySUT().include(params: [.all])

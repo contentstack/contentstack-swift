@@ -67,12 +67,6 @@ public class Query: BaseQuery, EntryQueryable {
     }
 }
 
-extension Query: EndpointAccessible {
-    public static var endpoint: Endpoint {
-        return .entries
-    }
-}
-
 public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable, EntryType: FieldKeysQueryable {
     public func `where`(queryableCodingKey: EntryType.FieldKeys, _ operation: Query.Operation) -> QueryOn<EntryType> {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
@@ -114,19 +108,10 @@ public final class ContentTypeQuery: BaseQuery {
         if params.contains(.count) {
             self.parameters[QueryParameter.includeCount] = true
         }
-        if params.contains(.totalCount) {
-            self.parameters[QueryParameter.count] = true
-        }
         if params.contains(.globalFields) {
             self.parameters[QueryParameter.includeGloablField] = true
         }
         return self
-    }
-}
-
-extension ContentTypeQuery: EndpointAccessible {
-    public static var endpoint: Endpoint {
-        return .contenttype
     }
 }
 
@@ -154,10 +139,6 @@ public final class AssetQuery: BaseQuery {
         if params.contains(.count) {
             self.parameters[QueryParameter.includeCount] = true
         }
-        if params.contains(.totalCount) {
-            self.parameters[QueryParameter.count] = true
-        }
-
         if params.contains(.relativeURL) {
             self.parameters[QueryParameter.relativeUrls] = true
         }
@@ -167,10 +148,4 @@ public final class AssetQuery: BaseQuery {
         return self
     }
 
-}
-
-extension AssetQuery: EndpointAccessible {
-    public static var endpoint: Endpoint {
-        return .assets
-    }
 }

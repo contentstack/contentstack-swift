@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal protocol QueryProtocol: class, Queryable, CachePolicyAccessible {
+internal protocol QueryProtocol: class, CachePolicyAccessible {
     associatedtype ResourceType
 
     var stack: Stack { get set }
@@ -19,7 +19,7 @@ internal protocol QueryProtocol: class, Queryable, CachePolicyAccessible {
     var cachePolicy: CachePolicy { get set }
 }
 
-extension QueryProtocol {
+extension BaseQuery {
     public func find<ResourceType>(_ completion: @escaping ResultsHandler<ContentstackResponse<ResourceType>>)
         where ResourceType: Decodable & EndpointAccessible {
             if let query = self.queryParameter.jsonString {
@@ -30,7 +30,7 @@ extension QueryProtocol {
     }
 }
 
-internal protocol BaseQuery: QueryProtocol {}
+internal protocol BaseQuery: QueryProtocol, Queryable {}
 extension BaseQuery {
 
     public func `where`(valueAtKeyPath keyPath: String, _ operation: Query.Operation) -> Self {
@@ -129,9 +129,6 @@ extension EntryQueryable {
     public func include(params: Query.Include) -> Self {
         if params.contains(Query.Include.count) {
             self.parameters[QueryParameter.includeCount] = true
-        }
-        if params.contains(Query.Include.totalCount) {
-            self.parameters[QueryParameter.count] = true
         }
         if params.contains(Query.Include.contentType) {
             self.parameters[QueryParameter.includeContentType] = true

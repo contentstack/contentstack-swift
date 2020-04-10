@@ -46,9 +46,6 @@ internal enum QueryParameter {
     /// of the entry that is included in the reference field
     internal static let include          = "include"
 
-    /// `count` retrieves entries details and total count
-    internal static let count     = "count"
-
     /// `include_count` retrieves entries details and their count
     internal static let includeCount     = "include_count"
 
@@ -72,14 +69,12 @@ extension Query {
         public let rawValue: Int
 
         public static let count: Include = Include(rawValue: 1 << 0)
-        public static let totalCount: Include = Include(rawValue: 1 << 1)
-        public static let unpublished: Include = Include(rawValue: 1 << 3)
-        public static let contentType: Include = Include(rawValue: 1 << 4)
-        public static let globalField: Include = Include(rawValue: 1 << 5)
-        public static let refContentTypeUID: Include = Include(rawValue: 1 << 6)
+        public static let unpublished: Include = Include(rawValue: 1 << 1)
+        public static let contentType: Include = Include(rawValue: 1 << 2)
+        public static let globalField: Include = Include(rawValue: 1 << 3)
+        public static let refContentTypeUID: Include = Include(rawValue: 1 << 4)
 
         public static let all: Include = [.count,
-                                          .totalCount,
                                           .unpublished,
                                           .contentType,
                                           .globalField,
@@ -94,11 +89,9 @@ extension ContentTypeQuery {
         public let rawValue: Int
 
         public static let count: Include = Include(rawValue: 1 << 0)
-        public static let totalCount: Include = Include(rawValue: 1 << 1)
-        public static let globalFields: Include = Include(rawValue: 1 << 2)
+        public static let globalFields: Include = Include(rawValue: 1 << 1)
 
         public static let all: Include = [.count,
-                                          .totalCount,
                                           .globalFields]
     }
 }
@@ -110,12 +103,10 @@ extension AssetQuery {
         public let rawValue: Int
 
         public static let count: Include = Include(rawValue: 1 << 0)
-        public static let totalCount: Include = Include(rawValue: 1 << 1)
-        public static let relativeURL: Include = Include(rawValue: 1 << 2)
-        public static let dimention: Include = Include(rawValue: 1 << 3)
+        public static let relativeURL: Include = Include(rawValue: 1 << 1)
+        public static let dimention: Include = Include(rawValue: 1 << 2)
 
         public static let all: Include = [.count,
-                                          .totalCount,
                                           .relativeURL,
                                           .dimention]
     }

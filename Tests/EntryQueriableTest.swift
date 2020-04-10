@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import Contentstack
-class EntryQueriable: XCTestCase {
+class EntryQueriableTest: XCTestCase {
 
     let refUID = "reference_uid"
     let reference = ["ref 1", "ref 2"]
@@ -20,14 +20,6 @@ class EntryQueriable: XCTestCase {
         for key in countQuery.parameters.keys {
             if key != QueryParameter.contentType {
                 XCTAssertEqual(key, QueryParameter.includeCount)
-            }
-        }
-
-        let totalountQuery = makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.totalCount])
-        XCTAssertEqual(totalountQuery.parameters.query(), "\(QueryParameter.count)=true")
-        for key in totalountQuery.parameters.keys {
-            if key != QueryParameter.contentType {
-                XCTAssertEqual(key, QueryParameter.count)
             }
         }
 
@@ -59,11 +51,10 @@ class EntryQueriable: XCTestCase {
             }
         }
 
-        let param: Parameters = [QueryParameter.count: true,
-                                        QueryParameter.includeCount: true,
-                                        QueryParameter.includeContentType: true,
-                                        QueryParameter.includeGloablField: true,
-                                        QueryParameter.includeRefContentTypeUID: true]
+        let param: Parameters = [QueryParameter.includeCount: true,
+                                 QueryParameter.includeContentType: true,
+                                 QueryParameter.includeGloablField: true,
+                                 QueryParameter.includeRefContentTypeUID: true]
         let allQuery = makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.all])
         XCTAssertEqual(allQuery.parameters.query(), param.query())
     }

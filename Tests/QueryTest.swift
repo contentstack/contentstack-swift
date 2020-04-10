@@ -112,14 +112,6 @@ class QueryTest: XCTestCase {
             }
         }
 
-        let totalountQuery = makeQuerySUT().include(params: [.totalCount])
-        XCTAssertEqual(totalountQuery.parameters.query(), "\(QueryParameter.count)=true")
-        for key in totalountQuery.parameters.keys {
-            if key != QueryParameter.contentType {
-                XCTAssertEqual(key, QueryParameter.count)
-            }
-        }
-
         let refContentTypeQuery = makeQuerySUT().include(params: [.refContentTypeUID])
         XCTAssertEqual(refContentTypeQuery.parameters.query(), "\(QueryParameter.includeRefContentTypeUID)=true")
         for key in refContentTypeQuery.parameters.keys {
@@ -148,11 +140,10 @@ class QueryTest: XCTestCase {
             }
         }
 
-        let param: Parameters = [QueryParameter.count: true,
-                                        QueryParameter.includeCount: true,
-                                        QueryParameter.includeContentType: true,
-                                        QueryParameter.includeGloablField: true,
-                                        QueryParameter.includeRefContentTypeUID: true]
+        let param: Parameters = [QueryParameter.includeCount: true,
+                                 QueryParameter.includeContentType: true,
+                                 QueryParameter.includeGloablField: true,
+                                 QueryParameter.includeRefContentTypeUID: true]
         let allQuery = makeQuerySUT().include(params: [.all])
         XCTAssertEqual(allQuery.parameters.query(), param.query())
     }

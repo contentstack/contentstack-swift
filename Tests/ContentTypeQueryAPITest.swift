@@ -131,4 +131,84 @@ class ContentTypeQueryAPITest: XCTestCase {
         }
         wait(for: [networkExpectation], timeout: 5)
     }
+
+    func test07Fetch_ContetnTypeQuery_WithGlobalFields() {
+        let networkExpectation = expectation(description: "Fetch ContentTypes with GLobalFields Test")
+        self.getContentTypeQuery()
+            .include(params: .globalFields)
+            .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
+                switch result {
+                case .success(let contentstackResponse):
+                    contentstackResponse.items.forEach { (model: ContentTypeModel) in
+                        model.schema.forEach { (schema) in
+                            if let dataType = schema["data_type"] as? String,
+                                dataType == "global_field" {
+                                kContentTypeUID = model.uid
+                                XCTAssertNotNil(schema["schema"])
+                            }
+                        }
+                    }
+                case .failure(let error):
+                    XCTFail("\(error)")
+                }
+                networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+
+    }
+    
+    func test08Fetch_ContentType_WithGlobalFields() {
+        let networkExpectation = expectation(description: "Fetch ContentTypes with GlobalFields Test")
+        self.getContentType(uid: kContentTypeUID)
+            .includeGlobalFields()
+            .fetch { (restult: Result<ContentTypeModel, Error>, response: ResponseType) in
+                switch restult {
+                case .success(let model):
+                    model.schema.forEach { (schema) in
+                        if let dataType = schema["data_type"] as? String,
+                            dataType == "global_field" {
+                            XCTAssertNotNil(schema["schema"])
+                        }
+                    }
+                case .failure(let error):
+                    XCTFail("\(error)")
+                }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+    }
+    
+    func test09Fetch_ContetnTypeQuery_WithCount() {
+        let networkExpectation = expectation(description: "Fetch ContentTypes with Count Test")
+        self.getContentTypeQuery()
+            .include(params: .count)
+            .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
+                switch result {
+                case .success(let contentstackResponse):
+                    XCTAssertEqual(contentstackResponse.count, 11)
+                case .failure(let error):
+                    XCTFail("\(error)")
+                }
+                networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+
+    }
+
+    func test11Fetch_ContetnType_WithWrongUID_shouldFail() {
+         let networkExpectation = expectation(description: "Fetch ContentTypes from wrong UID Test")
+        self.getContentType(uid: "UID").fetch { (restult: Result<ContentTypeModel, Error>, response: ResponseType) in
+            switch restult {
+            case .success:
+                XCTFail("UID should not be present")
+            case .failure(let error):
+                if let error = error as? APIError {
+                    XCTAssertEqual(error.errorCode, 118)
+                    XCTAssertEqual(error.errorMessage, "The Content Type 'UID' was not found. Please try again.")
+                }
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+    }
 }
