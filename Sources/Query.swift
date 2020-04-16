@@ -142,7 +142,7 @@ public final class AssetQuery: BaseQuery {
         if params.contains(.relativeURL) {
             self.parameters[QueryParameter.relativeUrls] = true
         }
-        if params.contains(.dimention) {
+        if params.contains(.dimension) {
             self.parameters[QueryParameter.includeDimension] = true
         }
         return self
