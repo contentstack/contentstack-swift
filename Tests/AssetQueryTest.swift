@@ -106,7 +106,7 @@ class AssetQueryTest: XCTestCase {
             XCTAssertEqual(key, QueryParameter.relativeUrls)
         }
 
-        let dimentionQuery = makeAssetQuerySUT().include(params: [.dimention])
+        let dimentionQuery = makeAssetQuerySUT().include(params: [.dimension])
         XCTAssertEqual(dimentionQuery.parameters.query(), "\(QueryParameter.includeDimension)=true")
         for key in dimentionQuery.parameters.keys {
             XCTAssertEqual(key, QueryParameter.includeDimension)

@@ -16,19 +16,13 @@ final class ContentTypeTests: XCTestCase {
         XCTAssertEqual(endPoint.pathComponent, "content_types")
     }
 
-//    func testEndPointComponent_withoutUID() {
-//        var components: URLComponents = URLComponents(string: "https://localhost.com/api")!
-//        let entry = makeContentTypeSut()
-//        entry.endPoint(components: &components)
-//        XCTAssertEqual(components.path, "/api/content_types")
-//    }
-//
-//    func testEntryEndPointComponent_withUID() {
-//        var components: URLComponents = URLComponents(string: "https://localhost.com/api")!
-//        let entry = makeContentTypeSut(uid: "content_type_uid")
-//        entry.endPoint(components: &components)
-//        XCTAssertEqual(components.path, "/api/content_types/content_type_uid")
-//    }
+    func testFetch_withoutUID() {
+        expectFatalError(expectedMessage: "Please provide ContentType uid") {
+            makeContentTypeSut().fetch { (result: Result<AssetModel, Error>, response) in
+                
+            }
+        }
+    }
 
     func testEntry_ContentTypeUidNotProvided_FatalError() {
         expectFatalError(expectedMessage: "Please provide ContentType uid") {

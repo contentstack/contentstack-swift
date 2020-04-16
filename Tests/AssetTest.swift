@@ -14,28 +14,31 @@ class AssetTest: XCTestCase {
         XCTAssertEqual(endPoint.pathComponent, "assets")
     }
 
-//    func testEndPointComponent_withoutUID() {
-//        var components: URLComponents = URLComponents(string: "https://localhost.com/api")!
-//        let entry = makeAssetSut()
-//        entry.endPoint(components: &components)
-//        XCTAssertEqual(components.path, "/api/assets")
-//    }
-//
-//    func testEntryEndPointComponent_withUID() {
-//        var components: URLComponents = URLComponents(string: "https://localhost.com/api")!
-//        let entry = makeAssetSut(uid: "asset_uid")
-//        entry.endPoint(components: &components)
-//        XCTAssertEqual(components.path, "/api/assets/asset_uid")
-//    }
+    func testFetch_withoutUID() {
+        expectFatalError(expectedMessage: "Please provide Asset uid") {
+            makeAssetSut().fetch { (result: Result<AssetModel, Error>, response) in
+                
+            }
+        }
+    }
+    
+    func testAssetInclude() {
+        let assetDimension = makeAssetSut().includeDimension()
+        XCTAssertEqual(assetDimension.parameters.query(), "include_dimension=true")
+        let assetRelativeURL = makeAssetSut().includeRelativeURL()
+        XCTAssertEqual(assetRelativeURL.parameters.query(), "relative_urls=true")
+        let asset = makeAssetSut().includeRelativeURL().includeDimension()
+        XCTAssertEqual(asset.parameters.query(), "include_dimension=true&relative_urls=true")
+    }
 
-    func testEntryQuery_withoutUID() {
+    func testAssetQuery_withoutUID() {
         let query = makeAssetSut().query()
         XCTAssertNotNil(query)
         XCTAssertEqual(query.parameters.query(), "")
         XCTAssertEqual(query.queryParameter.jsonString, "{\n\n}")
     }
 
-    func testEntryQuery_withUID() {
+    func testAssetQuery_withUID() {
         let query = makeAssetSut(uid: "asset_uid").query()
         XCTAssertNotNil(query)
         XCTAssertEqual(query.parameters.query(), "")

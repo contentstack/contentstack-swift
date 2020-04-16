@@ -11,7 +11,7 @@ public protocol AssetDecodable: AssetFields, FieldKeysQueryable, Decodable {}
 
 public class Asset: CachePolicyAccessible {
     public var cachePolicy: CachePolicy = .networkOnly
-
+    internal var parameters: Parameters = [:]
     internal var stack: Stack
 
     var uid: String?
@@ -19,6 +19,16 @@ public class Asset: CachePolicyAccessible {
     internal required init(_ uid: String?, stack: Stack) {
         self.uid = uid
         self.stack = stack
+    }
+
+    func includeRelativeURL() -> Asset {
+        self.parameters[QueryParameter.relativeUrls] = true
+        return self
+    }
+
+    func includeDimension() -> Asset {
+        self.parameters[QueryParameter.includeDimension] = true
+        return self
     }
 
     func query() -> AssetQuery {
@@ -36,7 +46,18 @@ extension Asset: ResourceQueryable {
         guard let uid = self.uid else { fatalError("Please provide Asset uid") }
         self.stack.fetch(endpoint: ResourceType.endpoint,
                          cachePolicy: self.cachePolicy,
-                         parameters: [QueryParameter.uid: uid],
-                         then: completion)
+                         parameters: parameters + [QueryParameter.uid: uid],
+                         then: { (result: Result<ContentstackResponse<ResourceType>, Error>, response: ResponseType) in
+                            switch result {
+                            case .success(let contentStackResponse):
+                                if let resource = contentStackResponse.items.first {
+                                    completion(.success(resource), response)
+                                } else {
+                                    completion(.failure(SDKError.invalidUID(string: uid)), response)
+                                }
+                            case .failure(let error):
+                                completion(.failure(error), response)
+                            }
+        })
     }
 }

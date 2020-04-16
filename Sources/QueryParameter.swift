@@ -104,10 +104,10 @@ extension AssetQuery {
 
         public static let count: Include = Include(rawValue: 1 << 0)
         public static let relativeURL: Include = Include(rawValue: 1 << 1)
-        public static let dimention: Include = Include(rawValue: 1 << 2)
+        public static let dimension: Include = Include(rawValue: 1 << 2)
 
         public static let all: Include = [.count,
                                           .relativeURL,
-                                          .dimention]
+                                          .dimension]
     }
 }
