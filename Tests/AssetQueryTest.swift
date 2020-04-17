@@ -17,18 +17,9 @@ class AssetQueryTest: XCTestCase {
     func queryWhere(_ key: AssetModel.QueryableCodingKey, operation: Query.Operation) {
         let query = makeAssetQuerySUT().where(queryableCodingKey: key, operation)
 
-        switch operation {
-        case .equals(let value):
-            if let params = query.queryParameter[key.rawValue] as? String {
-                XCTAssertEqual(params, value)
-                return
-                }
-        default:
-            if let params = query.queryParameter[key.rawValue] as? [String: String],
-                let queryParam = operation.query as? [String: String] {
-                XCTAssertEqual(params, queryParam)
-                return
-            }
+        if let queryParam = query.queryParameter[key.rawValue],
+            self.isEqual(operation: operation, queryParameter: queryParam) {
+            return
         }
         XCTFail("Query doesnt match")
     }

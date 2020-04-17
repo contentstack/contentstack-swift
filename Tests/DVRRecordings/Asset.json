@@ -1,37 +1,21 @@
 {
+  "name" : "Asset",
   "interactions" : [
     {
       "request" : {
         "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%0A%7D&environment=development",
+        "method" : "GET",
         "headers" : {
           "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "api_key" : "bltc94709340b84bdd2",
           "access_token" : "csd2e69747f83e59e327d19962",
-          "X-User-Agent" : "contentstack-swift\/1.0.0",
-          "api_key" : "bltc94709340b84bdd2"
-        },
-        "method" : "GET"
+          "X-User-Agent" : "contentstack-swift\/1.0.0"
+        }
       },
-      "recorded_at" : 1586942950.4789901,
+      "recorded_at" : 1587130452.4510841,
       "response" : {
-        "headers" : {
-          "Age" : "5301",
-          "Date" : "Wed, 15 Apr 2020 09:29:10 GMT",
-          "Content-Encoding" : "gzip",
-          "x-timer" : "S1586942950.453828,VS0,VE1",
-          "Accept-Ranges" : "bytes",
-          "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "Via" : "1.1 varnish, 1.1 varnish",
-          "Content-Length" : "912",
-          "Server" : "nginx",
-          "Access-Control-Allow-Origin" : "*",
-          "x-runtime" : "18ms",
-          "x-cache" : "MISS, HIT",
-          "x-served-by" : "cache-lax8633-LAX, cache-bom18226-BOM",
-          "x-cache-hits" : "0, 1",
-          "Content-Type" : "application\/json",
-          "x-powered-by" : "Contentstack",
-          "Vary" : "Accept-Encoding"
-        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%0A%7D&environment=development",
+        "status" : 200,
         "body" : {
           "assets" : [
             {
@@ -364,124 +348,111 @@
             }
           ]
         },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%0A%7D&environment=development",
-        "status" : 200
+        "headers" : {
+          "x-cache-hits" : "0, 2",
+          "Date" : "Fri, 17 Apr 2020 13:34:12 GMT",
+          "Content-Encoding" : "gzip",
+          "Accept-Ranges" : "bytes",
+          "Content-Type" : "application\/json",
+          "Server" : "nginx",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "x-runtime" : "18ms",
+          "Access-Control-Allow-Origin" : "*",
+          "x-powered-by" : "Contentstack",
+          "Content-Length" : "912",
+          "x-contentstack-organization" : "blt4217d3e62dbf7564",
+          "Vary" : "Accept-Encoding",
+          "x-cache" : "MISS, HIT",
+          "x-served-by" : "cache-lax8633-LAX, cache-bom18222-BOM",
+          "x-timer" : "S1587130452.436213,VS0,VE0",
+          "Age" : "192804"
+        }
+      }
+    },
+    {
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22uid%22%20:%20%22bltdbf94cf811d0c3f1%22%0A%7D&environment=development",
+        "headers" : {
+          "api_key" : "bltc94709340b84bdd2",
+          "access_token" : "csd2e69747f83e59e327d19962",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "X-User-Agent" : "contentstack-swift\/1.0.0"
+        }
+      },
+      "recorded_at" : 1587130452.506099,
+      "response" : {
+        "headers" : {
+          "x-cache-hits" : "0, 2",
+          "x-runtime" : "11ms",
+          "Age" : "192803",
+          "Server" : "nginx",
+          "x-powered-by" : "Contentstack",
+          "Date" : "Fri, 17 Apr 2020 13:34:12 GMT",
+          "Access-Control-Allow-Origin" : "*",
+          "x-contentstack-organization" : "blt4217d3e62dbf7564",
+          "Accept-Ranges" : "bytes",
+          "Vary" : "Accept-Encoding",
+          "x-served-by" : "cache-lax8626-LAX, cache-bom18222-BOM",
+          "Content-Encoding" : "gzip",
+          "x-timer" : "S1587130452.492863,VS0,VE0",
+          "Content-Type" : "application\/json",
+          "Content-Length" : "396",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "x-cache" : "MISS, HIT"
+        },
+        "status" : 200,
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "bltdbf94cf811d0c3f1",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltdbf94cf811d0c3f1\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "5990",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            }
+          ]
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22uid%22%20:%20%22bltdbf94cf811d0c3f1%22%0A%7D&environment=development"
       }
     },
     {
       "response" : {
-        "body" : {
-          "assets" : [
-            {
-              "uid" : "bltdbf94cf811d0c3f1",
-              "created_at" : "2020-04-10T05:46:06.731Z",
-              "content_type" : "image\/jpeg",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "images_(1).jpg",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltdbf94cf811d0c3f1\/5e90081ee14a091a67688455\/images_(1).jpg",
-              "_version" : 1,
-              "title" : "images_(1).jpg",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:46:06.731Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "5990",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            }
-          ]
-        },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22uid%22%20:%20%22bltdbf94cf811d0c3f1%22%0A%7D&environment=development",
         "status" : 200,
-        "headers" : {
-          "Content-Type" : "application\/json",
-          "Date" : "Wed, 15 Apr 2020 09:29:10 GMT",
-          "x-powered-by" : "Contentstack",
-          "x-cache-hits" : "0, 1",
-          "Accept-Ranges" : "bytes",
-          "x-runtime" : "11ms",
-          "Vary" : "Accept-Encoding",
-          "Age" : "5301",
-          "Server" : "nginx",
-          "Via" : "1.1 varnish, 1.1 varnish",
-          "x-served-by" : "cache-lax8626-LAX, cache-bom18226-BOM",
-          "Content-Encoding" : "gzip",
-          "x-cache" : "MISS, HIT",
-          "x-timer" : "S1586942951.862272,VS0,VE1",
-          "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "Content-Length" : "396",
-          "Access-Control-Allow-Origin" : "*"
-        }
-      },
-      "request" : {
-        "method" : "GET",
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22uid%22%20:%20%22bltdbf94cf811d0c3f1%22%0A%7D&environment=development",
-        "headers" : {
-          "X-User-Agent" : "contentstack-swift\/1.0.0",
-          "access_token" : "csd2e69747f83e59e327d19962",
-          "api_key" : "bltc94709340b84bdd2",
-          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
-        }
-      },
-      "recorded_at" : 1586942950.880811
-    },
-    {
-      "request" : {
-        "headers" : {
-          "X-User-Agent" : "contentstack-swift\/1.0.0",
-          "access_token" : "csd2e69747f83e59e327d19962",
-          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
-          "api_key" : "bltc94709340b84bdd2"
-        },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$ne%22%20:%20%22images_(1).jpg%22%0A%20%20%7D%0A%7D&environment=development",
-        "method" : "GET"
-      },
-      "response" : {
-        "headers" : {
-          "Age" : "0",
-          "x-cache-hits" : "0, 0",
-          "Via" : "1.1 varnish, 1.1 varnish",
-          "Vary" : "Accept-Encoding",
-          "Date" : "Wed, 15 Apr 2020 09:29:11 GMT",
-          "x-powered-by" : "Contentstack",
-          "x-cache" : "MISS, MISS",
-          "Server" : "nginx",
-          "x-runtime" : "21ms",
-          "x-served-by" : "cache-lax8644-LAX, cache-bom18226-BOM",
-          "Access-Control-Allow-Origin" : "*",
-          "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "x-timer" : "S1586942951.931620,VS0,VE296",
-          "Content-Type" : "application\/json",
-          "Content-Encoding" : "gzip",
-          "Accept-Ranges" : "bytes",
-          "Content-Length" : "866"
-        },
-        "status" : 200,
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$ne%22%20:%20%22images_(1).jpg%22%0A%20%20%7D%0A%7D&environment=development",
         "body" : {
           "assets" : [
             {
@@ -772,45 +743,424 @@
               }
             }
           ]
-        }
+        },
+        "headers" : {
+          "Age" : "187501",
+          "x-cache" : "MISS, HIT",
+          "Server" : "nginx",
+          "Access-Control-Allow-Origin" : "*",
+          "x-runtime" : "21ms",
+          "Content-Length" : "866",
+          "x-cache-hits" : "0, 4",
+          "Content-Encoding" : "gzip",
+          "Vary" : "Accept-Encoding",
+          "x-contentstack-organization" : "blt4217d3e62dbf7564",
+          "x-served-by" : "cache-lax8644-LAX, cache-bom18222-BOM",
+          "Date" : "Fri, 17 Apr 2020 13:34:12 GMT",
+          "x-powered-by" : "Contentstack",
+          "Content-Type" : "application\/json",
+          "x-timer" : "S1587130453.539273,VS0,VE0",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Accept-Ranges" : "bytes"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$ne%22%20:%20%22images_(1).jpg%22%0A%20%20%7D%0A%7D&environment=development"
       },
-      "recorded_at" : 1586942951.327493
-    },
-    {
+      "recorded_at" : 1587130452.5555549,
       "request" : {
         "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$ne%22%20:%20%22images_(1).jpg%22%0A%20%20%7D%0A%7D&environment=development",
         "headers" : {
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
           "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
           "access_token" : "csd2e69747f83e59e327d19962",
-          "X-User-Agent" : "contentstack-swift\/1.0.0",
           "api_key" : "bltc94709340b84bdd2"
-        },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22title%22%20:%20%7B%0A%20%20%20%20%22$ne%22%20:%20%22images_(1).jpg%22%0A%20%20%7D%0A%7D&environment=development"
+        }
+      }
+    },
+    {
+      "recorded_at" : 1587130452.6114578,
+      "request" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22title%22%20:%20%7B%0A%20%20%20%20%22$ne%22%20:%20%22images_(1).jpg%22%0A%20%20%7D%0A%7D&environment=development",
+        "method" : "GET",
+        "headers" : {
+          "access_token" : "csd2e69747f83e59e327d19962",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "api_key" : "bltc94709340b84bdd2"
+        }
       },
-      "recorded_at" : 1586942951.422714,
       "response" : {
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "blt8fbd68b8ef53ae63",
+              "created_at" : "2020-04-10T05:46:06.479Z",
+              "content_type" : "image\/png",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "contentstack.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/blt8fbd68b8ef53ae63\/5e90081e60e26d07e9178f48\/contentstack.png",
+              "_version" : 1,
+              "title" : "contentstack.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.479Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "3200",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            },
+            {
+              "uid" : "bltbde5117e7cac1772",
+              "created_at" : "2020-04-10T05:46:05.152Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "images_(4).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltbde5117e7cac1772\/5e90081dae759113a32fb19e\/images_(4).jpg",
+              "_version" : 1,
+              "title" : "images_(4).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:05.152Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "6560",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            },
+            {
+              "uid" : "bltc083b7fc98b5e2f1",
+              "created_at" : "2020-04-10T05:46:04.959Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "images_(3).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltc083b7fc98b5e2f1\/5e90081cf65d6442b751ea74\/images_(3).jpg",
+              "_version" : 1,
+              "title" : "images_(3).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:04.959Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "5928",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            },
+            {
+              "uid" : "blt4b064641af43f26b",
+              "created_at" : "2020-04-10T05:46:02.910Z",
+              "content_type" : "image\/png",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/blt4b064641af43f26b\/5e90081a18462719987f9e02\/eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "_version" : 1,
+              "title" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:02.910Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "809525",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            },
+            {
+              "uid" : "blt0e7077211f2c53dc",
+              "created_at" : "2020-04-10T05:45:24.590Z",
+              "content_type" : "image\/png",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "Integrate-with-bg.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/blt0e7077211f2c53dc\/5e9007f416db9607e2b7e0d8\/Integrate-with-bg.png",
+              "_version" : 1,
+              "title" : "Integrate-with-bg.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:24.590Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "96938",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            },
+            {
+              "uid" : "bltbac3c14819c8da59",
+              "created_at" : "2020-04-10T05:45:17.366Z",
+              "content_type" : "image\/png",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "if_icon-72-lightning_316154_(1).png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltbac3c14819c8da59\/5e9007ed16db9607e2b7e0d2\/if_icon-72-lightning_316154_(1).png",
+              "_version" : 1,
+              "title" : "if_icon-72-lightning_316154_(1).png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.366Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "812",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            },
+            {
+              "uid" : "bltb2291d913f97e9cb",
+              "created_at" : "2020-04-10T05:45:17.337Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "images_(2).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltb2291d913f97e9cb\/5e9007ed89d7817e9320a769\/images_(2).jpg",
+              "_version" : 1,
+              "title" : "images_(2).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.337Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "5899",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            }
+          ]
+        },
+        "status" : 200,
         "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22title%22%20:%20%7B%0A%20%20%20%20%22$ne%22%20:%20%22images_(1).jpg%22%0A%20%20%7D%0A%7D&environment=development",
         "headers" : {
-          "Age" : "4721",
-          "Via" : "1.1 varnish, 1.1 varnish",
-          "x-cache-hits" : "0, 1",
-          "Content-Encoding" : "gzip",
-          "x-cache" : "MISS, HIT",
+          "x-contentstack-organization" : "blt4217d3e62dbf7564",
+          "x-cache-hits" : "0, 2",
           "Accept-Ranges" : "bytes",
-          "Date" : "Wed, 15 Apr 2020 09:29:11 GMT",
-          "Content-Type" : "application\/json",
-          "Content-Length" : "866",
           "Server" : "nginx",
           "x-runtime" : "22ms",
-          "x-timer" : "S1586942951.387507,VS0,VE0",
           "Access-Control-Allow-Origin" : "*",
+          "x-timer" : "S1587130453.595363,VS0,VE0",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Age" : "192222",
+          "x-cache" : "MISS, HIT",
+          "Content-Type" : "application\/json",
+          "Date" : "Fri, 17 Apr 2020 13:34:12 GMT",
+          "Vary" : "Accept-Encoding",
           "x-powered-by" : "Contentstack",
-          "x-served-by" : "cache-lax8639-LAX, cache-bom18226-BOM",
-          "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "Vary" : "Accept-Encoding"
+          "Content-Length" : "866",
+          "Content-Encoding" : "gzip",
+          "x-served-by" : "cache-lax8639-LAX, cache-bom18222-BOM"
+        }
+      }
+    },
+    {
+      "request" : {
+        "headers" : {
+          "api_key" : "bltc94709340b84bdd2",
+          "access_token" : "csd2e69747f83e59e327d19962",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
         },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$exists%22%20:%20%22true%22%0A%20%20%7D%0A%7D&environment=development",
+        "method" : "GET"
+      },
+      "recorded_at" : 1587130452.6680388,
+      "response" : {
+        "status" : 200,
         "body" : {
           "assets" : [
+            {
+              "uid" : "bltdbf94cf811d0c3f1",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltdbf94cf811d0c3f1\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "5990",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            },
             {
               "uid" : "blt8fbd68b8ef53ae63",
               "created_at" : "2020-04-10T05:46:06.479Z",
@@ -1099,604 +1449,266 @@
               }
             }
           ]
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$exists%22%20:%20%22true%22%0A%20%20%7D%0A%7D&environment=development",
+        "headers" : {
+          "Access-Control-Allow-Origin" : "*",
+          "x-contentstack-organization" : "blt4217d3e62dbf7564",
+          "Content-Length" : "912",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Server" : "nginx",
+          "x-served-by" : "cache-lax8633-LAX, cache-bom18222-BOM",
+          "Accept-Ranges" : "bytes",
+          "x-timer" : "S1587130453.652441,VS0,VE0",
+          "x-powered-by" : "Contentstack",
+          "x-cache-hits" : "0, 2",
+          "Age" : "192803",
+          "x-cache" : "MISS, HIT",
+          "Vary" : "Accept-Encoding",
+          "Date" : "Fri, 17 Apr 2020 13:34:12 GMT",
+          "x-runtime" : "22ms",
+          "Content-Type" : "application\/json",
+          "Content-Encoding" : "gzip"
+        }
+      }
+    },
+    {
+      "recorded_at" : 1587130452.7222419,
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22title%22%20:%20%7B%0A%20%20%20%20%22$regex%22%20:%20%22im%22%0A%20%20%7D%0A%7D&environment=development",
+        "headers" : {
+          "access_token" : "csd2e69747f83e59e327d19962",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "api_key" : "bltc94709340b84bdd2"
+        }
+      },
+      "response" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22title%22%20:%20%7B%0A%20%20%20%20%22$regex%22%20:%20%22im%22%0A%20%20%7D%0A%7D&environment=development",
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "bltdbf94cf811d0c3f1",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltdbf94cf811d0c3f1\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "5990",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            },
+            {
+              "uid" : "bltbde5117e7cac1772",
+              "created_at" : "2020-04-10T05:46:05.152Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "images_(4).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltbde5117e7cac1772\/5e90081dae759113a32fb19e\/images_(4).jpg",
+              "_version" : 1,
+              "title" : "images_(4).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:05.152Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "6560",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            },
+            {
+              "uid" : "bltc083b7fc98b5e2f1",
+              "created_at" : "2020-04-10T05:46:04.959Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "images_(3).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltc083b7fc98b5e2f1\/5e90081cf65d6442b751ea74\/images_(3).jpg",
+              "_version" : 1,
+              "title" : "images_(3).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:04.959Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "5928",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            },
+            {
+              "uid" : "bltb2291d913f97e9cb",
+              "created_at" : "2020-04-10T05:45:17.337Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "blt4dcb45b4456bb358",
+              "tags" : [
+
+              ],
+              "filename" : "images_(2).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltb2291d913f97e9cb\/5e9007ed89d7817e9320a769\/images_(2).jpg",
+              "_version" : 1,
+              "title" : "images_(2).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.337Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "blt4dcb45b4456bb358",
+              "file_size" : "5899",
+              "publish_details" : {
+                "environment" : "blt72f5148ccefac0cf",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "blt4dcb45b4456bb358"
+              }
+            }
+          ]
+        },
+        "headers" : {
+          "Content-Length" : "578",
+          "Accept-Ranges" : "bytes",
+          "Vary" : "Accept-Encoding",
+          "x-cache-hits" : "0, 2",
+          "x-served-by" : "cache-lax8635-LAX, cache-bom18222-BOM",
+          "Age" : "192802",
+          "Server" : "nginx",
+          "x-timer" : "S1587130453.707619,VS0,VE0",
+          "x-powered-by" : "Contentstack",
+          "Access-Control-Allow-Origin" : "*",
+          "Content-Type" : "application\/json",
+          "Content-Encoding" : "gzip",
+          "x-cache" : "MISS, HIT",
+          "x-contentstack-organization" : "blt4217d3e62dbf7564",
+          "Date" : "Fri, 17 Apr 2020 13:34:12 GMT",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "x-runtime" : "12ms"
         },
         "status" : 200
       }
     },
     {
       "request" : {
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$exists%22%20:%20%22true%22%0A%20%20%7D%0A%7D&environment=development",
-        "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/bltdbf94cf811d0c3f1?environment=development",
         "headers" : {
-          "X-User-Agent" : "contentstack-swift\/1.0.0",
           "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
           "access_token" : "csd2e69747f83e59e327d19962",
-          "api_key" : "bltc94709340b84bdd2"
-        }
-      },
-      "recorded_at" : 1586942951.510489,
-      "response" : {
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$exists%22%20:%20%22true%22%0A%20%20%7D%0A%7D&environment=development",
-        "status" : 200,
-        "body" : {
-          "assets" : [
-            {
-              "uid" : "bltdbf94cf811d0c3f1",
-              "created_at" : "2020-04-10T05:46:06.731Z",
-              "content_type" : "image\/jpeg",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "images_(1).jpg",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltdbf94cf811d0c3f1\/5e90081ee14a091a67688455\/images_(1).jpg",
-              "_version" : 1,
-              "title" : "images_(1).jpg",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:46:06.731Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "5990",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            },
-            {
-              "uid" : "blt8fbd68b8ef53ae63",
-              "created_at" : "2020-04-10T05:46:06.479Z",
-              "content_type" : "image\/png",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "contentstack.png",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/blt8fbd68b8ef53ae63\/5e90081e60e26d07e9178f48\/contentstack.png",
-              "_version" : 1,
-              "title" : "contentstack.png",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:46:06.479Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "3200",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            },
-            {
-              "uid" : "bltbde5117e7cac1772",
-              "created_at" : "2020-04-10T05:46:05.152Z",
-              "content_type" : "image\/jpeg",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "images_(4).jpg",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltbde5117e7cac1772\/5e90081dae759113a32fb19e\/images_(4).jpg",
-              "_version" : 1,
-              "title" : "images_(4).jpg",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:46:05.152Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "6560",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            },
-            {
-              "uid" : "bltc083b7fc98b5e2f1",
-              "created_at" : "2020-04-10T05:46:04.959Z",
-              "content_type" : "image\/jpeg",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "images_(3).jpg",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltc083b7fc98b5e2f1\/5e90081cf65d6442b751ea74\/images_(3).jpg",
-              "_version" : 1,
-              "title" : "images_(3).jpg",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:46:04.959Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "5928",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            },
-            {
-              "uid" : "blt4b064641af43f26b",
-              "created_at" : "2020-04-10T05:46:02.910Z",
-              "content_type" : "image\/png",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/blt4b064641af43f26b\/5e90081a18462719987f9e02\/eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
-              "_version" : 1,
-              "title" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:46:02.910Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "809525",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            },
-            {
-              "uid" : "blt0e7077211f2c53dc",
-              "created_at" : "2020-04-10T05:45:24.590Z",
-              "content_type" : "image\/png",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "Integrate-with-bg.png",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/blt0e7077211f2c53dc\/5e9007f416db9607e2b7e0d8\/Integrate-with-bg.png",
-              "_version" : 1,
-              "title" : "Integrate-with-bg.png",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:45:24.590Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "96938",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            },
-            {
-              "uid" : "bltbac3c14819c8da59",
-              "created_at" : "2020-04-10T05:45:17.366Z",
-              "content_type" : "image\/png",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "if_icon-72-lightning_316154_(1).png",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltbac3c14819c8da59\/5e9007ed16db9607e2b7e0d2\/if_icon-72-lightning_316154_(1).png",
-              "_version" : 1,
-              "title" : "if_icon-72-lightning_316154_(1).png",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:45:17.366Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "812",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            },
-            {
-              "uid" : "bltb2291d913f97e9cb",
-              "created_at" : "2020-04-10T05:45:17.337Z",
-              "content_type" : "image\/jpeg",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "images_(2).jpg",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltb2291d913f97e9cb\/5e9007ed89d7817e9320a769\/images_(2).jpg",
-              "_version" : 1,
-              "title" : "images_(2).jpg",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:45:17.337Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "5899",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            }
-          ]
-        },
-        "headers" : {
-          "x-powered-by" : "Contentstack",
-          "Content-Encoding" : "gzip",
-          "x-timer" : "S1586942951.486259,VS0,VE1",
-          "Age" : "5301",
-          "Content-Type" : "application\/json",
-          "x-cache-hits" : "0, 1",
-          "Date" : "Wed, 15 Apr 2020 09:29:11 GMT",
-          "x-served-by" : "cache-lax8633-LAX, cache-bom18226-BOM",
-          "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "Vary" : "Accept-Encoding",
-          "Server" : "nginx",
-          "Content-Length" : "912",
-          "Access-Control-Allow-Origin" : "*",
-          "Via" : "1.1 varnish, 1.1 varnish",
-          "x-runtime" : "22ms",
-          "x-cache" : "MISS, HIT",
-          "Accept-Ranges" : "bytes"
-        }
-      }
-    },
-    {
-      "request" : {
-        "headers" : {
-          "access_token" : "csd2e69747f83e59e327d19962",
           "X-User-Agent" : "contentstack-swift\/1.0.0",
-          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
           "api_key" : "bltc94709340b84bdd2"
         },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22title%22%20:%20%7B%0A%20%20%20%20%22$regex%22%20:%20%22im%22%0A%20%20%7D%0A%7D&environment=development",
         "method" : "GET"
       },
-      "recorded_at" : 1586942951.88871,
+      "recorded_at" : 1587130452.7715979,
       "response" : {
-        "status" : 200,
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/bltdbf94cf811d0c3f1?environment=development",
         "headers" : {
-          "x-served-by" : "cache-lax8635-LAX, cache-bom18226-BOM",
-          "x-timer" : "S1586942952.867339,VS0,VE1",
-          "Vary" : "Accept-Encoding",
-          "Content-Length" : "578",
-          "Age" : "5301",
-          "Content-Encoding" : "gzip",
-          "Via" : "1.1 varnish, 1.1 varnish",
-          "x-cache-hits" : "0, 1",
-          "Content-Type" : "application\/json",
+          "x-runtime" : "24ms",
           "Access-Control-Allow-Origin" : "*",
+          "x-served-by" : "cache-lax8622-LAX, cache-bom18222-BOM",
           "Accept-Ranges" : "bytes",
-          "Server" : "nginx",
           "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "Date" : "Wed, 15 Apr 2020 09:29:11 GMT",
-          "x-runtime" : "12ms",
+          "Content-Length" : "393",
+          "Content-Type" : "application\/json",
+          "Server" : "nginx",
+          "x-cache-hits" : "0, 2",
           "x-cache" : "MISS, HIT",
+          "Date" : "Fri, 17 Apr 2020 13:34:12 GMT",
+          "Vary" : "Accept-Encoding",
+          "x-timer" : "S1587130453.756994,VS0,VE0",
+          "Content-Encoding" : "gzip",
+          "Age" : "192802",
+          "Via" : "1.1 varnish, 1.1 varnish",
           "x-powered-by" : "Contentstack"
         },
-        "body" : {
-          "assets" : [
-            {
-              "uid" : "bltdbf94cf811d0c3f1",
-              "created_at" : "2020-04-10T05:46:06.731Z",
-              "content_type" : "image\/jpeg",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "images_(1).jpg",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltdbf94cf811d0c3f1\/5e90081ee14a091a67688455\/images_(1).jpg",
-              "_version" : 1,
-              "title" : "images_(1).jpg",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:46:06.731Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "5990",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            },
-            {
-              "uid" : "bltbde5117e7cac1772",
-              "created_at" : "2020-04-10T05:46:05.152Z",
-              "content_type" : "image\/jpeg",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "images_(4).jpg",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltbde5117e7cac1772\/5e90081dae759113a32fb19e\/images_(4).jpg",
-              "_version" : 1,
-              "title" : "images_(4).jpg",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:46:05.152Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "6560",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            },
-            {
-              "uid" : "bltc083b7fc98b5e2f1",
-              "created_at" : "2020-04-10T05:46:04.959Z",
-              "content_type" : "image\/jpeg",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "images_(3).jpg",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltc083b7fc98b5e2f1\/5e90081cf65d6442b751ea74\/images_(3).jpg",
-              "_version" : 1,
-              "title" : "images_(3).jpg",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:46:04.959Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "5928",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            },
-            {
-              "uid" : "bltb2291d913f97e9cb",
-              "created_at" : "2020-04-10T05:45:17.337Z",
-              "content_type" : "image\/jpeg",
-              "created_by" : "blt4dcb45b4456bb358",
-              "tags" : [
-
-              ],
-              "filename" : "images_(2).jpg",
-              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/bltc94709340b84bdd2\/bltb2291d913f97e9cb\/5e9007ed89d7817e9320a769\/images_(2).jpg",
-              "_version" : 1,
-              "title" : "images_(2).jpg",
-              "is_dir" : false,
-              "updated_at" : "2020-04-10T05:45:17.337Z",
-              "ACL" : {
-                "roles" : [
-
-                ],
-                "others" : {
-                  "delete" : false,
-                  "update" : false,
-                  "read" : false,
-                  "sub_acl" : {
-                    "delete" : false,
-                    "publish" : false,
-                    "update" : false,
-                    "read" : false,
-                    "create" : false
-                  },
-                  "create" : false
-                }
-              },
-              "updated_by" : "blt4dcb45b4456bb358",
-              "file_size" : "5899",
-              "publish_details" : {
-                "environment" : "blt72f5148ccefac0cf",
-                "locale" : "en-us",
-                "time" : "2020-04-10T07:16:54.466Z",
-                "user" : "blt4dcb45b4456bb358"
-              }
-            }
-          ]
-        },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22title%22%20:%20%7B%0A%20%20%20%20%22$regex%22%20:%20%22im%22%0A%20%20%7D%0A%7D&environment=development"
-      }
-    },
-    {
-      "response" : {
-        "headers" : {
-          "x-served-by" : "cache-lax8622-LAX, cache-bom18226-BOM",
-          "Access-Control-Allow-Origin" : "*",
-          "x-cache" : "MISS, HIT",
-          "Accept-Ranges" : "bytes",
-          "Content-Type" : "application\/json",
-          "x-cache-hits" : "0, 1",
-          "Date" : "Wed, 15 Apr 2020 09:29:12 GMT",
-          "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "Content-Encoding" : "gzip",
-          "Content-Length" : "393",
-          "x-timer" : "S1586942952.184978,VS0,VE1",
-          "Age" : "5301",
-          "x-powered-by" : "Contentstack",
-          "x-runtime" : "24ms",
-          "Vary" : "Accept-Encoding",
-          "Server" : "nginx",
-          "Via" : "1.1 varnish, 1.1 varnish"
-        },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/bltdbf94cf811d0c3f1?environment=development",
         "status" : 200,
         "body" : {
           "asset" : {
@@ -1741,41 +1753,30 @@
             }
           }
         }
-      },
-      "recorded_at" : 1586942952.203712,
-      "request" : {
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/bltdbf94cf811d0c3f1?environment=development",
-        "headers" : {
-          "api_key" : "bltc94709340b84bdd2",
-          "access_token" : "csd2e69747f83e59e327d19962",
-          "X-User-Agent" : "contentstack-swift\/1.0.0",
-          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
-        },
-        "method" : "GET"
       }
     },
     {
       "response" : {
-        "status" : 200,
         "headers" : {
-          "x-served-by" : "cache-lax8631-LAX, cache-bom18226-BOM",
+          "x-timer" : "S1587130453.808844,VS0,VE0",
           "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "Content-Type" : "application\/json",
-          "Vary" : "Accept-Encoding",
-          "x-cache" : "MISS, HIT",
-          "Date" : "Wed, 15 Apr 2020 09:29:12 GMT",
-          "x-timer" : "S1586942952.277102,VS0,VE1",
-          "Access-Control-Allow-Origin" : "*",
           "Server" : "nginx",
+          "Age" : "192802",
           "Accept-Ranges" : "bytes",
-          "Content-Encoding" : "gzip",
-          "Via" : "1.1 varnish, 1.1 varnish",
           "x-runtime" : "17ms",
-          "x-cache-hits" : "0, 1",
+          "Content-Type" : "application\/json",
+          "x-cache" : "MISS, HIT",
+          "Vary" : "Accept-Encoding",
           "Content-Length" : "993",
-          "Age" : "5301",
-          "x-powered-by" : "Contentstack"
+          "x-powered-by" : "Contentstack",
+          "x-cache-hits" : "0, 2",
+          "Access-Control-Allow-Origin" : "*",
+          "Date" : "Fri, 17 Apr 2020 13:34:12 GMT",
+          "Content-Encoding" : "gzip",
+          "x-served-by" : "cache-lax8631-LAX, cache-bom18222-BOM",
+          "Via" : "1.1 varnish, 1.1 varnish"
         },
+        "status" : 200,
         "body" : {
           "assets" : [
             {
@@ -2144,49 +2145,38 @@
       },
       "request" : {
         "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%0A%7D&include_dimension=true&environment=development",
         "headers" : {
-          "api_key" : "bltc94709340b84bdd2",
-          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
-          "X-User-Agent" : "contentstack-swift\/1.0.0",
-          "access_token" : "csd2e69747f83e59e327d19962"
-        },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%0A%7D&include_dimension=true&environment=development"
-      },
-      "recorded_at" : 1586942952.2976918
-    },
-    {
-      "request" : {
-        "headers" : {
-          "api_key" : "bltc94709340b84bdd2",
           "X-User-Agent" : "contentstack-swift\/1.0.0",
           "access_token" : "csd2e69747f83e59e327d19962",
-          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
-        },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/bltdbf94cf811d0c3f1?include_dimension=true&environment=development",
-        "method" : "GET"
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "api_key" : "bltc94709340b84bdd2"
+        }
       },
-      "recorded_at" : 1586942952.5932741,
+      "recorded_at" : 1587130452.8228822
+    },
+    {
+      "recorded_at" : 1587130452.8807158,
       "response" : {
         "headers" : {
-          "Content-Type" : "application\/json",
-          "Content-Length" : "416",
-          "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "Server" : "nginx",
-          "Date" : "Wed, 15 Apr 2020 09:29:12 GMT",
-          "Vary" : "Accept-Encoding",
-          "x-runtime" : "20ms",
-          "Access-Control-Allow-Origin" : "*",
-          "x-powered-by" : "Contentstack",
-          "Age" : "5301",
+          "Date" : "Fri, 17 Apr 2020 13:34:12 GMT",
           "Via" : "1.1 varnish, 1.1 varnish",
-          "x-served-by" : "cache-lax8647-LAX, cache-bom18226-BOM",
-          "Content-Encoding" : "gzip",
-          "x-timer" : "S1586942953.575135,VS0,VE0",
-          "x-cache-hits" : "0, 4",
+          "Vary" : "Accept-Encoding",
+          "x-powered-by" : "Contentstack",
+          "Accept-Ranges" : "bytes",
+          "Access-Control-Allow-Origin" : "*",
+          "x-contentstack-organization" : "blt4217d3e62dbf7564",
+          "x-served-by" : "cache-lax8647-LAX, cache-bom18222-BOM",
+          "Content-Length" : "416",
           "x-cache" : "MISS, HIT",
-          "Accept-Ranges" : "bytes"
+          "x-cache-hits" : "0, 2",
+          "Content-Encoding" : "gzip",
+          "x-timer" : "S1587130453.866344,VS0,VE0",
+          "Age" : "192801",
+          "Content-Type" : "application\/json",
+          "Server" : "nginx",
+          "x-runtime" : "20ms"
         },
-        "status" : 200,
         "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/bltdbf94cf811d0c3f1?include_dimension=true&environment=development",
         "body" : {
           "asset" : {
@@ -2234,12 +2224,52 @@
               "user" : "blt4dcb45b4456bb358"
             }
           }
-        }
+        },
+        "status" : 200
+      },
+      "request" : {
+        "headers" : {
+          "access_token" : "csd2e69747f83e59e327d19962",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "api_key" : "bltc94709340b84bdd2",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
+        },
+        "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/bltdbf94cf811d0c3f1?include_dimension=true&environment=development"
       }
     },
     {
-      "recorded_at" : 1586942952.6725168,
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%0A%7D&include_count=true&environment=development",
+        "headers" : {
+          "access_token" : "csd2e69747f83e59e327d19962",
+          "api_key" : "bltc94709340b84bdd2",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "X-User-Agent" : "contentstack-swift\/1.0.0"
+        }
+      },
+      "recorded_at" : 1587130452.925786,
       "response" : {
+        "headers" : {
+          "x-runtime" : "23ms",
+          "x-served-by" : "cache-lax8645-LAX, cache-bom18222-BOM",
+          "Vary" : "Accept-Encoding",
+          "Content-Type" : "application\/json",
+          "x-timer" : "S1587130453.911112,VS0,VE0",
+          "Content-Length" : "920",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Server" : "nginx",
+          "Access-Control-Allow-Origin" : "*",
+          "x-contentstack-organization" : "blt4217d3e62dbf7564",
+          "x-cache-hits" : "0, 2",
+          "Age" : "192800",
+          "x-powered-by" : "Contentstack",
+          "Content-Encoding" : "gzip",
+          "Accept-Ranges" : "bytes",
+          "Date" : "Fri, 17 Apr 2020 13:34:12 GMT",
+          "x-cache" : "MISS, HIT"
+        },
         "body" : {
           "assets" : [
             {
@@ -2574,43 +2604,41 @@
           "count" : 8
         },
         "status" : 200,
-        "headers" : {
-          "Age" : "5299",
-          "Content-Encoding" : "gzip",
-          "Date" : "Wed, 15 Apr 2020 09:29:12 GMT",
-          "Vary" : "Accept-Encoding",
-          "x-runtime" : "23ms",
-          "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "x-powered-by" : "Contentstack",
-          "Via" : "1.1 varnish, 1.1 varnish",
-          "Content-Type" : "application\/json",
-          "Access-Control-Allow-Origin" : "*",
-          "Accept-Ranges" : "bytes",
-          "x-cache-hits" : "0, 1",
-          "Server" : "nginx",
-          "Content-Length" : "920",
-          "x-cache" : "MISS, HIT",
-          "x-served-by" : "cache-lax8645-LAX, cache-bom18226-BOM",
-          "x-timer" : "S1586942953.641808,VS0,VE1"
-        },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%0A%7D&include_count=true&environment=development"
-      },
-      "request" : {
-        "method" : "GET",
-        "headers" : {
-          "api_key" : "bltc94709340b84bdd2",
-          "access_token" : "csd2e69747f83e59e327d19962",
-          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
-          "X-User-Agent" : "contentstack-swift\/1.0.0"
-        },
         "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%0A%7D&include_count=true&environment=development"
       }
     },
     {
-      "recorded_at" : 1586942953.0675831,
-      "response" : {
-        "status" : 404,
+      "request" : {
+        "method" : "GET",
         "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/UID?environment=development",
+        "headers" : {
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "access_token" : "csd2e69747f83e59e327d19962",
+          "api_key" : "bltc94709340b84bdd2",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
+        }
+      },
+      "recorded_at" : 1587130453.2746201,
+      "response" : {
+        "headers" : {
+          "x-runtime" : "10ms",
+          "Content-Type" : "application\/json",
+          "x-contentstack-organization" : "blt4217d3e62dbf7564",
+          "Age" : "0, 0, 0, 0",
+          "x-powered-by" : "Contentstack",
+          "x-served-by" : "cache-lax8640-LAX, cache-bom18222-BOM",
+          "x-cache-hits" : "0, 0",
+          "Access-Control-Allow-Origin" : "*",
+          "x-cache" : "MISS, MISS",
+          "x-timer" : "S1587130453.964615,VS0,VE295",
+          "Content-Encoding" : "gzip",
+          "Server" : "nginx",
+          "Accept-Ranges" : "bytes, bytes, bytes, bytes",
+          "Vary" : "Accept-Encoding",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Date" : "Fri, 17 Apr 2020 13:34:13 GMT"
+        },
+        "status" : 404,
         "body" : {
           "error_message" : "Asset was not found.",
           "error_code" : 145,
@@ -2620,36 +2648,8 @@
             ]
           }
         },
-        "headers" : {
-          "x-cache" : "MISS, MISS",
-          "Server" : "nginx",
-          "x-timer" : "S1586942953.734302,VS0,VE290",
-          "Age" : "0, 0, 0, 0",
-          "Vary" : "Accept-Encoding",
-          "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "Content-Encoding" : "gzip",
-          "Accept-Ranges" : "bytes, bytes, bytes, bytes",
-          "x-powered-by" : "Contentstack",
-          "x-served-by" : "cache-lax8635-LAX, cache-bom18226-BOM",
-          "Date" : "Wed, 15 Apr 2020 09:29:13 GMT",
-          "x-cache-hits" : "0, 0",
-          "Via" : "1.1 varnish, 1.1 varnish",
-          "Access-Control-Allow-Origin" : "*",
-          "x-runtime" : "12ms",
-          "Content-Type" : "application\/json"
-        }
-      },
-      "request" : {
-        "method" : "GET",
-        "headers" : {
-          "api_key" : "bltc94709340b84bdd2",
-          "access_token" : "csd2e69747f83e59e327d19962",
-          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
-          "X-User-Agent" : "contentstack-swift\/1.0.0"
-        },
         "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/UID?environment=development"
       }
     }
-  ],
-  "name" : "Asset"
+  ]
 }

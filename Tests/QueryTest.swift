@@ -22,36 +22,59 @@ class QueryTest: XCTestCase {
     func queryWhere(_ key: EntryModel.FieldKeys, operation: Query.Operation) {
         let query = makeQuerySUT().where(queryableCodingKey: key, operation)
 
-        switch operation {
-        case .equals(let value):
-            if let params = query.queryParameter[key.rawValue] as? String {
-                XCTAssertEqual(params, value)
-                return
-            }
-        default:
-            if let params = query.queryParameter[key.rawValue] as? [String: String],
-                let queryParam = operation.query as? [String: String] {
-                XCTAssertEqual(params, queryParam)
-                return
-            }
+        if let queryParam = query.queryParameter[key.rawValue],
+            self.isEqual(operation: operation, queryParameter: queryParam) {
+            return
         }
-        XCTFail("Query doesnt match")
+        XCTFail("Query doesnt match \(operation.string) \(operation.value)")
     }
 
     func testCTQuery_whereCondition() {
         let query = makeQuerySUT().where(valueAtKey: "ref.uid", .equals(refUID))
         if let params = query.queryParameter["ref.uid"] as? String {
             XCTAssertEqual(params, refUID)
-            return
+//            return
         }
         queryWhere(.uid, operation: .equals(testStringValue))
+        queryWhere(.uid, operation: .equals(testIntValue))
+        queryWhere(.uid, operation: .equals(testDateValue))
+        queryWhere(.uid, operation: .equals(testDoubleValue))
+        
         queryWhere(.uid, operation: .notEquals(testStringValue))
+        queryWhere(.uid, operation: .notEquals(testIntValue))
+        queryWhere(.uid, operation: .notEquals(testDateValue))
+        queryWhere(.uid, operation: .notEquals(testDoubleValue))
+        
         queryWhere(.title, operation: .includes(["one", "two"]))
+        queryWhere(.uid, operation: .includes([testIntValue]))
+        queryWhere(.uid, operation: .includes([testDateValue]))
+        queryWhere(.uid, operation: .includes([testDoubleValue]))
+
         queryWhere(.title, operation: .excludes(["three", "four"]))
+        queryWhere(.uid, operation: .excludes([testIntValue]))
+        queryWhere(.uid, operation: .excludes([testDateValue]))
+        queryWhere(.uid, operation: .excludes([testDoubleValue]))
+
         queryWhere(.createdAt, operation: .isLessThan(testDateValue))
+        queryWhere(.uid, operation: .isLessThan(testIntValue))
+        queryWhere(.uid, operation: .isLessThan(testStringValue))
+        queryWhere(.uid, operation: .isLessThan(testDoubleValue))
+
         queryWhere(.createdAt, operation: .isLessThanOrEqual(testStringValue))
+        queryWhere(.uid, operation: .isLessThanOrEqual(testIntValue))
+        queryWhere(.uid, operation: .isLessThanOrEqual(testDateValue))
+        queryWhere(.uid, operation: .isLessThanOrEqual(testDoubleValue))
+
         queryWhere(.updatedAt, operation: .isGreaterThan(testIntValue))
+        queryWhere(.uid, operation: .isGreaterThan(testStringValue))
+        queryWhere(.uid, operation: .isGreaterThan(testDateValue))
+        queryWhere(.uid, operation: .isGreaterThan(testDoubleValue))
+
         queryWhere(.updatedAt, operation: .isGreaterThanOrEqual(testDoubleValue))
+        queryWhere(.uid, operation: .isGreaterThanOrEqual(testIntValue))
+        queryWhere(.uid, operation: .isGreaterThanOrEqual(testDateValue))
+        queryWhere(.uid, operation: .isGreaterThanOrEqual(testStringValue))
+
         queryWhere(.title, operation: .exists(true))
         queryWhere(.title, operation: .matches("^[a-z]"))
     }

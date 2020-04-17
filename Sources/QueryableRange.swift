@@ -13,6 +13,15 @@ public protocol QueryableRange {
     var stringValue: String { get }
 }
 
+extension QueryableRange {
+    func isEquals(to range: QueryableRange) -> Bool {
+        if self is Int || self is Float || self is Double {
+            if type(of: self) != type(of: range) { return false }
+        }
+        return self.stringValue == range.stringValue
+    }
+}
+
 extension Int: QueryableRange {
     public var stringValue: String {
         return String(self)

@@ -81,6 +81,8 @@ internal extension KeyedDecodingContainer {
                 dictionary[key.stringValue] = asset
             } else if let entry = try? decode(EntryModel.self, forKey: key) {
                 dictionary[key.stringValue] = entry
+            } else if let contentType = try? decode(ContentTypeModel.self, forKey: key) {
+                dictionary[key.stringValue] = contentType
             } else if let nestedDictionary = try? decode(Dictionary<String, Any>.self, forKey: key) {
                 dictionary[key.stringValue] = nestedDictionary
             } else if let nestedArray = try? decode(Array<Any>.self, forKey: key) {
@@ -110,6 +112,8 @@ internal extension UnkeyedDecodingContainer {
                 array.append(asset)
             } else if let entry = try? decode(EntryModel.self) {
                 array.append(entry)
+            } else if let contentType = try? decode(ContentTypeModel.self) {
+                array.append(contentType)
             } else if let nestedDictionary = try? decode(Dictionary<String, Any>.self) {
                 array.append(nestedDictionary)
             } else if let nestedArray = try? decode(Array<Any>.self) {

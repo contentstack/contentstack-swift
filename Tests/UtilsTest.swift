@@ -37,6 +37,17 @@ class UtilsTest: XCTestCase {
         }
     }
 
+    func testArray_toString() {
+        let array: [Any] = ["First", 10, 10.1]
+        XCTAssertEqual(array.jsonString!, """
+        [
+          "First",
+          10,
+          10.1
+        ]
+        """)
+    }
+    
     func testStringURL_BlankTransform_ReturnURL() {
         do {
             let url = try urlString.url(with: makeImageTransformSUT())

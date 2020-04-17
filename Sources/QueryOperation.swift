@@ -63,13 +63,13 @@ extension Query {
 
     public enum Operation {
         ///Equals Operator: <https://www.contentstack.com/docs/apis/content-delivery-api/#equals-operator>
-        case equals(String)
+        case equals(QueryableRange)
         ///Not-equals Operator: <https://www.contentstack.com/docs/apis/content-delivery-api/#not-equals-operator>
-        case notEquals(String)
+        case notEquals(QueryableRange)
         ///Includes content in array: <https://www.contentstack.com/docs/apis/content-delivery-api/#array-equals-operator>
-        case includes([String])
+        case includes([QueryableRange])
         ///Excludes content in array: <https://www.contentstack.com/docs/apis/content-delivery-api/#array-equals-operator>
-        case excludes([String])
+        case excludes([QueryableRange])
         ///Less Than: <https://www.contentstack.com/docs/apis/content-delivery-api/#less-than>
         case isLessThan(QueryableRange)
         ///Less than or equal: <https://www.contentstack.com/docs/apis/content-delivery-api/#less-than-or-equal-to>
@@ -98,16 +98,40 @@ extension Query {
             }
         }
 
-        internal var value: String {
+        internal var value: Any {
             switch self {
-            case .equals(let value):                return value
-            case .notEquals(let value):             return value
-            case .includes(let value):              return value.jsonString ?? ""
-            case .excludes(let value):              return value.jsonString ?? ""
-            case .isLessThan(let value):            return value.stringValue
-            case .isLessThanOrEqual(let value):     return value.stringValue
-            case .isGreaterThan(let value):         return value.stringValue
-            case .isGreaterThanOrEqual(let value):  return value.stringValue
+            case .equals(let value):
+                if value is Int || value is Float || value is Double {
+                    return value
+                }
+                return value.stringValue
+            case .notEquals(let value):
+                if value is Int || value is Float || value is Double {
+                    return value
+                }
+                return value.stringValue
+            case .includes(let value):              return value
+            case .excludes(let value):              return value
+            case .isLessThan(let value):
+                if value is Int || value is Float || value is Double {
+                    return value
+                }
+                return value.stringValue
+            case .isLessThanOrEqual(let value):
+                if value is Int || value is Float || value is Double {
+                    return value
+                }
+                return value.stringValue
+            case .isGreaterThan(let value):
+                if value is Int || value is Float || value is Double {
+                    return value
+                }
+                return value.stringValue
+            case .isGreaterThanOrEqual(let value):
+                if value is Int || value is Float || value is Double {
+                    return value
+                }
+                return value.stringValue
             case .exists(let value):                return value.stringValue
             case .matches(let value):               return value
             }

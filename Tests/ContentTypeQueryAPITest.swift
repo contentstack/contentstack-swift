@@ -9,7 +9,7 @@ import XCTest
 @testable import Contentstack
 import DVR
 var kContentTypeUID = ""
-var kContetnTitle = ""
+var kContentTitle = ""
 
 class ContentTypeQueryAPITest: XCTestCase {
 
@@ -48,7 +48,7 @@ class ContentTypeQueryAPITest: XCTestCase {
                 XCTAssertEqual(contentstackResponse.items.count, 11)
                 if let contentType = contentstackResponse.items.first {
                     kContentTypeUID = contentType.uid
-                    kContetnTitle = contentType.title
+                    kContentTitle = contentType.title
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -76,11 +76,11 @@ class ContentTypeQueryAPITest: XCTestCase {
     
     func test03Find_ContentTypeQuery_whereTitleDNotEquals() {
         let networkExpectation = expectation(description: "Fetch where Title equals ContentTypes Test")
-        self.queryWhere(.title, operation: .notEquals(kContetnTitle)) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
+        self.queryWhere(.title, operation: .notEquals(kContentTitle)) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
             switch result {
             case .success(let contentstackResponse):
                 for contentType in contentstackResponse.items {
-                    XCTAssertNotEqual(contentType.title, kContetnTitle)
+                    XCTAssertNotEqual(contentType.title, kContentTitle)
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -90,7 +90,7 @@ class ContentTypeQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 5)
     }
     
-    func test04Find_ContetnTypeQuery_whereDescriptionexists() {
+    func test04Find_ContentTypeQuery_whereDescriptionexists() {
         let networkExpectation = expectation(description: "Fetch where description exists ContentTypes Test")
         self.queryWhere(.description, operation: .exists(true)) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
             switch result {
@@ -104,7 +104,7 @@ class ContentTypeQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 5)
     }
     
-    func test05Find_ContetnTypeQuery_whereTitleMatchRegex() {
+    func test05Find_ContentTypeQuery_whereTitleMatchRegex() {
         let networkExpectation = expectation(description: "Fetch where Title Match Regex ContentTypes Test")
         self.queryWhere(.title, operation: .matches("Tr")) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
             switch result {
@@ -132,7 +132,7 @@ class ContentTypeQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 5)
     }
 
-    func test07Fetch_ContetnTypeQuery_WithGlobalFields() {
+    func test07Fetch_ContentTypeQuery_WithGlobalFields() {
         let networkExpectation = expectation(description: "Fetch ContentTypes with GLobalFields Test")
         self.getContentTypeQuery()
             .include(params: .globalFields)
@@ -178,7 +178,7 @@ class ContentTypeQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 5)
     }
     
-    func test09Fetch_ContetnTypeQuery_WithCount() {
+    func test09Fetch_ContentTypeQuery_WithCount() {
         let networkExpectation = expectation(description: "Fetch ContentTypes with Count Test")
         self.getContentTypeQuery()
             .include(params: .count)
@@ -195,7 +195,7 @@ class ContentTypeQueryAPITest: XCTestCase {
 
     }
 
-    func test11Fetch_ContetnType_WithWrongUID_shouldFail() {
+    func test11Fetch_ContentType_WithWrongUID_shouldFail() {
          let networkExpectation = expectation(description: "Fetch ContentTypes from wrong UID Test")
         self.getContentType(uid: "UID").fetch { (restult: Result<ContentTypeModel, Error>, response: ResponseType) in
             switch restult {
