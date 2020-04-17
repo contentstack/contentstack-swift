@@ -7,7 +7,11 @@
 
 import Foundation
 
-public protocol EntryDecodable: SystemFields, EndpointAccessible, Decodable {}
+public protocol EntryDecodable: EntryFields, EndpointAccessible, Decodable {}
+
+public protocol ContentTypeIncludable {
+    var contentType: ContentTypeModel? { get set}
+}
 
 public extension EndpointAccessible where Self: EntryDecodable {
     static var endpoint: Endpoint {
@@ -15,7 +19,7 @@ public extension EndpointAccessible where Self: EntryDecodable {
     }
 }
 
-public class EntryModel: EntryDecodable, FieldKeysQueryable {
+public class EntryModel: EntryDecodable, FieldKeysQueryable, ContentTypeIncludable {
 
     public var title: String
 
@@ -32,6 +36,8 @@ public class EntryModel: EntryDecodable, FieldKeysQueryable {
     public var updatedBy: String
 
     public var fields: [String: Any]?
+
+    public var contentType: ContentTypeModel?
 
     public enum FieldKeys: String, CodingKey {
         case title, uid, locale

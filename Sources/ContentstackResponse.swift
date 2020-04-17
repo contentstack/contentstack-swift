@@ -33,6 +33,8 @@ where ItemType: EndpointAccessible & Decodable {
 
     public var count: UInt?
 
+    public var fields: [String: Any]?
+
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: ResponseCodingKeys.self)
         self.limit = try container.decodeIfPresent(UInt.self, forKey: .limit)
@@ -57,8 +59,20 @@ where ItemType: EndpointAccessible & Decodable {
             }
         case  .entries:
             if let entries =  try container.decodeIfPresent([ItemType].self, forKey: .entries) {
+                let containerFields   = try decoder.container(keyedBy: JSONCodingKeys.self)
+                let response = try containerFields.decode(Dictionary<String, Any>.self)
+                if let contentType = response["content_type"] as? ContentTypeModel {
+                    fields = ["content_type": contentType]
+                }
                 self.items = entries
             } else if let entry =  try container.decodeIfPresent(ItemType.self, forKey: .entry) {
+                if var contentTypeIncludable = entry as? ContentTypeIncludable {
+                    let containerFields   = try decoder.container(keyedBy: JSONCodingKeys.self)
+                    let response = try containerFields.decode(Dictionary<String, Any>.self)
+                    if let contentType = response["content_type"] as? ContentTypeModel {
+                        contentTypeIncludable.contentType = contentType
+                    }
+                }
                 self.items = [entry]
             }
         default:
