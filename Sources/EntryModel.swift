@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol EntryDecodable: EntryFields, EndpointAccessible, Decodable {}
+public protocol EntryDecodable: EntryFields, FieldKeysQueryable, EndpointAccessible, Decodable {}
 
 public protocol ContentTypeIncludable {
     var contentType: ContentTypeModel? { get set}
@@ -19,7 +19,7 @@ public extension EndpointAccessible where Self: EntryDecodable {
     }
 }
 
-public class EntryModel: EntryDecodable, FieldKeysQueryable, ContentTypeIncludable {
+public class EntryModel: EntryDecodable, ContentTypeIncludable {
 
     public var title: String
 
@@ -27,13 +27,13 @@ public class EntryModel: EntryDecodable, FieldKeysQueryable, ContentTypeIncludab
 
     public var locale: String
 
-    public var createdAt: Date
+    public var createdAt: Date?
 
-    public var updatedAt: Date
+    public var updatedAt: Date?
 
-    public var createdBy: String
+    public var createdBy: String?
 
-    public var updatedBy: String
+    public var updatedBy: String?
 
     public var fields: [String: Any]?
 
@@ -51,10 +51,10 @@ public class EntryModel: EntryDecodable, FieldKeysQueryable, ContentTypeIncludab
         let container   = try decoder.container(keyedBy: FieldKeys.self)
         uid = try container.decode(String.self, forKey: .uid)
         title = try container.decode(String.self, forKey: .title)
-        createdBy = try container.decode(String.self, forKey: .createdBy)
-        updatedBy = try container.decode(String.self, forKey: .updatedBy)
-        createdAt = try container.decode(Date.self, forKey: .createdAt)
-        updatedAt = try container.decode(Date.self, forKey: .updatedAt)
+        createdBy = try? container.decode(String.self, forKey: .createdBy)
+        updatedBy = try? container.decode(String.self, forKey: .updatedBy)
+        createdAt = try? container.decode(Date.self, forKey: .createdAt)
+        updatedAt = try? container.decode(Date.self, forKey: .updatedAt)
         locale = try container.decode(String.self, forKey: .locale)
 
         let containerFields   = try decoder.container(keyedBy: JSONCodingKeys.self)

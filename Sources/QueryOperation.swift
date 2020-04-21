@@ -101,34 +101,34 @@ extension Query {
         internal var value: Any {
             switch self {
             case .equals(let value):
-                if value is Int || value is Float || value is Double {
+                if value is Int || value is Float || value is Double || value is Bool {
                     return value
                 }
                 return value.stringValue
             case .notEquals(let value):
-                if value is Int || value is Float || value is Double {
+                if value is Int || value is Float || value is Double || value is Bool {
                     return value
                 }
                 return value.stringValue
             case .includes(let value):              return value
             case .excludes(let value):              return value
             case .isLessThan(let value):
-                if value is Int || value is Float || value is Double {
+                if value is Int || value is Float || value is Double || value is Bool {
                     return value
                 }
                 return value.stringValue
             case .isLessThanOrEqual(let value):
-                if value is Int || value is Float || value is Double {
+                if value is Int || value is Float || value is Double || value is Bool {
                     return value
                 }
                 return value.stringValue
             case .isGreaterThan(let value):
-                if value is Int || value is Float || value is Double {
+                if value is Int || value is Float || value is Double || value is Bool {
                     return value
                 }
                 return value.stringValue
             case .isGreaterThanOrEqual(let value):
-                if value is Int || value is Float || value is Double {
+                if value is Int || value is Float || value is Double || value is Bool {
                     return value
                 }
                 return value.stringValue

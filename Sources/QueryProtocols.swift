@@ -22,7 +22,8 @@ internal protocol QueryProtocol: class, CachePolicyAccessible {
 extension BaseQuery {
     public func find<ResourceType>(_ completion: @escaping ResultsHandler<ContentstackResponse<ResourceType>>)
         where ResourceType: Decodable & EndpointAccessible {
-            if let query = self.queryParameter.jsonString {
+            if self.queryParameter.count > 0,
+                let query = self.queryParameter.jsonString {
                 self.parameters[QueryParameter.query] = query
             }
             self.stack.fetch(endpoint: ResourceType.endpoint,
@@ -118,12 +119,17 @@ extension EntryQueryable {
 
     @discardableResult
     public func only(fields: [String]) -> Self {
-        return self.includeQuery(parameter: QueryParameter.only, key: QueryParameter.base, fields: fields)
+        var fieldsToInclude = fields
+        fieldsToInclude.append(contentsOf: ["locale", "title"])
+        return self.includeQuery(parameter: QueryParameter.only, key: QueryParameter.base, fields: fieldsToInclude)
     }
 
     @discardableResult
     public func except(fields: [String]) -> Self {
-        return self.includeQuery(parameter: QueryParameter.except, key: QueryParameter.base, fields: fields)
+        let fieldsToExclude = fields.filter { (string) -> Bool in
+            return string != "locale"  && string != "title"
+        }
+        return self.includeQuery(parameter: QueryParameter.except, key: QueryParameter.base, fields: fieldsToExclude)
     }
 
     public func include(params: Query.Include) -> Self {

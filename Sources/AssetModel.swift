@@ -6,19 +6,20 @@
 //
 
 import Foundation
+public protocol AssetDecodable: AssetFields, FieldKeysQueryable, EndpointAccessible, Decodable {}
 
 public final class AssetModel: AssetDecodable {
     public var title: String
 
     public var uid: String
 
-    public var createdAt: Date
+    public var createdAt: Date?
 
-    public var updatedAt: Date
+    public var updatedAt: Date?
 
-    public var createdBy: String
+    public var createdBy: String?
 
-    public var updatedBy: String
+    public var updatedBy: String?
 
     public var fileName: String
 
@@ -43,14 +44,14 @@ public final class AssetModel: AssetDecodable {
     /// A lightweight struct to hold the dimensions information for the this file, if it is an image type.
     public struct ImageDimension: Decodable {
         /// The width of the image.
-        public let width: Double
+        public let width: Double?
         /// The height of the image.
-        public let height: Double
+        public let height: Double?
 
         public init(from decoder: Decoder) throws {
             let container = try decoder.container(keyedBy: CodingKeys.self)
-            width         = try container.decode(Double.self, forKey: .width)
-            height        = try container.decode(Double.self, forKey: .height)
+            width         = try? container.decode(Double.self, forKey: .width)
+            height        = try? container.decode(Double.self, forKey: .height)
         }
 
         private enum CodingKeys: String, CodingKey {
@@ -66,8 +67,11 @@ public final class AssetModel: AssetDecodable {
         fileName = try container.decode(String.self, forKey: .fileName)
         fileType = try container.decode(String.self, forKey: .fileType)
         dimension     = try container.decodeIfPresent(ImageDimension.self, forKey: .dimension)
-        let filesize = try container.decode(String.self, forKey: .fileSize)
-        fileSize = Double(filesize) ?? 0
+        if let filesize = try? container.decode(String.self, forKey: .fileSize) {
+            fileSize = Double(filesize) ?? 0
+        } else {
+            fileSize = 0
+        }
 
         createdAt = try container.decode(Date.self, forKey: .createdAt)
         createdBy = try container.decode(String.self, forKey: .createdBy)
@@ -84,8 +88,8 @@ public final class AssetModel: AssetDecodable {
 
 }
 
-extension AssetModel: EndpointAccessible {
-    public static var endpoint: Endpoint {
+public extension EndpointAccessible where Self: AssetDecodable {
+    static var endpoint: Endpoint {
         return .assets
     }
 }
