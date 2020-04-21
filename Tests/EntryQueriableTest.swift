@@ -60,28 +60,31 @@ class EntryQueriableTest: XCTestCase {
     }
 
     func testQuery_OnlyAndExcept() {
-        let fields = ["Title", "uid", "created_at"]
+        var fields = ["Title", "uid", "created_at"]
+        let exceotFields = ["Title", "uid", "created_at"]
+
         let onlyQuery = makeEntrySut(contentTypeuid: "content_type_uid").only(fields: fields)
+        let exceptQuery = makeEntrySut(contentTypeuid: "content_type_uid").except(fields: exceotFields)
+        let query = makeEntrySut(contentTypeuid: "content_type_uid").only(fields: fields).except(fields: exceotFields)
+
+        fields.append(contentsOf: ["locale", "title"])
+
         XCTAssertEqual(onlyQuery.parameters.query(),
                        ([
                         QueryParameter.only:
                             [QueryParameter.base: fields]
                         ] as Parameters).query())
-
-        let exceptQuery = makeEntrySut(contentTypeuid: "content_type_uid").except(fields: fields)
         XCTAssertEqual(exceptQuery.parameters.query(),
                        ([
                        QueryParameter.except:
-                           [QueryParameter.base: fields]
+                           [QueryParameter.base: exceotFields]
                        ] as Parameters).query())
-
-        let query = makeEntrySut(contentTypeuid: "content_type_uid").only(fields: fields).except(fields: fields)
         XCTAssertEqual(query.parameters.query(),
                        ([
                         QueryParameter.only:
                         [QueryParameter.base: fields],
                         QueryParameter.except:
-                        [QueryParameter.base: fields]] as Parameters).query())
+                        [QueryParameter.base: exceotFields]] as Parameters).query())
     }
 
     func testQuery_IncludeReference() {

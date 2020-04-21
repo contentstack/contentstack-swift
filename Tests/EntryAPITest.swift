@@ -205,7 +205,8 @@ class EntryAPITest: XCTestCase {
 
     func test11Fetch_Entry_WithWrongUID_shouldFail() {
          let networkExpectation = expectation(description: "Fetch Entry from wrong UID Test")
-        self.getEntry(uid: "UID").fetch { (restult: Result<EntryModel, Error>, response: ResponseType) in
+        self.getEntry(uid: "UID")
+            .fetch { (restult: Result<EntryModel, Error>, response: ResponseType) in
             switch restult {
             case .success:
                 XCTFail("UID should not be present")
@@ -289,13 +290,13 @@ class EntryAPITest: XCTestCase {
         let date = formatter.date(from: "2018-08-27T12:30:00.000Z")!
         
         let networkExpectationDate = expectation(description: "Fetch where Session Time less than Date Test")
-        self.getEntryQuery().where(valueAtKey: "session_time.strart_time", .isLessThan(date)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+        self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isLessThan(date)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
             switch result {
             case .success(let contentstackResponse):
                 XCTAssertEqual(contentstackResponse.items.count, 29)
                 for entry in contentstackResponse.items {
                     if let sessionTime = entry.fields?["session_time"] as? [String: Any],
-                        let Date = sessionTime["strart_time"] as? String,
+                        let Date = sessionTime["start_time"] as? String,
                         let startDate = formatter.date(from: Date) {
                         XCTAssertLessThan(startDate, date)
                     }
@@ -322,5 +323,554 @@ class EntryAPITest: XCTestCase {
             networkExpectation.fulfill()
         }
         wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+    }
+    
+    func test16Find_EntryQuery_wherelessThanEqual() {
+        let formatter = Date.iso8601Formatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        let date = formatter.date(from: "2018-08-27T12:30:00.000Z")!
+        
+        let networkExpectationDate = expectation(description: "Fetch where Session Time less than Or equal Date Test")
+        self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isLessThanOrEqual(date)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 29)
+                for entry in contentstackResponse.items {
+                    if let sessionTime = entry.fields?["session_time"] as? [String: Any],
+                        let Date = sessionTime["start_time"] as? String,
+                        let startDate = formatter.date(from: Date) {
+                        XCTAssertLessThanOrEqual(startDate, date)
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectationDate.fulfill()
+        }
+        let id = 2493
+        let networkExpectation = expectation(description: "Fetch where Session ID less than Or equal Number Test")
+        self.getEntryQuery().where(valueAtKey: "session_id", .isLessThanOrEqual(id)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 8)
+                for entry in contentstackResponse.items {
+                    if let sessionid = entry.fields?["session_id"] as? Int {
+                        XCTAssertLessThanOrEqual(sessionid, id)
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+    }
+    
+    func test17Find_EntryQuery_whereGreaterThan() {
+        let formatter = Date.iso8601Formatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        let date = formatter.date(from: "2018-08-27T12:30:00.000Z")!
+        
+        let networkExpectationDate = expectation(description: "Fetch where Session Time Greater than Date Test")
+        self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isGreaterThan(date)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 2)
+                for entry in contentstackResponse.items {
+                    if let sessionTime = entry.fields?["session_time"] as? [String: Any],
+                        let Date = sessionTime["start_time"] as? String,
+                        let startDate = formatter.date(from: Date) {
+                        XCTAssertGreaterThan(startDate, date)
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectationDate.fulfill()
+        }
+        let id = 2493
+        let networkExpectation = expectation(description: "Fetch where Session ID Greater than Number Test")
+        self.getEntryQuery().where(valueAtKey: "session_id", .isGreaterThan(id)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 23)
+                for entry in contentstackResponse.items {
+                    if let sessionid = entry.fields?["session_id"] as? Int {
+                        XCTAssertGreaterThan(sessionid, id)
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+    }
+
+    func test18Find_EntryQuery_whereGreaterThanEqual() {
+        let formatter = Date.iso8601Formatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        let date = formatter.date(from: "2018-08-27T12:30:00.000Z")!
+        
+        let networkExpectationDate = expectation(description: "Fetch where Session Time Greater than or Equal Date Test")
+        self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isGreaterThanOrEqual(date)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 2)
+                for entry in contentstackResponse.items {
+                    if let sessionTime = entry.fields?["session_time"] as? [String: Any],
+                        let Date = sessionTime["start_time"] as? String,
+                        let startDate = formatter.date(from: Date) {
+                        XCTAssertGreaterThanOrEqual(startDate, date)
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectationDate.fulfill()
+        }
+        let id = 2493
+        let networkExpectation = expectation(description: "Fetch where Session ID Greater than or Equal Number Test")
+        self.getEntryQuery().where(valueAtKey: "session_id", .isGreaterThanOrEqual(id)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 24)
+                for entry in contentstackResponse.items {
+                    if let sessionid = entry.fields?["session_id"] as? Int {
+                        XCTAssertGreaterThanOrEqual(sessionid, id)
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+    }
+
+    func test19Find_EntryQuery_OrderBySessionTime() {
+        let networkExpectation = expectation(description: "Fetch Order by Ascending Start Time Test")
+        let formatter = Date.iso8601Formatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+
+        self.getEntryQuery()
+            .orderByAscending(keyPath: "session_time.start_time")
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                var date: Date?
+                for entry in contentstackResponse.items {
+                    if let sessionTime = entry.fields?["session_time"] as? [String: Any],
+                        let Date = sessionTime["start_time"] as? String,
+                        let startDate = formatter.date(from: Date) {
+                        if let oldDate = date {
+                            XCTAssertGreaterThanOrEqual(startDate, oldDate)
+                        }
+                        date = startDate
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        let networkExpectationDesc = expectation(description: "Fetch Order by Ascending Start Time Test")
+
+        self.getEntryQuery()
+            .orderByDecending(keyPath: "session_time.end_time")
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                var date: Date?
+                for entry in contentstackResponse.items {
+                    if let sessionTime = entry.fields?["session_time"] as? [String: Any],
+                        let Date = sessionTime["end_time"] as? String,
+                        let endDate = formatter.date(from: Date) {
+                        if let oldDate = date {
+                            XCTAssertLessThanOrEqual(endDate, oldDate)
+                        }
+                        date = endDate
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectationDesc.fulfill()
+        }
+        wait(for: [networkExpectation, networkExpectationDesc], timeout: 5)
+    }
+
+    func test20Find_EntryQuery_AndOrOperator() {
+        let sessionType = "Breakout Session"
+        let query1 = getEntryQuery().where(valueAtKey: "type", .equals(sessionType))
+        let query2 = getEntryQuery().where(valueAtKey: "is_popular", .equals(false))
+        
+        let networkExpectation = expectation(description: "Fetch Entry where type and Popular session Test")
+
+        self.getEntryQuery()
+            .operator(.and([query1, query2]))
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 18)
+                for entry in contentstackResponse.items {
+                    if let type = entry.fields?["type"] as? String {
+                        XCTAssertEqual(type, sessionType)
+                    }
+                    if let isPopular = entry.fields?["is_popular"] as? Bool {
+                        XCTAssertEqual(false, isPopular)
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+
+        let networkExpectationOr = expectation(description: "Fetch Entry where type Or Popular session Test")
+
+        self.getEntryQuery()
+            .operator(.or([query1, query2]))
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 30)
+                for entry in contentstackResponse.items {
+                    if let type = entry.fields?["type"] as? String,
+                        let isPopular = entry.fields?["is_popular"] as? Bool {
+                        if type != sessionType && isPopular != false {
+                            XCTAssertFalse(true, "Type and popular not matched")
+                        }
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectationOr.fulfill()
+        }
+        wait(for: [networkExpectation, networkExpectationOr], timeout: 5)
+    }
+
+    func test21Find_EntryQuery_SkipLimit() {
+        let networkExpectation = expectation(description: "Fetch Entry Skip Test")
+
+        self.getEntryQuery()
+            .skip(theFirst: 10)
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 21)
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+
+        let networkExpectationOr = expectation(description: "Fetch Entry Limit Test")
+
+        self.getEntryQuery()
+            .limit(to: 10)
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 10)
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectationOr.fulfill()
+        }
+        wait(for: [networkExpectation, networkExpectationOr], timeout: 5)
+    }
+
+    func test22Find_EntryQuery_AddQuery() {
+        let sessionType = "Breakout Session"
+        let networkExpectation = expectation(description: "Fetch Entry Add Query Dictionary Test")
+
+        self.getEntryQuery()
+            .addQuery(dictionary: ["type": ["$ne": sessionType]])
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 13)
+                for entry in contentstackResponse.items {
+                    if let type = entry.fields?["type"] as? String {
+                        XCTAssertNotEqual(type, sessionType)
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+
+        let networkExpectationKeyValue = expectation(description: "Fetch Entry Add Query Key Value Test")
+
+        self.getEntryQuery()
+            .addQuery(with: "type", value: ["$ne": sessionType])
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.items.count, 13)
+                for entry in contentstackResponse.items {
+                    if let type = entry.fields?["type"] as? String {
+                        XCTAssertNotEqual(type, sessionType)
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectationKeyValue.fulfill()
+        }
+        wait(for: [networkExpectation, networkExpectationKeyValue], timeout: 5)
+
+    }
+
+    func test23Find_EntryQuery_AddParam() {
+        let networkExpectation = expectation(description: "Fetch Entry Add Parameter Dictionary Test")
+
+        self.getEntryQuery()
+            .addURIParam(dictionary: ["include_count": "true"])
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.count, 31)
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+
+        let networkExpectationKeyValue = expectation(description: "Fetch Entry Add Parameter Key Value Test")
+
+        self.getEntryQuery()
+            .addURIParam(with: "include_count", value: "true")
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                XCTAssertEqual(contentstackResponse.count, 31)
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectationKeyValue.fulfill()
+        }
+        wait(for: [networkExpectation, networkExpectationKeyValue], timeout: 5)
+    }
+
+    func test24Find_EntryQuery_IncludeOnlyFields() {
+        let networkExpectation = expectation(description: "Fetch Entry Include Only Fields Test")
+        let keys = ["title", "session_id", "track"]
+        self.getEntryQuery()
+            .only(fields: keys)
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                for entry in contentstackResponse.items {
+                    if let fields = entry.fields {
+                        XCTAssertEqual(fields.count, 5)
+                        for item in fields {
+                            if item.key == "uid" || item.key == "locale" { continue }
+                            XCTAssertTrue(keys.contains(item.key))
+                        }
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+    }
+
+    func test25Find_EntryQuery_ExcludeFields() {
+        let networkExpectation = expectation(description: "Fetch Entry Exclude Fields Test")
+        let keys = ["title", "session_id", "track"]
+
+        self.getEntryQuery()
+            .except(fields: keys)
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                for entry in contentstackResponse.items {
+                    if let fields = entry.fields {
+                        XCTAssertEqual(fields.count, 18)
+                        for item in fields {
+                            if item.key == "title" || item.key == "locale" { continue }
+                            XCTAssertFalse(keys.contains(item.key))
+                        }
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+    }
+
+    func test26Find_EntryQuery_IncludeReference() {
+        let networkExpectation = expectation(description: "Fetch Entry Query Include Reference Test")
+
+        self.getEntryQuery()
+            .includeReference(with: ["track", "room"])
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                for entry in contentstackResponse.items {
+                    if let fields = entry.fields {
+                        if let track = fields["track"],
+                            !(track is [EntryModel]) {
+                            XCTFail("Reference Track is not included")
+                        }
+                        if let room = fields["room"],
+                            !(room is [EntryModel]) {
+                            XCTFail("Reference Room is not included")
+                        }
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+
+    }
+
+    func test27Fetch_Entry_IncludeReference() {
+        let networkExpectation = expectation(description: "Fetch Entry Include Reference Test")
+
+        self.getEntry(uid: kEntryUID)
+            .includeReference(with: ["track", "room"])
+            .fetch { (result: Result<EntryModel, Error>, response) in
+            switch result {
+            case .success(let model):
+                if let fields = model.fields {
+                    if let track = fields["track"],
+                        !(track is [EntryModel]) {
+                        XCTFail("Reference Track is not included")
+                    }
+                    if let room = fields["room"],
+                        !(room is [EntryModel]) {
+                        XCTFail("Reference Room is not included")
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+
+    }
+    func test28Find_EntryQuery_IncludeReferenceOnly() {
+        let networkExpectation = expectation(description: "Fetch Entry Query Include Reference Only Test")
+        let keys = ["track_color"]
+        self.getEntryQuery()
+            .includeReferenceField(with: "track", only: keys)
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                for entry in contentstackResponse.items {
+                    if let fields = entry.fields {
+                        if let tracks = fields["track"] as? [[String: Any]] {
+                            for track in tracks {
+                                for item in track {
+                                    if item.key == "uid" || item.key == "_content_type_uid" { continue }
+                                    XCTAssertTrue(keys.contains(item.key))
+                                }
+                            }
+                        }
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+
+    }
+
+    func test29Fetch_Entry_IncludeReferenceOnly() {
+        let networkExpectation = expectation(description: "Fetch Entry Include Reference Only Test")
+        let keys = ["track_color"]
+
+        self.getEntry(uid: kEntryUID)
+            .includeReferenceField(with: "track", only: keys)
+            .fetch { (result: Result<EntryModel, Error>, response) in
+            switch result {
+            case .success(let model):
+                if let fields = model.fields {
+                    if let tracks = fields["track"] as? [[String: Any]] {
+                        for track in tracks {
+                            for item in track {
+                                if item.key == "uid" || item.key == "_content_type_uid" { continue }
+                                XCTAssertTrue(keys.contains(item.key))
+                            }
+                        }
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+
+    }
+    func test30Find_EntryQuery_IncludeReferenceExceot() {
+        let networkExpectation = expectation(description: "Fetch Entry Query Include Reference Except Test")
+        let keys = ["track_color"]
+
+        self.getEntryQuery()
+            .includeReferenceField(with: "track", except: ["track_color"])
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+            switch result {
+            case .success(let contentstackResponse):
+                for entry in contentstackResponse.items {
+                    if let fields = entry.fields {
+                        if let tracks = fields["track"] as? [EntryModel] {
+                            for track in tracks {
+                                for item in track.fields! {
+                                    XCTAssertFalse(keys.contains(item.key))
+                                }
+                            }
+                        }
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+
+    }
+
+    func test31Fetch_Entry_IncludeReferenceExcept() {
+        let networkExpectation = expectation(description: "Fetch Entry Include Reference Except Test")
+        let keys = ["track_color"]
+
+        self.getEntry(uid: kEntryUID)
+            .includeReferenceField(with: "track", except: keys)
+            .fetch { (result: Result<EntryModel, Error>, response) in
+            switch result {
+            case .success(let model):
+                if let fields = model.fields {
+                    if let tracks = fields["track"] as? [EntryModel] {
+                        for track in tracks {
+                            for item in track.fields! {
+                                XCTAssertFalse(keys.contains(item.key))
+                            }
+                        }
+                    }
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+
     }
 }

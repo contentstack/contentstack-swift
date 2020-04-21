@@ -101,10 +101,11 @@ public class Stack: CachePolicyAccessible {
         queryParameter.removeValue(forKey: QueryParameter.contentType)
         queryParameter.removeValue(forKey: QueryParameter.uid)
 
-        var queryItems = [URLQueryItem]()
         if let query = parameters[QueryParameter.query] as? String {
+            var queryItems = [URLQueryItem]()
             queryItems.append(URLQueryItem(name: QueryParameter.query, value: query))
             queryParameter.removeValue(forKey: QueryParameter.query)
+            urlComponents.queryItems = queryItems
         }
 
         if !queryParameter.isEmpty {
@@ -116,10 +117,9 @@ public class Stack: CachePolicyAccessible {
             + "environment=\(self.environment)"
         urlComponents.percentEncodedQuery = percentEncodedQuery
 
-        if let percentEncodeingQueryItem = urlComponents.percentEncodedQueryItems {
-            queryItems.append(contentsOf: percentEncodeingQueryItem)
-        }
-        urlComponents.queryItems = queryItems
+//        if let percentEncodeingQueryItem = urlComponents.percentEncodedQueryItems {
+//            queryItems.append(contentsOf: percentEncodeingQueryItem)
+//        }
         return urlComponents.url!
     }
 
@@ -199,20 +199,21 @@ public class Stack: CachePolicyAccessible {
             }
 
         })
-        performDataTask(dataTask!, cachePolicy: cachePolicy, then: completion)
+        performDataTask(dataTask!, request: request, cachePolicy: cachePolicy, then: completion)
     }
 
     private func performDataTask(_ dataTask: URLSessionDataTask,
+                                 request: URLRequest,
                                  cachePolicy: CachePolicy,
                                  then completion: @escaping ResultsHandler<Data>) {
         switch cachePolicy {
         case .networkOnly:
             dataTask.resume()
         case .cacheOnly:
-            fullfillRequestWithCache(dataTask.originalRequest!, then: completion)
+            fullfillRequestWithCache(request, then: completion)
         case .cacheElseNetwork:
             fullfillRequestWithCache(
-            dataTask.originalRequest!
+            request
             ) { (cacheResult: Result<Data, Error>, responseType: ResponseType) in
                 switch cacheResult {
                 case Result.success(_):
@@ -225,7 +226,7 @@ public class Stack: CachePolicyAccessible {
             dataTask.resume()
         case .cacheThenNetwork:
             fullfillRequestWithCache(
-            dataTask.originalRequest!
+            request
             ) { (cacheResult: Result<Data, Error>, responseType: ResponseType) in
                 completion(cacheResult, responseType)
                 dataTask.resume()

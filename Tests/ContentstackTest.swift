@@ -48,5 +48,19 @@ class TestContentstackClient {
         #endif
         return _stackSharedInstance!
     }
+
+    static func testCacheStack() -> Stack {
+        let stackConfig = config()
+        if let apiKey = stackConfig["api_key"] as? String,
+            let deliveryToken = stackConfig["delivery_token"] as? String,
+            let environment = stackConfig["environment"]  as? String {
+            _stackSharedInstance = Contentstack.stack(apiKey: apiKey,
+                                                      deliveryToken: deliveryToken,
+                                                      environment: environment,
+                                                      host: stackConfig["host"] as? String ??  Host.delivery)
+        }
+        return _stackSharedInstance!
+    }
 }
+
 #endif

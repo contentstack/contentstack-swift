@@ -13,24 +13,24 @@ public protocol SystemFields: class {
 
     var uid: String { get }
 
-    var createdAt: Date { get }
+    var createdAt: Date? { get }
 
-    var updatedAt: Date { get }
+    var updatedAt: Date? { get }
 }
 
 public protocol EntryFields: SystemFields {
     var locale: String {get}
 
-    var createdBy: String {get}
+    var createdBy: String? {get}
 
-    var updatedBy: String {get}
+    var updatedBy: String? {get}
 }
 
 public protocol AssetFields: SystemFields {
 
-    var createdBy: String {get}
+    var createdBy: String? {get}
 
-    var updatedBy: String {get}
+    var updatedBy: String? {get}
 
     var fileName: String { get }
 

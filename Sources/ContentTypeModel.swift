@@ -13,9 +13,9 @@ public final class ContentTypeModel: SystemFields, Decodable {
 
     public var uid: String
 
-    public var createdAt: Date
+    public var createdAt: Date?
 
-    public var updatedAt: Date
+    public var updatedAt: Date?
 
     public var description: String?
 
@@ -25,12 +25,12 @@ public final class ContentTypeModel: SystemFields, Decodable {
         let container   = try decoder.container(keyedBy: FieldKeys.self)
         uid = try container.decode(String.self, forKey: .uid)
         title = try container.decode(String.self, forKey: .title)
-        description = try container.decodeIfPresent(String.self, forKey: .description)
-        createdAt = try container.decode(Date.self, forKey: .createdAt)
-        updatedAt = try container.decode(Date.self, forKey: .updatedAt)
-        let containerFields   = try decoder.container(keyedBy: JSONCodingKeys.self)
-        let contentSchema = try containerFields.decode(Dictionary<String, Any>.self)
-        if let schema = contentSchema["schema"] as? [[String: Any]] {
+        description = try? container.decodeIfPresent(String.self, forKey: .description)
+        createdAt = try? container.decode(Date.self, forKey: .createdAt)
+        updatedAt = try? container.decode(Date.self, forKey: .updatedAt)
+        let containerFields   = try? decoder.container(keyedBy: JSONCodingKeys.self)
+        let contentSchema = try containerFields?.decode(Dictionary<String, Any>.self)
+        if let schema = contentSchema?["schema"] as? [[String: Any]] {
             self.schema = schema
         }
     }

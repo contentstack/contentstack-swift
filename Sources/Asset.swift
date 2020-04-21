@@ -7,8 +7,6 @@
 
 import Foundation
 
-public protocol AssetDecodable: AssetFields, FieldKeysQueryable, Decodable {}
-
 public class Asset: CachePolicyAccessible {
     public var cachePolicy: CachePolicy = .networkOnly
     internal var parameters: Parameters = [:]

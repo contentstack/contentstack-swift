@@ -67,7 +67,8 @@ public class Query: BaseQuery, EntryQueryable {
     }
 }
 
-public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable, EntryType: FieldKeysQueryable {
+public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
+    internal typealias ResourceType = EntryType
     public func `where`(queryableCodingKey: EntryType.FieldKeys, _ operation: Query.Operation) -> QueryOn<EntryType> {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }

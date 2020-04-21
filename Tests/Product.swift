@@ -8,7 +8,7 @@
 import Foundation
 import Contentstack
 
-class Product: EntryDecodable, FieldKeysQueryable {
+class Product: EntryDecodable {
     public enum FieldKeys: String, CodingKey {
            case title, uid, locale
            case createdAt = "created_at"
@@ -19,8 +19,8 @@ class Product: EntryDecodable, FieldKeysQueryable {
     var locale: String
     var title: String
     var uid: String
-    var createdAt: Date
-    var updatedAt: Date
-    var createdBy: String
-    var updatedBy: String
+    var createdAt: Date?
+    var updatedAt: Date?
+    var createdBy: String?
+    var updatedBy: String?
 }

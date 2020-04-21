@@ -193,28 +193,33 @@ class QueryTest: XCTestCase {
     }
 
     func testQuery_OnlyAndExcept() {
-        let fields = ["Title", "uid", "created_at"]
+        var fields = ["Title", "uid", "created_at"]
+        let exceotFields = ["Title", "uid", "created_at"]
+
         let onlyQuery = makeQuerySUT().only(fields: fields)
+        let exceptQuery = makeQuerySUT().except(fields: exceotFields)
+        let query = makeQuerySUT().only(fields: fields).except(fields: exceotFields)
+
+        fields.append(contentsOf: ["locale", "title"])
+
         XCTAssertEqual(onlyQuery.parameters.query(),
                        ([
                         QueryParameter.only:
                             [QueryParameter.base: fields]
                         ] as Parameters).query())
 
-        let exceptQuery = makeQuerySUT().except(fields: fields)
         XCTAssertEqual(exceptQuery.parameters.query(),
                        ([
                        QueryParameter.except:
-                           [QueryParameter.base: fields]
+                           [QueryParameter.base: exceotFields]
                        ] as Parameters).query())
 
-        let query = makeQuerySUT().only(fields: fields).except(fields: fields)
         XCTAssertEqual(query.parameters.query(),
                        ([
                         QueryParameter.only:
                         [QueryParameter.base: fields],
                         QueryParameter.except:
-                        [QueryParameter.base: fields]] as Parameters).query())
+                        [QueryParameter.base: exceotFields]] as Parameters).query())
     }
 
     func testQuery_seachTag() {

@@ -41,7 +41,7 @@ class SyncAPITest: XCTestCase {
         waitForExpectations(timeout: 20, handler: nil)
     }
 
-    func testSyncInit() {
+    func test01SyncInit() {
         let networkExpectation = expectation(description: "Sync test exception")
         sync(networkExpectation: networkExpectation) { (syncStack) in
             if !syncStack.hasMorePages {
@@ -59,7 +59,7 @@ class SyncAPITest: XCTestCase {
         }
     }
 
-    func testSyncToken() {
+    func test02SyncToken() {
         let syncStack = SyncStack(syncToken: syncToken)
         let networkExpectation = expectation(description: "Sync Token test exception")
         sync(syncStack, networkExpectation: networkExpectation) { (syncStack: SyncStack) in
@@ -72,7 +72,7 @@ class SyncAPITest: XCTestCase {
         }
     }
 
-    func testSyncPagination() {
+    func test03SyncPagination() {
         let syncStack = SyncStack(paginationToken: paginationToken)
         let networkExpectation = expectation(description: "Sync Pagination test exception")
         sync(syncStack, networkExpectation: networkExpectation) { (syncStack: SyncStack) in
@@ -85,7 +85,7 @@ class SyncAPITest: XCTestCase {
         }
     }
 
-    func testSyncAssetPublished() {
+    func test04SyncAssetPublished() {
         let networkExpectation = expectation(description: "Sync Asset Publish test exception")
         sync(syncTypes: [.publishType(.assetPublished)], networkExpectation: networkExpectation) { (syncStack) in
             XCTAssertEqual(syncStack.items.count, 8)
@@ -95,7 +95,7 @@ class SyncAPITest: XCTestCase {
         }
     }
 
-    func testSyncForContentType() {
+    func test05SyncForContentType() {
         let networkExpectation = expectation(description: "Sync ContentType test exception")
         sync(syncTypes: [.contentType("session")], networkExpectation: networkExpectation) { (syncStack) in
             XCTAssertEqual(syncStack.items.count, 31)
@@ -105,7 +105,7 @@ class SyncAPITest: XCTestCase {
         }
     }
 
-    func testSyncLocale() {
+    func test06SyncLocale() {
         let networkExpectation = expectation(description: "Sync Locale test exception")
         sync(syncTypes: [.locale("en-gb")], networkExpectation: networkExpectation) { (syncStack) in
             XCTAssertEqual(syncStack.items.count, 0)
@@ -115,7 +115,7 @@ class SyncAPITest: XCTestCase {
         }
     }
 
-    func testSyncFromStartDate() {
+    func test07SyncFromStartDate() {
         let networkExpectation = expectation(description: "Sync Start From Date test exception")
         #if API_TEST
         let date = Date()
@@ -130,7 +130,7 @@ class SyncAPITest: XCTestCase {
         }
     }
 
-    func testSyncContentTypeAndLocale() {
+    func test08SyncContentTypeAndLocale() {
         let networkExpectation = expectation(description: "Sync ContentType and Locale test exception")
         sync(syncTypes: [.contentType("session"), .locale("en-us")],
              networkExpectation: networkExpectation) { (syncStack) in
