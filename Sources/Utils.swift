@@ -7,8 +7,8 @@
 
 import Foundation
 
-public extension Dictionary {
-    internal var jsonString: String? {
+internal extension Dictionary {
+    var jsonString: String? {
         if let data = try? JSONSerialization.data(withJSONObject: self,
                                                   options: JSONSerialization.WritingOptions.prettyPrinted),
             let string = String(data: data, encoding: String.Encoding.utf8) {
@@ -18,8 +18,8 @@ public extension Dictionary {
     }
 }
 
-public extension Array {
-    internal var jsonString: String? {
+internal extension Array {
+    var jsonString: String? {
         if let data = try? JSONSerialization.data(withJSONObject: self,
                                                   options: JSONSerialization.WritingOptions.prettyPrinted),
             let string = String(data: data, encoding: String.Encoding.utf8) {

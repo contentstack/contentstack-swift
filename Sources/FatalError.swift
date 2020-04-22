@@ -7,7 +7,7 @@
 
 import Foundation
 
-func fatalError(_ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) -> Never {
+internal func fatalError(_ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) -> Never {
     FatalError.fatalErrorClosure(message(), file, line)
 }
 

@@ -6,7 +6,7 @@
 //
 
 import XCTest
-
+@testable import Contentstack
 class DateTest: XCTestCase {
 
     func testDateFormatter_withMultipleDateFormat() {

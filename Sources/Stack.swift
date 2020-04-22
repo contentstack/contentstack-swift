@@ -75,10 +75,42 @@ public class Stack: CachePolicyAccessible {
         URLCache.shared = CSURLCache.default
     }
 
+    /// Get instance of `ContentType` to fetch content-types and schema or fetch entries of specific content-type.
+    ///
+    /// - Parameters:
+    ///   - uid: The UId of `ContentType` you want to fetch data,
+    /// - Returns: `ContentType` instance
+    ///
+    /// Example usage:
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///```
+    /// // To perform `ContentType` query:
+    /// let query = stack.contentType().query()
+    /// // To fetch specific `ContentType` entries:
+    /// let entry = stack.contentType(uid: contentTypeUid).entry()
+    ///```
     public func contentType(uid: String? = nil) -> ContentType {
         return ContentType(uid, stack: self)
     }
 
+    /// Get instance of `Asset` to fetch `Assets` or fetch specific `Asset`.
+    ///
+    /// - Parameters:
+    ///   - uid: The UId of `Asset` you want to fetch data,
+    /// - Returns: `Asset` instance
+    ///
+    /// Example usage:
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///```
+    /// // To perform `Asset` query:
+    /// let query = stack.asset().query()
+    /// // To get specific `Asset` instance from uid:
+    /// let asset = stack.asset(uid: assetUid)
+    ///```
     public func asset(uid: String? = nil) -> Asset {
         return Asset(uid, stack: self)
     }
@@ -117,9 +149,6 @@ public class Stack: CachePolicyAccessible {
             + "environment=\(self.environment)"
         urlComponents.percentEncodedQuery = percentEncodedQuery
 
-//        if let percentEncodeingQueryItem = urlComponents.percentEncodedQueryItems {
-//            queryItems.append(contentsOf: percentEncodeingQueryItem)
-//        }
         return urlComponents.url!
     }
 
@@ -152,8 +181,6 @@ public class Stack: CachePolicyAccessible {
         dataTask = urlSession.dataTask(with: request,
                                        completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
             if let data = data {
-                // TODO:  Handle Ratelimiting
-
                 if let response = response as? HTTPURLResponse {
                     if response.statusCode != 200 {
                         if cachePolicy == .networkElseCache,
@@ -255,6 +282,33 @@ public class Stack: CachePolicyAccessible {
 }
 
 extension Stack {
+
+    /// The Initial Sync request performs a complete sync of your app data.
+    /// It returns all the published entries and assets of the specified stack in response.
+    /// The response also contains a `sync_token`, which you get in `SyncStack`,
+    /// since this token is used to get subsequent delta updates later.
+    ///
+    /// - Parameters:
+    ///   - syncStack: The relevant `SyncStack` to perform the subsequent sync on.
+    ///   Defaults to a new empty instance of `SyncStack`.
+    ///   -  syncTypes: `SyncableTypes` that can be sync.
+    ///   - completion: A handler which will be called on completion of the operation.
+    ///
+    /// Example usage:
+    ///```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.sync { (result: Result<SyncStack, Error>) in
+    ///    switch result {
+    ///    case .success(let syncStack):
+    ///         let items = syncStack.items
+    ///    case .failure(let error):
+    ///         print(error)
+    ///    }
+    /// }
+    ///```
     public func sync(_ syncStack: SyncStack = SyncStack(),
                      syncTypes: [SyncStack.SyncableTypes] = [.all],
                      then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {

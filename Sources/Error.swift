@@ -28,10 +28,13 @@ public enum SDKError: Error, CustomDebugStringConvertible {
     ///   - errorMessage: The message from the error which occured during parsing.
     case unparseableJSON(data: Data?, errorMessage: String)
 
+    /// Thrown when Stack is not found .
     case stackError
 
+    /// Thrown when not reciving or no cached response.
     case cacheError
 
+    /// Thrown when reciving invalide Syncronization HTTP response .
     case syncError
 
     public var debugDescription: String {
@@ -75,14 +78,19 @@ public class APIError: Decodable, Error, CustomDebugStringConvertible {
         return debugDescription
     }
 
+    /// Human redable error Message
     public let errorMessage: String
 
+    /// Error Code from API.
     public let errorCode: Int
 
+    /// More detailed error Information.
     public let errorInfo: ErrorInfo!
 
+    /// The HTTP status code.
     public var statusCode: Int!
 
+    /// Decodable Initializer for APIError.
     public required init(from decoder: Decoder) throws {
         let container   = try decoder.container(keyedBy: CodingKeys.self)
         self.errorInfo  = try container.decode(ErrorInfo.self, forKey: .errorInfo)
@@ -96,6 +104,7 @@ public class APIError: Decodable, Error, CustomDebugStringConvertible {
         case errorInfo = "errors"
     }
 
+    /// A description about detailed error information
     public class ErrorInfo: Decodable, CustomDebugStringConvertible {
         public var debugDescription: String {
             var debugDescription = ""
@@ -104,8 +113,8 @@ public class APIError: Decodable, Error, CustomDebugStringConvertible {
                 debugDescription += "API Key \(apiKey.joined(separator: ", ")) \n"
             }
 
-            if let accessToken = self.accessToken {
-                debugDescription += "Access token \(accessToken.joined(separator: ", ")) \n"
+            if let accessToken = self.deliveryToken {
+                debugDescription += "Delivery token \(accessToken.joined(separator: ", ")) \n"
             }
 
             if let environment = self.environment {
@@ -116,12 +125,17 @@ public class APIError: Decodable, Error, CustomDebugStringConvertible {
             }
             return debugDescription
         }
+        /// A psuedo identifier for the error returned by the API(s).
+        /// "InvalidAPIKey" is example.
         public let apiKey: [String]?
-
-        public let accessToken: [String]?
-
+        /// A psuedo identifier for the error returned by the API(s).
+        /// "InvalidDeliveryToken" is example.
+        public let deliveryToken: [String]?
+        /// A psuedo identifier for the error returned by the API(s).
+        /// "InvalidEnvironment" is example.
         public let environment: [String]?
-
+        /// A psuedo identifier for the error returned by the API(s).
+        /// "InvalidUID" is example.
         public let uid: [String]?
         public required init(from decoder: Decoder) throws {
             let container   = try decoder.container(keyedBy: CodingKeys.self)
@@ -130,14 +144,14 @@ public class APIError: Decodable, Error, CustomDebugStringConvertible {
                 api  = try container.decodeIfPresent([String].self, forKey: .authtoken)
             }
             self.apiKey = api
-            self.accessToken = try container.decodeIfPresent([String].self, forKey: .accessToken)
+            self.deliveryToken = try container.decodeIfPresent([String].self, forKey: .deliveryToken)
             self.environment = try container.decodeIfPresent([String].self, forKey: .environment)
             self.uid = try container.decodeIfPresent([String].self, forKey: .uid)
         }
 
         private enum CodingKeys: String, CodingKey {
             case apiKey = "api_key"
-            case accessToken = "access_token"
+            case deliveryToken = "access_token"
             case environment, authtoken, uid
         }
     }
@@ -158,7 +172,10 @@ public class APIError: Decodable, Error, CustomDebugStringConvertible {
         return nil
     }
 
-    static func handleError(for url: URL, jsonDecoder: JSONDecoder, data: Data, response: HTTPURLResponse) -> Error {
+    internal static func handleError(for url: URL,
+                                     jsonDecoder: JSONDecoder,
+                                     data: Data,
+                                     response: HTTPURLResponse) -> Error {
         if let apiError = APIError.error(with: jsonDecoder, data: data, statusCode: response.statusCode) {
             let errorMessage = """
             Errored: 'GET' (\(response.statusCode)) \(url.absoluteString)

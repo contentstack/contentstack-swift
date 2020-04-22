@@ -29,6 +29,14 @@ class SyncAPITest: XCTestCase {
               syncTypes: [SyncStack.SyncableTypes] = [.all],
               networkExpectation: XCTestExpectation,
               then completion:@escaping (_ space: SyncStack) -> Void) {
+        SyncAPITest.stack.sync { (result: Result<SyncStack, Error>) in
+                        switch result {
+            case .success(let syncStack):
+                completion(syncStack)
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+        }
         SyncAPITest.stack.sync(syncStack, syncTypes: syncTypes, then: { (result: Result<SyncStack, Error>) in
             switch result {
             case .success(let syncStack):
