@@ -100,11 +100,56 @@ public final class ContentTypeQuery: BaseQuery {
         self.cachePolicy = stack.cachePolicy
     }
 
+    /// Use this method to do a search on `ContentType` which enables
+    /// searching for entries based on value's for members of referenced entries.
+    ///
+    /// - Parameters:
+    ///   - queryableCodingKey: The member of your `QueryableCodingKey`
+    ///   that  you are performing your select operation against.
+    ///   - operation: The query operation used in the query.
+    /// - Returns: A `ContentTypeQuery` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.asset().query().where(queryableCodingKey: .title, .equals("ContentType Title"))
+    /// .find { (result: Result<ContentstackResponse<ContentType>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with ContentType array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
+
     public func `where`(queryableCodingKey: ContentTypeModel.QueryableCodingKey, _
         operation: Query.Operation) -> ContentTypeQuery {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
+    /// Include URI paramertes to fetch ContentType with Global Fields and Count.
+    /// - Parameters:
+    ///   - params: The member of your `ContentTypeQuery.Include` that you want to include in response
+    /// - Returns: A AssetQuery to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.asset().query().include(params: [.all])
+    /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with ContentTypeModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     public func include(params: Include) -> Self {
         if params.contains(.count) {
             self.parameters[QueryParameter.includeCount] = true
@@ -116,6 +161,7 @@ public final class ContentTypeQuery: BaseQuery {
     }
 }
 
+/// To fetch all or find  Assets use `AssetQuery`.
 public final class AssetQuery: BaseQuery {
     internal typealias ResourceType = AssetModel
 
@@ -132,10 +178,56 @@ public final class AssetQuery: BaseQuery {
         self.cachePolicy = stack.cachePolicy
     }
 
-    public func `where`(queryableCodingKey: AssetModel.QueryableCodingKey, _ operation: Query.Operation) -> AssetQuery {
+    /// Use this method to do a search on `Assets` which enables
+    /// searching for entries based on value's for members of referenced entries.
+    ///
+    /// - Parameters:
+    ///   - queryableCodingKey: The member of your `QueryableCodingKey`
+    ///   that  you are performing your select operation against.
+    ///   - operation: The query operation used in the query.
+    ///
+    /// - Returns: A AssetQuery to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.asset().query().where(queryableCodingKey.title, .equals("Asset Title"))
+    /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
+
+    public func `where`(queryableCodingKey: AssetModel.QueryableCodingKey,_ operation: Query.Operation) -> AssetQuery {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
+    /// Include URI paramertes to fetch Asset with relative url and dimansion
+    /// - Parameters:
+    ///   - params: The member of your `AssetQuery.Include` that you want to include in response
+    /// - Returns: A AssetQuery to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.asset().query().include(params: [.all])
+    /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     public func include(params: Include) -> AssetQuery {
         if params.contains(.count) {
             self.parameters[QueryParameter.includeCount] = true

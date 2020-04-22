@@ -6,7 +6,7 @@
 //
 
 import Foundation
-public extension Decoder {
+internal extension Decoder {
 
     var timeZone: TimeZone? {
         return userInfo[.timeZoneContextKey] as? TimeZone

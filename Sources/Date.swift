@@ -9,9 +9,9 @@ import Foundation
 
 // Formatter and extensions pulled from: https://stackoverflow.com/a/28016692/4068264
 // and https://stackoverflow.com/a/46538676/4068264
-public extension Date {
+internal extension Date {
 
-    internal static let supportedFormats: [String] = [
+    static let supportedFormats: [String] = [
         "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX",
         "yyyy-MM-dd",
         "yyyy-MM-dd'T'HH:mm",
@@ -66,7 +66,7 @@ public extension Date {
     }
 }
 
-public extension String {
+internal extension String {
 
     /// Return a `Date` object if the current String is in the right format.
     var iso8601StringDate: Date? {

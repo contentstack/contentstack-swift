@@ -1,6 +1,6 @@
 public struct Contentstack {
 
-    /// Create a new Stack instance with stack's apikey, token, environment name and config.
+    /// Create a new Stack instance with stack's `apikey`, `deliveryToken`, `environment` name and `config`.
     ///
     /// - Parameters:
     ///   - apiKey: stack apiKey.
@@ -11,6 +11,20 @@ public struct Contentstack {
     ///   - apiVersion: API version of Contentstack api server.
     ///   - config: config of stack.
     /// - Returns: Stack instance
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// // Initiate Stack instance for `EU` region:
+    ///
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment,
+    ///             region: .eu)
+    /// ```
     public static func stack(apiKey: String,
                              deliveryToken: String,
                              environment: String,

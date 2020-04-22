@@ -23,16 +23,23 @@ internal enum ResponseCodingKeys: String, CodingKey {
     case contentTypes = "content_types", contentType = "content_type"
 }
 
+/// This is the result of any request of collection from Contentstack,
+
 public final class ContentstackResponse<ItemType>: HomogeneousResponse, Decodable
 where ItemType: EndpointAccessible & Decodable {
+    /// The resources which are part of the array response.
     public var items: [ItemType] = []
 
+    /// The maximum number of resources originally requested.
     public var limit: UInt?
 
+    /// The number of elements skipped when performing the request.
     public var skip: UInt?
 
+    /// The total number of resources which matched the original request.
     public var count: UInt?
 
+    /// The dictionary of fields from the response that are included in API request.
     public var fields: [String: Any]?
 
     public init(from decoder: Decoder) throws {
