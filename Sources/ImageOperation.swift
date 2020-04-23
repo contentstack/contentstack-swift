@@ -16,78 +16,78 @@ import Foundation
 /// See [Image Delivery API](https://www.contentstack.com/docs/developers/apis/image-delivery-api)
 internal enum ImageOperation: Equatable, Hashable {
 
-    ///The `auto` parameter lets you enable the functionality that automates certain image optimization features.
-    ///See [Automate Optimization](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#automate-optimization)
+    /// The `auto` parameter lets you enable the functionality that automates certain image optimization features.
+    /// See [Automate Optimization](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#automate-optimization)
     case auto
-    ///The `quality` parameter lets you control the compression level of images that have Lossy file format.
-    ///The value for this parameters can be entered in any whole number (taken as a percentage) between 1 and 100.
-    ///See [Control Quality](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#control-quality)
+    /// The `quality` parameter lets you control the compression level of images that have Lossy file format.
+    /// The value for this parameters can be entered in any whole number (taken as a percentage) between 1 and 100.
+    /// See [Control Quality](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#control-quality)
     case qualiy(UInt)
-    ///The `format` parameter lets you converts a given image from one format to another.
-    ///See [Convert Formats](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#convert-formats)
+    /// The `format` parameter lets you converts a given image from one format to another.
+    /// See [Convert Formats](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#convert-formats)
     case format(Format)
-    ///The `width` parameter lets you dynamically resize the width of the image by specifying pixels or percentage.
-    ///The `height` parameter lets you dynamically resize the height of the image by specifying pixels or percentage.
-    ///The `disable` parameter disables the functionality that is enabled by default.
-    ///See [Resize Images](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#resize-images)
+    /// The `width` parameter lets you dynamically resize the width of the image by specifying pixels or percentage.
+    /// The `height` parameter lets you dynamically resize the height of the image by specifying pixels or percentage.
+    /// The `disable` parameter disables the functionality that is enabled by default.
+    /// See [Resize Images](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#resize-images)
     case resize(Resize)
-    ///The `crop` parameter allows you to remove pixels from an image.
-    ///See [Crop Images](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#crop-images)
+    /// The `crop` parameter allows you to remove pixels from an image.
+    /// See [Crop Images](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#crop-images)
     case crop(Crop)
-    ///The `canvas` parameter allows you to increase the size of the canvas that surrounds an image.
-    ///See [Canvas](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#canvas)
+    /// The `canvas` parameter allows you to increase the size of the canvas that surrounds an image.
+    /// See [Canvas](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#canvas)
     case canvas(Canvas)
-    ///The `fit` parameter enables you to fit the given image properly within the specified `height` and `width`.
-    ///You need to provide values for the `height`, `width` and `fit` parameters.
-    ///See [Fit Mode](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#fit-mode)
+    /// The `fit` parameter enables you to fit the given image properly within the specified `height` and `width`.
+    /// You need to provide values for the `height`, `width` and `fit` parameters.
+    /// See [Fit Mode](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#fit-mode)
     case fit(Fit)
-    ///The `trim` parameter lets you trim an image from the edges.
-    ///See [Trim Images](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#trim-images)
+    /// The `trim` parameter lets you trim an image from the edges.
+    /// See [Trim Images](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#trim-images)
     case trim(NSEdgeInsets)
-    ///The `orient` parameter lets you control the cardinal orientation of the given image.
-    ///See [Reorient Images](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#reorient-images)
+    /// The `orient` parameter lets you control the cardinal orientation of the given image.
+    /// See [Reorient Images](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#reorient-images)
     case orient(Orientation)
-    ///The `overlay` parameter allows you to put one image on top of another.
-    ///You need to specify the relative URL of the image as value for this parameter.
-    ///See[Overlay Settings](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#overlay-settings)
+    /// The `overlay` parameter allows you to put one image on top of another.
+    /// You need to specify the relative URL of the image as value for this parameter.
+    /// See[Overlay Settings](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#overlay-settings)
     case overlay(String, [OverlayType])
-    ///The `overlay-pad` parameter allows you to add padding pixels to the edges of an overlay image.
-    ///You need to specify the relative URL of the image as value for this parameter.
-    ///See [Overlay Pad](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#overlay-pad)
+    /// The `overlay-pad` parameter allows you to add padding pixels to the edges of an overlay image.
+    /// You need to specify the relative URL of the image as value for this parameter.
+    /// See [Overlay Pad](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#overlay-pad)
     case overlayPad(NSEdgeInsets)
-    ///The `pad` parameter lets you add extra pixels to the edges of an image.
-    ///This is useful if you want to add whitespace or border to an image.
-    ///The value for this parameter can be given in pixels or percentage.
-    ///See [Pad](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#pad)
+    /// The `pad` parameter lets you add extra pixels to the edges of an image.
+    /// This is useful if you want to add whitespace or border to an image.
+    /// The value for this parameter can be given in pixels or percentage.
+    /// See [Pad](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#pad)
     case pad(NSEdgeInsets)
-    ///The `bg-color` parameter lets you set a backgroud color for the given image.
-    ///See [Background Color](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#background-color)
+    /// The `bg-color` parameter lets you set a backgroud color for the given image.
+    /// See [Background Color](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#background-color)
     case color(Color)
-    ///The `dpr` parameter lets you deliver images with appropriate size
-    ///to devices that come with a defined device pixel ratio.
-    ///See [Device Pixel Ratio](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#device-pixel-ratio)
+    /// The `dpr` parameter lets you deliver images with appropriate size
+    /// to devices that come with a defined device pixel ratio.
+    /// See [Device Pixel Ratio](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#device-pixel-ratio)
     case dpr(UInt)
-    ///The `blur` parameter allows you to decrease the focus and clarity of a given image.
-    ///See [Blur](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#blur)
+    /// The `blur` parameter allows you to decrease the focus and clarity of a given image.
+    /// See [Blur](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#blur)
     case blur(UInt)
-    ///The `saturation` parameter allows you to increase or decrease
-    ///the intensity of the colors in a given image.
-    ///See [Saturation](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#saturation)
+    /// The `saturation` parameter allows you to increase or decrease
+    /// the intensity of the colors in a given image.
+    /// See [Saturation](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#saturation)
     case saturation(Double)
-    ///The `contrast` parameter allows you to increase or decrease
-    ///the difference between the darkest and lightest tones in a given image.
-    ///See [Contrast](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#contrast)
+    /// The `contrast` parameter allows you to increase or decrease
+    /// the difference between the darkest and lightest tones in a given image.
+    /// See [Contrast](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#contrast)
     case contrast(Double)
-    ///The `brightness` parameter allows you to increase or decrease
-    ///the intensity with which an image reflects or radiates perceived light.
-    ///See [Brightness](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#brightness)
+    /// The `brightness` parameter allows you to increase or decrease
+    /// the intensity with which an image reflects or radiates perceived light.
+    /// See [Brightness](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#brightness)
     case brightness(Double)
-    ///The frame parameter fetches the first frame from an animated GIF
-    ///(Graphics Interchange Format) file that comprises a sequence of moving images.
-    ///See [Fetch first frame](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#fetch-first-frame)
+    /// The frame parameter fetches the first frame from an animated GIF
+    /// (Graphics Interchange Format) file that comprises a sequence of moving images.
+    /// See [Fetch first frame](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#fetch-first-frame)
     case fetchFirstFrame
-    ///The `sharpen` parameter allows you to increase the definition of the edges of objects in an image.
-    ///See [Sharpen](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#sharpen)
+    /// The `sharpen` parameter allows you to increase the definition of the edges of objects in an image.
+    /// See [Sharpen](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#sharpen)
     case sharpen(amount: UInt, radius: UInt, threshold: UInt)
     internal func urlQueryItem() throws -> [URLQueryItem] {
         switch self {
@@ -237,346 +237,5 @@ internal func == (lhs: ImageOperation, rhs: ImageOperation) -> Bool {
     case (.fetchFirstFrame, .fetchFirstFrame): return true
     case (.sharpen, .sharpen): return true
     default: return false
-    }
-}
-
-///The `resize-filter` parameter allows you to use the r
-///esizing filter to increase or decrease the number of pixels in a given image.
-///See [Resize-filter](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#resize-filter)
-public enum ResizeFilter: String {
-    case none
-    case nearest
-    case bilinare
-    case bicubic
-    case lanczos2
-    case lanczos3
-
-    internal func urlQueryItem(queryItems: inout [URLQueryItem]) {
-        switch self {
-        case .nearest, .bilinare, .bicubic, .lanczos2, .lanczos3:
-            queryItems.append(URLQueryItem(name: ImageParameter.resizeFilter, value: self.rawValue))
-        default:
-            return
-        }
-    }
-}
-
-public struct Resize {
-    public let size: Size
-    public var disableUpscale: Bool = false
-    public var filter: ResizeFilter = .none
-    internal func urlQueryItem() -> [URLQueryItem] {
-        var queryItems = [URLQueryItem]()
-        size.urlQueryItem(queryItems: &queryItems)
-        if disableUpscale {
-            queryItems.append(URLQueryItem(name: ImageParameter.disable, value: "upscale"))
-        }
-        self.filter.urlQueryItem(queryItems: &queryItems)
-        return queryItems
-    }
-}
-
-public struct Size {
-    public var width: UInt?
-    public var height: UInt?
-
-    internal func urlQueryItem(queryItems: inout [URLQueryItem]) {
-        if let width = width {
-            queryItems.append(URLQueryItem(name: ImageParameter.width, value: String(width)))
-        }
-        if let height = height {
-            queryItems.append(URLQueryItem(name: ImageParameter.height, value: String(height)))
-        }
-    }
-}
-
-public enum Mode {
-    case none
-    ///You can append the safe parameter when cropping an image.
-    case safe
-    ///You can also specify the smart parameter to crop a given image using content-aware algorithms
-    case smart
-
-    internal var value: String? {
-        switch self {
-        case .none:                     return nil
-        case .safe:                     return "safe"
-        case .smart:                    return "smart"
-        }
-    }
-}
-
-public enum Format {
-    ///Progressive JPEG Format
-    case pjpg
-    /// JPEG format
-    case jpeg
-    /// GIF format
-    case gif
-    /// PNG format
-    case png
-    /// WEBP format
-    case webp
-    /// WEBP Lossy format
-    case webply
-    /// WEBP Lossless format
-    case webpll
-
-    internal var value: String {
-        switch self {
-        case .jpeg:                     return "jpg"
-        case .pjpg:                     return "pjpg"
-        case .gif:                      return "gif"
-        case .png:                      return "png"
-        case .webp:                     return "webp"
-        case .webply:                   return "webply"
-        case .webpll:                   return "webpll"
-        }
-    }
-}
-
-public enum Crop {
-    ///Crop by width and height
-    case `default`(width: UInt, height: UInt)
-    ///Crop by aspect ratio
-    case aspectRatio (Size, ratio: String, mode: Mode = .none)
-    ///Crop sub region
-    case region(width: UInt, height: UInt, xRegion: Double, yRegion: Double, mode: Mode = .none)
-    ///Crop and offset
-    case offset(width: UInt, height: UInt, xOffset: Double, yOffset: Double, mode: Mode = .none)
-
-    internal func urlQueryItem() throws -> [URLQueryItem] {
-        var values = [String]()
-        var queryItems = [URLQueryItem]()
-        switch self {
-        case .default(let size):
-            values = [
-                String(size.width),
-                String(size.height)
-            ]
-        case .aspectRatio(let sizes, let ratio, let mode):
-            sizes.urlQueryItem(queryItems: &queryItems)
-            if queryItems.count == 0 {
-                let message = """
-                Along with the crop parameter aspect-ration,
-                you also need to specify either the width or height parameter or both
-                in the API request to return an output image with the correct dimensions.
-                """
-                throw ImageTransformError(message: message)
-            }
-            values = [ratio]
-            if let value = mode.value {
-                values.append(value)
-            }
-        case .region(let region):
-            values = [
-                String(region.width),
-                String(region.height),
-                "x\(String(region.xRegion))",
-                "y\(String(region.yRegion))"
-            ]
-            if let value = region.mode.value {
-                values.append(value)
-            }
-        case .offset(let offset):
-            values = [
-                String(offset.width),
-                String(offset.height),
-                "offset-x\(String(offset.xOffset))",
-                "offset-y\(String(offset.yOffset))"
-            ]
-            if let value = offset.mode.value {
-                values.append(value)
-            }
-        }
-
-        if values.count > 0 {
-            queryItems.append(URLQueryItem(name: ImageParameter.crop, value: values.joined(separator: ",")))
-        }
-        return queryItems
-    }
-}
-
-public enum Canvas {
-    ///Crop by width and height
-    case `default`(width: UInt, height: UInt)
-    ///Crop by aspect ratio
-    case aspectRatio (Size, ratio: String)
-    ///Crop sub region
-    case region(width: UInt, height: UInt, xRegion: Double, yRegion: Double)
-    ///Crop and offset
-    case offset(width: UInt, height: UInt, xOffset: Double, yOffset: Double)
-
-    internal func urlQueryItem() throws -> [URLQueryItem] {
-        var values = [String]()
-        var queryItems = [URLQueryItem]()
-        switch self {
-        case .default(let size):
-            values = [
-                String(size.width),
-                String(size.height)
-            ]
-        case .aspectRatio(let sizes, let ratio):
-            sizes.urlQueryItem(queryItems: &queryItems)
-            if queryItems.count == 0 {
-                let message = """
-                Along with the canvas parameter aspect-ration,
-                you also need to specify either the width or height parameter or both
-                in the API request to return an output image with the correct dimensions.
-                """
-                throw ImageTransformError(message: message)
-            }
-            values = [ratio]
-        case .region(let region):
-            values = [
-                String(region.width),
-                String(region.height),
-                "x\(String(region.xRegion))",
-                "y\(String(region.yRegion))"
-            ]
-        case .offset(let offset):
-            values = [
-                String(offset.width),
-                String(offset.height),
-                "offset-x\(String(offset.xOffset))",
-                "offset-y\(String(offset.yOffset))"
-            ]
-        }
-        if values.count > 0 {
-            queryItems.append(URLQueryItem(name: ImageParameter.canvas, value: values.joined(separator: ",")))
-        }
-        return queryItems
-    }
-}
-
-public enum Fit {
-    case bounds(Size)
-    case crop(Size)
-
-    internal func urlQueryItem() throws -> [URLQueryItem] {
-        var queryItems = [URLQueryItem]()
-        switch self {
-        case .bounds(let sizes):
-            sizes.urlQueryItem(queryItems: &queryItems)
-            queryItems.append(URLQueryItem(name: ImageParameter.fit, value: ImageParameter.bounds))
-
-        case .crop(let sizes):
-            sizes.urlQueryItem(queryItems: &queryItems)
-            queryItems.append(URLQueryItem(name: ImageParameter.fit, value: ImageParameter.crop))
-        }
-        return queryItems
-    }
-}
-
-public enum Orientation: Int {
-    case `default`                  = 1
-    case flipHorizontal
-    case flipHorizontalVertical
-    case flipVerticle
-    case flipHorizontalLeft
-    case right
-    case flipHorizontalRight
-    case left
-    internal func urlQueryItem() throws -> [URLQueryItem] {
-        return [URLQueryItem(name: ImageParameter.orient, value: self.rawValue.stringValue)]
-    }
-}
-public enum OverlayType {
-    ///The `overlay-align` parameter lets you define the position of the overlay image.
-    case align(OverlayAlign)
-    ///The `overlay-repeat` parameter lets you define how the overlay image will be repeated on the given image.
-    case `repeat`(OverlayRepeat)
-    ///The `overlay-width` parameter lets you define the width of the overlay image.
-    ///The` overlay-height` parameter lets you define the height of the overlay image.
-    case size(Size)
-
-    internal func urlQueryItem(queryItems: inout [URLQueryItem]) {
-        switch self {
-        case .align(let align):
-            return queryItems.append(align.urlQueryItem())
-        case .repeat(let `repeat`):
-            return queryItems.append(`repeat`.urlQueryItem())
-        case .size(let size):
-            if let width = size.width {
-                queryItems.append(URLQueryItem(name: ImageParameter.overlayWidth, value: String(width)))
-            }
-            if let height = size.height {
-                queryItems.append(URLQueryItem(name: ImageParameter.overlayHeight, value: String(height)))
-            }
-        }
-    }
-}
-
-public enum OverlayAlign: String {
-    case top
-    case bottom
-    case left
-    case right
-    case middel
-    case center
-    case topLeft        = "top,left"
-    case topRight       = "top,right"
-    case bottomLeft     = "bottom,left"
-    case bottomRight    = "bottom,right"
-
-    internal func urlQueryItem() -> URLQueryItem {
-        return URLQueryItem(name: ImageParameter.overlayAlign, value: self.rawValue)
-    }
-}
-
-public enum OverlayRepeat: String {
-    case both
-    case horizontal = "x"
-    case verticle   = "y"
-    internal func urlQueryItem() -> URLQueryItem {
-           return URLQueryItem(name: ImageParameter.overlayRepeat, value: self.rawValue)
-       }
-}
-
-public enum Color {
-    ///Hexadecimal valuet should be `3-digit` or `6-digit`.
-    case hex(String)
-    /// `Red`, `Blue`, `Green` value which defines the intensity of the corresponding color,
-    /// with the value ranging anywhere between `0` and `255` for each.
-    case rgb(red: UInt, green: UInt, blue: UInt)
-    /// `Red`, `Blue`, `Green` value which defines the intensity of the corresponding color,
-    /// with the value ranging anywhere between `0` and `255` for each.
-    /// The `alpha` value defines the transparency, with `0.0` being fully transparent
-    /// and `1.0` being completely opaque.
-    case rgba(red: UInt, green: UInt, blue: UInt, alpha: Double)
-    internal func urlQueryItem() throws -> [URLQueryItem] {
-        switch self {
-        case .hex(let hexColor) where hexColor.isHexColor():
-            return [URLQueryItem(name: ImageParameter.backgroundColor, value: hexColor)]
-        case .rgb(red: let red, green: let green, blue: let blue)
-            where red >= 0 && red <= 255 && green >= 0 &&  green <= 255 && blue >= 0 && blue <= 255:
-            return [URLQueryItem(name: ImageParameter.backgroundColor, value: "\(red)\(green)\(blue)")]
-        case .rgba(red: let red, green: let green, blue: let blue, alpha: let alpha)
-            where red >= 0 && red <= 255
-                && green >= 0 && green <= 255
-                && blue >= 0 && blue <= 255
-                && alpha >= 0.0 && alpha <= 1.0:
-            return [URLQueryItem(name: ImageParameter.backgroundColor, value: "\(red)\(green)\(blue)\(alpha)")]
-        case .hex:
-            let message = """
-            Invalid Hexadecimal value,
-            it should be 3-digit or 6-digit hexadecimal value.
-            """
-            throw ImageTransformError(message: message)
-        case .rgb:
-            let message = """
-            Invalid Red or Blue or Green or alpha value,
-            the value ranging anywhere between 0 and 255 for each.
-            """
-            throw ImageTransformError(message: message)
-        case .rgba:
-            let message = """
-            Invalid Red or Blue or Green or alpha value,
-            the value ranging anywhere between 0 and 255 for each
-            and the alpha value with 0.0 being fully transparent
-            and 1.0 being completely opaque.
-            """
-            throw ImageTransformError(message: message)
-        }
     }
 }

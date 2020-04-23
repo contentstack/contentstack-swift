@@ -61,7 +61,7 @@ public enum SDKError: Error, CustomDebugStringConvertible {
     }
 }
 
-/// Information regarding an error received from Contentful's API.
+/// Information regarding an error received from Contentstack's API.
 public class APIError: Decodable, Error, CustomDebugStringConvertible {
     public var debugDescription: String {
         let statusCodeString = "HTTP status code " + String(statusCode)

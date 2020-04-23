@@ -9,6 +9,8 @@ import Foundation
 
 extension Query {
 
+    
+    /// When fetching entries, you can perform `and` or `or` operation.
     public enum Operator {
         /// And Operator: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#and-operator>
         case and([Query])
@@ -21,6 +23,7 @@ extension Query {
             case .or:   return "$or"
             }
         }
+
         internal var value: [[String: Any]] {
             switch self {
             case .and(let queries):
@@ -36,6 +39,7 @@ extension Query {
         }
     }
 
+    /// When fetching entries, you can search base on reference `$in` or `$nin`.
     public enum Reference {
         /// Reference Search Equals: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#reference-search-equals>
         case include(Query)
@@ -60,7 +64,7 @@ extension Query {
             return [self.string: self.value].jsonString
         }
     }
-
+    /// When fetching entries, you can search on field key paths.
     public enum Operation {
         ///Equals Operator: <https://www.contentstack.com/docs/apis/content-delivery-api/#equals-operator>
         case equals(QueryableRange)
@@ -132,7 +136,7 @@ extension Query {
                     return value
                 }
                 return value.stringValue
-            case .exists(let value):                return value.stringValue
+            case .exists(let value):                return value
             case .matches(let value):               return value
             }
         }

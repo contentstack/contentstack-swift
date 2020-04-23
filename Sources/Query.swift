@@ -8,12 +8,15 @@
 import Foundation
 
 public class Query: BaseQuery, EntryQueryable {
-    internal typealias ResourceType = EntryModel
+    public typealias ResourceType = EntryModel
 
-    internal var stack: Stack
     internal var contentTypeUid: String
-    internal var parameters: Parameters = [:]
-    internal var queryParameter: [String: Any] = [:]
+    /// Stack instance for Entry to be fetched
+    public var stack: Stack
+    /// URI Parameters
+    public var parameters: [String: Any] = [:]
+    /// Query Parameters
+    public var queryParameter: [String: Any] = [:]
 
     public var cachePolicy: CachePolicy
 
@@ -24,14 +27,91 @@ public class Query: BaseQuery, EntryQueryable {
         self.parameters[QueryParameter.contentType] = contentTypeUid
     }
 
+    /// Use this method to do a search on `Entries` which enables
+    /// searching for entries based on value's for field key Path.
+    ///
+    /// - Parameters:
+    ///   - path: The field key path that  you are performing your select operation against.
+    ///   - operation: The query operation used in the query.
+    ///
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query()
+    /// .where(valueAtKey: .title, .equals("Entry Title"))
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     public func `where`(valueAtKey path: String, _ operation: Query.Operation) -> Query {
         return self.where(valueAtKeyPath: path, operation)
     }
 
+    /// Use this method to do a search on `Entries` which enables
+    /// searching for entries based on value's queryable coding from `EntryModel.FieldKeys`.
+    ///
+    /// - Parameters:
+    ///   - queryableCodingKey: The member of your `EntryModel.FieldKeys`
+    ///   that  you are performing your select operation against.
+    ///   - operation: The query operation used in the query.
+    ///
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query()
+    /// .where(queryableCodingKey: .title, .equals("Entry Title"))
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     public func `where`(queryableCodingKey: EntryModel.FieldKeys, _ operation: Query.Operation) -> Query {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
+    /// Use this method to do a search on `Entries` which enables
+    /// searching for entries based on value's for members of referenced entries.
+    ///
+    /// - Parameters:
+    ///   - keyPath: The reference field key path that  you
+    ///   are performing your select operation against.
+    ///   - operation: The query operation used in the query.
+    ///
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query()
+    /// .where(referenceAtKeyPath: .title, .equals("Entry Title"))
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     public func `where`(referenceAtKeyPath keyPath: String, _ operation: Query.Reference) -> Query {
         if let query = operation.query {
             self.queryParameter[keyPath] = query
@@ -39,28 +119,131 @@ public class Query: BaseQuery, EntryQueryable {
         return self
     }
 
+    /// When fetching entries, you can sort them in the ascending order
+    /// with respect to the value of a specific field in the response body.
+    /// - Parameter propertyName: The member of your `EntryModel.FieldKeys` that you are performing order by ascending.
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query()
+    /// .orderByAscending(propertyName: .title)
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     @discardableResult
     public func orderByAscending(propertyName: EntryModel.FieldKeys) -> Query {
         return self.orderByAscending(keyPath: propertyName.stringValue)
     }
 
+    /// When fetching entries, you can sort them in the decending order
+    /// with respect to the value of a specific field in the response body.
+    /// - Parameter propertyName: The member of your `EntryModel.FieldKeys` that you are performing order by decending.
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query()
+    /// .orderByDecending(propertyName: .title)
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     @discardableResult
     public func orderByDecending(propertyName: EntryModel.FieldKeys) -> Query {
         return self.orderByDecending(keyPath: propertyName.stringValue)
     }
 
+    /// Use this method to do a search on `Entries`.
+    /// - Parameter text: The text string to match against.
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query()
+    /// .search(for: "searchString")
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     @discardableResult
     public func search(for text: String) -> Query {
         self.parameters[QueryParameter.typeahead] = text
         return self
     }
 
+    /// Use this method to do a search on tags for `Entries`.
+    /// - Parameter text: The text string to match against.
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query()
+    /// .tags(for: "tagSearchString")
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     @discardableResult
     public func tags(for text: String) -> Query {
         self.parameters[QueryParameter.tags] = text
         return self
     }
 
+    /// Use this method to do a search on `Entries` which enables
+    /// searching for entries based on `Query.Operator`.
+    /// - Parameter operator: The member of `Query.Operator` that you are performing
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query()
+    /// .tags(for: "tagSearchString")
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     public func `operator`(_ operator: Query.Operator) -> Query {
         self.queryParameter[`operator`.string] = `operator`.value
         return self
@@ -69,15 +252,83 @@ public class Query: BaseQuery, EntryQueryable {
 
 public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
     internal typealias ResourceType = EntryType
+    /// Use this method to do a search on `Entries` which enables
+    /// searching for entries based on value's queryable coding from`EntryType.FieldKeys`.
+    ///
+    /// - Parameters:
+    ///   - queryableCodingKey: The member of your `EntryType.FieldKeys`
+    ///   that  you are performing your select operation against.
+    ///   - operation: The query operation used in the query.
+    ///
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query(Product.Self)
+    /// .where(queryableCodingKey: .title, .equals("Entry Title"))
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     public func `where`(queryableCodingKey: EntryType.FieldKeys, _ operation: Query.Operation) -> QueryOn<EntryType> {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
+    /// When fetching entries, you can sort them in the ascending order
+    /// with respect to the value of a specific field in the response body.
+    /// - Parameter propertyName: The member of your `EntryType.FieldKeys` that you are performing order by ascending.
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query(Product.Self)
+    /// .orderByAscending(propertyName: .title)
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     @discardableResult
     public func orderByAscending(propertyName: EntryType.FieldKeys) -> QueryOn<EntryType> {
         return self.orderByAscending(keyPath: propertyName.stringValue)
     }
 
+    /// When fetching entries, you can sort them in the decending order
+    /// with respect to the value of a specific field in the response body.
+    /// - Parameter propertyName: The member of your `EntryType.FieldKeys` that you are performing order by decending.
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query(Product.Self)
+    /// .orderByDecending(propertyName: .title)
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     @discardableResult
     public func orderByDecending(propertyName: EntryType.FieldKeys) -> QueryOn<EntryType> {
         return self.orderByDecending(keyPath: propertyName.stringValue)
@@ -85,13 +336,14 @@ public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
 }
 
 public final class ContentTypeQuery: BaseQuery {
-    internal typealias ResourceType = ContentTypeModel
+    public typealias ResourceType = ContentTypeModel
 
-    internal var stack: Stack
-
-    internal var parameters: Parameters = [:]
-
-    internal var queryParameter: [String: Any] = [:]
+    /// Stack instance for Entry to be fetched
+    public var stack: Stack
+    /// URI Parameters
+    public var parameters: [String: Any] = [:]
+    /// Query Parameters
+    public var queryParameter: [String: Any] = [:]
 
     public var cachePolicy: CachePolicy
 
@@ -163,13 +415,14 @@ public final class ContentTypeQuery: BaseQuery {
 
 /// To fetch all or find  Assets use `AssetQuery`.
 public final class AssetQuery: BaseQuery {
-    internal typealias ResourceType = AssetModel
+    public typealias ResourceType = AssetModel
 
-    internal var stack: Stack
-
-    internal var parameters: Parameters = [:]
-
-    internal var queryParameter: [String: Any] = [:]
+    /// Stack instance for Entry to be fetched
+    public var stack: Stack
+    /// URI Parameters
+    public var parameters: [String: Any] = [:]
+    /// Query Parameters
+    public var queryParameter: [String: Any] = [:]
 
     public var cachePolicy: CachePolicy
 
@@ -194,7 +447,7 @@ public final class AssetQuery: BaseQuery {
     ///             deliveryToken: deliveryToken,
     ///             environment: environment)
     ///
-    /// stack.asset().query().where(queryableCodingKey.title, .equals("Asset Title"))
+    /// stack.asset().query().where(queryableCodingKey: .title, .equals("Asset Title"))
     /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
     ///     switch result {
     ///     case .success(let contentstackResponse):
@@ -204,7 +457,7 @@ public final class AssetQuery: BaseQuery {
     ///     }
     /// }
 
-    public func `where`(queryableCodingKey: AssetModel.QueryableCodingKey,_ operation: Query.Operation) -> AssetQuery {
+    public func `where`(queryableCodingKey: AssetModel.QueryableCodingKey, _ operation: Query.Operation) -> AssetQuery {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
 
@@ -240,5 +493,4 @@ public final class AssetQuery: BaseQuery {
         }
         return self
     }
-
 }
