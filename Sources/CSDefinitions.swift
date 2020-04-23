@@ -30,7 +30,9 @@ internal enum HTTPMethod: String {
 /// - us: This region is for US Cloud
 /// - eu: This region is for EU Cloud
 public enum ContentstackRegion {
+    /// This region is for US Cloud
     case us
+    /// This region is for EU Cloud
     case eu
 }
 /// The cache policies allow you to define the source from where the SDK will retrieve the content.

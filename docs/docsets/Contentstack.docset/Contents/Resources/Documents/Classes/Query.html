@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Query Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/Query" class="dashAnchor"></a>
+    <a title="Query Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Contentstack  Docs</a> (76% documented)</p>
+        <p class="header-right"><a href="https://github.com/contentstack/contentstack-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Contentstack Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Query Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/APIError.html">APIError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/APIError/ErrorInfo.html">– ErrorInfo</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Asset.html">Asset</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AssetQuery.html">AssetQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/AssetQuery/Include.html">– Include</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentType.html">ContentType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentTypeQuery.html">ContentTypeQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentTypeQuery/Include.html">– Include</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ContentstackResponse.html">ContentstackResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Entry.html">Entry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ImageTransform.html">ImageTransform</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Query.html">Query</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Query/Operator.html">– Operator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Query/Reference.html">– Reference</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Query/Operation.html">– Operation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Query/Include.html">– Include</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/QueryOn.html">QueryOn</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Stack.html">Stack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncStack.html">SyncStack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncStack/SyncableTypes.html">– SyncableTypes</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/SyncStack/PublishType.html">– PublishType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CachePolicy.html">CachePolicy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Canvas.html">Canvas</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Color.html">Color</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentstackLogger.html">ContentstackLogger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentstackLogger/LogLevel.html">– LogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentstackLogger/LogType.html">– LogType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ContentstackRegion.html">ContentstackRegion</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Crop.html">Crop</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Endpoint.html">Endpoint</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Fit.html">Fit</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Format.html">Format</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Host.html">Host</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Mode.html">Mode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Orientation.html">Orientation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OverlayAlign.html">OverlayAlign</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OverlayRepeat.html">OverlayRepeat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/OverlayType.html">OverlayType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ResizeFilter.html">ResizeFilter</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/ResponseType.html">ResponseType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/SDKError.html">SDKError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/JSONDecoder.html">JSONDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/AssetFields.html">AssetFields</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BaseQuery.html">BaseQuery</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CachePolicyAccessible.html">CachePolicyAccessible</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ContentTypeDecodable.html">ContentTypeDecodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/CustomLogger.html">CustomLogger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/EndpointAccessible.html">EndpointAccessible</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/EntryFields.html">EntryFields</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/EntryQueryable.html">EntryQueryable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FieldKeysQueryable.html">FieldKeysQueryable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/QueryProtocol.html">QueryProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Queryable.html">Queryable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/QueryableRange.html">QueryableRange</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ResourceQueryable.html">ResourceQueryable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SystemFields.html">SystemFields</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Contentstack.html">Contentstack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ContentstackConfig.html">ContentstackConfig</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ImageTransformError.html">ImageTransformError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Resize.html">Resize</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Size.html">Size</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/NSEdgeInsets">NSEdgeInsets</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12Contentstack14ResultsHandlera">ResultsHandler</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Query</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Query</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/BaseQuery.html">BaseQuery</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/EntryQueryable.html">EntryQueryable</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Undocumented</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC12ResourceTypea"></a>
+                    <a name="//apple_ref/swift/Alias/ResourceType" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC12ResourceTypea">ResourceType</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">ResourceType</span> <span class="o">=</span> <span class="kt">EntryModel</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC5stackAA5StackCvp"></a>
+                    <a name="//apple_ref/swift/Property/stack" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC5stackAA5StackCvp">stack</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Stack instance for Entry to be fetched</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">stack</span><span class="p">:</span> <span class="kt"><a href="../Classes/Stack.html">Stack</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L15">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC10parametersSDySSypGvp"></a>
+                    <a name="//apple_ref/swift/Property/parameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC10parametersSDySSypGvp">parameters</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>URI Parameters</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L17">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC14queryParameterSDySSypGvp"></a>
+                    <a name="//apple_ref/swift/Property/queryParameter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC14queryParameterSDySSypGvp">queryParameter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Query Parameters</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">queryParameter</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L19">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack21CachePolicyAccessibleP05cacheC0AA0bC0Ovp"></a>
+                    <a name="//apple_ref/swift/Property/cachePolicy" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack21CachePolicyAccessibleP05cacheC0AA0bC0Ovp">cachePolicy</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">cachePolicy</span><span class="p">:</span> <span class="kt"><a href="../Enums/CachePolicy.html">CachePolicy</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L47">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC5where10valueAtKey_ACSS_AC9OperationOtF"></a>
+                    <a name="//apple_ref/swift/Method/where(valueAtKey:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC5where10valueAtKey_ACSS_AC9OperationOtF">where(valueAtKey:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use this method to do a search on <code>Entries</code> which enables
+searching for entries based on value&rsquo;s for field key Path.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUid</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">where</span><span class="p">(</span><span class="nv">valueAtKey</span><span class="p">:</span> <span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="o">.</span><span class="nf">equals</span><span class="p">(</span><span class="s">"Entry Title"</span><span class="p">))</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="p">`</span><span class="nv">where</span><span class="p">`(</span><span class="n">valueAtKey</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">operation</span><span class="p">:</span> <span class="kt">Query</span><span class="o">.</span><span class="kt"><a href="../Classes/Query/Operation.html">Operation</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Query</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The field key path that  you are performing your select operation against.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The query operation used in the query.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Query</code> to enable chaining.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L55-L57">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC5where18queryableCodingKey_AcA10EntryModelC9FieldKeysO_AC9OperationOtF"></a>
+                    <a name="//apple_ref/swift/Method/where(queryableCodingKey:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC5where18queryableCodingKey_AcA10EntryModelC9FieldKeysO_AC9OperationOtF">where(queryableCodingKey:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use this method to do a search on <code>Entries</code> which enables
+searching for entries based on value&rsquo;s queryable coding from <code>EntryModel.FieldKeys</code>.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUid</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">where</span><span class="p">(</span><span class="nv">queryableCodingKey</span><span class="p">:</span> <span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="o">.</span><span class="nf">equals</span><span class="p">(</span><span class="s">"Entry Title"</span><span class="p">))</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="p">`</span><span class="nv">where</span><span class="p">`(</span><span class="nv">queryableCodingKey</span><span class="p">:</span> <span class="kt">EntryModel</span><span class="o">.</span><span class="kt">FieldKeys</span><span class="p">,</span> <span class="n">_</span> <span class="nv">operation</span><span class="p">:</span> <span class="kt">Query</span><span class="o">.</span><span class="kt"><a href="../Classes/Query/Operation.html">Operation</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Query</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>queryableCodingKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The member of your <code>EntryModel.FieldKeys</code>
+that  you are performing your select operation against.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The query operation used in the query.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Query</code> to enable chaining.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L85-L87">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC5where18referenceAtKeyPath_ACSS_AC9ReferenceOtF"></a>
+                    <a name="//apple_ref/swift/Method/where(referenceAtKeyPath:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC5where18referenceAtKeyPath_ACSS_AC9ReferenceOtF">where(referenceAtKeyPath:<wbr>_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use this method to do a search on <code>Entries</code> which enables
+searching for entries based on value&rsquo;s for members of referenced entries.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUid</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">where</span><span class="p">(</span><span class="nv">referenceAtKeyPath</span><span class="p">:</span> <span class="o">.</span><span class="n">title</span><span class="p">,</span> <span class="o">.</span><span class="nf">equals</span><span class="p">(</span><span class="s">"Entry Title"</span><span class="p">))</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="p">`</span><span class="nv">where</span><span class="p">`(</span><span class="n">referenceAtKeyPath</span> <span class="nv">keyPath</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="n">_</span> <span class="nv">operation</span><span class="p">:</span> <span class="kt">Query</span><span class="o">.</span><span class="kt"><a href="../Classes/Query/Reference.html">Reference</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Query</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keyPath</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The reference field key path that  you
+are performing your select operation against.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The query operation used in the query.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Query</code> to enable chaining.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L115-L120">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC16orderByAscending12propertyNameAcA10EntryModelC9FieldKeysO_tF"></a>
+                    <a name="//apple_ref/swift/Method/orderByAscending(propertyName:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC16orderByAscending12propertyNameAcA10EntryModelC9FieldKeysO_tF">orderByAscending(propertyName:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>When fetching entries, you can sort them in the ascending order
+with respect to the value of a specific field in the response body.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUid</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">orderByAscending</span><span class="p">(</span><span class="nv">propertyName</span><span class="p">:</span> <span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">orderByAscending</span><span class="p">(</span><span class="nv">propertyName</span><span class="p">:</span> <span class="kt">EntryModel</span><span class="o">.</span><span class="kt">FieldKeys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Query</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>propertyName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The member of your <code>EntryModel.FieldKeys</code> that you are performing order by ascending.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Query</code> to enable chaining.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L144-L146">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC16orderByDecending12propertyNameAcA10EntryModelC9FieldKeysO_tF"></a>
+                    <a name="//apple_ref/swift/Method/orderByDecending(propertyName:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC16orderByDecending12propertyNameAcA10EntryModelC9FieldKeysO_tF">orderByDecending(propertyName:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>When fetching entries, you can sort them in the decending order
+with respect to the value of a specific field in the response body.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUid</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">orderByDecending</span><span class="p">(</span><span class="nv">propertyName</span><span class="p">:</span> <span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">orderByDecending</span><span class="p">(</span><span class="nv">propertyName</span><span class="p">:</span> <span class="kt">EntryModel</span><span class="o">.</span><span class="kt">FieldKeys</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Query</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>propertyName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The member of your <code>EntryModel.FieldKeys</code> that you are performing order by decending.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Query</code> to enable chaining.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L170-L172">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC6search3forACSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/search(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC6search3forACSS_tF">search(for:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use this method to do a search on <code>Entries</code>.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUid</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">search</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"searchString"</span><span class="p">)</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">search</span><span class="p">(</span><span class="k">for</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Query</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>text</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The text string to match against.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Query</code> to enable chaining.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L195-L198">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC4tags3forACSS_tF"></a>
+                    <a name="//apple_ref/swift/Method/tags(for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC4tags3forACSS_tF">tags(for:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use this method to do a search on tags for <code>Entries</code>.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUid</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">tags</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"tagSearchString"</span><span class="p">)</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">tags</span><span class="p">(</span><span class="k">for</span> <span class="nv">text</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Query</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>text</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The text string to match against.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Query</code> to enable chaining.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L221-L224">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC8operatoryA2C8OperatorOF"></a>
+                    <a name="//apple_ref/swift/Method/operator(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC8operatoryA2C8OperatorOF">operator(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use this method to do a search on <code>Entries</code> which enables
+searching for entries based on <code><a href="../Classes/Query/Operator.html">Query.Operator</a></code>.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUid</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">tags</span><span class="p">(</span><span class="nv">for</span><span class="p">:</span> <span class="s">"tagSearchString"</span><span class="p">)</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="p">`</span><span class="nv">operator</span><span class="p">`(</span><span class="n">_</span> <span class="nv">operator</span><span class="p">:</span> <span class="kt">Query</span><span class="o">.</span><span class="kt"><a href="../Classes/Query/Operator.html">Operator</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Query</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operator</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The member of <code><a href="../Classes/Query/Operator.html">Query.Operator</a></code> that you are performing</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Query</code> to enable chaining.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Query.swift#L247-L250">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC8OperatorO"></a>
+                    <a name="//apple_ref/swift/Enum/Operator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC8OperatorO">Operator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>When fetching entries, you can perform <code>and</code> or <code>or</code> operation.</p>
+
+                        <a href="../Classes/Query/Operator.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Operator</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryOperation.swift#L14-L40">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC9ReferenceO"></a>
+                    <a name="//apple_ref/swift/Enum/Reference" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC9ReferenceO">Reference</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>When fetching entries, you can search base on reference <code>$in</code> or <code>$nin</code>.</p>
+
+                        <a href="../Classes/Query/Reference.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Reference</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryOperation.swift#L43-L66">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC9OperationO"></a>
+                    <a name="//apple_ref/swift/Enum/Operation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC9OperationO">Operation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>When fetching entries, you can search on field key paths.</p>
+
+                        <a href="../Classes/Query/Operation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Operation</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryOperation.swift#L68-L151">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:12Contentstack5QueryC7IncludeV"></a>
+                    <a name="//apple_ref/swift/Struct/Include" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12Contentstack5QueryC7IncludeV">Include</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="../Classes/Query/Include.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Include</span> <span class="p">:</span> <span class="kt">OptionSet</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryParameter.swift#L66-L94">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-04-23)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

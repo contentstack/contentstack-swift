@@ -40,7 +40,6 @@ public class ContentType: CachePolicyAccessible {
     /// // To get specific `Entry` instance from uid:
     /// let entry = stack.Entry(uid: entryUid)
     ///```
-
     public func entry(uid: String? = nil) -> Entry {
         if self.uid == nil {
             fatalError("Please provide ContentType uid")

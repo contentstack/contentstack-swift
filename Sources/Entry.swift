@@ -8,19 +8,19 @@
 import Foundation
 
 public class Entry: EntryQueryable, CachePolicyAccessible {
-    typealias ResourceType = EntryModel
+    public typealias ResourceType = EntryModel
 
     var uid: String?
 
     public var cachePolicy: CachePolicy = .networkOnly
 
-    internal var stack: Stack
-
     internal var contentType: ContentType
-
-    internal var parameters: Parameters = [:]
-
-    internal var queryParameter: [String: Any] = [:]
+    /// Stack instance for Entry to be fetched
+    public var stack: Stack
+    /// URI Parameters
+    public var parameters: [String: Any] = [:]
+    /// Query Parameters
+    public var queryParameter: [String: Any] = [:]
 
     internal required init(_ uid: String?, contentType: ContentType) {
         self.uid = uid
@@ -30,6 +30,25 @@ public class Entry: EntryQueryable, CachePolicyAccessible {
         self.parameters[QueryParameter.uid] = uid
     }
 
+    /// To fetch all or find  Entries `query` method is used.
+    ///
+    /// - Returns: A `Query` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query()
+    /// .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with EntryModel array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     public func query() -> Query {
         if self.contentType.uid == nil {
             fatalError("Please provide ContentType uid")
@@ -41,6 +60,25 @@ public class Entry: EntryQueryable, CachePolicyAccessible {
         return query
     }
 
+    /// To fetch all or find  Entries  to specific model `query` method is used.
+    ///
+    /// - Returns: A `QueryOn<EntryType>` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUid).entry().query(Product.self)
+    /// .find { (result: Result<ContentstackResponse<Product>, Error>, response: ResponseType) in
+    ///     switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with Product array in items.
+    ///     case .failure(let error):
+    ///         //Error Message
+    ///     }
+    /// }
     public func query<EntryType>(_ entry: EntryType.Type) -> QueryOn<EntryType>
         where EntryType: EntryDecodable & FieldKeysQueryable {
             if self.contentType.uid == nil {
@@ -55,6 +93,26 @@ public class Entry: EntryQueryable, CachePolicyAccessible {
 }
 
 extension Entry: ResourceQueryable {
+    /// This call fetches the latest version of a specific `Entry` of a particular stack.
+    /// - Parameters:
+    ///   - completion: A handler which will be called on completion of the operation.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// stack.contentType(uid: contentTypeUID).entry(uid: UID)
+    /// .fetch { (restult: Result<AssetModel, Error>, response: ResponseType) in
+    ///    switch restult {
+    ///    case .success(let model):
+    ///         //Model retrive from API
+    ///    case .failure(let error):
+    ///         //Error Message
+    ///    }
+    /// }
+    /// ```
     public func fetch<ResourceType>(_ completion: @escaping (Result<ResourceType, Error>, ResponseType) -> Void)
         where ResourceType: EndpointAccessible, ResourceType: Decodable {
         guard let uid = self.uid else { fatalError("Please provide Entry uid") }

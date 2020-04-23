@@ -6,9 +6,9 @@
 //
 
 import Foundation
-
+/// Information regarding an error received from Contentstack's Image Delivery API.
 public struct ImageTransformError: Error, CustomDebugStringConvertible {
-
+    /// Human redable error Message
     internal let message: String
 
     public var debugDescription: String {

@@ -47,7 +47,7 @@ class StackCacheAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 15)
     }
 
     func test02CacheThenNetwork_GetCacheFailuerThenNetworkResponse() {
@@ -79,7 +79,7 @@ class StackCacheAPITest: XCTestCase {
                 networkExpectation.fulfill()
             }
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 15)
     }
 
     func test03CacheThenNetwork_GetCachedThenNetworkResponse() {
@@ -105,7 +105,7 @@ class StackCacheAPITest: XCTestCase {
                 networkExpectation.fulfill()
             }
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 15)
     }
     
     func test04CacheElseNetwork_GetNetworkResponse() {
@@ -125,7 +125,7 @@ class StackCacheAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 15)
     }
 
     func test05CacheElseNetwork_GetCacheResponse() {
@@ -145,7 +145,7 @@ class StackCacheAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
             }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 15)
     }
 
     func test06NetworkElseCache_GetFailuer() {
@@ -161,6 +161,6 @@ class StackCacheAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
             }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 15)
     }
 }

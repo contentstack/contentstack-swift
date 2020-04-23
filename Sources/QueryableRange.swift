@@ -22,30 +22,33 @@ extension QueryableRange {
     }
 }
 
+/// Int conform to QueryableRange to perform queries with the four Range operators
 extension Int: QueryableRange {
     public var stringValue: String {
         return String(self)
     }
 }
-
+/// Bool conform to QueryableRange to perform queries with the four Range operators
 extension Bool: QueryableRange {
     public var stringValue: String {
         return self ? "true": "false"
     }
 }
-
+/// Double conform to QueryableRange to perform queries with the four Range operators
 extension Double: QueryableRange {
     public var stringValue: String {
         return String(self)
     }
 }
 
+/// String conform to QueryableRange to perform queries with the four Range operators
 extension String: QueryableRange {
     public var stringValue: String {
         return self
     }
 }
 
+/// Date conform to QueryableRange to perform queries with the four Range operators
 extension Date: QueryableRange {
     /// The ISO8601 string representation of the receiving Date object.
     public var stringValue: String {

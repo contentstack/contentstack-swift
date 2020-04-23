@@ -1,0 +1,621 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ContentType.swift",
+      "line": 10,
+      "symbol": "ContentTypeDecodable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ContentType.swift",
+      "line": 11,
+      "symbol": "ContentTypeDecodable.schema",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ContentType.swift",
+      "line": 14,
+      "symbol": "ContentType",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ContentType.swift",
+      "line": 100,
+      "symbol": "ContentType",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Contentstack.swift",
+      "line": 1,
+      "symbol": "Contentstack",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ContentstackConfig.swift",
+      "line": 10,
+      "symbol": "ContentstackConfig",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ContentstackLogger.swift",
+      "line": 19,
+      "symbol": "ContentstackLogger",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Decodable.swift",
+      "line": 25,
+      "symbol": "JSONDecoder.dateDecodingStrategy()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Entry.swift",
+      "line": 10,
+      "symbol": "Entry",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Entry.swift",
+      "line": 11,
+      "symbol": "Entry.ResourceType",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Entry.swift",
+      "line": 95,
+      "symbol": "Entry",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageOperation.swift",
+      "line": 275,
+      "symbol": "Resize.size",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageOperation.swift",
+      "line": 276,
+      "symbol": "Resize.disableUpscale",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageOperation.swift",
+      "line": 277,
+      "symbol": "Resize.filter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageOperation.swift",
+      "line": 291,
+      "symbol": "Size.width",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageOperation.swift",
+      "line": 292,
+      "symbol": "Size.height",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageOperation.swift",
+      "line": 575,
+      "symbol": "OverlayRepeat.both",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageOperation.swift",
+      "line": 576,
+      "symbol": "OverlayRepeat.horizontal",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageOperation.swift",
+      "line": 577,
+      "symbol": "OverlayRepeat.verticle",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageTransformError.swift",
+      "line": 10,
+      "symbol": "ImageTransformError",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 10,
+      "symbol": "Query",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 10,
+      "symbol": "Query",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 11,
+      "symbol": "Query.ResourceType",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 65,
+      "symbol": "Query",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 97,
+      "symbol": "ContentTypeQuery",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 253,
+      "symbol": "QueryOn",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 338,
+      "symbol": "ContentTypeQuery",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 339,
+      "symbol": "ContentTypeQuery.ResourceType",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 418,
+      "symbol": "AssetQuery.ResourceType",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryParameter.swift",
+      "line": 66,
+      "symbol": "Query.Include",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryParameter.swift",
+      "line": 98,
+      "symbol": "ContentTypeQuery.Include",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryParameter.swift",
+      "line": 121,
+      "symbol": "AssetQuery.Include",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 10,
+      "symbol": "QueryProtocol",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 11,
+      "symbol": "QueryProtocol.ResourceType",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 13,
+      "symbol": "QueryProtocol.stack",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 15,
+      "symbol": "QueryProtocol.parameters",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 17,
+      "symbol": "QueryProtocol.queryParameter",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 19,
+      "symbol": "QueryProtocol.cachePolicy",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 22,
+      "symbol": "BaseQuery",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 23,
+      "symbol": "BaseQuery.find(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 34,
+      "symbol": "BaseQuery",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 35,
+      "symbol": "BaseQuery",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 37,
+      "symbol": "BaseQuery.where(valueAtKeyPath:_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 43,
+      "symbol": "BaseQuery.skip(theFirst:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 49,
+      "symbol": "BaseQuery.limit(to:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 56,
+      "symbol": "BaseQuery.orderByAscending(keyPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 62,
+      "symbol": "BaseQuery.orderByDecending(keyPath:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 67,
+      "symbol": "BaseQuery.addURIParam(dictionary:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 74,
+      "symbol": "BaseQuery.addURIParam(with:value:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 79,
+      "symbol": "BaseQuery.addQuery(dictionary:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 86,
+      "symbol": "BaseQuery.addQuery(with:value:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 92,
+      "symbol": "EntryQueryable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 94,
+      "symbol": "EntryQueryable",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 115,
+      "symbol": "EntryQueryable.locale(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 121,
+      "symbol": "EntryQueryable.only(fields:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 128,
+      "symbol": "EntryQueryable.except(fields:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 135,
+      "symbol": "EntryQueryable.include(params:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 153,
+      "symbol": "EntryQueryable.includeReference(with:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 164,
+      "symbol": "EntryQueryable.includeReferenceField(with:only:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 172,
+      "symbol": "EntryQueryable.includeReferenceField(with:except:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 181,
+      "symbol": "ResourceQueryable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 182,
+      "symbol": "ResourceQueryable.fetch(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 186,
+      "symbol": "Queryable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 187,
+      "symbol": "Queryable.find(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Stack.swift",
+      "line": 10,
+      "symbol": "Host",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Stack.swift",
+      "line": 15,
+      "symbol": "ResultsHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Stack.swift",
+      "line": 17,
+      "symbol": "Stack",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Stack.swift",
+      "line": 284,
+      "symbol": "Stack",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SyncStack.swift",
+      "line": 130,
+      "symbol": "SyncStack.endpoint",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 10,
+      "symbol": "SystemFields",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 12,
+      "symbol": "SystemFields.title",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 14,
+      "symbol": "SystemFields.uid",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 16,
+      "symbol": "SystemFields.createdAt",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 18,
+      "symbol": "SystemFields.updatedAt",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 21,
+      "symbol": "EntryFields",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 22,
+      "symbol": "EntryFields.locale",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 24,
+      "symbol": "EntryFields.createdBy",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 26,
+      "symbol": "EntryFields.updatedBy",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 29,
+      "symbol": "AssetFields",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 31,
+      "symbol": "AssetFields.createdBy",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 33,
+      "symbol": "AssetFields.updatedBy",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 35,
+      "symbol": "AssetFields.fileName",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 37,
+      "symbol": "AssetFields.fileSize",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 39,
+      "symbol": "AssetFields.fileType",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 41,
+      "symbol": "AssetFields.url",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 45,
+      "symbol": "CachePolicyAccessible",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 58,
+      "symbol": "EndpointAccessible",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 59,
+      "symbol": "EndpointAccessible.endpoint",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/uttamukkoji/Documents/iOS/contentstack-swift"
+}

@@ -7,12 +7,12 @@
 
 import Foundation
 
-internal protocol QueryProtocol: class, CachePolicyAccessible {
+public protocol QueryProtocol: class, CachePolicyAccessible {
     associatedtype ResourceType
 
     var stack: Stack { get set }
 
-    var parameters: Parameters { get set }
+    var parameters: [String: Any] { get set }
 
     var queryParameter: [String: Any] { get set }
 
@@ -31,7 +31,7 @@ extension BaseQuery {
     }
 }
 
-internal protocol BaseQuery: QueryProtocol, Queryable {}
+public protocol BaseQuery: QueryProtocol, Queryable {}
 extension BaseQuery {
 
     public func `where`(valueAtKeyPath keyPath: String, _ operation: Query.Operation) -> Self {
@@ -89,7 +89,7 @@ extension BaseQuery {
     }
 }
 
-internal protocol EntryQueryable: QueryProtocol {}
+public protocol EntryQueryable: QueryProtocol {}
 
 extension EntryQueryable {
 

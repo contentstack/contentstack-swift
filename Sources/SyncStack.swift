@@ -8,12 +8,13 @@
 import Foundation
 /// A container for the synchronized state of a Stack
 public final class SyncStack: Decodable {
+    /// You can use the `sync_token` later to perform subsequent sync, which fetches only new changes through delta updates.
     internal(set) public var syncToken = ""
-
+    /// If there are more than 100 records, you get a `pagination_token` in response. This token can be used to fetch the next batch of data.
     internal(set) public var paginationToken = ""
-
+    /// The total number of resources which matched the original request.
     internal(set) public var totalCount: Int = 0
-
+    /// The resources which are part of the array response.
     internal(set) public var items: [Any] = []
 
     internal var isInitialSync: Bool {
@@ -39,6 +40,11 @@ public final class SyncStack: Decodable {
         return ["init": true]
     }
 
+    
+    /// Initialization
+    /// - Parameters:
+    ///   - syncToken: The syncToken from the previous syncronization.
+    ///   - paginationToken: The paginationToken to fetch next batch of data.
     public init(syncToken: String = "", paginationToken: String = "") {
         if !syncToken.isEmpty && !paginationToken.isEmpty {
             fatalError("Both Sync Token and Pagination Token can not be presnet.")
@@ -66,6 +72,7 @@ public final class SyncStack: Decodable {
         self.items = try container.decode(Array<Any>.self, forKey: .items)
     }
 
+    /// This enable to sync entity with condition.
     public enum SyncableTypes {
         /// Sync all `assets` and all `entries` of all content types.
         case all
@@ -100,13 +107,21 @@ public final class SyncStack: Decodable {
         }
     }
 
+    /// This enable to sync entity with Published type.
     public enum PublishType: String {
+        /// To sync only Published Entries.
         case entryPublished = "entry_published"
+        /// To sync only Published Assets.
         case assetPublished = "asset_published"
+        /// To sync only Unpublished Entries.
         case entryUnpublished = "entry_unpublished"
+        /// To sync only Unpublished Assets.
         case assetUnpublished = "asset_unpublished"
+        /// To sync only Deleted Entries.
         case entryDeleted = "entry_deleted"
+        /// To sync only Deleted Assets.
         case assetDeleted = "asset_deleted"
+        /// To sync only only deleted content type Entries.
         case contentTypeDeleted = "content_type_deleted"
     }
 }
