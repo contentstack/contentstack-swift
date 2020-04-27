@@ -14,7 +14,7 @@
     <a title="BaseQuery Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Contentstack  Docs</a> (76% documented)</p>
+        <p><a href="../index.html">Contentstack  Docs</a> (95% documented)</p>
         <p class="header-right"><a href="https://github.com/contentstack/contentstack-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -274,7 +274,8 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>A concrete implementation of BaseQuery which serves as the base class for <code><a href="../Classes/Query.html">Query</a></code>,
+<code><a href="../Classes/ContentTypeQuery.html">ContentTypeQuery</a></code> and <code><a href="../Classes/AssetQuery.html">AssetQuery</a></code>.</p>
 
           </section>
           <section class="section task-group-section">
@@ -296,7 +297,45 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>This is a generic find method which can be used to fetch collections of <code><a href="../Classes/ContentType.html">ContentType</a></code>,
+<code><a href="../Classes/Entry.html">Entry</a></code>, and <code><a href="../Classes/Asset.html">Asset</a></code> instances.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// To fetch allContentTypes</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">ContentTypeModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with v array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// To fetch Assets</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">asset</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">AssetModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -308,8 +347,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A handler which will be called on completion of the operation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L23-L31">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L66-L74">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -330,7 +388,47 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Method to adding Query.Operation to a Query/</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">where</span><span class="p">(</span><span class="nv">valueAtKeyPath</span><span class="p">:</span> <span class="s">"fieldUid"</span><span class="p">,</span> <span class="o">.</span><span class="nf">equals</span><span class="p">(</span><span class="s">"Field condition"</span><span class="p">))</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// To fetch allContentTypes</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">where</span><span class="p">(</span><span class="nv">valueAtKeyPath</span><span class="p">:</span> <span class="s">"fieldUid"</span><span class="p">,</span> <span class="o">.</span><span class="nf">equals</span><span class="p">(</span><span class="s">"Field condition"</span><span class="p">))</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">ContentTypeModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with v array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// To fetch Assets</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">asset</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">where</span><span class="p">(</span><span class="nv">valueAtKeyPath</span><span class="p">:</span> <span class="s">"fieldUid"</span><span class="p">,</span> <span class="o">.</span><span class="nf">equals</span><span class="p">(</span><span class="s">"Field condition"</span><span class="p">))</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">AssetModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -341,8 +439,39 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keyPath</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p></p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>operation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The query operation used in the query.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L37-L40">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L125-L128">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -363,7 +492,40 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Instance method to mutuating query to skip the first <code>n</code> records.</p>
+
+<p>// To fetch Entry from specific contentType
+stack.contentType(uid: contentTypeUID).entry().query()
+.skip(to: 20)
+.fetch { (restult: Result<ContentstackResponse<EntryModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with EntryModel array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}
+// To fetch allContentTypes
+stack.contentType().query().skip(to: 20)
+.find { (result: Result<ContentstackResponse<ContentTypeModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with v array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}
+// To fetch Assets
+stack.asset().query().skip(to: 20)
+.find { (result: Result<ContentstackResponse<AssetModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with AssetModel array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}</p>
+<pre class="highlight swift"><code></code></pre>
 
                       </div>
                       <div class="declaration">
@@ -375,8 +537,32 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>numberOfResults</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of results that will be skipped in the query.
+Example usage:
+&ldquo;`
+let stack = Contentstack.stack(apiKey: apiKey,
+        deliveryToken: deliveryToken,
+        environment: environment)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L43-L46">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L172-L175">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -397,7 +583,40 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Instance method to mutuating query to limit response to contain <code>n</code> values.</p>
+
+<p>// To fetch Entry from specific contentType
+stack.contentType(uid: contentTypeUID).entry().query()
+.limit(to: 20)
+.fetch { (restult: Result<ContentstackResponse<EntryModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with EntryModel array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}
+// To fetch allContentTypes
+stack.contentType().query().limit(to: 20)
+.find { (result: Result<ContentstackResponse<ContentTypeModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with v array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}
+// To fetch Assets
+stack.asset().query().limit(to: 20)
+.find { (result: Result<ContentstackResponse<AssetModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with AssetModel array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}</p>
+<pre class="highlight swift"><code></code></pre>
 
                       </div>
                       <div class="declaration">
@@ -409,8 +628,32 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>numberOfResults</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of results the response will be limited to.
+Example usage:
+&ldquo;`
+let stack = Contentstack.stack(apiKey: apiKey,
+        deliveryToken: deliveryToken,
+        environment: environment)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L49-L53">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L218-L222">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -431,7 +674,40 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Instance method to ordering the response in ascending for specific field.</p>
+
+<p>// To fetch Entry from specific contentType
+stack.contentType(uid: contentTypeUID).entry().query()
+.orderByAscending(keyPath: &ldquo;fieldUID&rdquo;)
+.fetch { (restult: Result<ContentstackResponse<EntryModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with EntryModel array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}
+// To fetch allContentTypes
+stack.contentType().query().orderByAscending(keyPath: &ldquo;fieldUID&rdquo;)
+.find { (result: Result<ContentstackResponse<ContentTypeModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with v array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}
+// To fetch Assets
+stack.asset().query().orderByAscending(keyPath: &ldquo;fieldUID&rdquo;)
+.find { (result: Result<ContentstackResponse<AssetModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with AssetModel array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}</p>
+<pre class="highlight swift"><code></code></pre>
 
                       </div>
                       <div class="declaration">
@@ -443,8 +719,32 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keyPath</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key path for the property you are performing ordering.
+Example usage:
+&ldquo;`
+let stack = Contentstack.stack(apiKey: apiKey,
+        deliveryToken: deliveryToken,
+        environment: environment)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L56-L59">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L264-L267">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -465,7 +765,40 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Instance method to ordering the response in descending for specific field.</p>
+
+<p>// To fetch Entry from specific contentType
+stack.contentType(uid: contentTypeUID).entry().query()
+.orderByDecending(keyPath: &ldquo;fieldUID&rdquo;)
+.fetch { (restult: Result<ContentstackResponse<EntryModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with EntryModel array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}
+// To fetch allContentTypes
+stack.contentType().query().orderByDecending(keyPath: &ldquo;fieldUID&rdquo;)
+.find { (result: Result<ContentstackResponse<ContentTypeModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with v array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}
+// To fetch Assets
+stack.asset().query().orderByDecending(keyPath: &ldquo;fieldUID&rdquo;)
+.find { (result: Result<ContentstackResponse<AssetModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with AssetModel array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}</p>
+<pre class="highlight swift"><code></code></pre>
 
                       </div>
                       <div class="declaration">
@@ -477,8 +810,32 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>keyPath</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key path for the property you are performing ordering.
+Example usage:
+&ldquo;`
+let stack = Contentstack.stack(apiKey: apiKey,
+        deliveryToken: deliveryToken,
+        environment: environment)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L62-L65">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L309-L312">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -499,7 +856,45 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The parameters dictionary that are converted to <code>URLComponents</code>.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">addURIParam</span><span class="p">(</span><span class="nv">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="s">"key"</span><span class="p">:</span> <span class="s">"value"</span><span class="p">])</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// To fetch allContentTypes</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span><span class="o">.</span><span class="nf">addURIParam</span><span class="p">(</span><span class="nv">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="s">"key"</span><span class="p">:</span> <span class="s">"value"</span><span class="p">])</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">ContentTypeModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with v array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// To fetch Assets</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">asset</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span><span class="o">.</span><span class="nf">addURIParam</span><span class="p">(</span><span class="nv">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="s">"key"</span><span class="p">:</span> <span class="s">"value"</span><span class="p">])</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">AssetModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -510,8 +905,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dictionary</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The dictionary for URLComponents.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L67-L72">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L354-L359">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -532,7 +946,40 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The parameters dictionary that are converted to <code>URLComponents</code>.</p>
+
+<p>// To fetch Entry from specific contentType
+stack.contentType(uid: contentTypeUID).entry().query()
+.addURIParam(with: &ldquo;key&rdquo;, value: &ldquo;value&rdquo;)
+.fetch { (restult: Result<ContentstackResponse<EntryModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with EntryModel array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}
+// To fetch allContentTypes
+stack.contentType().query().addURIParam(with: &ldquo;key&rdquo;, value: &ldquo;value&rdquo;)
+.find { (result: Result<ContentstackResponse<ContentTypeModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with v array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}
+// To fetch Assets
+stack.asset().query().addURIParam(with: &ldquo;key&rdquo;, value: &ldquo;value&rdquo;)
+.find { (result: Result<ContentstackResponse<AssetModel>, Error&gt;, response: ResponseType) in
+   switch restult {
+    case .success(let contentstackResponse):
+        // Contentstack response with AssetModel array in items.
+   case .failure(let error):
+        //Error Message
+   }
+}</p>
+<pre class="highlight swift"><code></code></pre>
 
                       </div>
                       <div class="declaration">
@@ -543,8 +990,43 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key for query parameter,</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value for query parameter.
+&ldquo;`
+let stack = Contentstack.stack(apiKey: apiKey,
+    deliveryToken: deliveryToken,
+    environment: environment)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L74-L77">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L401-L404">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -565,7 +1047,45 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The Query parameters dictionary that are converted to <code>URLComponents</code>.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">addQuery</span><span class="p">(</span><span class="nv">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="s">"key"</span><span class="p">:</span> <span class="s">"value"</span><span class="p">])</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// To fetch allContentTypes</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span><span class="o">.</span><span class="nf">addQuery</span><span class="p">(</span><span class="nv">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="s">"key"</span><span class="p">:</span> <span class="s">"value"</span><span class="p">])</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">ContentTypeModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with v array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// To fetch Assets</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">asset</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span><span class="o">.</span><span class="nf">addQuery</span><span class="p">(</span><span class="nv">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="s">"key"</span><span class="p">:</span> <span class="s">"value"</span><span class="p">])</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">AssetModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -576,8 +1096,27 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>dictionary</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The dictionary for URLComponents</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L79-L84">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L447-L452">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -598,7 +1137,45 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The Query parameters dictionary that are converted to <code>URLComponents</code>.</p>
+
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="nf">addQuery</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="s">"key"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"value"</span><span class="p">)</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// To fetch allContentTypes</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span><span class="o">.</span><span class="nf">addQuery</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="s">"key"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"value"</span><span class="p">)</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">ContentTypeModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with v array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// To fetch Assets</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">asset</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span><span class="o">.</span><span class="nf">addQuery</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="s">"key"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"value"</span><span class="p">)</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">AssetModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with AssetModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -609,8 +1186,39 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>key</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The key for query parameter,</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The value for query parameter.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L86-L89">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L497-L500">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -620,7 +1228,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-04-23)</p>
+          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-04-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

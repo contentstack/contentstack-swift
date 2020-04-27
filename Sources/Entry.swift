@@ -6,6 +6,8 @@
 //
 
 import Foundation
+/// An `Entry` is the actual piece of content created using one of the defined content types.
+/// Read more about [Entries](https://www.contentstack.com/docs/content-managers/work-with-entries/).
 
 public class Entry: EntryQueryable, CachePolicyAccessible {
     public typealias ResourceType = EntryModel
@@ -104,7 +106,7 @@ extension Entry: ResourceQueryable {
     ///             environment: environment)
     ///
     /// stack.contentType(uid: contentTypeUID).entry(uid: UID)
-    /// .fetch { (restult: Result<AssetModel, Error>, response: ResponseType) in
+    /// .fetch { (restult: Result<EntryModel, Error>, response: ResponseType) in
     ///    switch restult {
     ///    case .success(let model):
     ///         //Model retrive from API

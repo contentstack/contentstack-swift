@@ -23,8 +23,7 @@ internal enum ResponseCodingKeys: String, CodingKey {
     case contentTypes = "content_types", contentType = "content_type"
 }
 
-/// This is the result of any request of collection from Contentstack,
-
+/// This is the result of any request of collection from Contentstack.
 public final class ContentstackResponse<ItemType>: HomogeneousResponse, Decodable
 where ItemType: EndpointAccessible & Decodable {
     /// The resources which are part of the array response.

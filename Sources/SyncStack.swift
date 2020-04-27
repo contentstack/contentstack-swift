@@ -8,9 +8,11 @@
 import Foundation
 /// A container for the synchronized state of a Stack
 public final class SyncStack: Decodable {
-    /// You can use the `sync_token` later to perform subsequent sync, which fetches only new changes through delta updates.
+    /// You can use the `sync_token` later to perform subsequent sync,
+    /// which fetches only new changes through delta updates.
     internal(set) public var syncToken = ""
-    /// If there are more than 100 records, you get a `pagination_token` in response. This token can be used to fetch the next batch of data.
+    /// If there are more than 100 records, you get a `pagination_token` in response.
+    /// This token can be used to fetch the next batch of data.
     internal(set) public var paginationToken = ""
     /// The total number of resources which matched the original request.
     internal(set) public var totalCount: Int = 0
@@ -40,7 +42,6 @@ public final class SyncStack: Decodable {
         return ["init": true]
     }
 
-    
     /// Initialization
     /// - Parameters:
     ///   - syncToken: The syncToken from the previous syncronization.

@@ -14,7 +14,7 @@
     <a title="EntryQueryable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Contentstack  Docs</a> (76% documented)</p>
+        <p><a href="../index.html">Contentstack  Docs</a> (95% documented)</p>
         <p class="header-right"><a href="https://github.com/contentstack/contentstack-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -296,7 +296,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -309,7 +324,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L115-L118">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/EntryQuaryable.swift#L66-L69">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -330,7 +345,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -343,7 +373,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L121-L125">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/EntryQuaryable.swift#L89-L93">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -364,7 +394,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -377,7 +422,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L128-L133">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/EntryQuaryable.swift#L113-L118">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -398,7 +443,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -410,7 +470,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L135-L151">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/EntryQuaryable.swift#L137-L153">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -431,7 +491,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -443,7 +518,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L153-L162">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/EntryQuaryable.swift#L172-L181">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -464,7 +539,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -476,7 +566,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L164-L170">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/EntryQuaryable.swift#L200-L206">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -497,7 +587,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="c1">// To fetch Entry from specific contentType</span>
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with EntryModel array in items.</span>
+   <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -509,7 +614,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/QueryProtocols.swift#L172-L178">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/EntryQuaryable.swift#L224-L230">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -519,7 +624,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-04-23)</p>
+          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-04-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

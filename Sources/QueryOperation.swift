@@ -9,7 +9,6 @@ import Foundation
 
 extension Query {
 
-    
     /// When fetching entries, you can perform `and` or `or` operation.
     public enum Operator {
         /// And Operator: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#and-operator>

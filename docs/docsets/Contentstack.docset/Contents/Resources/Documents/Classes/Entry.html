@@ -14,7 +14,7 @@
     <a title="Entry Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Contentstack  Docs</a> (76% documented)</p>
+        <p><a href="../index.html">Contentstack  Docs</a> (95% documented)</p>
         <p class="header-right"><a href="https://github.com/contentstack/contentstack-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -275,7 +275,8 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>An <code>Entry</code> is the actual piece of content created using one of the defined content types.
+Read more about <a href="https://www.contentstack.com/docs/content-managers/work-with-entries/">Entries</a>.</p>
 
           </section>
           <section class="section task-group-section">
@@ -335,7 +336,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L47">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L50">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -365,7 +366,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L19">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L21">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -395,7 +396,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L21">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L23">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -425,7 +426,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L23">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L25">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -475,7 +476,7 @@
                         <p>A <code><a href="../Classes/Query.html">Query</a></code> to enable chaining.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L52-L61">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L54-L63">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -526,7 +527,7 @@
                         <p>A <code><a href="../Classes/QueryOn.html">QueryOn&lt;EntryType&gt;</a></code> to enable chaining.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L82-L92">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L84-L94">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -552,7 +553,7 @@
             <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
 
 <span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">contentTypeUID</span><span class="p">)</span><span class="o">.</span><span class="nf">entry</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="kt">UID</span><span class="p">)</span>
-<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">AssetModel</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">EntryModel</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
    <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">model</span><span class="p">):</span>
         <span class="c1">//Model retrive from API</span>
@@ -592,7 +593,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L116-L135">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/Entry.swift#L118-L137">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -602,7 +603,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-04-23)</p>
+          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-04-24)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
