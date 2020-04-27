@@ -14,6 +14,7 @@ public enum Host {
 
 public typealias ResultsHandler<T> = (_ result: Result<T, Error>, ResponseType) -> Void
 
+/// Stack is instance for performing Contentstack Delivery API request.
 public class Stack: CachePolicyAccessible {
     internal var urlSession: URLSession
 

@@ -6,11 +6,13 @@
 //
 
 import Foundation
-
+/// The decodable to get schema of ContentType.
 public protocol ContentTypeDecodable: SystemFields, Decodable {
+    /// The  schema for ContentType.
     var schema: [String: Any]? { get }
 }
-
+/// Content type defines the structure or schema of a page or a section of your web or mobile property.
+/// Read more about [Content Types](https://www.contentstack.com/docs/developers/create-content-types).
 public class ContentType: CachePolicyAccessible {
 
     var uid: String?

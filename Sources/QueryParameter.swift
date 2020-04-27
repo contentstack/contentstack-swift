@@ -63,6 +63,9 @@ internal enum QueryParameter {
 }
 
 extension Query {
+    /// The `Query.Include` is parameter for including `count`, `Unpublished`,
+    /// `ContentType schema`, `Global Fields schema`, and `Reference ContentType Uid`
+    /// in result.
     public struct Include: OptionSet {
         /// Creates a new option set from the given raw value.
         ///
@@ -75,7 +78,7 @@ extension Query {
         /// Each bit of `rawValue` potentially represents an element of the option set
         public let rawValue: Int
 
-        /// To include count in the response.
+        /// To include `count` in the response.
         public static let count: Include = Include(rawValue: 1 << 0)
         /// To include Unpublished Entries in response,
         public static let unpublished: Include = Include(rawValue: 1 << 1)
@@ -95,6 +98,7 @@ extension Query {
 }
 
 extension ContentTypeQuery {
+    /// The `ContentTypeQuery.Include` is parameter for including `count`, `Global Fields schema` in result.
     public struct Include: OptionSet {
         /// Creates a new option set from the given raw value.
         ///
@@ -118,6 +122,8 @@ extension ContentTypeQuery {
 }
 
 extension AssetQuery {
+    /// The `AssetQuery.Include` is parameter for including `count`, `relative URLs`,
+    /// and `dimensions` in result.
     public struct Include: OptionSet {
         /// Creates a new option set from the given raw value.
         ///

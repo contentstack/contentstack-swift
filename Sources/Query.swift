@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/// To fetch all or find  Entries  use `Query`.
 public class Query: BaseQuery, EntryQueryable {
     public typealias ResourceType = EntryModel
 
@@ -52,6 +52,7 @@ public class Query: BaseQuery, EntryQueryable {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     public func `where`(valueAtKey path: String, _ operation: Query.Operation) -> Query {
         return self.where(valueAtKeyPath: path, operation)
     }
@@ -82,6 +83,7 @@ public class Query: BaseQuery, EntryQueryable {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     public func `where`(queryableCodingKey: EntryModel.FieldKeys, _ operation: Query.Operation) -> Query {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
@@ -112,6 +114,7 @@ public class Query: BaseQuery, EntryQueryable {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     public func `where`(referenceAtKeyPath keyPath: String, _ operation: Query.Reference) -> Query {
         if let query = operation.query {
             self.queryParameter[keyPath] = query
@@ -140,6 +143,7 @@ public class Query: BaseQuery, EntryQueryable {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     @discardableResult
     public func orderByAscending(propertyName: EntryModel.FieldKeys) -> Query {
         return self.orderByAscending(keyPath: propertyName.stringValue)
@@ -166,6 +170,7 @@ public class Query: BaseQuery, EntryQueryable {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     @discardableResult
     public func orderByDecending(propertyName: EntryModel.FieldKeys) -> Query {
         return self.orderByDecending(keyPath: propertyName.stringValue)
@@ -191,6 +196,7 @@ public class Query: BaseQuery, EntryQueryable {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     @discardableResult
     public func search(for text: String) -> Query {
         self.parameters[QueryParameter.typeahead] = text
@@ -217,6 +223,7 @@ public class Query: BaseQuery, EntryQueryable {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     @discardableResult
     public func tags(for text: String) -> Query {
         self.parameters[QueryParameter.tags] = text
@@ -244,12 +251,14 @@ public class Query: BaseQuery, EntryQueryable {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     public func `operator`(_ operator: Query.Operator) -> Query {
         self.queryParameter[`operator`.string] = `operator`.value
         return self
     }
 }
 
+/// To fetch all or find  Entries and Quering for Specific Model  use `QueryOn`.
 public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
     internal typealias ResourceType = EntryType
     /// Use this method to do a search on `Entries` which enables
@@ -278,6 +287,7 @@ public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     public func `where`(queryableCodingKey: EntryType.FieldKeys, _ operation: Query.Operation) -> QueryOn<EntryType> {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
@@ -303,6 +313,7 @@ public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     @discardableResult
     public func orderByAscending(propertyName: EntryType.FieldKeys) -> QueryOn<EntryType> {
         return self.orderByAscending(keyPath: propertyName.stringValue)
@@ -329,12 +340,13 @@ public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     @discardableResult
     public func orderByDecending(propertyName: EntryType.FieldKeys) -> QueryOn<EntryType> {
         return self.orderByDecending(keyPath: propertyName.stringValue)
     }
 }
-
+/// To fetch all or find  `ContentType`  use `ContentTypeQuery`.
 public final class ContentTypeQuery: BaseQuery {
     public typealias ResourceType = ContentTypeModel
 
@@ -376,6 +388,7 @@ public final class ContentTypeQuery: BaseQuery {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
 
     public func `where`(queryableCodingKey: ContentTypeModel.QueryableCodingKey, _
         operation: Query.Operation) -> ContentTypeQuery {
@@ -402,6 +415,7 @@ public final class ContentTypeQuery: BaseQuery {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     public func include(params: Include) -> Self {
         if params.contains(.count) {
             self.parameters[QueryParameter.includeCount] = true
@@ -413,7 +427,7 @@ public final class ContentTypeQuery: BaseQuery {
     }
 }
 
-/// To fetch all or find  Assets use `AssetQuery`.
+/// To fetch all or find  `Assets` use `AssetQuery`.
 public final class AssetQuery: BaseQuery {
     public typealias ResourceType = AssetModel
 
@@ -456,7 +470,7 @@ public final class AssetQuery: BaseQuery {
     ///         //Error Message
     ///     }
     /// }
-
+    /// ```
     public func `where`(queryableCodingKey: AssetModel.QueryableCodingKey, _ operation: Query.Operation) -> AssetQuery {
         return self.where(valueAtKeyPath: "\(queryableCodingKey.stringValue)", operation)
     }
@@ -481,6 +495,7 @@ public final class AssetQuery: BaseQuery {
     ///         //Error Message
     ///     }
     /// }
+    /// ```
     public func include(params: Include) -> AssetQuery {
         if params.contains(.count) {
             self.parameters[QueryParameter.includeCount] = true
