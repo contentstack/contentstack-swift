@@ -120,8 +120,8 @@ class ContentTypeQueryAPITest: XCTestCase {
 
     func test06Fetch_ContentType_fromUID() {
         let networkExpectation = expectation(description: "Fetch ContentTypes from UID Test")
-        self.getContentType(uid: kContentTypeUID).fetch { (restult: Result<ContentTypeModel, Error>, response: ResponseType) in
-            switch restult {
+        self.getContentType(uid: kContentTypeUID).fetch { (result: Result<ContentTypeModel, Error>, response: ResponseType) in
+            switch result {
             case .success(let model):
                 XCTAssertEqual(model.uid, kContentTypeUID)
             case .failure(let error):
@@ -161,8 +161,8 @@ class ContentTypeQueryAPITest: XCTestCase {
         let networkExpectation = expectation(description: "Fetch ContentTypes with GlobalFields Test")
         self.getContentType(uid: kContentTypeUID)
             .includeGlobalFields()
-            .fetch { (restult: Result<ContentTypeModel, Error>, response: ResponseType) in
-                switch restult {
+            .fetch { (result: Result<ContentTypeModel, Error>, response: ResponseType) in
+                switch result {
                 case .success(let model):
                     model.schema.forEach { (schema) in
                         if let dataType = schema["data_type"] as? String,
@@ -197,8 +197,8 @@ class ContentTypeQueryAPITest: XCTestCase {
 
     func test11Fetch_ContentType_WithWrongUID_shouldFail() {
          let networkExpectation = expectation(description: "Fetch ContentTypes from wrong UID Test")
-        self.getContentType(uid: "UID").fetch { (restult: Result<ContentTypeModel, Error>, response: ResponseType) in
-            switch restult {
+        self.getContentType(uid: "UID").fetch { (result: Result<ContentTypeModel, Error>, response: ResponseType) in
+            switch result {
             case .success:
                 XCTFail("UID should not be present")
             case .failure(let error):

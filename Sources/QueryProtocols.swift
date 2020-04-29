@@ -34,8 +34,8 @@ extension BaseQuery {
     ///
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -45,9 +45,9 @@ extension BaseQuery {
     /// // To fetch allContentTypes
     /// stack.contentType().query()
     /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
-    ///         // Contentstack response with v array in items.
+    ///         // Contentstack response with ContentTypeModel array in items.
     ///    case .failure(let error):
     ///         //Error Message
     ///    }
@@ -55,7 +55,7 @@ extension BaseQuery {
     /// // To fetch Assets
     /// stack.asset().query()
     /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with AssetModel array in items.
     ///    case .failure(let error):
@@ -91,8 +91,8 @@ extension BaseQuery {
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
     /// .where(valueAtKeyPath: "fieldUid", .equals("Field condition"))
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -103,9 +103,9 @@ extension BaseQuery {
     /// stack.contentType().query()
     /// .where(valueAtKeyPath: "fieldUid", .equals("Field condition"))
     /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
-    ///         // Contentstack response with v array in items.
+    ///         // Contentstack response with ContentTypeModel array in items.
     ///    case .failure(let error):
     ///         //Error Message
     ///    }
@@ -114,7 +114,7 @@ extension BaseQuery {
     /// stack.asset().query()
     /// .where(valueAtKeyPath: "fieldUid", .equals("Field condition"))
     /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with AssetModel array in items.
     ///    case .failure(let error):
@@ -139,8 +139,8 @@ extension BaseQuery {
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
     /// .skip(to: 20)
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -150,9 +150,9 @@ extension BaseQuery {
     /// // To fetch allContentTypes
     /// stack.contentType().query().skip(to: 20)
     /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
-    ///         // Contentstack response with v array in items.
+    ///         // Contentstack response with ContentTypeModel array in items.
     ///    case .failure(let error):
     ///         //Error Message
     ///    }
@@ -160,7 +160,7 @@ extension BaseQuery {
     /// // To fetch Assets
     /// stack.asset().query().skip(to: 20)
     /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with AssetModel array in items.
     ///    case .failure(let error):
@@ -184,8 +184,8 @@ extension BaseQuery {
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
     /// .limit(to: 20)
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -195,9 +195,9 @@ extension BaseQuery {
     /// // To fetch allContentTypes
     /// stack.contentType().query().limit(to: 20)
     /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
-    ///         // Contentstack response with v array in items.
+    ///         // Contentstack response with ContentTypeModel array in items.
     ///    case .failure(let error):
     ///         //Error Message
     ///    }
@@ -205,7 +205,7 @@ extension BaseQuery {
     /// // To fetch Assets
     /// stack.asset().query().limit(to: 20)
     /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with AssetModel array in items.
     ///    case .failure(let error):
@@ -231,8 +231,8 @@ extension BaseQuery {
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
     /// .orderByAscending(keyPath: "fieldUID")
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -242,9 +242,9 @@ extension BaseQuery {
     /// // To fetch allContentTypes
     /// stack.contentType().query().orderByAscending(keyPath: "fieldUID")
     /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
-    ///         // Contentstack response with v array in items.
+    ///         // Contentstack response with ContentTypeModel array in items.
     ///    case .failure(let error):
     ///         //Error Message
     ///    }
@@ -252,7 +252,7 @@ extension BaseQuery {
     /// // To fetch Assets
     /// stack.asset().query().orderByAscending(keyPath: "fieldUID")
     /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with AssetModel array in items.
     ///    case .failure(let error):
@@ -276,8 +276,8 @@ extension BaseQuery {
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
     /// .orderByDecending(keyPath: "fieldUID")
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -287,9 +287,9 @@ extension BaseQuery {
     /// // To fetch allContentTypes
     /// stack.contentType().query().orderByDecending(keyPath: "fieldUID")
     /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
-    ///         // Contentstack response with v array in items.
+    ///         // Contentstack response with ContentTypeModel array in items.
     ///    case .failure(let error):
     ///         //Error Message
     ///    }
@@ -297,7 +297,7 @@ extension BaseQuery {
     /// // To fetch Assets
     /// stack.asset().query().orderByDecending(keyPath: "fieldUID")
     /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with AssetModel array in items.
     ///    case .failure(let error):
@@ -322,8 +322,8 @@ extension BaseQuery {
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
     /// .addURIParam(dictionary: ["key": "value"])
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -333,9 +333,9 @@ extension BaseQuery {
     /// // To fetch allContentTypes
     /// stack.contentType().query().addURIParam(dictionary: ["key": "value"])
     /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
-    ///         // Contentstack response with v array in items.
+    ///         // Contentstack response with ContentTypeModel array in items.
     ///    case .failure(let error):
     ///         //Error Message
     ///    }
@@ -343,7 +343,7 @@ extension BaseQuery {
     /// // To fetch Assets
     /// stack.asset().query().addURIParam(dictionary: ["key": "value"])
     /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with AssetModel array in items.
     ///    case .failure(let error):
@@ -369,8 +369,8 @@ extension BaseQuery {
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
     /// .addURIParam(with: "key", value: "value")
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -380,9 +380,9 @@ extension BaseQuery {
     /// // To fetch allContentTypes
     /// stack.contentType().query().addURIParam(with: "key", value: "value")
     /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
-    ///         // Contentstack response with v array in items.
+    ///         // Contentstack response with ContentTypeModel array in items.
     ///    case .failure(let error):
     ///         //Error Message
     ///    }
@@ -390,7 +390,7 @@ extension BaseQuery {
     /// // To fetch Assets
     /// stack.asset().query().addURIParam(with: "key", value: "value")
     /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with AssetModel array in items.
     ///    case .failure(let error):
@@ -414,8 +414,8 @@ extension BaseQuery {
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
     /// .addQuery(dictionary: ["key": "value"])
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -425,9 +425,9 @@ extension BaseQuery {
     /// // To fetch allContentTypes
     /// stack.contentType().query().addQuery(dictionary: ["key": "value"])
     /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
-    ///         // Contentstack response with v array in items.
+    ///         // Contentstack response with ContentTypeModel array in items.
     ///    case .failure(let error):
     ///         //Error Message
     ///    }
@@ -435,7 +435,7 @@ extension BaseQuery {
     /// // To fetch Assets
     /// stack.asset().query().addQuery(dictionary: ["key": "value"])
     /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with AssetModel array in items.
     ///    case .failure(let error):
@@ -464,8 +464,8 @@ extension BaseQuery {
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
     /// .addQuery(with: "key", value: "value")
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -475,9 +475,9 @@ extension BaseQuery {
     /// // To fetch allContentTypes
     /// stack.contentType().query().addQuery(with: "key", value: "value")
     /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
-    ///         // Contentstack response with v array in items.
+    ///         // Contentstack response with ContentTypeModel array in items.
     ///    case .failure(let error):
     ///         //Error Message
     ///    }
@@ -485,7 +485,7 @@ extension BaseQuery {
     /// // To fetch Assets
     /// stack.asset().query().addQuery(with: "key", value: "value")
     /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with AssetModel array in items.
     ///    case .failure(let error):

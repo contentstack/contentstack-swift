@@ -106,8 +106,8 @@ extension Entry: ResourceQueryable {
     ///             environment: environment)
     ///
     /// stack.contentType(uid: contentTypeUID).entry(uid: UID)
-    /// .fetch { (restult: Result<EntryModel, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
+    ///    switch result {
     ///    case .success(let model):
     ///         //Model retrive from API
     ///    case .failure(let error):

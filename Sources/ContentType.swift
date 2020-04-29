@@ -111,8 +111,8 @@ extension ContentType: ResourceQueryable {
     ///             environment: environment)
     ///
     /// stack.contentType(uid: assetUID)
-    /// .fetch { (restult: Result<ContentTypeModel, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentTypeModel, Error>, response: ResponseType) in
+    ///    switch result {
     ///    case .success(let model):
     ///          //Model retrive from API
     ///    case .failure(let error):

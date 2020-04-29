@@ -23,7 +23,7 @@ final class ContentstackTests: XCTestCase {
 
     func testStack_EUHostRegion_ReturnStackWithEUValue () {
         let stack = makeStackSut(region: .eu)
-        XCTAssertEqual(stack.host, "cdn.contentstack.com")
+        XCTAssertEqual(stack.host, "eu-cdn.contentstack.com")
         XCTAssertEqual(stack.region, ContentstackRegion.eu)
     }
 

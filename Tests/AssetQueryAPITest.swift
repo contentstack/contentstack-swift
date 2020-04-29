@@ -138,8 +138,8 @@ class AssetQueryAPITest: XCTestCase {
 
     func test06Fetch_Asset_fromUID() {
         let networkExpectation = expectation(description: "Fetch Assets from UID Test")
-        self.getAsset(uid: kAssetUID).fetch { (restult: Result<AssetModel, Error>, response: ResponseType) in
-            switch restult {
+        self.getAsset(uid: kAssetUID).fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+            switch result {
             case .success(let model):
                 XCTAssertEqual(model.uid, kAssetUID)
             case .failure(let error):
@@ -173,8 +173,8 @@ class AssetQueryAPITest: XCTestCase {
         let networkExpectation = expectation(description: "Fetch Assets with GlobalFields Test")
         self.getAsset(uid: kAssetUID)
             .includeDimension()
-            .fetch { (restult: Result<AssetModel, Error>, response: ResponseType) in
-                switch restult {
+            .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+                switch result {
                 case .success(let model):
                     XCTAssertNotNil(model.dimension)
                 case .failure(let error):
@@ -204,8 +204,8 @@ class AssetQueryAPITest: XCTestCase {
 
     func test11Fetch_Asset_WithWrongUID_shouldFail() {
          let networkExpectation = expectation(description: "Fetch Assets from wrong UID Test")
-        self.getAsset(uid: "UID").fetch { (restult: Result<AssetModel, Error>, response: ResponseType) in
-            switch restult {
+        self.getAsset(uid: "UID").fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+            switch result {
             case .success:
                 XCTFail("UID should not be present")
             case .failure(let error):

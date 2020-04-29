@@ -118,8 +118,8 @@ class EntryAPITest: XCTestCase {
 
     func test06Fetch_Entry_fromUID() {
         let networkExpectation = expectation(description: "Fetch Entry from UID Test")
-        self.getEntry(uid: kEntryUID).fetch { (restult: Result<EntryModel, Error>, response: ResponseType) in
-            switch restult {
+        self.getEntry(uid: kEntryUID).fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
+            switch result {
             case .success(let model):
                 XCTAssertEqual(model.uid, kEntryUID)
             case .failure(let error):
@@ -151,8 +151,8 @@ class EntryAPITest: XCTestCase {
         let networkExpectation = expectation(description: "Fetch Entry with GlobalFields Test")
         self.getEntry(uid: kEntryUID)
             .include(params: .globalField)
-            .fetch { (restult: Result<EntryModel, Error>, response: ResponseType) in
-                switch restult {
+            .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
+                switch result {
                 case .success(let model):
                     if let contentType = model.contentType {
                         contentType.schema.forEach { (schema) in
@@ -206,8 +206,8 @@ class EntryAPITest: XCTestCase {
     func test11Fetch_Entry_WithWrongUID_shouldFail() {
          let networkExpectation = expectation(description: "Fetch Entry from wrong UID Test")
         self.getEntry(uid: "UID")
-            .fetch { (restult: Result<EntryModel, Error>, response: ResponseType) in
-            switch restult {
+            .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
+            switch result {
             case .success:
                 XCTFail("UID should not be present")
             case .failure(let error):
@@ -225,8 +225,8 @@ class EntryAPITest: XCTestCase {
         let networkExpectation = expectation(description: "Fetch Entry Query with GlobalFields Test")
         self.getEntryQuery()
             .include(params: .globalField)
-            .find { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-                switch restult {
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+                switch result {
                 case .success(let model):
                     if let contentType = model.fields?["content_type"] as? ContentTypeModel {
                         contentType.schema.forEach { (schema) in
