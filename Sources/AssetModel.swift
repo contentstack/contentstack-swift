@@ -63,7 +63,7 @@ public final class AssetModel: AssetDecodable {
         let container   = try decoder.container(keyedBy: FieldKeys.self)
         title = try container.decode(String.self, forKey: .title)
         uid = try container.decode(String.self, forKey: .uid)
-        url = try container.decode(String.self, forKey: .uid)
+        url = try container.decode(String.self, forKey: .url)
         fileName = try container.decode(String.self, forKey: .fileName)
         fileType = try container.decode(String.self, forKey: .fileType)
         dimension     = try container.decodeIfPresent(ImageDimension.self, forKey: .dimension)

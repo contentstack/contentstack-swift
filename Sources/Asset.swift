@@ -34,8 +34,8 @@ public class Asset: CachePolicyAccessible {
     ///
     /// // To retrive single asset with relative URL
     /// let asset = stack.asset(uid: assetUID).includeRelativeURL()
-    /// .fetch { (restult: Result<AssetModel, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+    ///    switch result {
     ///    case .success(let model):
     ///          //Model retrive from API
     ///    case .failure(let error):
@@ -60,8 +60,8 @@ public class Asset: CachePolicyAccessible {
     ///
     /// // To retrive single asset with dimension
     /// stack.asset(uid: assetUID).includeDimension()
-    /// .fetch { (restult: Result<AssetModel, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+    ///    switch result {
     ///    case .success(let model):
     ///         //Model retrive from API
     ///    case .failure(let error):
@@ -113,8 +113,8 @@ extension Asset: ResourceQueryable {
     ///             environment: environment)
     ///
     /// stack.asset(uid: assetUID)
-    /// .fetch { (restult: Result<AssetModel, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+    ///    switch result {
     ///    case .success(let model):
     ///         //Model retrive from API
     ///    case .failure(let error):

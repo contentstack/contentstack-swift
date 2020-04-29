@@ -40,8 +40,8 @@ extension EntryQueryable {
     ///
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -69,8 +69,8 @@ extension EntryQueryable {
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
     /// .only(["fieldUid"])
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -99,8 +99,8 @@ extension EntryQueryable {
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
     /// .except(["fieldUid"])
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -132,8 +132,8 @@ extension EntryQueryable {
     ///
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -174,8 +174,8 @@ extension EntryQueryable {
     ///
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -209,8 +209,8 @@ extension EntryQueryable {
     ///
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
@@ -241,8 +241,8 @@ extension EntryQueryable {
     ///
     /// // To fetch Entry from specific contentType
     /// stack.contentType(uid: contentTypeUID).entry().query()
-    /// .fetch { (restult: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
-    ///    switch restult {
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
     ///     case .success(let contentstackResponse):
     ///         // Contentstack response with EntryModel array in items.
     ///    case .failure(let error):
