@@ -15,7 +15,7 @@ final class ContentTypeTests: XCTestCase {
         let endPoint = ContentTypeModel.endpoint
         XCTAssertEqual(endPoint.pathComponent, "content_types")
     }
-
+    #if os(iOS) || os(tvOS) || os(watchOS)
     func testFetch_withoutUID() {
         expectFatalError(expectedMessage: "Please provide ContentType uid") {
             makeContentTypeSut().fetch { (result: Result<AssetModel, Error>, response) in
@@ -29,7 +29,7 @@ final class ContentTypeTests: XCTestCase {
             _ = makeEntrySut()
         }
     }
-
+    #endif
     func testEntry_UidNotProvided_ShouldReturnEntry() {
         let entry = makeEntrySut(contentTypeuid: "ContentType")
         XCTAssertNotNil(entry)
@@ -53,6 +53,7 @@ final class ContentTypeTests: XCTestCase {
         XCTAssertEqual(contentTypeQuery.queryParameter[ContentTypeModel.QueryableCodingKey.uid.rawValue] as? String, uid)
     }
 
+    #if os(iOS) || os(tvOS) || os(watchOS)
     static var allTests = [
         ("testEntry_ContentTypeUidNotProvided_FatalError",
          testEntry_ContentTypeUidNotProvided_FatalError),
@@ -63,4 +64,14 @@ final class ContentTypeTests: XCTestCase {
         ("testContentTypeQuery_withContentTypeUID",
          testContentTypeQuery_withContentTypeUID)
     ]
+    #elseif os(macOS)
+    static var allTests = [
+        ("testEntry_UidNotProvided_ShouldReturnEntry",
+         testEntry_UidNotProvided_ShouldReturnEntry),
+        ("testEntry_UidProvided_ShouldReturnEntryWithUID",
+         testEntry_UidProvided_ShouldReturnEntryWithUID),
+        ("testContentTypeQuery_withContentTypeUID",
+         testContentTypeQuery_withContentTypeUID)
+    ]
+    #endif
 }

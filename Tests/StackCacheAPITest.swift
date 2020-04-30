@@ -8,7 +8,7 @@
 import XCTest
 @testable import Contentstack
 import DVR
-
+#if os(iOS) || os(tvOS) || os(watchOS)
 class StackCacheAPITest: XCTestCase {
     static let stack = TestContentstackClient.testCacheStack()
 
@@ -164,3 +164,4 @@ class StackCacheAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 15)
     }
 }
+#endif

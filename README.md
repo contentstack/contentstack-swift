@@ -57,9 +57,9 @@ A publishing environment corresponds to one or more deployment servers or a cont
 #### Initializing your SDK
 
 To start using the SDK in your application, you will need to initialize the stack by providing the required keys and values associated with them:
-            ```
-     let stack:Stack = Contentstack.stack(apiKey: API_KEY, deliveryToken: DELIVERY_TOKEN, environment: ENVIRONMENT)
-     ```
+```
+  let stack:Stack = Contentstack.stack(apiKey: API_KEY, deliveryToken: DELIVERY_TOKEN, environment: ENVIRONMENT)
+```
 
 To get the api credentials mentioned above, you need to log into your Contentstack account and then in your top panel navigation, go to Settings -&gt; Stack to view both your API Key and your Delivery Token
 

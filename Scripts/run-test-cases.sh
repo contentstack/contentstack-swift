@@ -8,13 +8,16 @@
 
 echo $DATE
 echo "Cleaning Build Folder..."
-xcodebuild clean -project contentstack-swift.xcodeproj -scheme Contentstack
+xcodebuild clean -project contentstack.xcodeproj -scheme "Contentstack iOS"
+xcodebuild clean -project contentstack.xcodeproj -scheme "Contentstack tvOS"
+xcodebuild clean -project contentstack.xcodeproj -scheme "Contentstack macOS"
 
 #Get environment on which test will run
 echo "Please select environment from following"
-echo "Prod      Stag       Dev     Blz"
+echo "API_TEST Release"
 
 read environment
+#if environment == "API_TEST"
 
 # Test result output folders
 TEST_BUNDLE_PATH="./TestCase/Bundle/"
@@ -24,25 +27,24 @@ TEST_COVERAGE_PATH="./TestCase/Coverage"
 # Date
 DATE=$(date +'%v')
 
-FILE_NAME="Contentstack-$environment-$DATE"
+FILE_NAME="Contentstack-$DATE"
 
 # Rmove all temparary Folder/Files
 echo "Removing temparary files..."
 rm -r "$TEST_RESULT_PATH"
 rm -r "$TEST_BUNDLE_PATH"
 rm -r "$TEST_COVERAGE_PATH"
-
+mkdir "./TestCase"
 mkdir "$TEST_COVERAGE_PATH"
 ##xcodebuild build-for-testing -workspace contentstack-swift.xcworkspace -scheme Contentstack -destination "id=841529D1-AEC3-4FF7-8AA4-079845D4FD4C"  -derivedDataPath "build"
 
 # Run Contentstack-iOS Test case
 echo "Running Test cases on iOS..."
 xcodebuild \
-    -workspace contentstack-swift.xcworkspace \
-    -xcconfig "Supporting Files/$environment-contentstack.xcconfig" \
-    -scheme Contentstack-test-iOS \
+    -workspace Contentstack.xcworkspace \
+    -scheme "Contentstack iOS" \
     test \
-    -destination "id=841529D1-AEC3-4FF7-8AA4-079845D4FD4C" \
+    -destination "id=18C1CD7D-CD1F-4EBC-A172-41B823B2168B" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-iOS.xcresult" \
         | xcpretty \
             --color \
@@ -51,15 +53,14 @@ xcodebuild \
 
 xcrun xccov view "$TEST_BUNDLE_PATH/$FILE_NAME-iOS.xcresult/1_Test/action.xccovreport" > "$TEST_COVERAGE_PATH/$FILE_NAME-iOS.coverage"
 
- Run Contentstack-tvOS Test case
+# Run Contentstack-tvOS Test case
 echo "Running Test cases on tvOS..."
 
 xcodebuild \
-    -workspace contentstack-swift.xcworkspace \
-    -xcconfig "Supporting Files/$environment-contentstack.xcconfig" \
-    -scheme Contentstack-test-tvOS \
+    -workspace Contentstack.xcworkspace \
+    -scheme "Contentstack tvOS" \
     test \
-    -destination "id=9DA79524-53BA-4EA2-AA7C-D883EEF7AE4B" \
+    -destination "OS=13.0,name=Apple TV 4K" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-tvOS.xcresult" \
         | xcpretty \
             --color \
@@ -72,11 +73,10 @@ xcrun xccov view "$TEST_BUNDLE_PATH/$FILE_NAME-tvOS.xcresult/1_Test/action.xccov
 echo "Running Test cases on macOS..."
 
 xcodebuild \
-    -workspace contentstack-swift.xcworkspace \
-    -xcconfig "Supporting Files/$environment-contentstack.xcconfig" \
-    -scheme Contentstack-test-macOS \
+    -workspace Contentstack.xcworkspace \
+    -scheme "Contentstack macOS" \
     test \
-    -destination "id=16ED430D-3CA7-57B8-8783-C3EE560F2EF1" \
+    -destination "platform=macOS" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-macOS.xcresult" \
         | xcpretty \
             --color \

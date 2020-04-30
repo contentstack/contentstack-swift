@@ -13,7 +13,7 @@ class AssetTest: XCTestCase {
         let endPoint = AssetModel.endpoint
         XCTAssertEqual(endPoint.pathComponent, "assets")
     }
-
+    #if os(iOS) || os(tvOS) || os(watchOS)
     func testFetch_withoutUID() {
         expectFatalError(expectedMessage: "Please provide Asset uid") {
             makeAssetSut().fetch { (result: Result<AssetModel, Error>, response) in
@@ -21,7 +21,7 @@ class AssetTest: XCTestCase {
             }
         }
     }
-    
+    #endif
     func testAssetInclude() {
         let assetDimension = makeAssetSut().includeDimension()
         XCTAssertEqual(assetDimension.parameters.query(), "include_dimension=true")

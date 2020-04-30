@@ -13,7 +13,7 @@ class EntryTest: XCTestCase {
         let endPoint = EntryModel.endpoint
         XCTAssertEqual(endPoint.pathComponent, "entries")
     }
-
+    #if os(iOS) || os(tvOS) || os(watchOS)
     func testFetch_withoutUID() {
         expectFatalError(expectedMessage: "Please provide Entry uid") {
             makeEntrySut(contentTypeuid: "content").fetch { (result: Result<AssetModel, Error>, response) in
@@ -35,7 +35,7 @@ class EntryTest: XCTestCase {
             XCTAssertNil(query)
         }
     }
-
+    #endif
     func testEntryQuery_withoutUID() {
         let query = makeEntrySut(contentTypeuid: "Content_type").query()
         XCTAssertNotNil(query)
