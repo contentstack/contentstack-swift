@@ -4,12 +4,23 @@
     <title>ContentType Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <link rel="canonical" href="https://www.contentstack.com/docs/platforms/swift/api-reference/" />
     <meta charset='utf-8'>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
+    <!-- Google Tag Manager -->
+	  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-WGP99J7');</script>
+		<!-- End Google Tag Manager -->
     
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGP99J7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
     <a name="//apple_ref/swift/Class/ContentType" class="dashAnchor"></a>
     <a title="ContentType Class Reference"></a>
     <header>
@@ -316,7 +327,7 @@ Read more about <a href="https://www.contentstack.com/docs/developers/create-con
                     <code>
                     <a name="/s:12Contentstack11ContentTypeC5entry3uidAA5EntryCSSSg_tF"></a>
                     <a name="//apple_ref/swift/Method/entry(uid:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12Contentstack11ContentTypeC5entry3uidAA5EntryCSSSg_tF">entry(uid:<wbr>)</a>
+                    <a class="token" href="#/s:12Contentstack11ContentTypeC5entry3uidAA5EntryCSSSg_tF">entry(uid:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -479,7 +490,7 @@ let stack = Contentstack.stack(apiKey: apiKey,
                     <code>
                     <a name="/s:12Contentstack11ContentTypeC5fetchyyys6ResultOyxs5Error_pG_AA08ResponseC0OtcAA18EndpointAccessibleRzSeRzlF"></a>
                     <a name="//apple_ref/swift/Method/fetch(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12Contentstack11ContentTypeC5fetchyyys6ResultOyxs5Error_pG_AA08ResponseC0OtcAA18EndpointAccessibleRzSeRzlF">fetch(_:<wbr>)</a>
+                    <a class="token" href="#/s:12Contentstack11ContentTypeC5fetchyyys6ResultOyxs5Error_pG_AA08ResponseC0OtcAA18EndpointAccessibleRzSeRzlF">fetch(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -495,8 +506,8 @@ let stack = Contentstack.stack(apiKey: apiKey,
             <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
 
 <span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">(</span><span class="nv">uid</span><span class="p">:</span> <span class="n">assetUID</span><span class="p">)</span>
-<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">restult</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentTypeModel</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
-   <span class="k">switch</span> <span class="n">restult</span> <span class="p">{</span>
+<span class="o">.</span><span class="n">fetch</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentTypeModel</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+   <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">model</span><span class="p">):</span>
          <span class="c1">//Model retrive from API</span>
    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
@@ -545,7 +556,7 @@ let stack = Contentstack.stack(apiKey: apiKey,
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-04-24)</p>
+          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-05-07)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

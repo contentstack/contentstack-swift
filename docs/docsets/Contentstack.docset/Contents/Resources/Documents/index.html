@@ -4,12 +4,23 @@
     <title>Contentstack  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <link rel="canonical" href="https://www.contentstack.com/docs/platforms/swift/api-reference/" />
     <meta charset='utf-8'>
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
+    <!-- Google Tag Manager -->
+	  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-WGP99J7');</script>
+		<!-- End Google Tag Manager -->
     
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGP99J7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
     <a title="Contentstack  Reference"></a>
     <header>
       <div class="content-wrapper">
@@ -267,14 +278,392 @@
         <section>
           <section class="section">
             
-            <h1 id='contentstack-swift' class='heading'>Contentstack-swift</h1>
+            <h1 id='img-src-https-www-contentstack-com-docs-static-images-contentstack-png-alt-contentstack' class='heading'><img src="https://www.contentstack.com/docs/static/images/contentstack.png" alt="Contentstack"></h1>
+<h1 id='contentstack-swift-sdk' class='heading'>Contentstack Swift SDK</h1>
 
-<p>Swift SDK for Contentstack’s Content Delivery API</p>
+<p>Contentstack is a headless CMS with an API-first approach. It is a CMS that developers can use to build powerful cross-platform applications in their favorite languages. Build your application frontend, and Contentstack will take care of the rest. <a href="https://www.contentstack.com/">Read More</a>.</p>
+
+<p>Contentstack provides iOS SDK to build application on top of iOS. Given below is the detailed guide and helpful resources to get started with our iOS SDK.</p>
+<h3 id='prerequisite' class='heading'>Prerequisite</h3>
+
+<p>Latest Xcode and Mac OS X</p>
+<h3 id='setup-and-installation' class='heading'>Setup and Installation</h3>
+
+<p>To use this SDK on iOS platform, you will have to install the SDK according to the steps given below.</p>
+<h5 id='cocoapods' class='heading'>CocoaPods</h5>
+
+<ol>
+<li>Add the following line to your Podfile:</li>
+<li>pod &lsquo;ContentstackSwift&rsquo;</li>
+<li>Run pod install, and you should now have the latest Contentstack release.</li>
+</ol>
+<h5 id='import-header-module' class='heading'>Import Header/Module</h5>
+<pre class="highlight shell"><code> import ContentstackSwift
+</code></pre>
+<h3 id='key-concepts-for-using-contentstack' class='heading'>Key Concepts for using Contentstack</h3>
+<h4 id='stack' class='heading'>Stack</h4>
+
+<p>A stack is like a container that holds the content of your app. Learn more about <a href="https://www.contentstack.com/docs/guide/stack">Stacks</a>.</p>
+<h4 id='content-type' class='heading'>Content Type</h4>
+
+<p>Content type lets you define the structure or blueprint of a page or a section of your digital property. It is a form-like page that gives Content Managers an interface to input and upload content. <a href="https://www.contentstack.com/docs/guide/content-types">Read more</a>.</p>
+<h4 id='entry' class='heading'>Entry</h4>
+
+<p>An entry is the actual piece of content created using one of the defined content types. Learn more about <a href="https://www.contentstack.com/docs/guide/content-management#working-with-entries">Entries</a>.</p>
+<h4 id='asset' class='heading'>Asset</h4>
+
+<p>Assets refer to all the media files (images, videos, PDFs, audio files, and so on) uploaded to Contentstack. These files can be used in multiple entries. Read more about <a href="https://www.contentstack.com/docs/guide/content-management#working-with-assets">Assets</a>.</p>
+<h4 id='environment' class='heading'>Environment</h4>
+
+<p>A publishing environment corresponds to one or more deployment servers or a content delivery destination where the entries need to be published. Learn how to work with <a href="https://www.contentstack.com/docs/guide/environments">Environments</a>.</p>
+<h3 id='contentstack-ios-sdk-5-minute-quickstart' class='heading'>Contentstack iOS SDK: 5-minute Quickstart</h3>
+<h4 id='initializing-your-sdk' class='heading'>Initializing your SDK</h4>
+
+<p>To start using the SDK in your application, you will need to initialize the stack by providing the required keys and values associated with them:</p>
+<pre class="highlight plaintext"><code>  let stack:Stack = Contentstack.stack(apiKey: API_KEY, deliveryToken: DELIVERY_TOKEN, environment: ENVIRONMENT)
+</code></pre>
+
+<p>To get the api credentials mentioned above, you need to log into your Contentstack account and then in your top panel navigation, go to Settings -&gt; Stack to view both your API Key and your Delivery Token</p>
+
+<p>The stack object that is returned is a Contentstack client object, which can be used to initialize different modules and make queries against our <a href="https://contentstack.com/docs/apis/content-delivery-api/">Content Delivery API</a>. The initialization process for each module is explained in the following section.</p>
+<h4 id='querying-content-from-your-stack' class='heading'>Querying content from your stack</h4>
+
+<p>To fetch all entries of of a content type, use the query given below:</p>
+<pre class="highlight plaintext"><code> let stack = Contentstack.stack(apiKey: apiKey,
+             deliveryToken: deliveryToken,
+             environment: environment)
+
+ stack.contentType(uid: contentTypeUID).entry().query()
+    .find { (result: Result&lt;ContentstackResponse&lt;EntryModel&gt;, Error&gt;, response: ResponseType) in
+      switch result {
+      case .success(let contentstackResponse):
+          // Contentstack response with AssetModel array in items.
+      case .failure(let error):
+          //Error Message
+      }
+  }
+</code></pre>
+
+<p>To fetch a specific entry from a content type, use the following query:</p>
+<pre class="highlight plaintext"><code>  let stack = Contentstack.stack(apiKey: apiKey,
+              deliveryToken: deliveryToken,
+              environment: environment)
+
+  stack.contentType(uid: contentTypeUID).entry(uid: UID)
+  .fetch { (result: Result&lt;EntryModel, Error&gt;, response: ResponseType) in
+     switch result {
+     case .success(let model):
+          //Model retrive from API
+     case .failure(let error):
+          //Error Message
+     }
+  }
+</code></pre>
+<h3 id='advanced-queries' class='heading'>Advanced Queries</h3>
+
+<p>You can query for content types, entries, assets and more using our iOS API Reference.</p>
+
+<p><a href="https://www.contentstack.com/docs/platforms/swift/api-reference/">iOS API Reference Doc</a></p>
+<h3 id='working-with-images' class='heading'>Working with Images</h3>
+
+<p>We have introduced Image Delivery APIs that let you retrieve images and then manipulate and optimize them for your digital properties. It lets you perform a host of other actions such as crop, trim, resize, rotate, overlay, and so on.</p>
+
+<p>For example, if you want to crop an image (with width as 300 and height as 400), you simply need to append query parameters at the end of the image URL, such as, <a href="https://images.contentstack.io/v3/assets/blteae40eb499811073/bltc5064f36b5855343/59e0c41ac0eddd140d5a8e3e/download?crop=300,400">https://images.contentstack.io/v3/assets/blteae40eb499811073/bltc5064f36b5855343/59e0c41ac0eddd140d5a8e3e/download?crop=300,400</a>. There are several more parameters that you can use for your images.</p>
+
+<p><a href="https://www.contentstack.com/docs/apis/image-delivery-api/">Read Image Delivery API documentation</a>.</p>
+
+<p>You can use the Image Delivery API functions in this SDK as well. Here are a few examples of its usage in the SDK.</p>
+<pre class="highlight plaintext"><code> /* set the image quality to 100 */
+ let quality: UInt = 100
+ let imageTransform = ImageTransform().qualiy(quality)
+ let url = try imageURL.url(with: imageTransform)
+
+ /* resize the image by specifying width and height */
+ let width: UInt = 100
+ let height: UInt = 100
+ let urlboth = try imageURL
+     .url(with: makeImageTransformSUT()
+         .resize(
+             Resize(size:
+                 Size(width: width, height: height)
+         )
+     )
+  )
+</code></pre>
+
+<p><a href="https://www.contentstack.com/docs/platforms/swift/api-reference/">iOS API Reference Doc</a></p>
+<h3 id='using-the-sync-api-with-ios-sdk' class='heading'>Using the Sync API with iOS SDK</h3>
+
+<p>The Sync API takes care of syncing your Contentstack data with your app and ensures that the data is always up-to-date by providing delta updates. Contentstack’s iOS SDK supports Sync API, which you can use to build powerful apps. Read through to understand how to use the Sync API with Contentstack iOS SDK.</p>
+<h4 id='initial-sync' class='heading'>Initial Sync</h4>
+
+<p>The Initial Sync process performs a complete sync of your app data. It returns all the published entries and assets of the specified stack in response.</p>
+
+<p>To start the Initial Sync process, use the syncStack method.</p>
+<pre class="highlight plaintext"><code>let stack = Contentstack.stack(apiKey: apiKey,
+              deliveryToken: deliveryToken,
+              environment: environment)
+
+stack.sync(then: { (result: Result&lt;SyncStack, Error&gt;) in
+ switch result {
+ case .success(let syncStack):
+      let items = syncStack.items
+
+      //error for any error description
+      //syncStack for SyncStack
+      //syncStack.syncToken: contains token for next sync Store this token For next sync
+      //syncStack.paginationToken: contains token for next sync page this token for next sync
+      //syncStack.items: contains sync data
+      If let token = syncStack.paginationToken {
+          UserDefault.standard.setValue(token, forKey:"PaginationToken")
+      }else if let token = syncStack.syncToken {
+          UserDefault.standard.setValue(token, forKey:"SyncToken")
+      }
+
+ case .failure(let error):
+      print(error)
+ }
+})
+</code></pre>
+
+<p>The response also contains a sync token, which you need to store, since this token is used to get subsequent delta updates later, as shown in the Subsequent Sync section below. </p>
+
+<p>You can also fetch custom results in initial sync by using <a href="#">advanced sync queries</a>. </p>
+<h4 id='sync-pagination' class='heading'>Sync Pagination</h4>
+
+<p>If the result of the initial sync (or subsequent sync) contains more than 100 records, the response would be paginated. It provides pagination token in the response. However, you don’t have to use the pagination token manually to get the next batch; the SDK does that automatically, until the sync is complete. </p>
+
+<p>Pagination token can be used in case you want to fetch only selected batches. It is especially useful if the sync process is interrupted midway (due to network issues, etc.). In such cases, this token can be used to restart the sync process from where it was interrupted.</p>
+<pre class="highlight plaintext"><code>let stack = Contentstack.stack(apiKey: apiKey,
+          deliveryToken: deliveryToken,
+          environment: environment)
+
+let syncStack = SyncStack(paginationToken: paginationToken)
+
+stack.sync(syncStack, then: { (result: Result&lt;SyncStack, Error&gt;) in
+ switch result {
+ case .success(let syncStack):
+      let items = syncStack.items
+
+      //error for any error description
+      //syncStack for SyncStack
+      //syncStack.syncToken: contains token for next sync Store this token For next sync
+      //syncStack.paginationToken: contains token for next sync page this token for next sync
+      //syncStack.items: contains sync data
+      If let token = syncStack.paginationToken {
+          UserDefault.standard.setValue(token, forKey:"PaginationToken")
+      }else if let token = syncStack.syncToken {
+          UserDefault.standard.setValue(token, forKey:"SyncToken")
+      }
+
+ case .failure(let error):
+      print(error)
+ }
+})
+</code></pre>
+<h4 id='subsequent-sync' class='heading'>Subsequent Sync</h4>
+
+<p>You can use the sync token (that you receive after initial sync) to get the updated content next time. The sync token fetches only the content that was added after your last sync, and the details of the content that was deleted or updated.</p>
+<pre class="highlight plaintext"><code>let stack = Contentstack.stack(apiKey: apiKey,
+          deliveryToken: deliveryToken,
+          environment: environment)
+
+let syncStack = SyncStack(syncToken: syncToken)
+
+stack.sync(syncStack, then: { (result: Result&lt;SyncStack, Error&gt;) in
+ switch result {
+ case .success(let syncStack):
+      let items = syncStack.items
+
+      //error for any error description
+      //syncStack for SyncStack
+      //syncStack.syncToken: contains token for next sync Store this token For next sync
+      //syncStack.paginationToken: contains token for next sync page this token for next sync
+      //syncStack.items: contains sync data
+      If let token = syncStack.paginationToken {
+          UserDefault.standard.setValue(token, forKey:"PaginationToken")
+      }else if let token = syncStack.syncToken {
+          UserDefault.standard.setValue(token, forKey:"SyncToken")
+      }
+
+ case .failure(let error):
+      print(error)
+ }
+})
+</code></pre>
+<h4 id='advanced-sync-queries' class='heading'>Advanced sync queries</h4>
+
+<p>You can use advanced sync queries to fetch filtered results. Let&rsquo;s look at them in detail.</p>
+<h5 id='initial-sync-from-specific-date' class='heading'>Initial sync from specific date</h5>
+
+<p>For initializing sync from a specific date, you can specify the date using the <code>sync</code> parameters.</p>
+<pre class="highlight plaintext"><code>let stack = Contentstack.stack(apiKey: apiKey,
+          deliveryToken: deliveryToken,
+          environment: environment)
+
+let syncStack = SyncStack(syncToken: syncToken)
+
+stack.sync(syncTypes: [.startFrom(date)], then: { (result: Result&lt;SyncStack, Error&gt;) in
+ switch result {
+ case .success(let syncStack):
+      let items = syncStack.items
+
+      //error for any error description
+      //syncStack for SyncStack
+      //syncStack.syncToken: contains token for next sync Store this token For next sync
+      //syncStack.paginationToken: contains token for next sync page this token for next sync
+      //syncStack.items: contains sync data
+      If let token = syncStack.paginationToken {
+          UserDefault.standard.setValue(token, forKey:"PaginationToken")
+      }else if let token = syncStack.syncToken {
+          UserDefault.standard.setValue(token, forKey:"SyncToken")
+      }
+
+ case .failure(let error):
+      print(error)
+ }
+})
+</code></pre>
+
+<p>##### Initial sync of specific content types
+ You can also initialize sync with entries of only specific content types. To do this, use syncOnly and specify the content type UID as its value.</p>
+
+<p>However, if you do this, the subsequent syncs will only include the entries of the specified content types.</p>
+<pre class="highlight plaintext"><code> let stack = Contentstack.stack(apiKey: apiKey,
+           deliveryToken: deliveryToken,
+           environment: environment)
+
+ let syncStack = SyncStack(syncToken: syncToken)
+
+ stack.sync(syncTypes: [.contentType("contentTypeUID")], then: { (result: Result&lt;SyncStack, Error&gt;) in
+  switch result {
+  case .success(let syncStack):
+       let items = syncStack.items
+
+       //error for any error description
+       //syncStack for SyncStack
+       //syncStack.syncToken: contains token for next sync Store this token For next sync
+       //syncStack.paginationToken: contains token for next sync page this token for next sync
+       //syncStack.items: contains sync data
+       If let token = syncStack.paginationToken {
+           UserDefault.standard.setValue(token, forKey:"PaginationToken")
+       }else if let token = syncStack.syncToken {
+           UserDefault.standard.setValue(token, forKey:"SyncToken")
+       }
+
+  case .failure(let error):
+       print(error)
+  }
+ })
+</code></pre>
+<h5 id='initial-sync-with-specific-language' class='heading'>Initial sync with specific language</h5>
+
+<p>You can also initialize sync with entries of only specific locales. To do this, use sync and specify the locale code as its value.</p>
+
+<p>However, if you do this, the subsequent syncs will only include the entries of the specified locales.</p>
+<pre class="highlight plaintext"><code>let stack = Contentstack.stack(apiKey: apiKey,
+          deliveryToken: deliveryToken,
+          environment: environment)
+
+let syncStack = SyncStack(syncToken: syncToken)
+
+stack.sync(syncTypes: [.locale("en-gb")], then: { (result: Result&lt;SyncStack, Error&gt;) in
+ switch result {
+ case .success(let syncStack):
+      let items = syncStack.items
+
+      //error for any error description
+      //syncStack for SyncStack
+      //syncStack.syncToken: contains token for next sync Store this token For next sync
+      //syncStack.paginationToken: contains token for next sync page this token for next sync
+      //syncStack.items: contains sync data
+      If let token = syncStack.paginationToken {
+          UserDefault.standard.setValue(token, forKey:"PaginationToken")
+      }else if let token = syncStack.syncToken {
+          UserDefault.standard.setValue(token, forKey:"SyncToken")
+      }
+
+ case .failure(let error):
+      print(error)
+ }
+})
+</code></pre>
+
+<p>##### Initial sync with publish type
+ You can also initialize sync with entries and assets based on a specific publish type. The acceptable values are PublishType enums entryPublished, entryUnpublished, entryDeleted, assetPublished, assetUnpublished, assetDeleted, and contentTypeDeleted. To do this, use syncPublishType and specify the parameters.</p>
+
+<p>However, if you do this, the subsequent syncs will only include the entries of the specified publish type</p>
+<pre class="highlight plaintext"><code> let stack = Contentstack.stack(apiKey: apiKey,
+           deliveryToken: deliveryToken,
+           environment: environment)
+
+ let syncStack = SyncStack(syncToken: syncToken)
+
+ stack.sync(syncTypes: [.publishType(.assetPublished)], then: { (result: Result&lt;SyncStack, Error&gt;) in
+  switch result {
+  case .success(let syncStack):
+       let items = syncStack.items
+
+       //error for any error description
+       //syncStack for SyncStack
+       //syncStack.syncToken: contains token for next sync Store this token For next sync
+       //syncStack.paginationToken: contains token for next sync page this token for next sync
+       //syncStack.items: contains sync data
+       If let token = syncStack.paginationToken {
+           UserDefault.standard.setValue(token, forKey:"PaginationToken")
+       }else if let token = syncStack.syncToken {
+           UserDefault.standard.setValue(token, forKey:"SyncToken")
+       }
+
+  case .failure(let error):
+       print(error)
+  }
+ })
+</code></pre>
+<h5 id='initial-sync-with-multiple-parameters' class='heading'>Initial sync with multiple parameters</h5>
+
+<p>For initializing sync with entries of specific content types, starting from specific date, use the snippet given below.</p>
+
+<p>Note that subsequent syncs will only include the entries of the specified content types.</p>
+<pre class="highlight plaintext"><code>let stack = Contentstack.stack(apiKey: apiKey,
+          deliveryToken: deliveryToken,
+          environment: environment)
+
+let syncStack = SyncStack(syncToken: syncToken)
+
+stack.sync(syncTypes: [.locale("en-gb"), .contentType("contentTypeUID")], then: { (result: Result&lt;SyncStack, Error&gt;) in
+ switch result {
+ case .success(let syncStack):
+      let items = syncStack.items
+
+      //error for any error description
+      //syncStack for SyncStack
+      //syncStack.syncToken: contains token for next sync Store this token For next sync
+      //syncStack.paginationToken: contains token for next sync page this token for next sync
+      //syncStack.items: contains sync data
+      If let token = syncStack.paginationToken {
+          UserDefault.standard.setValue(token, forKey:"PaginationToken")
+      }else if let token = syncStack.syncToken {
+          UserDefault.standard.setValue(token, forKey:"SyncToken")
+      }
+
+ case .failure(let error):
+      print(error)
+ }
+})
+</code></pre>
+<h3 id='helpful-links' class='heading'>Helpful Links</h3>
+
+<ul>
+<li><a href="https://www.contentstack.com">Contentstack Website</a></li>
+<li><a href="http://contentstack.com/docs">Official Documentation</a></li>
+<li><a href="https://contentstack.com/docs/apis/content-delivery-api/">Content Delivery API Docs</a></li>
+</ul>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-04-24)</p>
+          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-05-07)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
