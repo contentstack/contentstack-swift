@@ -1,0 +1,124 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ContentstackConfig.swift",
+      "line": 10,
+      "symbol": "ContentstackConfig",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ContentstackLogger.swift",
+      "line": 19,
+      "symbol": "ContentstackLogger",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Decodable.swift",
+      "line": 25,
+      "symbol": "JSONDecoder.dateDecodingStrategy()",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Entry.swift",
+      "line": 13,
+      "symbol": "Entry.ResourceType",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/EntryQuaryable.swift",
+      "line": 10,
+      "symbol": "EntryQueryable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/EntryQuaryable.swift",
+      "line": 12,
+      "symbol": "EntryQueryable",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageOperations.swift",
+      "line": 364,
+      "symbol": "OverlayRepeat.both",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageOperations.swift",
+      "line": 365,
+      "symbol": "OverlayRepeat.horizontal",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/ImageOperations.swift",
+      "line": 366,
+      "symbol": "OverlayRepeat.verticle",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 11,
+      "symbol": "Query.ResourceType",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 351,
+      "symbol": "ContentTypeQuery.ResourceType",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Query.swift",
+      "line": 432,
+      "symbol": "AssetQuery.ResourceType",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/QueryProtocols.swift",
+      "line": 12,
+      "symbol": "QueryProtocol.ResourceType",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Stack.swift",
+      "line": 10,
+      "symbol": "Host",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/Stack.swift",
+      "line": 15,
+      "symbol": "ResultsHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SyncStack.swift",
+      "line": 131,
+      "symbol": "SyncStack.endpoint",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/uttamukkoji/Documents/iOS/contentstack-swift/Sources/SystemFields.swift",
+      "line": 62,
+      "symbol": "EndpointAccessible.endpoint",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/uttamukkoji/Documents/iOS/contentstack-swift"
+}
