@@ -14,8 +14,15 @@ jobs:
       DEVELOPER_DIR: /Applications/Xcode_11.3.1.app/Contents/Developer
     steps:
     - uses: actions/checkout@v2
+      with:
+        path: Carthage
+        key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+        restore-keys: |
+          ${{ runner.os }}-carthage-
     - name: macOS
-      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Contentstack.xcodeproj" -scheme "Contentstack macOS" -destination "platform=macOS" clean test | xcpretty
+      run: |
+        cd contentstack-swift
+        set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Contentstack.xcodeproj" -scheme "Contentstack macOS" -destination "platform=macOS" clean test | xcpretty
   iOS:
     name: Test iOS
     runs-on: macos-latest
@@ -26,8 +33,15 @@ jobs:
         destination: ["OS=13.3,name=iPhone 11 Pro"]
     steps:
     - uses: actions/checkout@v1
+      with:
+        path: Carthage
+        key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+        restore-keys: |
+          ${{ runner.os }}-carthage-
     - name: iOS - ${{ matrix.destination }}
-      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Contentstack.xcodeproj" -scheme "Contentstack iOS" -destination "${{ matrix.destination }}" clean test | xcpretty
+      run: |
+        cd contentstack-swift
+        set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Contentstack.xcodeproj" -scheme "Contentstack iOS" -destination "${{ matrix.destination }}" clean test | xcpretty
 
   tvOS:
     name: Test tvOS
@@ -39,8 +53,15 @@ jobs:
         destination: ["OS=13.3,name=Apple TV 4K"]
     steps:
     - uses: actions/checkout@v1
+      with:
+        path: Carthage
+        key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+        restore-keys: |
+          ${{ runner.os }}-carthage-
     - name: tvOS - ${{ matrix.destination }}
-      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Contentstack.xcodeproj" -scheme "Contentstack tvOS" -destination "${{ matrix.destination }}" clean test | xcpretty
+      run: |
+        cd contentstack-swift
+        set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Contentstack.xcodeproj" -scheme "Contentstack tvOS" -destination "${{ matrix.destination }}" clean test | xcpretty
 
   watchOS:
     name: Test watchOS
@@ -52,5 +73,12 @@ jobs:
         destination: ["OS=6.1.1,name=Apple Watch Series 5 - 44mm"] #, "OS=4.2,name=Apple Watch Series 3 - 42mm", "OS=3.2,name=Apple Watch Series 2 - 42mm"]
     steps:
     - uses: actions/checkout@v1
+      with:
+        path: Carthage
+        key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+        restore-keys: |
+          ${{ runner.os }}-carthage-
     - name: watchOS - ${{ matrix.destination }}
-      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Contentstack.xcodeproj" -scheme "Contentstack watchOS" -destination "${{ matrix.destination }}" clean build | xcpretty
+      run: |
+        cd contentstack-swift
+        set -o pipefail && env NSUnbufferedIO=YES xcodebuild -project "Contentstack.xcodeproj" -scheme "Contentstack watchOS" -destination "${{ matrix.destination }}" clean build | xcpretty
