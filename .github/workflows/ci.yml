@@ -19,6 +19,8 @@ jobs:
         key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
         restore-keys: |
           ${{ runner.os }}-carthage-
+    - name: Dependencies
+      run: carthage bootstrap --no-use-binaries --platform macOS --cache-builds
     - name: macOS
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack macOS" -destination "platform=macOS" test | xcpretty
   iOS:
@@ -36,6 +38,8 @@ jobs:
         key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
         restore-keys: |
           ${{ runner.os }}-carthage-
+    - name: Dependencies
+      run: carthage bootstrap --no-use-binaries --platform iOS --cache-builds
     - name: iOS - ${{ matrix.destination }}
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack iOS" -destination "${{ matrix.destination }}" test | xcpretty
 
@@ -54,6 +58,8 @@ jobs:
         key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
         restore-keys: |
           ${{ runner.os }}-carthage-
+    - name: Dependencies
+      run: carthage bootstrap --no-use-binaries --platform tvOS --cache-builds
     - name: tvOS - ${{ matrix.destination }}
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack tvOS" -destination "${{ matrix.destination }}" test | xcpretty
 
