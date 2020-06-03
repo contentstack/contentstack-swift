@@ -31,7 +31,7 @@ class SyncTest: XCTestCase {
         XCTAssertEqual(syncStack.paginationToken, paginationToken)
         XCTAssertEqual(syncStack.parameter.query(), "pagination_token=\(paginationToken)")
     }
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if !NO_FATAL_TEST
     func testSync_BothTokens_ShouldGetFatalError() {
         expectFatalError(expectedMessage: ("Both Sync Token and Pagination Token can not be presnet.")) {
             let syncStack = makeSyncStack(syncToken: self.syncToken, paginationToken: self.paginationToken)

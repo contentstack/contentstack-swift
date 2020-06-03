@@ -36,6 +36,7 @@ echo "Running Test cases on iOS..."
 xcodebuild \
     -workspace Contentstack.xcworkspace \
     -scheme "Contentstack iOS" \
+    SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" \
     test \
     -destination "id=18C1CD7D-CD1F-4EBC-A172-41B823B2168B" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-iOS.xcresult" \
@@ -52,6 +53,7 @@ echo "Running Test cases on tvOS..."
 xcodebuild \
     -workspace Contentstack.xcworkspace \
     -scheme "Contentstack tvOS" \
+    SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" \
     test \
     -destination "OS=13.0,name=Apple TV 4K" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-tvOS.xcresult" \
@@ -68,6 +70,7 @@ echo "Running Test cases on macOS..."
 xcodebuild \
     -workspace Contentstack.xcworkspace \
     -scheme "Contentstack macOS" \
+    SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" \
     test \
     -destination "platform=macOS" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-macOS.xcresult" \
