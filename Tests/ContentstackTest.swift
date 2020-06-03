@@ -9,7 +9,7 @@ import XCTest
 @testable import Contentstack
 import DVR
 private var _stackSharedInstance: Stack?
-#if !API_TEST
+
 class TestContentstackClient {
 
     static func config() -> [String: Any] {
@@ -62,5 +62,3 @@ class TestContentstackClient {
         return _stackSharedInstance!
     }
 }
-
-#endif
