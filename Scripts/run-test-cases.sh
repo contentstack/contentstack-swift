@@ -8,16 +8,9 @@
 
 echo $DATE
 echo "Cleaning Build Folder..."
-xcodebuild clean -project contentstack.xcodeproj -scheme "Contentstack iOS"
-xcodebuild clean -project contentstack.xcodeproj -scheme "Contentstack tvOS"
-xcodebuild clean -project contentstack.xcodeproj -scheme "Contentstack macOS"
-
-#Get environment on which test will run
-echo "Please select environment from following"
-echo "API_TEST Release"
-
-read environment
-#if environment == "API_TEST"
+xcodebuild clean -workspace Contentstack.xcworkspace -scheme "Contentstack iOS"
+xcodebuild clean -workspace Contentstack.xcworkspace -scheme "Contentstack tvOS"
+xcodebuild clean -workspace Contentstack.xcworkspace -scheme "Contentstack macOS"
 
 # Test result output folders
 TEST_BUNDLE_PATH="./TestCase/Bundle/"

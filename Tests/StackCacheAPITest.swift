@@ -22,6 +22,7 @@ class StackCacheAPITest: XCTestCase {
     
     override class func setUp() {
         super.setUp()
+        URLCache.shared = CSURLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: "csio_cache")
         (stack.urlSession as? DVR.Session)?.beginRecording()
     }
 

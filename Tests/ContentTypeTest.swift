@@ -15,7 +15,7 @@ final class ContentTypeTests: XCTestCase {
         let endPoint = ContentTypeModel.endpoint
         XCTAssertEqual(endPoint.pathComponent, "content_types")
     }
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if !NO_FATAL_TEST
     func testFetch_withoutUID() {
         expectFatalError(expectedMessage: "Please provide ContentType uid") {
             makeContentTypeSut().fetch { (result: Result<AssetModel, Error>, response) in
@@ -53,7 +53,7 @@ final class ContentTypeTests: XCTestCase {
         XCTAssertEqual(contentTypeQuery.queryParameter[ContentTypeModel.QueryableCodingKey.uid.rawValue] as? String, uid)
     }
 
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if !NO_FATAL_TEST
     static var allTests = [
         ("testEntry_ContentTypeUidNotProvided_FatalError",
          testEntry_ContentTypeUidNotProvided_FatalError),
@@ -64,7 +64,7 @@ final class ContentTypeTests: XCTestCase {
         ("testContentTypeQuery_withContentTypeUID",
          testContentTypeQuery_withContentTypeUID)
     ]
-    #elseif os(macOS)
+    #else
     static var allTests = [
         ("testEntry_UidNotProvided_ShouldReturnEntry",
          testEntry_UidNotProvided_ShouldReturnEntry),

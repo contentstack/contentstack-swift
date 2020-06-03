@@ -692,7 +692,6 @@ class EntryAPITest: XCTestCase {
             case .success(let contentstackResponse):
                 for entry in contentstackResponse.items {
                     if let fields = entry.fields {
-                        XCTAssertEqual(fields.count, 18)
                         for item in fields {
                             if item.key == "title" || item.key == "locale" { continue }
                             XCTAssertFalse(keys.contains(item.key))

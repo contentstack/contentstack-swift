@@ -1,6 +1,8 @@
 # ![Contentstack](https://www.contentstack.com/docs/static/images/contentstack.png)
 
 # Contentstack Swift SDK
+![Contentstack CI](https://github.com/contentstack/contentstack-swift/workflows/Contentstack%20CI/badge.svg)
+
 
 Contentstack is a headless CMS with an API-first approach. It is a CMS that developers can use to build powerful cross-platform applications in their favorite languages. Build your application frontend, and Contentstack will take care of the rest. [Read More](https://www.contentstack.com/).
 

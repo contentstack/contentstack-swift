@@ -13,7 +13,7 @@ class AssetTest: XCTestCase {
         let endPoint = AssetModel.endpoint
         XCTAssertEqual(endPoint.pathComponent, "assets")
     }
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if !NO_FATAL_TEST
     func testFetch_withoutUID() {
         expectFatalError(expectedMessage: "Please provide Asset uid") {
             makeAssetSut().fetch { (result: Result<AssetModel, Error>, response) in
