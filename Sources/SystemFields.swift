@@ -62,9 +62,12 @@ public protocol EndpointAccessible {
     static var endpoint: Endpoint { get }
 }
 
-/// Decodable is a powerful Swift standard library feature that developers can use to decode custom types from external representation, such as JSON.
+/// Decodable is a powerful Swift standard library feature that developers can use to
+/// decode custom types from external representation, such as JSON.
 ///
-/// `EntryDecodable` is an extension of the decodable protocol that you can use to decode the response to a specific model. By using this protocol, you can define types that will be mapped from your entries of the content type.
+/// `EntryDecodable` is an extension of the decodable protocol that you can use to decode the response to a
+/// specific model.
+/// By using this protocol, you can define types that will be mapped from your entries of the content type.
 ///
 /// In this guide, we will discuss how we can use the EntryDecodable Protocol in your Swift SDK.
 ///
@@ -74,7 +77,8 @@ public protocol EndpointAccessible {
 ///
 /// Standard Usage
 ///
-/// We have a content type named `Session` and to fetch entries of our `Session` content type from the Swift SDK, we need to create a class named `Session` that implements the `EntryDecodable` protocol as follows:
+/// We have a content type named `Session` and to fetch entries of our `Session` content type from the Swift SDK,
+/// we need to create a class named `Session` that implements the `EntryDecodable` protocol as follows:
 ///
 /// Example usage:
 /// ```
@@ -121,7 +125,8 @@ public protocol EndpointAccessible {
 /// ```
 /// Usage in Referencing
 ///
-/// Let's say there is another content type in our Stack named `Speaker` that is referenced in our `Session` Content Type.
+/// Let's say there is another content type in our Stack named `Speaker`
+/// that is referenced in our `Session` Content Type.
 ///
 /// For this case, we will create a class named `Speaker` that implements the `EntryDecodable` protocol as follows:
 /// Example usage:
@@ -161,7 +166,9 @@ public protocol EndpointAccessible {
 /// }
 ///```
 ///
-/// In the `Session` class, we have a ‘session_time’ `Global Field`. To parse it, we need to create a class named `SessionTime` that implements the `Decodable` protocol as follows.
+/// In the `Session` class, we have a ‘session_time’ `Global Field`. To parse it, we need to create
+/// a class named `SessionTime` that implements the `Decodable` protocol as follows.
+///
 /// Example:
 /// ```
 /// class SessionTime: Decodable {
@@ -179,5 +186,6 @@ public protocol EndpointAccessible {
 ///    }
 /// }
 /// ```
-/// `Note`: If we have fields with `Modular block`, `JSON`, or an `array of JSON` in our content type, we can create a class that implements `Decodable`.
+/// `Note`: If we have fields with `Modular block`, `JSON`, or an `array of JSON`
+/// in our content type, we can create a class that implements `Decodable`.
 public protocol EntryDecodable: EntryFields, FieldKeysQueryable, EndpointAccessible, Decodable {}
