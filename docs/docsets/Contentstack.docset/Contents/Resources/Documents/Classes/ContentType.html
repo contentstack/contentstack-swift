@@ -4,23 +4,12 @@
     <title>ContentType Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
-    <link rel="canonical" href="https://www.contentstack.com/docs/platforms/swift/api-reference/" />
     <meta charset='utf-8'>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
-    <!-- Google Tag Manager -->
-	  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-WGP99J7');</script>
-		<!-- End Google Tag Manager -->
     
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGP99J7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
     <a name="//apple_ref/swift/Class/ContentType" class="dashAnchor"></a>
     <a title="ContentType Class Reference"></a>
     <header>
@@ -217,6 +206,9 @@
                 <a href="../Protocols/EndpointAccessible.html">EndpointAccessible</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols.html#/s:12Contentstack14EntryDecodableP">EntryDecodable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/EntryFields.html">EntryFields</a>
               </li>
               <li class="nav-group-task">
@@ -327,7 +319,7 @@ Read more about <a href="https://www.contentstack.com/docs/developers/create-con
                     <code>
                     <a name="/s:12Contentstack11ContentTypeC5entry3uidAA5EntryCSSSg_tF"></a>
                     <a name="//apple_ref/swift/Method/entry(uid:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12Contentstack11ContentTypeC5entry3uidAA5EntryCSSSg_tF">entry(uid:)</a>
+                    <a class="token" href="#/s:12Contentstack11ContentTypeC5entry3uidAA5EntryCSSSg_tF">entry(uid:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -401,15 +393,21 @@ Read more about <a href="https://www.contentstack.com/docs/developers/create-con
                       <div class="abstract">
                         <p>To include Global Fields schema in ContentType response.</p>
 
-<p>stack.contentType().query().includeGlobalFields()
-.find { (result: Result<ContentstackResponse<ContentTypeModel>, Error&gt;, response: ResponseType) in
-    switch result {
-    case .success(let contentstackResponse):
-        // Contentstack response with ContentTypeModel array in items.
-    case .failure(let error):
-        //Error Message
-    }
-}</p>
+<p>Example usage:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">stack</span> <span class="o">=</span> <span class="kt">Contentstack</span><span class="o">.</span><span class="nf">stack</span><span class="p">(</span><span class="nv">apiKey</span><span class="p">:</span> <span class="n">apiKey</span><span class="p">,</span>
+            <span class="nv">deliveryToken</span><span class="p">:</span> <span class="n">deliveryToken</span><span class="p">,</span>
+            <span class="nv">environment</span><span class="p">:</span> <span class="n">environment</span><span class="p">)</span>
+
+<span class="n">stack</span><span class="o">.</span><span class="nf">contentType</span><span class="p">()</span><span class="o">.</span><span class="nf">query</span><span class="p">()</span><span class="o">.</span><span class="nf">includeGlobalFields</span><span class="p">()</span>
+<span class="o">.</span><span class="n">find</span> <span class="p">{</span> <span class="p">(</span><span class="nv">result</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">ContentstackResponse</span><span class="o">&lt;</span><span class="kt">ContentTypeModel</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">,</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">ResponseType</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">switch</span> <span class="n">result</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">success</span><span class="p">(</span><span class="k">let</span> <span class="nv">contentstackResponse</span><span class="p">):</span>
+        <span class="c1">// Contentstack response with ContentTypeModel array in items.</span>
+    <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+        <span class="c1">//Error Message</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -422,15 +420,10 @@ Read more about <a href="https://www.contentstack.com/docs/developers/create-con
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>A <code>ContentType</code> to enable chaining.
-Example usage:
-&ldquo;`
-let stack = Contentstack.stack(apiKey: apiKey,
-        deliveryToken: deliveryToken,
-        environment: environment)</p>
+                        <p>A <code>ContentType</code> to enable chaining.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/ContentType.swift#L70-L73">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/ContentType.swift#L71-L74">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -480,7 +473,7 @@ let stack = Contentstack.stack(apiKey: apiKey,
                         <p>A <code><a href="../Classes/ContentTypeQuery.html">ContentTypeQuery</a></code> to enable chaining.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/ContentType.swift#L93-L99">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/ContentType.swift#L94-L100">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -490,7 +483,7 @@ let stack = Contentstack.stack(apiKey: apiKey,
                     <code>
                     <a name="/s:12Contentstack11ContentTypeC5fetchyyys6ResultOyxs5Error_pG_AA08ResponseC0OtcAA18EndpointAccessibleRzSeRzlF"></a>
                     <a name="//apple_ref/swift/Method/fetch(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12Contentstack11ContentTypeC5fetchyyys6ResultOyxs5Error_pG_AA08ResponseC0OtcAA18EndpointAccessibleRzSeRzlF">fetch(_:)</a>
+                    <a class="token" href="#/s:12Contentstack11ContentTypeC5fetchyyys6ResultOyxs5Error_pG_AA08ResponseC0OtcAA18EndpointAccessibleRzSeRzlF">fetch(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -546,7 +539,7 @@ let stack = Contentstack.stack(apiKey: apiKey,
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/ContentType.swift#L123-L141">Show on GitHub</a>
+                        <a href="https://github.com/contentstack/contentstack-swift/tree/1.0.0/Sources/ContentType.swift#L124-L142">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -556,7 +549,7 @@ let stack = Contentstack.stack(apiKey: apiKey,
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-05-07)</p>
+          <p>&copy; 2020 <a class="link" href="https://www.contentstack.com" target="_blank" rel="external">Contentstack</a>. All rights reserved. (Last updated: 2020-08-19)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
