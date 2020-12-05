@@ -7,8 +7,6 @@
 
 import Foundation
 
-public protocol EntryDecodable: EntryFields, FieldKeysQueryable, EndpointAccessible, Decodable {}
-
 public protocol ContentTypeIncludable {
     var contentType: ContentTypeModel? { get set}
 }

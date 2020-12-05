@@ -51,6 +51,7 @@ public class ContentType: CachePolicyAccessible {
 
     /// To include Global Fields schema in ContentType response.
     /// - Returns: A `ContentType` to enable chaining.
+    ///
     /// Example usage:
     /// ```
     /// let stack = Contentstack.stack(apiKey: apiKey,
