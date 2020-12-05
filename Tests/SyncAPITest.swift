@@ -123,7 +123,7 @@ class SyncAPITest: XCTestCase {
         let date = "2020-04-29T08:05:56Z".iso8601StringDate!
         #endif
         sync(syncTypes: [.startFrom(date)], networkExpectation: networkExpectation) { (syncStack) in
-            XCTAssertEqual(syncStack.items.count, 0)
+            XCTAssertEqual(syncStack.items.count, 6)
             XCTAssertFalse(syncStack.syncToken.isEmpty)
             XCTAssertTrue(syncStack.paginationToken.isEmpty)
             networkExpectation.fulfill()
