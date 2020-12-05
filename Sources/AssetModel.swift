@@ -29,6 +29,8 @@ public final class AssetModel: AssetDecodable {
 
     public var url: String
 
+    public var fields: [String: Any]?
+
     public enum FieldKeys: String, CodingKey {
         case title, uid, url, dimension
         case fileName = "filename"
@@ -77,6 +79,9 @@ public final class AssetModel: AssetDecodable {
         createdBy = try container.decode(String.self, forKey: .createdBy)
         updatedAt = try container.decode(Date.self, forKey: .updatedAt)
         updatedBy = try container.decode(String.self, forKey: .updatedBy)
+        
+        let containerFields   = try decoder.container(keyedBy: JSONCodingKeys.self)
+        fields = try containerFields.decode(Dictionary<String, Any>.self)
     }
 
     public enum QueryableCodingKey: String, CodingKey {

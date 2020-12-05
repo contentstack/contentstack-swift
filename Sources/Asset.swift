@@ -23,6 +23,33 @@ public class Asset: CachePolicyAccessible {
         self.stack = stack
     }
 
+    /// Instance method to fetch `Asset` for specific locale.
+    /// - Parameter locale: The code for fetching entry for locale.
+    ///
+    /// - Returns: A `Asset` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// // To retrive single asset with specific locale
+    /// stack.asset(uid: assetUID).locale("en-us")
+    /// .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+    ///    switch result {
+    ///    case .success(let model):
+    ///          //Model retrive from API
+    ///    case .failure(let error):
+    ///          //Error Message
+    ///    }
+    /// }
+    /// ```
+    public func locale(_ locale: String) -> Self {
+        self.parameters["locale"] = locale
+        return self
+    }
+    
     /// To include the relative URLs of the assets in the response.
     /// - Returns: A `Asset` to enable chaining.
     ///
@@ -48,6 +75,31 @@ public class Asset: CachePolicyAccessible {
         return self
     }
 
+    /// To include the fallback published content if specified locale content is not publish.
+    /// - Returns: A `Asset` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// // To retrive single asset with relative URL
+    /// let asset = stack.asset(uid: assetUID).includeFallback()
+    /// .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+    ///    switch result {
+    ///    case .success(let model):
+    ///          //Model retrive from API
+    ///    case .failure(let error):
+    ///          //Error Message
+    ///    }
+    /// }
+    /// ```
+    public func includeFallback() -> Asset {
+        self.parameters[QueryParameter.includeFallback] = true
+        return self
+    }
+    
     /// To include the dimensions (height and width) of the image in the response.
     /// - Precondition: Supported image types: `JPG`, `GIF`, `PNG`, `WebP`, `BMP`, `TIFF`, `SVG`, and `PSD`.
     /// - Returns: A `Asset` to enable chaining.
