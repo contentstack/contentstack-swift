@@ -60,6 +60,8 @@ internal enum QueryParameter {
     internal static let includeContentType        = "include_content_type"
 
     internal static let includeRefContentTypeUID  = "include_reference_content_type_uid"
+    
+    internal static let includeFallback  = "include_fallback"
 }
 
 extension Query {
@@ -88,12 +90,15 @@ extension Query {
         public static let globalField: Include = Include(rawValue: 1 << 3)
         /// To include Reference ContentType Uid in reference field in Entry response,
         public static let refContentTypeUID: Include = Include(rawValue: 1 << 4)
+        /// Retrieve the published content of the fallback locale if an entry is not localized in specified locale.
+        public static let fallback: Include = Include(rawValue: 1 << 5)
         /// To inclide all `Query.Include` values.
         public static let all: Include = [.count,
                                           .unpublished,
                                           .contentType,
                                           .globalField,
-                                          .refContentTypeUID]
+                                          .refContentTypeUID,
+                                          .fallback]
     }
 }
 
@@ -143,9 +148,12 @@ extension AssetQuery {
         /// To include the dimensions (height and width) of the image in the response.
         /// Supported image types: JPG, GIF, PNG, WebP, BMP, TIFF, SVG, and PSD.
         public static let dimension: Include = Include(rawValue: 1 << 2)
+        /// Retrieve the published content of the fallback locale if an entry is not localized in specified locale.
+        public static let fallback: Include = Include(rawValue: 1 << 3)
         /// To inclide all `AssetQuery.Include` values.
         public static let all: Include = [.count,
                                           .relativeURL,
-                                          .dimension]
+                                          .dimension,
+                                          .fallback]
     }
 }

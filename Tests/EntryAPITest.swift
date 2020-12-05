@@ -8,8 +8,10 @@
 import XCTest
 @testable import Contentstack
 import DVR
-var kEntryUID = "blta61ff479ff8f7c18"
+var kEntryUID = ""
+var kEntryLocaliseUID = ""
 var kEntryTitle = ""
+
 class EntryAPITest: XCTestCase {
     static let stack = TestContentstackClient.testStack(cassetteName: "Entry")
 
@@ -18,7 +20,7 @@ class EntryAPITest: XCTestCase {
     }
 
     func getEntryQuery() -> Query {
-        return self.getEntry().query()
+        return self.getEntry().query().locale("en-us")
     }
     
     override class func setUp() {
@@ -871,5 +873,97 @@ class EntryAPITest: XCTestCase {
         }
         wait(for: [networkExpectation], timeout: 5)
 
+    }
+    
+    func test32Fetch_EntryQuery_WithoutFallback_Result() {
+        let networkExpectation = expectation(description: "Fetch Entrys without Fallback Test")
+        self.getEntryQuery().locale(locale)
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+                switch result {
+                case .success(let response):
+                    for model in response.items {
+                        if let fields = model.fields,
+                        let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
+                        let publishLocale = publishDetails["locale"] as? String {
+                            XCTAssertEqual(publishLocale, locale)
+                        }
+                    }
+                case .failure(let error):
+                    XCTFail("\(error)")
+                }
+                networkExpectation.fulfill()
+            }
+        wait(for: [networkExpectation], timeout: 5)
+    }
+    
+    func test33Fetch_EntryQuery_Fallback_Result() {
+        let networkExpectation = expectation(description: "Fetch Entrys without Fallback Test")
+        self.getEntryQuery()
+            .locale(locale)
+            .include(params: .fallback)
+            .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+                switch result {
+                case .success(let response):
+                    for model in response.items {
+                        if let fields = model.fields,
+                        let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
+                        let publishLocale = publishDetails["locale"] as? String {
+                            XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
+                        }
+                    }
+                    if let model =  response.items.first(where: { (model) -> Bool in
+                        if let fields = model.fields,
+                            let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
+                            let publishLocale = publishDetails["locale"] as? String {
+                            return publishLocale == "en-us"
+                        }
+                        return false
+                    }) {
+                        kEntryLocaliseUID = model.uid
+                    }
+                case .failure(let error):
+                    XCTFail("\(error)")
+                }
+                networkExpectation.fulfill()
+            }
+        wait(for: [networkExpectation], timeout: 5)
+    }
+    
+    func test34Fetch_Entry_UIDWithoutFallback_NoResult() {
+        let networkExpectation = expectation(description: "Fetch Entry from UID without Fallback Test")
+        self.getEntry(uid: kEntryLocaliseUID)
+            .locale("en-gb")
+            .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
+            switch result {
+            case .success(let model):
+                XCTFail("UID should not be present")
+            case .failure(let error):
+                if let error = error as? APIError {
+                    XCTAssertEqual(error.errorCode, 141)
+                    XCTAssertEqual(error.errorMessage, "The requested object doesn't exist.")
+                }
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+    }
+    
+    func test35Fetch_Entry_UIDWithFallback_NoResult() {
+        let networkExpectation = expectation(description: "Fetch Entry from UID without Fallback Test")
+        self.getEntry(uid: kEntryLocaliseUID)
+            .locale(locale)
+            .include(params: .fallback)
+            .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
+            switch result {
+            case .success(let model):
+                if let fields = model.fields, let publishLocale = fields["publish_details.locale"] as? String {
+                    XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
     }
 }

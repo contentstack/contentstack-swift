@@ -166,7 +166,8 @@ class QueryTest: XCTestCase {
         let param: Parameters = [QueryParameter.includeCount: true,
                                  QueryParameter.includeContentType: true,
                                  QueryParameter.includeGloablField: true,
-                                 QueryParameter.includeRefContentTypeUID: true]
+                                 QueryParameter.includeRefContentTypeUID: true,
+                                 QueryParameter.includeFallback: true]
         let allQuery = makeQuerySUT().include(params: [.all])
         XCTAssertEqual(allQuery.parameters.query(), param.query())
     }

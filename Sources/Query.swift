@@ -445,6 +445,33 @@ public final class AssetQuery: BaseQuery {
         self.cachePolicy = stack.cachePolicy
     }
 
+    /// Instance method to fetch `Assets` for specific locale.
+    /// - Parameter locale: The code for fetching entry for locale.
+    ///
+    /// - Returns: A `AssetQuery` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// // To retrive single asset with specific locale
+    /// stack.asset().query().locale("en-us")
+    /// .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+    ///    switch result {
+    ///    case .success(let model):
+    ///          //Model retrive from API
+    ///    case .failure(let error):
+    ///          //Error Message
+    ///    }
+    /// }
+    /// ```
+    public func locale(_ locale: String) -> Self {
+        self.parameters["locale"] = locale
+        return self
+    }
+
     /// Use this method to do a search on `Assets` which enables
     /// searching for entries based on value's for members of referenced entries.
     ///
@@ -505,6 +532,9 @@ public final class AssetQuery: BaseQuery {
         }
         if params.contains(.dimension) {
             self.parameters[QueryParameter.includeDimension] = true
+        }
+        if params.contains(.fallback) {
+            self.parameters[QueryParameter.includeFallback] = true
         }
         return self
     }
