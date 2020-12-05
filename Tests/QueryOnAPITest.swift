@@ -32,19 +32,21 @@ class QueryOnAPITest: XCTestCase {
 
     func test01FindAll_Session() {
         let networkExpectation = expectation(description: "Fetch All Entry Test")
-        self.getEntryQuery(Session.self).find { (result: Result<ContentstackResponse<Session>, Error>, response: ResponseType) in
-            switch result {
-            case .success(let contentstackResponse):
-                XCTAssertEqual(contentstackResponse.items.count, 31)
-                if let entry = contentstackResponse.items.first {
-                    kEntryUID = entry.uid
-                    kEntryTitle = entry.title
+        self.getEntryQuery(Session.self)
+            .locale("en-us")
+            .find { (result: Result<ContentstackResponse<Session>, Error>, response: ResponseType) in
+                switch result {
+                case .success(let contentstackResponse):
+                    XCTAssertEqual(contentstackResponse.items.count, 31)
+                    if let entry = contentstackResponse.items.first {
+                        kEntryUID = entry.uid
+                        kEntryTitle = entry.title
+                    }
+                case .failure(let error):
+                    XCTFail("\(error)")
                 }
-            case .failure(let error):
-                XCTFail("\(error)")
+                networkExpectation.fulfill()
             }
-            networkExpectation.fulfill()
-        }
         wait(for: [networkExpectation], timeout: 5)
 
     }
@@ -52,6 +54,7 @@ class QueryOnAPITest: XCTestCase {
     func test01FindAll_SessionReference() {
             let networkExpectation = expectation(description: "Fetch All Entry Test")
         self.getEntryQuery(SessionWithTrackReference.self)
+            .locale("en-us")
             .where(queryableCodingKey: SessionWithTrackReference.FieldKeys.sessionId, .equals(2695))
             .includeReference(with: ["track"])
             .find { (result: Result<ContentstackResponse<SessionWithTrackReference>, Error>, response: ResponseType) in

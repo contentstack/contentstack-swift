@@ -24,7 +24,7 @@ class AssetQueryTest: XCTestCase {
         XCTFail("Query doesnt match")
     }
 
-    func testCTQuery_whereCondition() {
+    func testAssetQuery_whereCondition() {
         queryWhere(.uid, operation: .equals(testStringValue))
         queryWhere(.uid, operation: .notEquals(testStringValue))
         queryWhere(.title, operation: .includes(["one", "two"]))
@@ -37,7 +37,7 @@ class AssetQueryTest: XCTestCase {
         queryWhere(.title, operation: .matches("^[a-z]"))
     }
 
-    func testCTQuery_SkipLimit() {
+    func testAssetQuery_SkipLimit() {
         let value = 10
         let limitQuery = makeAssetQuerySUT()
         limitQuery.limit(to: UInt(value))
@@ -48,7 +48,7 @@ class AssetQueryTest: XCTestCase {
         XCTAssertEqual(skipQuery.parameters.query(), "\(QueryParameter.skip)=\(value)")
     }
 
-    func testCTQuery_Order() {
+    func testAssetQuery_Order() {
         let key = "keyPath"
         let ascQuery = makeAssetQuerySUT()
         ascQuery.orderByAscending(keyPath: key)
@@ -58,7 +58,7 @@ class AssetQueryTest: XCTestCase {
         XCTAssertEqual(descQuery.parameters.query(), "\(QueryParameter.desc)=\(key)")
     }
 
-    func testCTQuery_addURIParam() {
+    func testAssetQuery_addURIParam() {
         let dictionary = ["key1": "value1",
                           "ket2": "value2"]
         let addParamQuery = makeAssetQuerySUT().addURIParam(dictionary: dictionary)
@@ -70,7 +70,7 @@ class AssetQueryTest: XCTestCase {
         XCTAssertEqual(addParamQueryKeyVal.parameters.query(), "\(key)=\(value)")
     }
 
-    func testCTQuery_addQueryParam() {
+    func testAssetQuery_addQueryParam() {
         let dictionary = ["key1": "value1",
                           "ket2": "value2"]
         let addParamQuery = makeAssetQuerySUT().addQuery(dictionary: dictionary)
@@ -84,7 +84,15 @@ class AssetQueryTest: XCTestCase {
         XCTAssertEqual(addParamQueryKeyVal.queryParameter[key] as? String, value)
     }
 
-    func testCTQuery_Include() {
+    func testAssetQuery_Locale() {
+        let locale = makeAssetQuerySUT().locale("en-us")
+        XCTAssertEqual(locale.parameters.query(), "\(QueryParameter.locale)=en-us")
+        for key in locale.parameters.keys {
+            XCTAssertEqual(key, QueryParameter.locale)
+        }
+    }
+    
+    func testAssetQuery_Include() {
         let countQuery = makeAssetQuerySUT().include(params: [.count])
         XCTAssertEqual(countQuery.parameters.query(), "\(QueryParameter.includeCount)=true")
         for key in countQuery.parameters.keys {
@@ -103,20 +111,29 @@ class AssetQueryTest: XCTestCase {
             XCTAssertEqual(key, QueryParameter.includeDimension)
         }
 
+        let fallbackQuery = makeAssetQuerySUT().include(params: [.fallback])
+        XCTAssertEqual(fallbackQuery.parameters.query(), "\(QueryParameter.includeFallback)=true")
+        for key in fallbackQuery.parameters.keys {
+            if key != QueryParameter.contentType {
+                XCTAssertEqual(key, QueryParameter.includeFallback)
+            }
+        }
+        
         let param: Parameters = [QueryParameter.includeCount: true,
                                  QueryParameter.relativeUrls: true,
-                                 QueryParameter.includeDimension: true]
+                                 QueryParameter.includeDimension: true,
+                                 QueryParameter.includeFallback: true]
         let allQuery = makeAssetQuerySUT().include(params: [.all])
         XCTAssertEqual(allQuery.parameters.query(), param.query())
     }
 
     static var allTests = [
-        ("testCTQuery_whereCondition", testCTQuery_whereCondition),
-        ("testCTQuery_SkipLimit", testCTQuery_SkipLimit),
-        ("testCTQuery_Order", testCTQuery_Order),
-        ("testCTQuery_addURIParam", testCTQuery_addURIParam),
-        ("testCTQuery_addQueryParam", testCTQuery_addQueryParam),
-        ("testCTQuery_Include", testCTQuery_Include)
+        ("testAssetQuery_whereCondition", testAssetQuery_whereCondition),
+        ("testAssetQuery_SkipLimit", testAssetQuery_SkipLimit),
+        ("testAssetQuery_Order", testAssetQuery_Order),
+        ("testAssetQuery_addURIParam", testAssetQuery_addURIParam),
+        ("testAssetQuery_addQueryParam", testAssetQuery_addQueryParam),
+        ("testAssetQuery_Include", testAssetQuery_Include)
     ]
 }
 

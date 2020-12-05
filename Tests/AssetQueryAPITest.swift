@@ -10,8 +10,10 @@ import XCTest
 @testable import Contentstack
 import DVR
 var kAssetUID = ""
+var kAssetLocaliseUID = ""
 var kAssetTitle = ""
 var kFileName = ""
+let locale = "en-gb"
 class AssetQueryAPITest: XCTestCase {
 
     static let stack = TestContentstackClient.testStack(cassetteName: "Asset")
@@ -26,6 +28,7 @@ class AssetQueryAPITest: XCTestCase {
     
     func queryWhere(_ key: AssetModel.QueryableCodingKey, operation: Query.Operation, then completion: @escaping ((Result<ContentstackResponse<AssetModel>, Error>) -> ())) {
         self.getAssetQuery().where(queryableCodingKey: key, operation)
+            .locale("en-us")
             .find { (result: Result<ContentstackResponse<AssetModel>, Error>, responseType) in
                 completion(result)
         }
@@ -43,7 +46,7 @@ class AssetQueryAPITest: XCTestCase {
 
     func test01FindAll_AssetQuery() {
         let networkExpectation = expectation(description: "Fetch All Assets Test")
-        self.getAssetQuery().find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
+        self.getAssetQuery().locale("en-us").find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
             switch result {
             case .success(let contentstackResponse):
                 XCTAssertEqual(contentstackResponse.items.count, 8)
@@ -188,6 +191,7 @@ class AssetQueryAPITest: XCTestCase {
     func test09Fetch_AssetQuery_WithCount() {
         let networkExpectation = expectation(description: "Fetch Assets with Count Test")
         self.getAssetQuery()
+            .locale("en-us")
             .include(params: .count)
             .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
                 switch result {
@@ -213,6 +217,100 @@ class AssetQueryAPITest: XCTestCase {
                     XCTAssertEqual(error.errorCode, 145)
                     XCTAssertEqual(error.errorMessage, "Asset was not found.")
                 }
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+    }
+    
+    func test12Fetch_AssetQuery_WithoutFallback_Result() {
+        let networkExpectation = expectation(description: "Fetch Assets without Fallback Test")
+        self.getAssetQuery().locale(locale)
+            .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
+                switch result {
+                case .success(let response):
+                    for model in response.items {
+                        if let fields = model.fields,
+                            let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
+                            let publishLocale = publishDetails["locale"] as? String {
+                            XCTAssertEqual(publishLocale, locale)
+                        }
+                    }
+                case .failure(let error):
+                    XCTFail("\(error)")
+                }
+                networkExpectation.fulfill()
+            }
+        wait(for: [networkExpectation], timeout: 5)
+    }
+    
+    func test13Fetch_AssetQuery_Fallback_Result() {
+        let networkExpectation = expectation(description: "Fetch Assets without Fallback Test")
+        self.getAssetQuery()
+            .locale(locale)
+            .include(params: .fallback)
+            .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
+                switch result {
+                case .success(let response):
+                    for model in response.items {
+                        if let fields = model.fields,
+                            let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
+                            let publishLocale = publishDetails["locale"] as? String {
+                            XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
+                        }
+                    }
+                    if let model =  response.items.first(where: { (model) -> Bool in
+                        if let fields = model.fields,
+                            let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
+                            let publishLocale = publishDetails["locale"] as? String {
+                            return publishLocale == "en-us"
+                        }
+                        return false
+                    }) {
+                        kAssetLocaliseUID = model.uid
+                    }
+                case .failure(let error):
+                    XCTFail("\(error)")
+                }
+                networkExpectation.fulfill()
+            }
+        wait(for: [networkExpectation], timeout: 5)
+    }
+    
+    func test14Fetch_Asset_UIDWithoutFallback_NoResult() {
+        let networkExpectation = expectation(description: "Fetch Asset from UID without Fallback Test")
+        self.getAsset(uid: kAssetLocaliseUID)
+            .locale("en-gb")
+            .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+            switch result {
+            case .success:
+                XCTFail("UID should not be present")
+            case .failure(let error):
+                if let error = error as? APIError {
+                    XCTAssertEqual(error.errorCode, 145)
+                    XCTAssertEqual(error.errorMessage, "Asset was not found.")
+                }
+            }
+            networkExpectation.fulfill()
+        }
+        wait(for: [networkExpectation], timeout: 5)
+    }
+    
+    func test15Fetch_Asset_UIDWithFallback_NoResult() {
+        let networkExpectation = expectation(description: "Fetch Asset from UID without Fallback Test")
+        self.getAsset(uid: kAssetLocaliseUID)
+            .locale(locale)
+            .includeFallback()
+            .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+            switch result {
+            case .success(let model):
+                if let fields = model.fields,
+                    let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
+                    let publishLocale = publishDetails["locale"] as? String {
+                    XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
+                }
+            case .failure(let error):
+                XCTFail("\(error)")
             }
             networkExpectation.fulfill()
         }

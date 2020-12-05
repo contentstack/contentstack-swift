@@ -22,13 +22,24 @@ class AssetTest: XCTestCase {
         }
     }
     #endif
+    
+    func testAssetQuery_Locale() {
+        let locale = makeAssetSut().locale("en-us")
+        XCTAssertEqual(locale.parameters.query(), "\(QueryParameter.locale)=en-us")
+        for key in locale.parameters.keys {
+            XCTAssertEqual(key, QueryParameter.locale)
+        }
+    }
+    
     func testAssetInclude() {
         let assetDimension = makeAssetSut().includeDimension()
         XCTAssertEqual(assetDimension.parameters.query(), "include_dimension=true")
         let assetRelativeURL = makeAssetSut().includeRelativeURL()
         XCTAssertEqual(assetRelativeURL.parameters.query(), "relative_urls=true")
-        let asset = makeAssetSut().includeRelativeURL().includeDimension()
-        XCTAssertEqual(asset.parameters.query(), "include_dimension=true&relative_urls=true")
+        let assetfallback = makeAssetSut().includeFallback()
+        XCTAssertEqual(assetfallback.parameters.query(), "include_fallback=true")
+        let asset = makeAssetSut().includeRelativeURL().includeDimension().includeFallback()
+        XCTAssertEqual(asset.parameters.query(), "include_dimension=true&include_fallback=true&relative_urls=true")
     }
 
     func testAssetQuery_withoutUID() {

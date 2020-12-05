@@ -50,11 +50,20 @@ class EntryQueriableTest: XCTestCase {
                 XCTAssertFalse(true, "Key outof range")
             }
         }
+        
+        let fallbackQuery = makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.fallback])
+        XCTAssertEqual(fallbackQuery.parameters.query(), "\(QueryParameter.includeFallback)=true")
+        for key in fallbackQuery.parameters.keys {
+            if key != QueryParameter.contentType {
+                XCTAssertEqual(key, QueryParameter.includeFallback)
+            }
+        }
 
         let param: Parameters = [QueryParameter.includeCount: true,
                                  QueryParameter.includeContentType: true,
                                  QueryParameter.includeGloablField: true,
-                                 QueryParameter.includeRefContentTypeUID: true]
+                                 QueryParameter.includeRefContentTypeUID: true,
+                                 QueryParameter.includeFallback: true]
         let allQuery = makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.all])
         XCTAssertEqual(allQuery.parameters.query(), param.query())
     }

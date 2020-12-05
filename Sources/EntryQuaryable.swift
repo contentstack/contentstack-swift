@@ -141,7 +141,7 @@ extension EntryQueryable {
     ///    }
     /// }
     /// ```
-    
+
     public func include(params: Query.Include) -> Self {
         if params.contains(Query.Include.count) {
             self.parameters[QueryParameter.includeCount] = true
@@ -156,6 +156,9 @@ extension EntryQueryable {
         }
         if params.contains(Query.Include.refContentTypeUID) {
             self.parameters[QueryParameter.includeRefContentTypeUID] = true
+        }
+        if params.contains(Query.Include.fallback) {
+            self.parameters[QueryParameter.includeFallback] = true
         }
         return self
     }

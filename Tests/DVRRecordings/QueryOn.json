@@ -2,19 +2,38 @@
   "name" : "QueryOn",
   "interactions" : [
     {
+      "recorded_at" : 1607183201.8101201,
       "request" : {
         "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?locale=en-us&environment=development",
         "headers" : {
-          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "access_token" : "csd2e69747f83e59e327d19962",
           "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
-          "api_key" : "bltc94709340b84bdd2",
-          "access_token" : "csd2e69747f83e59e327d19962"
-        },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?environment=development"
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "api_key" : "bltc94709340b84bdd2"
+        }
       },
-      "recorded_at" : 1588147504.9604359,
       "response" : {
-        "status" : 200,
+        "headers" : {
+          "x-served-by" : "cache-sna10750-LGB, cache-bom4749-BOM",
+          "Vary" : "Accept-Encoding",
+          "Content-Type" : "application\/json",
+          "Content-Encoding" : "gzip",
+          "x-cs-includecount" : "0",
+          "Content-Length" : "4788",
+          "x-runtime" : "35ms",
+          "Date" : "Sat, 05 Dec 2020 15:46:41 GMT",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "x-cs-includedepth" : "1",
+          "Age" : "2289",
+          "x-contentstack-organization" : "blt4217d3e62dbf7564",
+          "x-timer" : "S1607183202.798659,VS0,VE1",
+          "Accept-Ranges" : "bytes",
+          "x-cache-hits" : "0, 1",
+          "x-cache" : "MISS, HIT",
+          "Access-Control-Allow-Origin" : "*"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?locale=en-us&environment=development",
         "body" : {
           "entries" : [
             {
@@ -1747,51 +1766,14 @@
             }
           ]
         },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?environment=development",
-        "headers" : {
-          "Access-Control-Allow-Origin" : "*",
-          "Content-Length" : "4794",
-          "Content-Type" : "application\/json",
-          "x-timer" : "S1588147505.939790,VS0,VE1",
-          "Accept-Ranges" : "bytes",
-          "x-cache" : "MISS, HIT",
-          "Via" : "1.1 varnish, 1.1 varnish",
-          "Age" : "700771",
-          "Date" : "Wed, 29 Apr 2020 08:05:04 GMT",
-          "x-runtime" : "37ms",
-          "x-served-by" : "cache-lax8640-LAX, cache-bom18225-BOM",
-          "Server" : "nginx",
-          "x-powered-by" : "Contentstack",
-          "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "x-cache-hits" : "0, 1",
-          "Vary" : "Accept-Encoding",
-          "Content-Encoding" : "gzip"
-        }
+        "status" : 200
       }
     },
     {
+      "recorded_at" : 1607183202.0703759,
       "response" : {
-        "headers" : {
-          "x-powered-by" : "Contentstack",
-          "x-served-by" : "cache-lax8629-LAX, cache-bom18225-BOM",
-          "Vary" : "Accept-Encoding",
-          "Accept-Ranges" : "bytes",
-          "x-cache-hits" : "0, 0",
-          "Access-Control-Allow-Origin" : "*",
-          "x-contentstack-organization" : "blt4217d3e62dbf7564",
-          "Via" : "1.1 varnish, 1.1 varnish",
-          "Content-Length" : "588",
-          "Server" : "nginx",
-          "x-runtime" : "40ms",
-          "x-cache" : "MISS, MISS",
-          "Content-Type" : "application\/json",
-          "x-timer" : "S1588147505.219966,VS0,VE298",
-          "Date" : "Wed, 29 Apr 2020 08:05:05 GMT",
-          "Content-Encoding" : "gzip",
-          "Age" : "0"
-        },
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?query=%7B%0A%20%20%22session_id%22%20:%202695%0A%7D&include%5B%5D=track&environment=development",
         "status" : 200,
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?query=%7B%0A%20%20%22session_id%22%20:%202695%0A%7D&include%5B%5D=track&locale=en-us&environment=development",
         "body" : {
           "entries" : [
             {
@@ -1873,19 +1855,37 @@
               "description" : ""
             }
           ]
+        },
+        "headers" : {
+          "x-runtime" : "24ms",
+          "x-cache-hits" : "0, 1",
+          "Age" : "2269",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "x-contentstack-organization" : "blt4217d3e62dbf7564",
+          "x-served-by" : "cache-sna10724-LGB, cache-bom4749-BOM",
+          "x-timer" : "S1607183202.064009,VS0,VE1",
+          "x-cache" : "MISS, HIT",
+          "x-cs-includedepth" : "2",
+          "Content-Type" : "application\/json",
+          "Access-Control-Allow-Origin" : "*",
+          "Content-Encoding" : "gzip",
+          "Content-Length" : "588",
+          "x-cs-includecount" : "1",
+          "Accept-Ranges" : "bytes",
+          "Date" : "Sat, 05 Dec 2020 15:46:42 GMT",
+          "Vary" : "Accept-Encoding"
         }
       },
       "request" : {
         "headers" : {
-          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
-          "api_key" : "bltc94709340b84bdd2",
           "access_token" : "csd2e69747f83e59e327d19962",
-          "X-User-Agent" : "contentstack-swift\/1.0.0"
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "api_key" : "bltc94709340b84bdd2"
         },
         "method" : "GET",
-        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?query=%7B%0A%20%20%22session_id%22%20:%202695%0A%7D&include%5B%5D=track&environment=development"
-      },
-      "recorded_at" : 1588147505.5322649
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?query=%7B%0A%20%20%22session_id%22%20:%202695%0A%7D&include%5B%5D=track&locale=en-us&environment=development"
+      }
     }
   ]
 }
