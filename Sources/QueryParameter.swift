@@ -62,6 +62,8 @@ internal enum QueryParameter {
     internal static let includeRefContentTypeUID  = "include_reference_content_type_uid"
     
     internal static let includeFallback  = "include_fallback"
+    
+    internal static let includeEmbeddedItems  = "include_embedded_items"
 }
 
 extension Query {
@@ -92,13 +94,16 @@ extension Query {
         public static let refContentTypeUID: Include = Include(rawValue: 1 << 4)
         /// Retrieve the published content of the fallback locale if an entry is not localized in specified locale.
         public static let fallback: Include = Include(rawValue: 1 << 5)
+        /// Include Embedded Objects (Entries and Assets) along with entry/entries details.
+        public static let embeddedItems: Include = Include(rawValue: 1 << 6)
         /// To inclide all `Query.Include` values.
         public static let all: Include = [.count,
                                           .unpublished,
                                           .contentType,
                                           .globalField,
                                           .refContentTypeUID,
-                                          .fallback]
+                                          .fallback,
+                                          .embeddedItems]
     }
 }
 
