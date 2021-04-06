@@ -59,12 +59,19 @@ class EntryQueriableTest: XCTestCase {
             }
         }
 
+        let includeEmbeddedItemsParam: Parameters = [QueryParameter.includeEmbeddedItems: ["BASE"]]
+
+        let includeEmbeddedItems =  makeEntrySut(contentTypeuid: "content_type_uid").include(params: .embeddedItems)
+        XCTAssertEqual(includeEmbeddedItems.parameters.query(), includeEmbeddedItemsParam.query())
+
+        
         let param: Parameters = [QueryParameter.includeCount: true,
                                  QueryParameter.includeContentType: true,
                                  QueryParameter.includeGloablField: true,
                                  QueryParameter.includeRefContentTypeUID: true,
-                                 QueryParameter.includeFallback: true]
-        let allQuery = makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.all])
+                                 QueryParameter.includeFallback: true,
+                                 QueryParameter.includeEmbeddedItems: ["BASE"]]
+        let allQuery =  makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.all])
         XCTAssertEqual(allQuery.parameters.query(), param.query())
     }
 

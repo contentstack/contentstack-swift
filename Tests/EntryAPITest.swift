@@ -721,10 +721,12 @@ class EntryAPITest: XCTestCase {
                         if let track = fields["track"],
                             !(track is [EntryModel]) {
                             XCTFail("Reference Track is not included")
+                            break;
                         }
                         if let room = fields["room"],
                             !(room is [EntryModel]) {
                             XCTFail("Reference Room is not included")
+                            break;
                         }
                     }
                 }
