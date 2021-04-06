@@ -372,6 +372,7 @@
 		0FFA5DA2241F90BF003B3AF5 /* SutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SutBuilder.swift; sourceTree = "<group>"; };
 		0FFA5DB3241F99F9003B3AF5 /* FatalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatalError.swift; sourceTree = "<group>"; };
 		0FFA5DBB241F9A6C003B3AF5 /* XCTestCase+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extension.swift"; sourceTree = "<group>"; };
+		0FFB22B3261C98E50056AEE0 /* .env */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
 		0FFBB4422446F219000D2795 /* AssetQueryAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetQueryAPITest.swift; sourceTree = "<group>"; };
 		0FFBB4462446F9A4000D2795 /* Asset.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Asset.json; sourceTree = "<group>"; };
 		0FFBB44B24470C43000D2795 /* ContentStackLogTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStackLogTest.swift; sourceTree = "<group>"; };
@@ -663,6 +664,7 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
+				0FFB22B3261C98E50056AEE0 /* .env */,
 				0FE1DC1B2457F8B600944056 /* ContentstackSwift.podspec */,
 				0F6B6CE224501328007AB3C1 /* Scripts */,
 				0F4FBC9A2420A17F007B8CAE /* Config.xcconfig */,
