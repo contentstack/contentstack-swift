@@ -160,6 +160,9 @@ extension EntryQueryable {
         if params.contains(Query.Include.fallback) {
             self.parameters[QueryParameter.includeFallback] = true
         }
+        if params.contains(Query.Include.embeddedItems) {
+            self.parameters[QueryParameter.includeEmbeddedItems] = ["BASE"]
+        }
         return self
     }
 

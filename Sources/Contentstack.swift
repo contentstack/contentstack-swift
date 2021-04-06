@@ -1,6 +1,7 @@
 /// [Contentstack](https://www.contentstack.com/) is a content management system
 /// that facilitates the process of publication by separating the content from
 /// site-related programming and design.
+import Utils
 public struct Contentstack {
 
     /// Create a new Stack instance with stack's `apikey`, `deliveryToken`, `environment` name and `config`.
@@ -43,5 +44,14 @@ public struct Contentstack {
                      host: regionBaseHost,
                      apiVersion: apiVersion,
                      config: config)
+    }
+    
+    
+    public static func render (content: String, option: Option) throws-> String {
+        return  try Utils.ContentstackUtils.render(content: content, option)
+    }
+    
+    public static func render (contents: [String], option: Option) throws -> [String] {
+        return try Utils.ContentstackUtils.render(contents: contents, option)
     }
 }
