@@ -33,16 +33,16 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/Contentstack'
   s.swift_version             = '5'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.10'
   s.osx.deployment_target     = '10.12'
-  s.watchos.deployment_target = '2.0'
-  s.tvos.deployment_target    = '9.0'
+  s.watchos.deployment_target = '3.0'
+  s.tvos.deployment_target    = '10.0'
 
 
   s.source_files = 'Sources/**/*'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'ContentstackUtils', '~> 1.1.0'
 end
 

@@ -163,11 +163,18 @@ class QueryTest: XCTestCase {
             }
         }
 
+        let includeEmbeddedItemsParam: Parameters = [QueryParameter.includeEmbeddedItems: ["BASE"]]
+
+        let includeEmbeddedItems = makeQuerySUT().include(params: .embeddedItems)
+        XCTAssertEqual(includeEmbeddedItems.parameters.query(), includeEmbeddedItemsParam.query())
+
+        
         let param: Parameters = [QueryParameter.includeCount: true,
                                  QueryParameter.includeContentType: true,
                                  QueryParameter.includeGloablField: true,
                                  QueryParameter.includeRefContentTypeUID: true,
-                                 QueryParameter.includeFallback: true]
+                                 QueryParameter.includeFallback: true,
+                                 QueryParameter.includeEmbeddedItems: ["BASE"]]
         let allQuery = makeQuerySUT().include(params: [.all])
         XCTAssertEqual(allQuery.parameters.query(), param.query())
     }
