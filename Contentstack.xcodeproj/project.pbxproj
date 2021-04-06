@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -249,6 +249,10 @@
 		0FFA5DBC241F9A6C003B3AF5 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFA5DBB241F9A6C003B3AF5 /* XCTestCase+Extension.swift */; };
 		0FFA5DBD241F9A6C003B3AF5 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFA5DBB241F9A6C003B3AF5 /* XCTestCase+Extension.swift */; };
 		0FFA5DBE241F9A6C003B3AF5 /* XCTestCase+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFA5DBB241F9A6C003B3AF5 /* XCTestCase+Extension.swift */; };
+		0FFB22D9261C9A200056AEE0 /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 0FFB22D8261C9A200056AEE0 /* ContentstackUtils */; };
+		0FFB22E2261C9A2A0056AEE0 /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 0FFB22E1261C9A2A0056AEE0 /* ContentstackUtils */; };
+		0FFB22E4261C9A300056AEE0 /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 0FFB22E3261C9A300056AEE0 /* ContentstackUtils */; };
+		0FFB22E6261C9A370056AEE0 /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 0FFB22E5261C9A370056AEE0 /* ContentstackUtils */; };
 		0FFBB4432446F219000D2795 /* AssetQueryAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBB4422446F219000D2795 /* AssetQueryAPITest.swift */; };
 		0FFBB4442446F219000D2795 /* AssetQueryAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBB4422446F219000D2795 /* AssetQueryAPITest.swift */; };
 		0FFBB4452446F219000D2795 /* AssetQueryAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBB4422446F219000D2795 /* AssetQueryAPITest.swift */; };
@@ -386,6 +390,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FFB22D9261C9A200056AEE0 /* ContentstackUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,6 +408,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FFB22E2261C9A2A0056AEE0 /* ContentstackUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +426,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FFB22E4261C9A300056AEE0 /* ContentstackUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +444,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FFB22E6261C9A370056AEE0 /* ContentstackUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,6 +758,9 @@
 			dependencies = (
 			);
 			name = "Contentstack iOS";
+			packageProductDependencies = (
+				0FFB22D8261C9A200056AEE0 /* ContentstackUtils */,
+			);
 			productName = "Contentstack iOS";
 			productReference = 0F4A75CB241BAC4300E3A024 /* Contentstack.framework */;
 			productType = "com.apple.product-type.framework";
@@ -786,6 +797,9 @@
 			dependencies = (
 			);
 			name = "Contentstack macOS";
+			packageProductDependencies = (
+				0FFB22E1261C9A2A0056AEE0 /* ContentstackUtils */,
+			);
 			productName = "Contentstack macOS";
 			productReference = 0F4A75EB241BAE6C00E3A024 /* Contentstack.framework */;
 			productType = "com.apple.product-type.framework";
@@ -822,6 +836,9 @@
 			dependencies = (
 			);
 			name = "Contentstack tvOS";
+			packageProductDependencies = (
+				0FFB22E3261C9A300056AEE0 /* ContentstackUtils */,
+			);
 			productName = "Contentstack tvOS";
 			productReference = 0F4A7607241BAFE000E3A024 /* Contentstack.framework */;
 			productType = "com.apple.product-type.framework";
@@ -858,6 +875,9 @@
 			dependencies = (
 			);
 			name = "Contentstack watchOS";
+			packageProductDependencies = (
+				0FFB22E5261C9A370056AEE0 /* ContentstackUtils */,
+			);
 			productName = "Contentstack watchOS";
 			productReference = 0F4A7623241BB0A300E3A024 /* Contentstack.framework */;
 			productType = "com.apple.product-type.framework";
@@ -914,6 +934,9 @@
 				en,
 			);
 			mainGroup = OBJ_5;
+			packageReferences = (
+				0FFB22D7261C9A200056AEE0 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */,
+			);
 			productRefGroup = OBJ_14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1364,8 +1387,12 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1436,8 +1463,12 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1507,7 +1538,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-iOSTests";
@@ -1567,7 +1602,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-iOSTests";
@@ -1637,8 +1676,12 @@
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.contentstack.Contentstack;
@@ -1708,8 +1751,12 @@
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.contentstack.Contentstack;
@@ -1774,7 +1821,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1832,7 +1883,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1898,7 +1953,11 @@
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-tvOS";
@@ -1910,7 +1969,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -1968,7 +2027,11 @@
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-tvOS";
@@ -1978,7 +2041,7 @@
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2035,7 +2098,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-tvOSTests";
@@ -2094,7 +2161,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Tests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-tvOSTests";
@@ -2165,7 +2236,11 @@
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-watchOS";
@@ -2180,7 +2255,7 @@
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -2237,7 +2312,11 @@
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-watchOS";
@@ -2251,7 +2330,7 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -2303,7 +2382,8 @@
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				USE_HEADERMAP = NO;
 			};
 			name = Release;
@@ -2384,6 +2464,40 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0FFB22D7261C9A200056AEE0 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/contentstack/contentstack-utils-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0FFB22D8261C9A200056AEE0 /* ContentstackUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FFB22D7261C9A200056AEE0 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
+			productName = ContentstackUtils;
+		};
+		0FFB22E1261C9A2A0056AEE0 /* ContentstackUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FFB22D7261C9A200056AEE0 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
+			productName = ContentstackUtils;
+		};
+		0FFB22E3261C9A300056AEE0 /* ContentstackUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FFB22D7261C9A200056AEE0 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
+			productName = ContentstackUtils;
+		};
+		0FFB22E5261C9A370056AEE0 /* ContentstackUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0FFB22D7261C9A200056AEE0 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
+			productName = ContentstackUtils;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = OBJ_1 /* Project object */;
 }
