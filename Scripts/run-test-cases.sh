@@ -37,7 +37,7 @@ xcodebuild \
     -workspace Contentstack.xcworkspace \
     -scheme "Contentstack iOS" \
     test \
-    -destination "id=18C1CD7D-CD1F-4EBC-A172-41B823B2168B" \
+    -destination "OS=14.1,name=iPhone 11 Pro" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-iOS.xcresult" \
         | xcpretty \
             --color \
@@ -53,7 +53,7 @@ xcodebuild \
     -workspace Contentstack.xcworkspace \
     -scheme "Contentstack tvOS" \
     test \
-    -destination "OS=13.0,name=Apple TV 4K" \
+    -destination "OS=14.0,name=Apple TV 4K" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-tvOS.xcresult" \
         | xcpretty \
             --color \
