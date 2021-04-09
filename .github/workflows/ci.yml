@@ -21,6 +21,8 @@ jobs:
           ${{ runner.os }}-carthage-
     - name: Dependencies
       run: carthage bootstrap --no-use-binaries --platform macOS --cache-builds
+    - name: Dependency libxml2
+      run: brew install libxml2 && brew link --force libxml2
     - name: macOS
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack macOS" SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" -destination "platform=macOS" test | xcpretty
   iOS:
