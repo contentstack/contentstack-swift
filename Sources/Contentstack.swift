@@ -1,7 +1,9 @@
 /// [Contentstack](https://www.contentstack.com/) is a content management system
 /// that facilitates the process of publication by separating the content from
 /// site-related programming and design.
+
 import ContentstackUtils
+
 public struct Contentstack {
 
     /// Create a new Stack instance with stack's `apikey`, `deliveryToken`, `environment` name and `config`.
