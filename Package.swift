@@ -18,7 +18,9 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-         .package(url: "https://github.com/contentstack/contentstack-utils-swift.git", from: "1.1.0"),
+        .package(url: "https://github.com/contentstack/contentstack-utils-swift.git", from: "1.1.1"),
+        // Dev dependencies
+        .package(url: "https://github.com/venmo/DVR.git", from: "2.1.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -26,11 +28,11 @@ let package = Package(
         //and on products in packages which this package depends on.
         .target(
             name: "Contentstack",
-            dependencies: [],
+            dependencies: ["ContentstackUtils"],
             path: "Sources"),
         .testTarget(
             name: "ContentstackTests",
-            dependencies: ["Contentstack"],
+            dependencies: ["Contentstack", "DVR"],
             path: "Tests")
     ]
 )
