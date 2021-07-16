@@ -1,0 +1,6 @@
+fileignoreconfig:
+- filename: .env
+  checksum: 5ca7fe347372be0a0f528e652665d75b3f3cca32f04f8f02e35e7944751e5f4b
+- filename: Contentstack.xcodeproj/project.pbxproj
+  checksum: f082c3ed77ab996702ffc2e7864c4cec60a587087428c82b58a8e856700bff5b
+threshold: medium
