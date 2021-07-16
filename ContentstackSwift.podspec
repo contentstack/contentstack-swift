@@ -43,6 +43,6 @@ Pod::Spec.new do |s|
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit'
-  s.dependency 'ContentstackUtils', '~> 1.1.1'
+  s.dependency 'ContentstackUtils', '~> 1.1.2'
 end
 
