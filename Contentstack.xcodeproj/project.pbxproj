@@ -135,6 +135,9 @@
 		0F50EA1D244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F50EA1C244ED88C00E5D705 /* StackCacheAPITest.swift */; };
 		0F50EA1E244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F50EA1C244ED88C00E5D705 /* StackCacheAPITest.swift */; };
 		0F50EA1F244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F50EA1C244ED88C00E5D705 /* StackCacheAPITest.swift */; };
+		0F5794C2266A37120082815C /* Paragraph.Json in Resources */ = {isa = PBXBuildFile; fileRef = 0F5794C1266A37120082815C /* Paragraph.Json */; };
+		0F5794C3266A37120082815C /* Paragraph.Json in Resources */ = {isa = PBXBuildFile; fileRef = 0F5794C1266A37120082815C /* Paragraph.Json */; };
+		0F5794C4266A37120082815C /* Paragraph.Json in Resources */ = {isa = PBXBuildFile; fileRef = 0F5794C1266A37120082815C /* Paragraph.Json */; };
 		0F60CA2F2428949C00ED67E6 /* EntryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F60CA2E2428949C00ED67E6 /* EntryTest.swift */; };
 		0F60CA302428949C00ED67E6 /* EntryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F60CA2E2428949C00ED67E6 /* EntryTest.swift */; };
 		0F60CA312428949C00ED67E6 /* EntryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F60CA2E2428949C00ED67E6 /* EntryTest.swift */; };
@@ -336,6 +339,7 @@
 		0F50EA11244EC44800E5D705 /* QueryOnAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOnAPITest.swift; sourceTree = "<group>"; };
 		0F50EA15244ED7F500E5D705 /* QueryOn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QueryOn.json; sourceTree = "<group>"; };
 		0F50EA1C244ED88C00E5D705 /* StackCacheAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackCacheAPITest.swift; sourceTree = "<group>"; };
+		0F5794C1266A37120082815C /* Paragraph.Json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Paragraph.Json; sourceTree = "<group>"; };
 		0F60CA2E2428949C00ED67E6 /* EntryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTest.swift; sourceTree = "<group>"; };
 		0F60CA322428D02600ED67E6 /* QueryEntryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryEntryType.swift; sourceTree = "<group>"; };
 		0F6B6CE424501328007AB3C1 /* swiftlint.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = swiftlint.sh; sourceTree = "<group>"; };
@@ -499,6 +503,7 @@
 				0FFBB4462446F9A4000D2795 /* Asset.json */,
 				0F244F9C244062B4003C3F26 /* ContentType.json */,
 				0F1DCC77243D9BBF00EED404 /* SyncTest.json */,
+				0F5794C1266A37120082815C /* Paragraph.Json */,
 			);
 			name = DVRRecording;
 			path = DVRRecordings;
@@ -970,6 +975,7 @@
 				0F359991257BE29B00B3DB89 /* Asset.json in Resources */,
 				0F359992257BE2A700B3DB89 /* ContentType.json in Resources */,
 				0F4C0A87243C6990006604B7 /* config.json in Resources */,
+				0F5794C2266A37120082815C /* Paragraph.Json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -990,6 +996,7 @@
 				0F50EA17244ED7F500E5D705 /* QueryOn.json in Resources */,
 				0F796C532449EA8700EA04D5 /* Entry.json in Resources */,
 				0F4C0A88243C6990006604B7 /* config.json in Resources */,
+				0F5794C3266A37120082815C /* Paragraph.Json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,6 +1017,7 @@
 				0F50EA18244ED7F500E5D705 /* QueryOn.json in Resources */,
 				0F796C542449EA8700EA04D5 /* Entry.json in Resources */,
 				0F4C0A89243C6990006604B7 /* config.json in Resources */,
+				0F5794C4266A37120082815C /* Paragraph.Json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1393,7 +1401,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.0;
+				MARKETING_VERSION = 1.2.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.contentstack.Contentstack;
@@ -1469,7 +1477,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.0;
+				MARKETING_VERSION = 1.2.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.contentstack.Contentstack;
@@ -2471,7 +2479,7 @@
 			repositoryURL = "https://github.com/contentstack/contentstack-utils-swift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.1;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
