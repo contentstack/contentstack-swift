@@ -1,0 +1,1891 @@
+{
+  "name" : "QueryOn",
+  "interactions" : [
+    {
+      "recorded_at" : 1607183201.8101201,
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?locale=en-us&environment=environment",
+        "headers" : {
+          "access_token" : "delivery_token",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "api_key" : "api_key"
+        }
+      },
+      "response" : {
+        "headers" : {
+          "x-served-by" : "cache-sna10750-LGB, cache-bom4749-BOM",
+          "Vary" : "Accept-Encoding",
+          "Content-Type" : "application\/json",
+          "Content-Encoding" : "gzip",
+          "x-cs-includecount" : "0",
+          "Content-Length" : "4788",
+          "x-runtime" : "35ms",
+          "Date" : "Sat, 05 Dec 2020 15:46:41 GMT",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "x-cs-includedepth" : "1",
+          "Age" : "2289",
+          "x-contentstack-organization" : "uid_87",
+          "x-timer" : "S1607183202.798659,VS0,VE1",
+          "Accept-Ranges" : "bytes",
+          "x-cache-hits" : "0, 1",
+          "x-cache" : "MISS, HIT",
+          "Access-Control-Allow-Origin" : "*"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?locale=en-us&environment=environment",
+        "body" : {
+          "entries" : [
+            {
+              "is_popular" : false,
+              "session_id" : 2695,
+              "title" : "Inexorable Forces Driving the Real-Time, Cloud-Aware Network",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:05:15.592Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T13:30:00.000Z",
+                "start_time" : "2018-08-26T13:30:00.000Z",
+                "end_time" : "2018-08-26T14:15:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "track_uid_2",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "session_uid_1",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_44",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:46.833Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "speaker_uid_2",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_3",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:48.677Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2737,
+              "title" : "Multi-Site Data Center Solutions for Business Critical Applications with VMware NSX",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:04:59.787Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T12:30:00.000Z",
+                "start_time" : "2018-08-26T12:30:00.000Z",
+                "end_time" : "2018-08-26T13:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "track_uid_4",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "session_uid_5",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "room_uid_6",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:30.352Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "speaker_uid_7",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_8",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_9",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:48.677Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 3062,
+              "title" : "Policy Based Storage Management with EMC ViPR and VMware Integrations",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:04:42.620Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T10:30:00.000Z",
+                "start_time" : "2018-08-26T10:30:00.000Z",
+                "end_time" : "2018-08-26T11:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "track_uid_10",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Hands-On Labs Self-Paced Lab",
+              "uid" : "session_uid_11",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "session_uid_12",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:13.525Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "speaker_uid_12",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_13",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:48.677Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2445,
+              "title" : "Challenges and Successes in Implementing a Cloud using vCloud Suite – EA Case Study",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:04:18.375Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T04:30:00.000Z",
+                "start_time" : "2018-08-27T04:30:00.000Z",
+                "end_time" : "2018-08-27T06:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "track_uid_14",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Panel Session",
+              "uid" : "session_uid_15",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "room_uid_16",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:14.573Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "speaker_uid_7",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_8",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:48.677Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2414,
+              "title" : "Virtualized Environment Makeovers with Data Protection Experts",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:04:00.547Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T02:30:00.000Z",
+                "start_time" : "2018-08-27T02:30:00.000Z",
+                "end_time" : "2018-08-27T02:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "track_uid_2",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Panel Session",
+              "uid" : "uid_17",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_18",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:15.809Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "speaker_uid_7",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_8",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:48.677Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2684,
+              "title" : "The Cloud is Over The Top",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:03:41.353Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T10:15:00.000Z",
+                "start_time" : "2018-08-26T10:15:00.000Z",
+                "end_time" : "2018-08-26T10:15:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_19",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_20",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_21",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:16.941Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_22",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_23",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_24",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:48.677Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2494,
+              "title" : "Enable Anything-as-a-Service for Private and Hybrid Cloud",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:03:24.140Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T09:30:00.000Z",
+                "start_time" : "2018-08-26T09:30:00.000Z",
+                "end_time" : "2018-08-26T10:10:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_25",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Panel Session",
+              "uid" : "uid_26",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_28",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:18.057Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_29",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_30",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:48.677Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2661,
+              "title" : "Microsoft SQL Server 2014 Backup and Recovery Best Practices with VMware DataProtection and Storage based Solutions",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:03:04.895Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T09:00:00.000Z",
+                "start_time" : "2018-08-26T09:00:00.000Z",
+                "end_time" : "2018-08-26T09:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_31",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_32",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_33",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:19.200Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_23",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_29",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:48.677Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2523,
+              "title" : "Wait Less, Deliver More: Automate Your End-to-End IT Processes in the Cloud",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:02:46.753Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T12:30:00.000Z",
+                "start_time" : "2018-08-26T12:30:00.000Z",
+                "end_time" : "2018-08-26T13:00:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_19",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_34",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_35",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:20.352Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_22",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_36",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:48.677Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 3085,
+              "title" : "IT Outcomes – Faster Delivery of Infrastructure and Apps through Automation",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:02:28.535Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T07:30:00.000Z",
+                "start_time" : "2018-08-26T07:30:00.000Z",
+                "end_time" : "2018-08-26T08:15:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_37",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Hands-On Labs Self-Paced Lab",
+              "uid" : "uid_38",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_39",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:21.509Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_40",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_41",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:48.677Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2997,
+              "title" : "The vExpert Storage Game Show EMEA",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:02:08.128Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T08:00:00.000Z",
+                "start_time" : "2018-08-26T08:00:00.000Z",
+                "end_time" : "2018-08-26T08:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "track_uid_4",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Panel Session",
+              "uid" : "uid_42",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_21",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:22.533Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_41",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_13",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:56.074Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2605,
+              "title" : "Beyond the Bricks: Building Custom Enterprise Class Converged Infrastructure Virtualization Platforms.",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:01:49.811Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T06:30:00.000Z",
+                "start_time" : "2018-08-26T06:30:00.000Z",
+                "end_time" : "2018-08-26T07:00:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_19",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_43",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_44",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:23.707Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "speaker_uid_3",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:56.074Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2063,
+              "title" : "Business Communications: In House vs. Cloud",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:01:30.751Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T05:30:00.000Z",
+                "start_time" : "2018-08-26T05:30:00.000Z",
+                "end_time" : "2018-08-26T06:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "track_uid_14",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Panel Session",
+              "uid" : "uid_45",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "session_uid_12",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:24.918Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_46",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_36",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:56.074Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : true,
+              "session_id" : 5213,
+              "title" : "Deep dive into Android Data Binding talk",
+              "tags" : [
+                "immne",
+                "d3d",
+                "3d3"
+              ],
+              "updated_at" : "2020-04-20T07:01:14.084Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-09-27T23:47:19.000Z",
+                "start_time" : "2018-09-27T23:47:19.000Z",
+                "end_time" : "2018-09-28T22:34:11.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_47",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Panel Session",
+              "uid" : "uid_48",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_49",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:26.052Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_50",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_51",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_52",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_46",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_36",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_22",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_3",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:56.074Z",
+                "user" : "updated_by"
+              },
+              "description" : "<p><span style=\"background-color: rgb(238, 238, 238); color: rgb(59, 56, 53); font-family: &quot;Helvetica Neue&quot;, Helvetica, Roboto, Arial, sans-serif;\">Deep dive into Android Data Binding talk&nbsp;<\/span><span style=\"background-color: rgb(238, 238, 238); color: rgb(59, 56, 53); font-family: &quot;Helvetica Neue&quot;, Helvetica, Roboto, Arial, sans-serif;\">Deep dive into Android Data Binding talk<\/span><span style=\"background-color: initial;\"><\/span><\/p>"
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2723,
+              "title" : "Operations Management at First Sight – Setting Up vCenter Operations for Enterprise Wide Operations",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:00:55.722Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T04:30:00.000Z",
+                "start_time" : "2018-08-26T04:30:00.000Z",
+                "end_time" : "2018-08-26T05:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_53",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_54",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_55",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:27.083Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_50",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_56",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_57",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:56.074Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2950,
+              "title" : "Flash Technology: Driving the New Generation of Software Defined Storage",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:00:36.337Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T04:30:00.000Z",
+                "start_time" : "2018-08-26T04:30:00.000Z",
+                "end_time" : "2018-08-26T05:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "track_uid_4",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_58",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_44",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:29.326Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_51",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_52",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:56.074Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2708,
+              "title" : "Customer Case Study & Demo on Application Mobility: How to seamlessly move applications and stretch networks to vCloud Hybrid Service",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:00:18.022Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T07:30:00.000Z",
+                "start_time" : "2018-08-27T07:30:00.000Z",
+                "end_time" : "2018-08-27T09:00:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_59",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_60",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_44",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:28.211Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_57",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_2",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:56.074Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 3172,
+              "title" : "SSDs – The Bacon of VMware",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:00:00.737Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T02:30:00.000Z",
+                "start_time" : "2018-08-26T02:30:00.000Z",
+                "end_time" : "2018-08-26T06:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_61",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Solutions Exchange Theater Booth 1901",
+              "uid" : "uid_62",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "room_uid_6",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:12.286Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "speaker_uid_2",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_51",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:56.074Z",
+                "user" : "updated_by"
+              },
+              "description" : "<p><span style=\"font-size: 18px;\">Technology-driven innovation&nbsp;is disrupting every market and industry. And it’s being created by people like you. You unlock value from today’s technologies while anticipating a rapidly approaching technological future. That’s why we created an event with you and your peers in mind. At&nbsp;2018,&nbsp;VMware’s premier digital infrastructure event, you can find what you need to launch the digital transformation that relies on you.<\/span><\/p>"
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2662,
+              "title" : "Transforming the Enterprise to Software-Defined Enterprise",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:59:42.498Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T07:30:00.000Z",
+                "start_time" : "2018-08-27T07:30:00.000Z",
+                "end_time" : "2018-08-27T08:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "track_uid_4",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_63",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_44",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:44.570Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_22",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_13",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:56.074Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2652,
+              "title" : "Converting your Physical Microsoft Exchange 2013  into a Highly Available and Performing Application in your Newly Virtualized Environment",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:59:23.437Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T13:30:00.000Z",
+                "start_time" : "2018-08-27T13:30:00.000Z",
+                "end_time" : "2018-08-27T14:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_64",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_65",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_66",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:43.468Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "speaker_uid_12",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_67",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_24",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:56.074Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 3108,
+              "title" : "Are Memory and Storage Keeping up with the Cloud and Virtualization?",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:59:02.064Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T11:30:00.000Z",
+                "start_time" : "2018-08-27T11:30:00.000Z",
+                "end_time" : "2018-08-27T12:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_19",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_68",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_28",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:42.328Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_67",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_24",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_30",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:08:01.711Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2375,
+              "title" : "Configure vCloud Automation Center Database with Replication in Less than 30 Minutes: VMware Postgres Installation and Replication",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:58:45.113Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T06:30:00.000Z",
+                "start_time" : "2018-08-27T06:30:00.000Z",
+                "end_time" : "2018-08-27T08:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_37",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_689",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_21",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:41.201Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_41",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_30",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_29",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:08:01.711Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2463,
+              "title" : "Successfully Achieving SDDC Goals In Spite of Dynamic Change",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:58:26.564Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T08:30:00.000Z",
+                "start_time" : "2018-08-27T08:30:00.000Z",
+                "end_time" : "2018-08-27T09:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_37",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_70",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_71",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:39.971Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_72",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_9",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_8",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:08:01.711Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2525,
+              "title" : "Chasing the White Rabbit all the Way to Wonderland: Extending vCloud Automation Center Requests with vCenter Orchestrator",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:58:07.430Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T07:30:00.000Z",
+                "start_time" : "2018-08-27T07:30:00.000Z",
+                "end_time" : "2018-08-27T08:00:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_59",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_73",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_49",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:38.706Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "speaker_uid_9",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_23",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:08:01.711Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 3156,
+              "title" : "Restores for any occasion: 39 restore scenarios from one Veeam backup",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:57:47.939Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T08:00:00.000Z",
+                "start_time" : "2018-08-27T08:00:00.000Z",
+                "end_time" : "2018-08-27T08:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_59",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Solutions Exchange Theater Booth 1901",
+              "uid" : "uid_74",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_75",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:37.271Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "speaker_uid_3",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_76",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_30",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:08:01.711Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2318,
+              "title" : "Scale-Out NSX Deployments:  With VMware-powered SDDC Converged Infrastructure Solution",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:57:29.384Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T05:30:00.000Z",
+                "start_time" : "2018-08-27T05:30:00.000Z",
+                "end_time" : "2018-08-27T06:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_59",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_77",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_78",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:35.934Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_29",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_8",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_9",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:08:01.711Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2949,
+              "title" : "Advanced Network Designs for Data Center Transformation",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:57:11.049Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T06:00:00.000Z",
+                "start_time" : "2018-08-27T06:00:00.000Z",
+                "end_time" : "2018-08-27T07:00:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "track_uid_10",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_79",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_39",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:34.685Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_50",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_56",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:08:01.711Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 3016,
+              "title" : "The Economic Impact of Hyperconverged Infrastructure – A Panel Discussion",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:56:52.994Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T10:30:00.000Z",
+                "start_time" : "2018-08-27T10:30:00.000Z",
+                "end_time" : "2018-08-27T12:00:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_80",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Panel Session",
+              "uid" : "uid_81",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_28",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:33.545Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_50",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_56",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:08:01.711Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 3033,
+              "title" : "Case Study: How to Easily and Efficiently Migrate Complex Environments to VMware and Save on Your Data Protection Plan",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:56:33.788Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T05:45:00.000Z",
+                "start_time" : "2018-08-27T05:45:00.000Z",
+                "end_time" : "2018-08-27T07:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_80",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Sessions",
+              "uid" : "uid_82",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_83",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:32.495Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_52",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_46",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:08:01.711Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 1538,
+              "title" : "Putting Your Marketing Strategy to Work",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:56:16.649Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-27T09:30:00.000Z",
+                "start_time" : "2018-08-27T09:30:00.000Z",
+                "end_time" : "2018-08-27T10:30:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "uid_80",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Sessions",
+              "uid" : "uid_84",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_66",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:31.395Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_22",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "uid_36",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:08:01.711Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            },
+            {
+              "is_popular" : false,
+              "session_id" : 2493,
+              "title" : "Management Strategy and Roadmap",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T06:55:53.791Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T08:15:00.000Z",
+                "start_time" : "2018-08-26T08:15:00.000Z",
+                "end_time" : "2018-08-26T09:15:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "uid" : "track_uid_14",
+                  "_content_type_uid" : "track"
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "uid_85",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_86",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:45.704Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "uid_72",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_9",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T06:55:56.276Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            }
+          ]
+        },
+        "status" : 200
+      }
+    },
+    {
+      "recorded_at" : 1607183202.0703759,
+      "response" : {
+        "status" : 200,
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?query=%7B%0A%20%20%22session_id%22%20:%202695%0A%7D&include%5B%5D=track&locale=en-us&environment=environment",
+        "body" : {
+          "entries" : [
+            {
+              "is_popular" : false,
+              "session_id" : 2695,
+              "title" : "Inexorable Forces Driving the Real-Time, Cloud-Aware Network",
+              "tags" : [
+
+              ],
+              "updated_at" : "2020-04-20T07:05:15.592Z",
+              "updated_by" : "updated_by",
+              "session_time" : {
+                "strart_time" : "2018-08-26T13:30:00.000Z",
+                "start_time" : "2018-08-26T13:30:00.000Z",
+                "end_time" : "2018-08-26T14:15:00.000Z"
+              },
+              "locale" : "en-us",
+              "_version" : 4,
+              "ACL" : {
+
+              },
+              "track" : [
+                {
+                  "description" : "",
+                  "uid" : "track_uid_2",
+                  "_version" : 1,
+                  "created_at" : "2020-04-10T05:46:38.057Z",
+                  "created_by" : "updated_by",
+                  "tags" : [
+
+                  ],
+                  "locale" : "en-us",
+                  "comment" : "",
+                  "title" : "Virtualizing Applications",
+                  "_content_type_uid" : "track",
+                  "updated_at" : "2020-04-10T05:46:38.057Z",
+                  "ACL" : {
+
+                  },
+                  "track_color" : "#f7d4d5",
+                  "updated_by" : "updated_by",
+                  "sort_order" : "5",
+                  "_in_progress" : false,
+                  "publish_details" : {
+                    "environment" : "environment",
+                    "locale" : "en-us",
+                    "time" : "2020-04-10T07:22:26.483Z",
+                    "user" : "updated_by"
+                  }
+                }
+              ],
+              "type" : "Breakout Session",
+              "uid" : "session_uid_1",
+              "_in_progress" : false,
+              "room" : [
+                {
+                  "uid" : "uid_44",
+                  "_content_type_uid" : "room"
+                }
+              ],
+              "created_at" : "2020-04-10T05:47:46.833Z",
+              "created_by" : "updated_by",
+              "speakers" : [
+                {
+                  "uid" : "speaker_uid_2",
+                  "_content_type_uid" : "speaker"
+                },
+                {
+                  "uid" : "speaker_uid_3",
+                  "_content_type_uid" : "speaker"
+                }
+              ],
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-20T07:07:48.677Z",
+                "user" : "updated_by"
+              },
+              "description" : ""
+            }
+          ]
+        },
+        "headers" : {
+          "x-runtime" : "24ms",
+          "x-cache-hits" : "0, 1",
+          "Age" : "2269",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "x-contentstack-organization" : "uid_87",
+          "x-served-by" : "cache-sna10724-LGB, cache-bom4749-BOM",
+          "x-timer" : "S1607183202.064009,VS0,VE1",
+          "x-cache" : "MISS, HIT",
+          "x-cs-includedepth" : "2",
+          "Content-Type" : "application\/json",
+          "Access-Control-Allow-Origin" : "*",
+          "Content-Encoding" : "gzip",
+          "Content-Length" : "588",
+          "x-cs-includecount" : "1",
+          "Accept-Ranges" : "bytes",
+          "Date" : "Sat, 05 Dec 2020 15:46:42 GMT",
+          "Vary" : "Accept-Encoding"
+        }
+      },
+      "request" : {
+        "headers" : {
+          "access_token" : "delivery_token",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "api_key" : "api_key"
+        },
+        "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/session\/entries?query=%7B%0A%20%20%22session_id%22%20:%202695%0A%7D&include%5B%5D=track&locale=en-us&environment=environment"
+      }
+    }
+  ]
+}

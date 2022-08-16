@@ -37,14 +37,16 @@ public struct Contentstack {
                              region: ContentstackRegion = ContentstackRegion.us,
                              host: String = Host.delivery,
                              apiVersion: String = "v3",
+                             branch: String? = nil,
                              config: ContentstackConfig = ContentstackConfig.default) -> Stack {
-        let regionBaseHost = host != Host.delivery ? host : (region != .us ? "eu-cdn.contentstack.com": host)
+        let regionBaseHost = host != Host.delivery ? host : (region != .us ? "\(region.rawValue)-cdn.contentstack.com": host)
         return Stack(apiKey: apiKey,
                      deliveryToken: deliveryToken,
                      environment: environment,
                      region: region,
                      host: regionBaseHost,
                      apiVersion: apiVersion,
+                     branch: branch,
                      config: config)
     }
     

@@ -1,0 +1,3242 @@
+{
+  "name" : "Asset",
+  "interactions" : [
+    {
+      "request" : {
+        "method" : "GET",
+        "headers" : {
+          "access_token" : "delivery_token",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "api_key" : "api_key",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?locale=en-us&environment=environment"
+      },
+      "recorded_at" : 1607183092.36024,
+      "response" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?locale=en-us&environment=environment",
+        "headers" : {
+          "Content-Encoding" : "gzip",
+          "x-timer" : "S1607183092.353917,VS0,VE1",
+          "Date" : "Sat, 05 Dec 2020 15:44:52 GMT",
+          "Access-Control-Allow-Origin" : "*",
+          "x-cache" : "MISS, HIT",
+          "Content-Type" : "application\/json",
+          "Accept-Ranges" : "bytes",
+          "x-served-by" : "cache-sna10740-LGB, cache-bom4733-BOM",
+          "x-contentstack-organization" : "uid_87",
+          "Vary" : "Accept-Encoding",
+          "Age" : "92",
+          "x-runtime" : "20ms",
+          "Content-Length" : "917",
+          "x-cache-hits" : "0, 1",
+          "Via" : "1.1 varnish, 1.1 varnish"
+        },
+        "status" : 200,
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "uid_89",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_89\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5990",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_90",
+              "created_at" : "2020-04-10T05:46:06.479Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "contentstack.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_90\/uid_91\/contentstack.png",
+              "_version" : 1,
+              "title" : "contentstack.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.479Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "3200",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_92",
+              "created_at" : "2020-04-10T05:46:05.152Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(4).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_92\/5e90081dae759113a32fb19e\/images_(4).jpg",
+              "_version" : 1,
+              "title" : "images_(4).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:05.152Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "6560",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_93",
+              "created_at" : "2020-04-10T05:46:04.959Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(3).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_93\/5e90081cf65d6442b751ea74\/images_(3).jpg",
+              "_version" : 1,
+              "title" : "images_(3).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:04.959Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5928",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_94",
+              "created_at" : "2020-04-10T05:46:02.910Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_94\/5e90081a18462719987f9e02\/eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "_version" : 1,
+              "title" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:02.910Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "809525",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_95",
+              "created_at" : "2020-04-10T05:45:24.590Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "Integrate-with-bg.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_95\/5e9007f416db9607e2b7e0d8\/Integrate-with-bg.png",
+              "_version" : 1,
+              "title" : "Integrate-with-bg.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:24.590Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "96938",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_96",
+              "created_at" : "2020-04-10T05:45:17.366Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "if_icon-72-lightning_316154_(1).png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_96\/5e9007ed16db9607e2b7e0d2\/if_icon-72-lightning_316154_(1).png",
+              "_version" : 1,
+              "title" : "if_icon-72-lightning_316154_(1).png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.366Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "812",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_97",
+              "created_at" : "2020-04-10T05:45:17.337Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(2).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_97\/5e9007ed89d7817e9320a769\/images_(2).jpg",
+              "_version" : 1,
+              "title" : "images_(2).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.337Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5899",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "response" : {
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "uid_89",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_89\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5990",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            }
+          ]
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22uid%22%20:%20%22uid_89%22%0A%7D&locale=en-us&environment=environment",
+        "status" : 200,
+        "headers" : {
+          "Content-Length" : "396",
+          "x-timer" : "S1607183092.464584,VS0,VE1",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Access-Control-Allow-Origin" : "*",
+          "x-served-by" : "cache-lax10632-LGB, cache-bom4733-BOM",
+          "Age" : "92",
+          "x-runtime" : "19ms",
+          "x-contentstack-organization" : "uid_87",
+          "Content-Type" : "application\/json",
+          "x-cache" : "MISS, HIT",
+          "Vary" : "Accept-Encoding",
+          "Content-Encoding" : "gzip",
+          "Date" : "Sat, 05 Dec 2020 15:44:52 GMT",
+          "Accept-Ranges" : "bytes",
+          "x-cache-hits" : "0, 1"
+        }
+      },
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22uid%22%20:%20%22uid_89%22%0A%7D&locale=en-us&environment=environment",
+        "headers" : {
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "access_token" : "delivery_token",
+          "api_key" : "api_key",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
+        }
+      },
+      "recorded_at" : 1607183092.46682
+    },
+    {
+      "response" : {
+        "status" : 200,
+        "headers" : {
+          "Content-Type" : "application\/json",
+          "x-runtime" : "13ms",
+          "Vary" : "Accept-Encoding",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Access-Control-Allow-Origin" : "*",
+          "Content-Length" : "866",
+          "Date" : "Sat, 05 Dec 2020 15:44:52 GMT",
+          "Age" : "92",
+          "x-cache-hits" : "0, 1",
+          "x-served-by" : "cache-lax10630-LGB, cache-bom4733-BOM",
+          "x-cache" : "MISS, HIT",
+          "Content-Encoding" : "gzip",
+          "x-contentstack-organization" : "uid_87",
+          "Accept-Ranges" : "bytes",
+          "x-timer" : "S1607183092.480218,VS0,VE0"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$ne%22%20:%20%22images_(1).jpg%22%0A%20%20%7D%0A%7D&locale=en-us&environment=environment",
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "uid_90",
+              "created_at" : "2020-04-10T05:46:06.479Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "contentstack.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_90\/uid_91\/contentstack.png",
+              "_version" : 1,
+              "title" : "contentstack.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.479Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "3200",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_92",
+              "created_at" : "2020-04-10T05:46:05.152Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(4).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_92\/5e90081dae759113a32fb19e\/images_(4).jpg",
+              "_version" : 1,
+              "title" : "images_(4).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:05.152Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "6560",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_93",
+              "created_at" : "2020-04-10T05:46:04.959Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(3).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_93\/5e90081cf65d6442b751ea74\/images_(3).jpg",
+              "_version" : 1,
+              "title" : "images_(3).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:04.959Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5928",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_94",
+              "created_at" : "2020-04-10T05:46:02.910Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_94\/5e90081a18462719987f9e02\/eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "_version" : 1,
+              "title" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:02.910Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "809525",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_95",
+              "created_at" : "2020-04-10T05:45:24.590Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "Integrate-with-bg.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_95\/5e9007f416db9607e2b7e0d8\/Integrate-with-bg.png",
+              "_version" : 1,
+              "title" : "Integrate-with-bg.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:24.590Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "96938",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_96",
+              "created_at" : "2020-04-10T05:45:17.366Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "if_icon-72-lightning_316154_(1).png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_96\/5e9007ed16db9607e2b7e0d2\/if_icon-72-lightning_316154_(1).png",
+              "_version" : 1,
+              "title" : "if_icon-72-lightning_316154_(1).png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.366Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "812",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_97",
+              "created_at" : "2020-04-10T05:45:17.337Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(2).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_97\/5e9007ed89d7817e9320a769\/images_(2).jpg",
+              "_version" : 1,
+              "title" : "images_(2).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.337Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5899",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            }
+          ]
+        }
+      },
+      "request" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$ne%22%20:%20%22images_(1).jpg%22%0A%20%20%7D%0A%7D&locale=en-us&environment=environment",
+        "method" : "GET",
+        "headers" : {
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "api_key" : "api_key",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "access_token" : "delivery_token"
+        }
+      },
+      "recorded_at" : 1607183092.4797239
+    },
+    {
+      "request" : {
+        "method" : "GET",
+        "headers" : {
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "api_key" : "api_key",
+          "access_token" : "delivery_token",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22title%22%20:%20%7B%0A%20%20%20%20%22$ne%22%20:%20%22images_(1).jpg%22%0A%20%20%7D%0A%7D&locale=en-us&environment=environment"
+      },
+      "recorded_at" : 1607183092.513278,
+      "response" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22title%22%20:%20%7B%0A%20%20%20%20%22$ne%22%20:%20%22images_(1).jpg%22%0A%20%20%7D%0A%7D&locale=en-us&environment=environment",
+        "status" : 200,
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "uid_90",
+              "created_at" : "2020-04-10T05:46:06.479Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "contentstack.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_90\/uid_91\/contentstack.png",
+              "_version" : 1,
+              "title" : "contentstack.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.479Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "3200",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_92",
+              "created_at" : "2020-04-10T05:46:05.152Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(4).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_92\/5e90081dae759113a32fb19e\/images_(4).jpg",
+              "_version" : 1,
+              "title" : "images_(4).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:05.152Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "6560",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_93",
+              "created_at" : "2020-04-10T05:46:04.959Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(3).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_93\/5e90081cf65d6442b751ea74\/images_(3).jpg",
+              "_version" : 1,
+              "title" : "images_(3).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:04.959Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5928",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_94",
+              "created_at" : "2020-04-10T05:46:02.910Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_94\/5e90081a18462719987f9e02\/eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "_version" : 1,
+              "title" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:02.910Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "809525",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_95",
+              "created_at" : "2020-04-10T05:45:24.590Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "Integrate-with-bg.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_95\/5e9007f416db9607e2b7e0d8\/Integrate-with-bg.png",
+              "_version" : 1,
+              "title" : "Integrate-with-bg.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:24.590Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "96938",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_96",
+              "created_at" : "2020-04-10T05:45:17.366Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "if_icon-72-lightning_316154_(1).png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_96\/5e9007ed16db9607e2b7e0d2\/if_icon-72-lightning_316154_(1).png",
+              "_version" : 1,
+              "title" : "if_icon-72-lightning_316154_(1).png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.366Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "812",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_97",
+              "created_at" : "2020-04-10T05:45:17.337Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(2).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_97\/5e9007ed89d7817e9320a769\/images_(2).jpg",
+              "_version" : 1,
+              "title" : "images_(2).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.337Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5899",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            }
+          ]
+        },
+        "headers" : {
+          "x-cache-hits" : "0, 1",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "x-runtime" : "18ms",
+          "x-timer" : "S1607183093.512567,VS0,VE1",
+          "Date" : "Sat, 05 Dec 2020 15:44:52 GMT",
+          "Accept-Ranges" : "bytes",
+          "Access-Control-Allow-Origin" : "*",
+          "Content-Type" : "application\/json",
+          "x-served-by" : "cache-sna10736-LGB, cache-bom4733-BOM",
+          "x-contentstack-organization" : "uid_87",
+          "Content-Encoding" : "gzip",
+          "Vary" : "Accept-Encoding",
+          "Content-Length" : "866",
+          "x-cache" : "MISS, HIT",
+          "Age" : "91"
+        }
+      }
+    },
+    {
+      "response" : {
+        "headers" : {
+          "x-cache" : "MISS, HIT",
+          "Age" : "91",
+          "Content-Length" : "917",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Access-Control-Allow-Origin" : "*",
+          "Accept-Ranges" : "bytes",
+          "x-contentstack-organization" : "uid_87",
+          "x-timer" : "S1607183093.553643,VS0,VE1",
+          "Date" : "Sat, 05 Dec 2020 15:44:52 GMT",
+          "x-served-by" : "cache-sna10720-LGB, cache-bom4733-BOM",
+          "Content-Encoding" : "gzip",
+          "x-runtime" : "19ms",
+          "Content-Type" : "application\/json",
+          "x-cache-hits" : "0, 1",
+          "Vary" : "Accept-Encoding"
+        },
+        "status" : 200,
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$exists%22%20:%20true%0A%20%20%7D%0A%7D&locale=en-us&environment=environment",
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "uid_89",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_89\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5990",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_90",
+              "created_at" : "2020-04-10T05:46:06.479Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "contentstack.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_90\/uid_91\/contentstack.png",
+              "_version" : 1,
+              "title" : "contentstack.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.479Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "3200",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_92",
+              "created_at" : "2020-04-10T05:46:05.152Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(4).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_92\/5e90081dae759113a32fb19e\/images_(4).jpg",
+              "_version" : 1,
+              "title" : "images_(4).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:05.152Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "6560",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_93",
+              "created_at" : "2020-04-10T05:46:04.959Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(3).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_93\/5e90081cf65d6442b751ea74\/images_(3).jpg",
+              "_version" : 1,
+              "title" : "images_(3).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:04.959Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5928",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_94",
+              "created_at" : "2020-04-10T05:46:02.910Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_94\/5e90081a18462719987f9e02\/eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "_version" : 1,
+              "title" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:02.910Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "809525",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_95",
+              "created_at" : "2020-04-10T05:45:24.590Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "Integrate-with-bg.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_95\/5e9007f416db9607e2b7e0d8\/Integrate-with-bg.png",
+              "_version" : 1,
+              "title" : "Integrate-with-bg.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:24.590Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "96938",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_96",
+              "created_at" : "2020-04-10T05:45:17.366Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "if_icon-72-lightning_316154_(1).png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_96\/5e9007ed16db9607e2b7e0d2\/if_icon-72-lightning_316154_(1).png",
+              "_version" : 1,
+              "title" : "if_icon-72-lightning_316154_(1).png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.366Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "812",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_97",
+              "created_at" : "2020-04-10T05:45:17.337Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(2).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_97\/5e9007ed89d7817e9320a769\/images_(2).jpg",
+              "_version" : 1,
+              "title" : "images_(2).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.337Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5899",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            }
+          ]
+        }
+      },
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22filename%22%20:%20%7B%0A%20%20%20%20%22$exists%22%20:%20true%0A%20%20%7D%0A%7D&locale=en-us&environment=environment",
+        "headers" : {
+          "api_key" : "api_key",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "access_token" : "delivery_token"
+        }
+      },
+      "recorded_at" : 1607183092.5577722
+    },
+    {
+      "response" : {
+        "headers" : {
+          "Accept-Ranges" : "bytes",
+          "Vary" : "Accept-Encoding",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "x-cache-hits" : "0, 1",
+          "Content-Length" : "578",
+          "x-timer" : "S1607183093.598745,VS0,VE1",
+          "x-cache" : "MISS, HIT",
+          "Date" : "Sat, 05 Dec 2020 15:44:52 GMT",
+          "x-contentstack-organization" : "uid_87",
+          "x-served-by" : "cache-sna10735-LGB, cache-bom4733-BOM",
+          "Content-Encoding" : "gzip",
+          "Content-Type" : "application\/json",
+          "x-runtime" : "12ms",
+          "Age" : "91",
+          "Access-Control-Allow-Origin" : "*"
+        },
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "uid_89",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_89\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5990",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_92",
+              "created_at" : "2020-04-10T05:46:05.152Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(4).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_92\/5e90081dae759113a32fb19e\/images_(4).jpg",
+              "_version" : 1,
+              "title" : "images_(4).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:05.152Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "6560",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_93",
+              "created_at" : "2020-04-10T05:46:04.959Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(3).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_93\/5e90081cf65d6442b751ea74\/images_(3).jpg",
+              "_version" : 1,
+              "title" : "images_(3).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:04.959Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5928",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_97",
+              "created_at" : "2020-04-10T05:45:17.337Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(2).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_97\/5e9007ed89d7817e9320a769\/images_(2).jpg",
+              "_version" : 1,
+              "title" : "images_(2).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.337Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5899",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            }
+          ]
+        },
+        "status" : 200,
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22title%22%20:%20%7B%0A%20%20%20%20%22$regex%22%20:%20%22im%22%0A%20%20%7D%0A%7D&locale=en-us&environment=environment"
+      },
+      "request" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?query=%7B%0A%20%20%22title%22%20:%20%7B%0A%20%20%20%20%22$regex%22%20:%20%22im%22%0A%20%20%7D%0A%7D&locale=en-us&environment=environment",
+        "headers" : {
+          "api_key" : "api_key",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "access_token" : "delivery_token"
+        },
+        "method" : "GET"
+      },
+      "recorded_at" : 1607183092.598644
+    },
+    {
+      "response" : {
+        "body" : {
+          "asset" : {
+            "uid" : "uid_89",
+            "created_at" : "2020-04-10T05:46:06.731Z",
+            "content_type" : "image\/jpeg",
+            "created_by" : "updated_by",
+            "tags" : [
+
+            ],
+            "filename" : "images_(1).jpg",
+            "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_89\/5e90081ee14a091a67688455\/images_(1).jpg",
+            "_version" : 1,
+            "title" : "images_(1).jpg",
+            "is_dir" : false,
+            "updated_at" : "2020-04-10T05:46:06.731Z",
+            "ACL" : {
+              "roles" : {
+
+              },
+              "others" : {
+                "delete" : false,
+                "update" : false,
+                "read" : false,
+                "sub_acl" : {
+                  "delete" : false,
+                  "publish" : false,
+                  "update" : false,
+                  "read" : false,
+                  "create" : false
+                },
+                "create" : false
+              }
+            },
+            "updated_by" : "updated_by",
+            "file_size" : "5990",
+            "publish_details" : {
+              "environment" : "environment",
+              "locale" : "en-us",
+              "time" : "2020-04-10T07:16:54.466Z",
+              "user" : "updated_by"
+            }
+          }
+        },
+        "status" : 200,
+        "headers" : {
+          "Access-Control-Allow-Origin" : "*",
+          "x-cache" : "MISS, HIT",
+          "x-served-by" : "cache-sna10726-LGB, cache-bom4733-BOM",
+          "Vary" : "Accept-Encoding",
+          "x-runtime" : "18ms",
+          "Content-Encoding" : "gzip",
+          "x-timer" : "S1607183093.632125,VS0,VE1",
+          "x-contentstack-organization" : "uid_87",
+          "Date" : "Sat, 05 Dec 2020 15:44:52 GMT",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Age" : "90",
+          "Accept-Ranges" : "bytes",
+          "x-cache-hits" : "0, 1",
+          "Content-Type" : "application\/json",
+          "Content-Length" : "396"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/uid_89?environment=environment"
+      },
+      "recorded_at" : 1607183092.633491,
+      "request" : {
+        "method" : "GET",
+        "headers" : {
+          "api_key" : "api_key",
+          "access_token" : "delivery_token",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/uid_89?environment=environment"
+      }
+    },
+    {
+      "response" : {
+        "headers" : {
+          "Vary" : "Accept-Encoding",
+          "x-cache-hits" : "0, 1",
+          "x-runtime" : "18ms",
+          "x-timer" : "S1607183093.645775,VS0,VE0",
+          "Access-Control-Allow-Origin" : "*",
+          "Content-Type" : "application\/json",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "x-cache" : "MISS, HIT",
+          "x-contentstack-organization" : "uid_87",
+          "x-served-by" : "cache-sna10729-LGB, cache-bom4733-BOM",
+          "Date" : "Sat, 05 Dec 2020 15:44:52 GMT",
+          "Content-Encoding" : "gzip",
+          "Accept-Ranges" : "bytes",
+          "Content-Length" : "1025",
+          "Age" : "90"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?include_dimension=true&environment=environment",
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "uid_89",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_89\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : {
+
+                },
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5990",
+              "dimension" : {
+                "width" : 300,
+                "height" : 168
+              },
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_89",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_89\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : {
+
+                },
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5990",
+              "dimension" : {
+                "width" : 300,
+                "height" : 168
+              },
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-gb",
+                "time" : "2020-12-05T15:43:05.355Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_90",
+              "created_at" : "2020-04-10T05:46:06.479Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "contentstack.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_90\/uid_91\/contentstack.png",
+              "_version" : 1,
+              "title" : "contentstack.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.479Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "3200",
+              "dimension" : {
+                "width" : 600,
+                "height" : 315
+              },
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_92",
+              "created_at" : "2020-04-10T05:46:05.152Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(4).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_92\/5e90081dae759113a32fb19e\/images_(4).jpg",
+              "_version" : 1,
+              "title" : "images_(4).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:05.152Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "6560",
+              "dimension" : {
+                "width" : 302,
+                "height" : 167
+              },
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_93",
+              "created_at" : "2020-04-10T05:46:04.959Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(3).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_93\/5e90081cf65d6442b751ea74\/images_(3).jpg",
+              "_version" : 1,
+              "title" : "images_(3).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:04.959Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5928",
+              "dimension" : {
+                "width" : 266,
+                "height" : 189
+              },
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_94",
+              "created_at" : "2020-04-10T05:46:02.910Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_94\/5e90081a18462719987f9e02\/eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "_version" : 1,
+              "title" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:02.910Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "809525",
+              "dimension" : {
+                "width" : 886,
+                "height" : 850
+              },
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_95",
+              "created_at" : "2020-04-10T05:45:24.590Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "Integrate-with-bg.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_95\/5e9007f416db9607e2b7e0d8\/Integrate-with-bg.png",
+              "_version" : 1,
+              "title" : "Integrate-with-bg.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:24.590Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "96938",
+              "dimension" : {
+                "width" : 1248,
+                "height" : 767
+              },
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_96",
+              "created_at" : "2020-04-10T05:45:17.366Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "if_icon-72-lightning_316154_(1).png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_96\/5e9007ed16db9607e2b7e0d2\/if_icon-72-lightning_316154_(1).png",
+              "_version" : 1,
+              "title" : "if_icon-72-lightning_316154_(1).png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.366Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "812",
+              "dimension" : {
+                "width" : 50,
+                "height" : 50
+              },
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_97",
+              "created_at" : "2020-04-10T05:45:17.337Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(2).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_97\/5e9007ed89d7817e9320a769\/images_(2).jpg",
+              "_version" : 1,
+              "title" : "images_(2).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.337Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5899",
+              "dimension" : {
+                "width" : 294,
+                "height" : 171
+              },
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            }
+          ]
+        },
+        "status" : 200
+      },
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?include_dimension=true&environment=environment",
+        "headers" : {
+          "access_token" : "delivery_token",
+          "api_key" : "api_key",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "X-User-Agent" : "contentstack-swift\/1.0.0"
+        }
+      },
+      "recorded_at" : 1607183092.647831
+    },
+    {
+      "recorded_at" : 1607183092.6973181,
+      "response" : {
+        "status" : 200,
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/uid_89?include_dimension=true&environment=environment",
+        "headers" : {
+          "Age" : "90",
+          "x-served-by" : "cache-sna10737-LGB, cache-bom4733-BOM",
+          "x-cache-hits" : "0, 1",
+          "x-timer" : "S1607183093.696653,VS0,VE0",
+          "x-runtime" : "23ms",
+          "Content-Length" : "420",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Accept-Ranges" : "bytes",
+          "Date" : "Sat, 05 Dec 2020 15:44:52 GMT",
+          "Access-Control-Allow-Origin" : "*",
+          "Content-Type" : "application\/json",
+          "x-cache" : "MISS, HIT",
+          "Vary" : "Accept-Encoding",
+          "x-contentstack-organization" : "uid_87",
+          "Content-Encoding" : "gzip"
+        },
+        "body" : {
+          "asset" : {
+            "uid" : "uid_89",
+            "created_at" : "2020-04-10T05:46:06.731Z",
+            "content_type" : "image\/jpeg",
+            "created_by" : "updated_by",
+            "tags" : [
+
+            ],
+            "filename" : "images_(1).jpg",
+            "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_89\/5e90081ee14a091a67688455\/images_(1).jpg",
+            "_version" : 1,
+            "title" : "images_(1).jpg",
+            "is_dir" : false,
+            "updated_at" : "2020-04-10T05:46:06.731Z",
+            "ACL" : {
+              "roles" : {
+
+              },
+              "others" : {
+                "delete" : false,
+                "update" : false,
+                "read" : false,
+                "sub_acl" : {
+                  "delete" : false,
+                  "publish" : false,
+                  "update" : false,
+                  "read" : false,
+                  "create" : false
+                },
+                "create" : false
+              }
+            },
+            "updated_by" : "updated_by",
+            "file_size" : "5990",
+            "dimension" : {
+              "width" : 300,
+              "height" : 168
+            },
+            "publish_details" : {
+              "environment" : "environment",
+              "locale" : "en-us",
+              "time" : "2020-04-10T07:16:54.466Z",
+              "user" : "updated_by"
+            }
+          }
+        }
+      },
+      "request" : {
+        "method" : "GET",
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/uid_89?include_dimension=true&environment=environment",
+        "headers" : {
+          "access_token" : "delivery_token",
+          "api_key" : "api_key",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
+        }
+      }
+    },
+    {
+      "response" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?include_count=true&locale=en-us&environment=environment",
+        "headers" : {
+          "Content-Type" : "application\/json",
+          "x-cache" : "MISS, HIT",
+          "x-timer" : "S1607183093.712384,VS0,VE0",
+          "Access-Control-Allow-Origin" : "*",
+          "x-contentstack-organization" : "uid_87",
+          "Accept-Ranges" : "bytes",
+          "Date" : "Sat, 05 Dec 2020 15:44:52 GMT",
+          "x-runtime" : "13ms",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Content-Length" : "923",
+          "Vary" : "Accept-Encoding",
+          "x-cache-hits" : "0, 1",
+          "Age" : "89",
+          "x-served-by" : "cache-sna10748-LGB, cache-bom4733-BOM",
+          "Content-Encoding" : "gzip"
+        },
+        "status" : 200,
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "uid_89",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_89\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5990",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_90",
+              "created_at" : "2020-04-10T05:46:06.479Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "contentstack.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_90\/uid_91\/contentstack.png",
+              "_version" : 1,
+              "title" : "contentstack.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.479Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "3200",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_92",
+              "created_at" : "2020-04-10T05:46:05.152Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(4).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_92\/5e90081dae759113a32fb19e\/images_(4).jpg",
+              "_version" : 1,
+              "title" : "images_(4).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:05.152Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "6560",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_93",
+              "created_at" : "2020-04-10T05:46:04.959Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(3).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_93\/5e90081cf65d6442b751ea74\/images_(3).jpg",
+              "_version" : 1,
+              "title" : "images_(3).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:04.959Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5928",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_94",
+              "created_at" : "2020-04-10T05:46:02.910Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_94\/5e90081a18462719987f9e02\/eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "_version" : 1,
+              "title" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:02.910Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "809525",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_95",
+              "created_at" : "2020-04-10T05:45:24.590Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "Integrate-with-bg.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_95\/5e9007f416db9607e2b7e0d8\/Integrate-with-bg.png",
+              "_version" : 1,
+              "title" : "Integrate-with-bg.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:24.590Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "96938",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_96",
+              "created_at" : "2020-04-10T05:45:17.366Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "if_icon-72-lightning_316154_(1).png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_96\/5e9007ed16db9607e2b7e0d2\/if_icon-72-lightning_316154_(1).png",
+              "_version" : 1,
+              "title" : "if_icon-72-lightning_316154_(1).png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.366Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "812",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_97",
+              "created_at" : "2020-04-10T05:45:17.337Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(2).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_97\/5e9007ed89d7817e9320a769\/images_(2).jpg",
+              "_version" : 1,
+              "title" : "images_(2).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.337Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5899",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            }
+          ],
+          "count" : 8
+        }
+      },
+      "request" : {
+        "headers" : {
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "api_key" : "api_key",
+          "access_token" : "delivery_token",
+          "X-User-Agent" : "contentstack-swift\/1.0.0"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?include_count=true&locale=en-us&environment=environment",
+        "method" : "GET"
+      },
+      "recorded_at" : 1607183092.7123718
+    },
+    {
+      "response" : {
+        "body" : {
+          "error_message" : "Asset was not found.",
+          "error_code" : 145,
+          "errors" : {
+            "uid" : [
+              "is not valid."
+            ]
+          }
+        },
+        "status" : 404,
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/UID?environment=environment",
+        "headers" : {
+          "Content-Type" : "application\/json",
+          "x-cache" : "MISS, MISS",
+          "Access-Control-Allow-Origin" : "*",
+          "x-served-by" : "cache-lax10622-LGB, cache-bom4733-BOM",
+          "Content-Encoding" : "gzip",
+          "x-runtime" : "15ms",
+          "x-contentstack-organization" : "uid_87",
+          "Accept-Ranges" : "bytes",
+          "x-cache-hits" : "0, 0",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Date" : "Sat, 05 Dec 2020 15:44:53 GMT",
+          "x-timer" : "S1607183093.746924,VS0,VE283",
+          "Vary" : "Accept-Encoding",
+          "Age" : "0"
+        }
+      },
+      "request" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/UID?environment=environment",
+        "headers" : {
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "access_token" : "delivery_token",
+          "api_key" : "api_key",
+          "X-User-Agent" : "contentstack-swift\/1.0.0"
+        },
+        "method" : "GET"
+      },
+      "recorded_at" : 1607183093.0760829
+    },
+    {
+      "recorded_at" : 1607183093.087817,
+      "response" : {
+        "headers" : {
+          "Content-Length" : "403",
+          "x-served-by" : "cache-lax10647-LGB, cache-bom4733-BOM",
+          "x-cache-hits" : "0, 1",
+          "x-cache" : "MISS, HIT",
+          "Date" : "Sat, 05 Dec 2020 15:44:53 GMT",
+          "Age" : "89",
+          "x-timer" : "S1607183093.087768,VS0,VE0",
+          "Accept-Ranges" : "bytes",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Content-Type" : "application\/json",
+          "Access-Control-Allow-Origin" : "*",
+          "x-runtime" : "18ms",
+          "Vary" : "Accept-Encoding",
+          "Content-Encoding" : "gzip",
+          "x-contentstack-organization" : "uid_87"
+        },
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "uid_89",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_89\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : {
+
+                },
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5990",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-gb",
+                "time" : "2020-12-05T15:43:05.355Z",
+                "user" : "updated_by"
+              }
+            }
+          ]
+        },
+        "status" : 200,
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?locale=en-gb&environment=environment"
+      },
+      "request" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?locale=en-gb&environment=environment",
+        "method" : "GET",
+        "headers" : {
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "api_key" : "api_key",
+          "access_token" : "delivery_token",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
+        }
+      }
+    },
+    {
+      "request" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?include_fallback=true&locale=en-gb&environment=environment",
+        "headers" : {
+          "api_key" : "api_key",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;",
+          "access_token" : "delivery_token"
+        },
+        "method" : "GET"
+      },
+      "response" : {
+        "headers" : {
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Vary" : "Accept-Encoding",
+          "x-timer" : "S1607183093.100508,VS0,VE0",
+          "x-cache" : "MISS, HIT",
+          "Content-Type" : "application\/json",
+          "Content-Encoding" : "gzip",
+          "x-served-by" : "cache-sna10737-LGB, cache-bom4733-BOM",
+          "Accept-Ranges" : "bytes",
+          "Date" : "Sat, 05 Dec 2020 15:44:53 GMT",
+          "Access-Control-Allow-Origin" : "*",
+          "Age" : "89",
+          "x-runtime" : "19ms",
+          "x-cache-hits" : "0, 1",
+          "Content-Length" : "945",
+          "x-contentstack-organization" : "uid_87"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets?include_fallback=true&locale=en-gb&environment=environment",
+        "status" : 200,
+        "body" : {
+          "assets" : [
+            {
+              "uid" : "uid_89",
+              "created_at" : "2020-04-10T05:46:06.731Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(1).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_89\/5e90081ee14a091a67688455\/images_(1).jpg",
+              "_version" : 1,
+              "title" : "images_(1).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.731Z",
+              "ACL" : {
+                "roles" : {
+
+                },
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5990",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-gb",
+                "time" : "2020-12-05T15:43:05.355Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_90",
+              "created_at" : "2020-04-10T05:46:06.479Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "contentstack.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_90\/uid_91\/contentstack.png",
+              "_version" : 1,
+              "title" : "contentstack.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:06.479Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "3200",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_92",
+              "created_at" : "2020-04-10T05:46:05.152Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(4).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_92\/5e90081dae759113a32fb19e\/images_(4).jpg",
+              "_version" : 1,
+              "title" : "images_(4).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:05.152Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "6560",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_93",
+              "created_at" : "2020-04-10T05:46:04.959Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(3).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_93\/5e90081cf65d6442b751ea74\/images_(3).jpg",
+              "_version" : 1,
+              "title" : "images_(3).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:04.959Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5928",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_94",
+              "created_at" : "2020-04-10T05:46:02.910Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_94\/5e90081a18462719987f9e02\/eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "_version" : 1,
+              "title" : "eee8ef16-a56b-4b71-9299-475cc263d62d-original.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:46:02.910Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "809525",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_95",
+              "created_at" : "2020-04-10T05:45:24.590Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "Integrate-with-bg.png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_95\/5e9007f416db9607e2b7e0d8\/Integrate-with-bg.png",
+              "_version" : 1,
+              "title" : "Integrate-with-bg.png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:24.590Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "96938",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_96",
+              "created_at" : "2020-04-10T05:45:17.366Z",
+              "content_type" : "image\/png",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "if_icon-72-lightning_316154_(1).png",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_96\/5e9007ed16db9607e2b7e0d2\/if_icon-72-lightning_316154_(1).png",
+              "_version" : 1,
+              "title" : "if_icon-72-lightning_316154_(1).png",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.366Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "812",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            },
+            {
+              "uid" : "uid_97",
+              "created_at" : "2020-04-10T05:45:17.337Z",
+              "content_type" : "image\/jpeg",
+              "created_by" : "updated_by",
+              "tags" : [
+
+              ],
+              "filename" : "images_(2).jpg",
+              "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_97\/5e9007ed89d7817e9320a769\/images_(2).jpg",
+              "_version" : 1,
+              "title" : "images_(2).jpg",
+              "is_dir" : false,
+              "updated_at" : "2020-04-10T05:45:17.337Z",
+              "ACL" : {
+                "roles" : [
+
+                ],
+                "others" : {
+                  "delete" : false,
+                  "update" : false,
+                  "read" : false,
+                  "sub_acl" : {
+                    "delete" : false,
+                    "publish" : false,
+                    "update" : false,
+                    "read" : false,
+                    "create" : false
+                  },
+                  "create" : false
+                }
+              },
+              "updated_by" : "updated_by",
+              "file_size" : "5899",
+              "publish_details" : {
+                "environment" : "environment",
+                "locale" : "en-us",
+                "time" : "2020-04-10T07:16:54.466Z",
+                "user" : "updated_by"
+              }
+            }
+          ]
+        }
+      },
+      "recorded_at" : 1607183093.102313
+    },
+    {
+      "recorded_at" : 1607183093.486639,
+      "response" : {
+        "body" : {
+          "error_message" : "Asset was not found.",
+          "error_code" : 145,
+          "errors" : {
+            "uid" : [
+              "is not valid."
+            ]
+          }
+        },
+        "status" : 404,
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/uid_90?locale=en-gb&environment=environment",
+        "headers" : {
+          "Content-Encoding" : "gzip",
+          "Date" : "Sat, 05 Dec 2020 15:44:53 GMT",
+          "Age" : "0",
+          "Access-Control-Allow-Origin" : "*",
+          "x-timer" : "S1607183093.145654,VS0,VE282",
+          "x-cache-hits" : "0, 0",
+          "x-runtime" : "22ms",
+          "Accept-Ranges" : "bytes",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "Content-Type" : "application\/json",
+          "x-cache" : "MISS, MISS",
+          "x-served-by" : "cache-sna10723-LGB, cache-bom4733-BOM",
+          "x-contentstack-organization" : "uid_87",
+          "Vary" : "Accept-Encoding"
+        }
+      },
+      "request" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/uid_90?locale=en-gb&environment=environment",
+        "method" : "GET",
+        "headers" : {
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "access_token" : "delivery_token",
+          "api_key" : "api_key",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
+        }
+      }
+    },
+    {
+      "request" : {
+        "headers" : {
+          "access_token" : "delivery_token",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "api_key" : "api_key",
+          "User-Agent" : " sdk contentstack-swift\/1.0.0; platform Swift\/5.0; os iOS\/13.0.0;"
+        },
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/uid_90?include_fallback=true&locale=en-gb&environment=environment",
+        "method" : "GET"
+      },
+      "recorded_at" : 1607183093.5112319,
+      "response" : {
+        "status" : 200,
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/assets\/uid_90?include_fallback=true&locale=en-gb&environment=environment",
+        "headers" : {
+          "Date" : "Sat, 05 Dec 2020 15:44:53 GMT",
+          "Vary" : "Accept-Encoding",
+          "Content-Encoding" : "gzip",
+          "Content-Type" : "application\/json",
+          "x-cache-hits" : "0, 1",
+          "x-cache" : "MISS, HIT",
+          "Accept-Ranges" : "bytes",
+          "x-timer" : "S1607183094.511236,VS0,VE1",
+          "Access-Control-Allow-Origin" : "*",
+          "Content-Length" : "386",
+          "Via" : "1.1 varnish, 1.1 varnish",
+          "x-runtime" : "19ms",
+          "Age" : "88",
+          "x-contentstack-organization" : "uid_87",
+          "x-served-by" : "cache-lax10628-LGB, cache-bom4733-BOM"
+        },
+        "body" : {
+          "asset" : {
+            "uid" : "uid_90",
+            "created_at" : "2020-04-10T05:46:06.479Z",
+            "content_type" : "image\/png",
+            "created_by" : "updated_by",
+            "tags" : [
+
+            ],
+            "filename" : "contentstack.png",
+            "url" : "https:\/\/images.contentstack.io\/v3\/assets\/api_key\/uid_90\/uid_91\/contentstack.png",
+            "_version" : 1,
+            "title" : "contentstack.png",
+            "is_dir" : false,
+            "updated_at" : "2020-04-10T05:46:06.479Z",
+            "ACL" : {
+              "roles" : [
+
+              ],
+              "others" : {
+                "delete" : false,
+                "update" : false,
+                "read" : false,
+                "sub_acl" : {
+                  "delete" : false,
+                  "publish" : false,
+                  "update" : false,
+                  "read" : false,
+                  "create" : false
+                },
+                "create" : false
+              }
+            },
+            "updated_by" : "updated_by",
+            "file_size" : "3200",
+            "publish_details" : {
+              "environment" : "environment",
+              "locale" : "en-us",
+              "time" : "2020-04-10T07:16:54.466Z",
+              "user" : "updated_by"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

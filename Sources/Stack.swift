@@ -32,6 +32,8 @@ public class Stack: CachePolicyAccessible {
     public let region: ContentstackRegion
     /// Stack api version point
     public let apiVersion: String
+    /// `Branch` is a
+    public let branch: String?
     /// `CachePolicy` allows you to cache request
     public var cachePolicy: CachePolicy = .networkOnly
     /// The JSONDecoder that the receiving client instance uses to deserialize JSON. The SDK will
@@ -45,6 +47,7 @@ public class Stack: CachePolicyAccessible {
                   region: ContentstackRegion,
                   host: String,
                   apiVersion: String,
+                  branch: String? = nil,
                   config: ContentstackConfig) {
 
         self.apiKey = apiKey
@@ -54,7 +57,7 @@ public class Stack: CachePolicyAccessible {
         self.host = host
         self.region = region
         self.apiVersion = apiVersion
-
+        self.branch = branch
         self.config = config
 
         self.jsonDecoder = JSONDecoder.dateDecodingStrategy()
@@ -64,12 +67,16 @@ public class Stack: CachePolicyAccessible {
         if let timeZone = config.timeZone {
             jsonDecoder.userInfo[.timeZoneContextKey] = timeZone
         }
-        let contentstackHTTPHeaders = [
+        var contentstackHTTPHeaders = [
             "api_key": apiKey,
             "access_token": deliveryToken,
             "X-User-Agent": config.sdkVersionString(),
             "User-Agent": config.userAgentString()
         ]
+        
+        if let branchId = branch {
+            contentstackHTTPHeaders["branch"] = branchId
+        }
         self.config.sessionConfiguration.httpAdditionalHeaders = contentstackHTTPHeaders
         self.urlSession = URLSession(configuration: config.sessionConfiguration)
 

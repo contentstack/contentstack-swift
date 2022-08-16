@@ -36,8 +36,9 @@ echo "Running Test cases on iOS..."
 xcodebuild \
     -workspace Contentstack.xcworkspace \
     -scheme "Contentstack iOS" \
+    -enableCodeCoverage YES \
     test \
-    -destination "OS=14.1,name=iPhone 11 Pro" \
+    -destination "OS=15.5,name=iPhone 13" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-iOS.xcresult" \
         | xcpretty \
             --color \
@@ -47,34 +48,34 @@ xcodebuild \
 xcrun xccov view "$TEST_BUNDLE_PATH/$FILE_NAME-iOS.xcresult/1_Test/action.xccovreport" > "$TEST_COVERAGE_PATH/$FILE_NAME-iOS.coverage"
 
 # Run Contentstack-tvOS Test case
-echo "Running Test cases on tvOS..."
-
-xcodebuild \
-    -workspace Contentstack.xcworkspace \
-    -scheme "Contentstack tvOS" \
-    test \
-    -destination "OS=14.0,name=Apple TV 4K" \
-    -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-tvOS.xcresult" \
-        | xcpretty \
-            --color \
-            --report html \
-            --output  "$TEST_RESULT_PATH/$FILE_NAME-test-result-tvOS.html"
-
-xcrun xccov view "$TEST_BUNDLE_PATH/$FILE_NAME-tvOS.xcresult/1_Test/action.xccovreport" > "$TEST_COVERAGE_PATH/$FILE_NAME-tvOS.coverage"
-
-# Run Contentstack-macOS Test case
-echo "Running Test cases on macOS..."
-
-xcodebuild \
-    -workspace Contentstack.xcworkspace \
-    -scheme "Contentstack macOS" \
-    test \
-    -destination "platform=macOS" \
-    -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-macOS.xcresult" \
-        | xcpretty \
-            --color \
-            --report html \
-            --output "$TEST_RESULT_PATH/$FILE_NAME-test-result-macOS.html"
-
-xcrun xccov view "$TEST_BUNDLE_PATH/$FILE_NAME-macOS.xcresult/1_Test/action.xccovreport" > "$TEST_COVERAGE_PATH/$FILE_NAME-macOS.coverage"
-
+#echo "Running Test cases on tvOS..."
+#
+#xcodebuild \
+#    -workspace Contentstack.xcworkspace \
+#    -scheme "Contentstack tvOS" \
+#    test \
+#    -destination "OS=14.0,name=Apple TV 4K" \
+#    -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-tvOS.xcresult" \
+#        | xcpretty \
+#            --color \
+#            --report html \
+#            --output  "$TEST_RESULT_PATH/$FILE_NAME-test-result-tvOS.html"
+#
+#xcrun xccov view "$TEST_BUNDLE_PATH/$FILE_NAME-tvOS.xcresult/1_Test/action.xccovreport" > "$TEST_COVERAGE_PATH/$FILE_NAME-tvOS.coverage"
+#
+## Run Contentstack-macOS Test case
+#echo "Running Test cases on macOS..."
+#
+#xcodebuild \
+#    -workspace Contentstack.xcworkspace \
+#    -scheme "Contentstack macOS" \
+#    test \
+#    -destination "platform=macOS" \
+#    -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-macOS.xcresult" \
+#        | xcpretty \
+#            --color \
+#            --report html \
+#            --output "$TEST_RESULT_PATH/$FILE_NAME-test-result-macOS.html"
+#
+#xcrun xccov view "$TEST_BUNDLE_PATH/$FILE_NAME-macOS.xcresult/1_Test/action.xccovreport" > "$TEST_COVERAGE_PATH/$FILE_NAME-macOS.coverage"
+#
