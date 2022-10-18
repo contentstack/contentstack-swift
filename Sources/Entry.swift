@@ -7,7 +7,6 @@
 
 import Foundation
 /// An `Entry` is the actual piece of content created using one of the defined content types.
-/// Read more about [Entries](https://www.contentstack.com/docs/content-managers/work-with-entries/).
 
 public class Entry: EntryQueryable, CachePolicyAccessible {
     public typealias ResourceType = EntryModel

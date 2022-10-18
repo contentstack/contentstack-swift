@@ -65,25 +65,25 @@ extension Query {
     }
     /// When fetching entries, you can search on field key paths.
     public enum Operation {
-        ///Equals Operator: <https://www.contentstack.com/docs/apis/content-delivery-api/#equals-operator>
+        ///Equals Operator: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#equals-operator>
         case equals(QueryableRange)
-        ///Not-equals Operator: <https://www.contentstack.com/docs/apis/content-delivery-api/#not-equals-operator>
+        ///Not-equals Operator: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#not-equals-operator>
         case notEquals(QueryableRange)
-        ///Includes content in array: <https://www.contentstack.com/docs/apis/content-delivery-api/#array-equals-operator>
+        ///Includes content in array: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#array-equals-operator>
         case includes([QueryableRange])
-        ///Excludes content in array: <https://www.contentstack.com/docs/apis/content-delivery-api/#array-equals-operator>
+        ///Excludes content in array: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#array-equals-operator>
         case excludes([QueryableRange])
-        ///Less Than: <https://www.contentstack.com/docs/apis/content-delivery-api/#less-than>
+        ///Less Than: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#less-than>
         case isLessThan(QueryableRange)
-        ///Less than or equal: <https://www.contentstack.com/docs/apis/content-delivery-api/#less-than-or-equal-to>
+        ///Less than or equal: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#less-than-or-equal-to>
         case isLessThanOrEqual(QueryableRange)
-        ///Greater Than: <https://www.contentstack.com/docs/apis/content-delivery-api/#greater-than>
+        ///Greater Than: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#greater-than>
         case isGreaterThan(QueryableRange)
-        ///Greater than or equal: <https://www.contentstack.com/docs/apis/content-delivery-api/#greater-than-or-equal-to>
+        ///Greater than or equal: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#greater-than-or-equal-to>
         case isGreaterThanOrEqual(QueryableRange)
-        /// The existence operator: <https://www.contentstack.com/docs/apis/content-delivery-api/#exists>
+        /// The existence operator: <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#exists>
         case exists(Bool)
-        /// Search on a field by Regex. <https://www.contentstack.com/docs/apis/content-delivery-api/#search-by-regex>
+        /// Search on a field by Regex. <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#search-by-regex>
         case matches(String)
 
         internal var string: String {
