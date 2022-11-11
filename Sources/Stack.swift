@@ -80,7 +80,7 @@ public class Stack: CachePolicyAccessible {
         self.config.sessionConfiguration.httpAdditionalHeaders = contentstackHTTPHeaders
         self.urlSession = URLSession(configuration: config.sessionConfiguration)
 
-        URLCache.shared = CSURLCache.default
+        self.config.sessionConfiguration.urlCache = CSURLCache.default
     }
 
     /// Get instance of `ContentType` to fetch content-types and schema or fetch entries of specific content-type.

@@ -10,7 +10,7 @@ jazzy \
   --author_url https://www.contentstack.com \
   --github_url https://github.com/contentstack/contentstack-swift \
   --github-file-prefix https://github.com/contentstack/contentstack-swift/tree/$CONTENTSTACK_SDK_VERSION \
-  --xcodebuild-arguments -workspace,Contentstack.xcworkspace,-scheme,"Contentstack macOS" \
+  --xcodebuild-arguments -workspace,Contentstack.xcworkspace,-scheme,"Contentstack macOS",-destination,"platform=macOS,arch=x86_64"  \
   --module Contentstack \
   --theme apple \
   --module-version "$CONTENSTACK_SDK_VERSION" \
