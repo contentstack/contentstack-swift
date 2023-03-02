@@ -56,6 +56,12 @@ class ContentTypeQueryTest: XCTestCase {
         descQuery.orderByDecending(keyPath: key)
         XCTAssertEqual(descQuery.parameters.query(), "\(QueryParameter.desc)=\(key)")
     }
+    
+    func testAssetQuery_addValue() {
+        let addValueQuery = makeAssetQuerySUT().addValue("value1", forHTTPHeaderField: "key1")
+        XCTAssertEqual(addValueQuery.headers.keys.count, 1)
+        XCTAssertEqual(addValueQuery.headers["key1"], "value1")
+    }
 
     func testCTQuery_addURIParam() {
         let dictionary = ["key1": "value1",
@@ -109,7 +115,8 @@ class ContentTypeQueryTest: XCTestCase {
         ("testCTQuery_Order", testCTQuery_Order),
         ("testCTQuery_addURIParam", testCTQuery_addURIParam),
         ("testCTQuery_addQueryParam", testCTQuery_addQueryParam),
-        ("testCTQuery_Include", testCTQuery_Include)
+        ("testCTQuery_Include", testCTQuery_Include),
+        ("testAssetQuery_addValue", testAssetQuery_addValue)
     ]
 }
 

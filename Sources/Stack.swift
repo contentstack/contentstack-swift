@@ -67,12 +67,18 @@ public class Stack: CachePolicyAccessible {
         if let timeZone = config.timeZone {
             jsonDecoder.userInfo[.timeZoneContextKey] = timeZone
         }
-        var contentstackHTTPHeaders = [
+        
+        var contentstackHTTPHeaders: [AnyHashable: Any] = [
             "api_key": apiKey,
             "access_token": deliveryToken,
             "X-User-Agent": config.sdkVersionString(),
             "User-Agent": config.userAgentString()
         ]
+        if let headers = self.config.sessionConfiguration.httpAdditionalHeaders {
+            for headerKey in headers.keys {
+                contentstackHTTPHeaders[headerKey] = headers[headerKey]
+            }
+        }
         
         if let branchId = branch {
             contentstackHTTPHeaders["branch"] = branchId
@@ -163,10 +169,12 @@ public class Stack: CachePolicyAccessible {
     internal func fetch<ResourceType>(endpoint: Endpoint,
                                       cachePolicy: CachePolicy,
                                       parameters: Parameters = [:],
+                                      headers: [String: String] = [:],
                                       then completion: @escaping ResultsHandler<ResourceType>)
         where ResourceType: Decodable {
         let url = self.url(endpoint: endpoint, parameters: parameters)
             self.fetchUrl(url,
+                          headers: headers,
                           cachePolicy: cachePolicy,
                           then: { (result: Result<Data, Error>, responseType: ResponseType) in
             switch result {
@@ -183,9 +191,12 @@ public class Stack: CachePolicyAccessible {
         })
     }
 
-    private func fetchUrl(_ url: URL, cachePolicy: CachePolicy, then completion: @escaping ResultsHandler<Data>) {
+    private func fetchUrl(_ url: URL, headers:[String: String], cachePolicy: CachePolicy, then completion: @escaping ResultsHandler<Data>) {
         var dataTask: URLSessionDataTask?
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        for header in headers {
+            request.addValue(header.value, forHTTPHeaderField: header.key)
+        }
         dataTask = urlSession.dataTask(with: request,
                                        completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
             if let data = data {
@@ -329,6 +340,7 @@ extension Stack {
         let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
 
         fetchUrl(url,
+                 headers: [:],
                  cachePolicy: .networkOnly) { (result: Result<Data, Error>, _: ResponseType) in
             switch result {
             case .success(let data):

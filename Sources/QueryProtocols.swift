@@ -18,6 +18,8 @@ public protocol QueryProtocol: class, CachePolicyAccessible {
     var queryParameter: [String: Any] { get set }
     /// The cachePolicy that is use for fetching entity.
     var cachePolicy: CachePolicy { get set }
+    
+    var headers: [String: String] { get set }
 }
 
 extension BaseQuery {
@@ -70,7 +72,7 @@ extension BaseQuery {
                 self.parameters[QueryParameter.query] = query
             }
             self.stack.fetch(endpoint: ResourceType.endpoint,
-                    cachePolicy: self.cachePolicy, parameters: parameters, then: completion)
+                    cachePolicy: self.cachePolicy, parameters: parameters, headers: headers, then: completion)
     }
 }
 /// A concrete implementation of BaseQuery which serves as the base class for `Query`,
@@ -496,6 +498,54 @@ extension BaseQuery {
 
     public func addQuery(with key: String, value: Any) -> Self {
         self.queryParameter[key] = value
+        return self
+    }
+    
+    /// The Query parameters dictionary that are converted to `URLComponents`.
+    /// - Parameters:
+    ///   - key: The key for header parameter,
+    ///   - value: The value for header  parameter.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// // To fetch Entry from specific contentType
+    /// stack.contentType(uid: contentTypeUID).entry().query()
+    /// .addValue("value", forHTTPHeaderField: "header")
+    /// .fetch { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
+    ///    switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with EntryModel array in items.
+    ///    case .failure(let error):
+    ///         //Error Message
+    ///    }
+    /// }
+    /// // To fetch allContentTypes
+    /// stack.contentType().query().addValue("value", forHTTPHeaderField: "header")
+    /// .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
+    ///    switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with ContentTypeModel array in items.
+    ///    case .failure(let error):
+    ///         //Error Message
+    ///    }
+    /// }
+    /// // To fetch Assets
+    /// stack.asset().query().addValue("value", forHTTPHeaderField: "header")
+    /// .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
+    ///    switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with AssetModel array in items.
+    ///    case .failure(let error):
+    ///         //Error Message
+    ///    }
+    /// }
+    /// ```
+    public func  addValue(_ value: String, forHTTPHeaderField field: String) -> Self {
+        self.headers[field] = value
         return self
     }
 }

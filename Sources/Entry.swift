@@ -9,6 +9,8 @@ import Foundation
 /// An `Entry` is the actual piece of content created using one of the defined content types.
 
 public class Entry: EntryQueryable, CachePolicyAccessible {
+    public var headers: [String : String] = [:]
+    
     public typealias ResourceType = EntryModel
 
     var uid: String?
@@ -91,6 +93,34 @@ public class Entry: EntryQueryable, CachePolicyAccessible {
             }
             return query
     }
+    
+    /// The Query parameters dictionary that are converted to `URLComponents`.
+    /// - Parameters:
+    ///   - key: The key for header parameter,
+    ///   - value: The value for header  parameter.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// // To fetch Entry from specific contentType
+    /// stack.contentType(uid: contentTypeUID).entry()
+    /// .addValue("value", forHTTPHeaderField: "header")
+    /// .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
+    ///    switch result {
+    ///    case .success(let model):
+    ///         //Model retrive from API
+    ///    case .failure(let error):
+    ///         //Error Message
+    ///    }
+    /// }
+    /// ```
+    public func  addValue(_ value: String, forHTTPHeaderField field: String) -> Self {
+        self.headers[field] = value
+        return self
+    }
 }
 
 extension Entry: ResourceQueryable {
@@ -121,6 +151,7 @@ extension Entry: ResourceQueryable {
                          cachePolicy: self.cachePolicy,
                          parameters: parameters + [QueryParameter.uid: uid,
                                                    QueryParameter.contentType: self.contentType.uid!],
+                         headers: headers,
                          then: { (result: Result<ContentstackResponse<ResourceType>, Error>, response: ResponseType) in
                             switch result {
                             case .success(let contentStackResponse):

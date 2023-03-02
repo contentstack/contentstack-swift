@@ -415,7 +415,7 @@ class EntryAPITest: XCTestCase {
         let date = formatter.date(from: "2018-08-27T12:30:00.000Z")!
         
         let networkExpectationDate = expectation(description: "Fetch where Session Time Greater than or Equal Date Test")
-        self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isGreaterThanOrEqual(date)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
+        self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isGreaterThanOrEqual(date)).addValue("val", forHTTPHeaderField: "key").find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
             switch result {
             case .success(let contentstackResponse):
                 XCTAssertEqual(contentstackResponse.items.count, 2)
@@ -968,4 +968,5 @@ class EntryAPITest: XCTestCase {
         }
         wait(for: [networkExpectation], timeout: 5)
     }
+    
 }

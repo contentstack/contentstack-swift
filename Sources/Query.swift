@@ -8,6 +8,8 @@
 import Foundation
 /// To fetch all or find  Entries  use `Query`.
 public class Query: BaseQuery, EntryQueryable {
+    public var headers: [String: String] = [:]
+    
     public typealias ResourceType = EntryModel
 
     internal var contentTypeUid: String
@@ -19,6 +21,7 @@ public class Query: BaseQuery, EntryQueryable {
     public var queryParameter: [String: Any] = [:]
 
     public var cachePolicy: CachePolicy
+    
 
     internal required init(contentType: ContentType) {
         self.stack = contentType.stack
@@ -348,6 +351,8 @@ public final class QueryOn<EntryType>: Query where EntryType: EntryDecodable {
 }
 /// To fetch all or find  `ContentType`  use `ContentTypeQuery`.
 public final class ContentTypeQuery: BaseQuery {
+    public var headers: [String: String] = [:]
+    
     public typealias ResourceType = ContentTypeModel
 
     /// Stack instance for Entry to be fetched
@@ -429,6 +434,8 @@ public final class ContentTypeQuery: BaseQuery {
 
 /// To fetch all or find  `Assets` use `AssetQuery`.
 public final class AssetQuery: BaseQuery {
+    public var headers: [String : String] = [:]
+    
     public typealias ResourceType = AssetModel
 
     /// Stack instance for Entry to be fetched

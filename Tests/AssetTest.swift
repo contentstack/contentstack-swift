@@ -55,5 +55,10 @@ class AssetTest: XCTestCase {
         XCTAssertEqual(query.parameters.query(), "")
         XCTAssertEqual(query.queryParameter.jsonString, "{\n  \"uid\" : \"asset_uid\"\n}")
     }
-
+    
+    func testAsset_addValue() {
+        let addValueQuery = makeAssetSut(uid: "asset_uid").addValue("value1", forHTTPHeaderField: "key1")
+        XCTAssertEqual(addValueQuery.headers.keys.count, 1)
+        XCTAssertEqual(addValueQuery.headers["key1"], "value1")
+    }
 }
