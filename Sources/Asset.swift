@@ -13,6 +13,7 @@ import Foundation
 public class Asset: CachePolicyAccessible {
     public var cachePolicy: CachePolicy = .networkOnly
     internal var parameters: Parameters = [:]
+    internal var headers: [String: String] = [:]
     internal var stack: Stack
 
     /// Unique ID of the asset of which you wish to retrieve the details.
@@ -151,6 +152,33 @@ public class Asset: CachePolicyAccessible {
         }
         return query
     }
+    
+    /// The Query parameters dictionary that are converted to `URLComponents`.
+    /// - Parameters:
+    ///   - key: The key for header parameter,
+    ///   - value: The value for header  parameter.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// // To fetch Assets
+    /// stack.asset().addValue("value", forHTTPHeaderField: "header")
+    /// .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+    ///    switch result {
+    ///    case .success(let model):
+    ///         //Model retrive from API
+    ///    case .failure(let error):
+    ///         //Error Message
+    ///    }
+    /// }
+    /// ```
+    public func addValue(_ value: String, forHTTPHeaderField field: String) -> Self {
+        self.headers[field] = value
+        return self
+    }
 }
 
 extension Asset: ResourceQueryable {
@@ -180,6 +208,7 @@ extension Asset: ResourceQueryable {
         self.stack.fetch(endpoint: ResourceType.endpoint,
                          cachePolicy: self.cachePolicy,
                          parameters: parameters + [QueryParameter.uid: uid],
+                         headers: headers,
                          then: { (result: Result<ContentstackResponse<ResourceType>, Error>, response: ResponseType) in
                             switch result {
                             case .success(let contentStackResponse):

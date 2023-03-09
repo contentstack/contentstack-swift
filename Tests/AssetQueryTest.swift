@@ -58,6 +58,12 @@ class AssetQueryTest: XCTestCase {
         XCTAssertEqual(descQuery.parameters.query(), "\(QueryParameter.desc)=\(key)")
     }
 
+    func testAssetQuery_addValue() {
+        let addValueQuery = makeAssetQuerySUT().addValue("value1", forHTTPHeaderField: "key1")
+        XCTAssertEqual(addValueQuery.headers.keys.count, 1)
+        XCTAssertEqual(addValueQuery.headers["key1"], "value1")
+    }
+    
     func testAssetQuery_addURIParam() {
         let dictionary = ["key1": "value1",
                           "ket2": "value2"]
@@ -133,7 +139,8 @@ class AssetQueryTest: XCTestCase {
         ("testAssetQuery_Order", testAssetQuery_Order),
         ("testAssetQuery_addURIParam", testAssetQuery_addURIParam),
         ("testAssetQuery_addQueryParam", testAssetQuery_addQueryParam),
-        ("testAssetQuery_Include", testAssetQuery_Include)
+        ("testAssetQuery_Include", testAssetQuery_Include),
+        ("testAssetQuery_addValue", testAssetQuery_addValue)
     ]
 }
 

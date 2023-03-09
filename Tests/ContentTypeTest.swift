@@ -52,6 +52,13 @@ final class ContentTypeTests: XCTestCase {
         let contentTypeQuery = makeContentTypeSut(uid: uid).query()
         XCTAssertEqual(contentTypeQuery.queryParameter[ContentTypeModel.QueryableCodingKey.uid.rawValue] as? String, uid)
     }
+    
+    func testContentTyp_addValue() {
+        let uid = "contentTypeUID"
+        let contentTypeQuery = makeContentTypeSut(uid: uid).addValue("value1", forHTTPHeaderField: "key1")
+        XCTAssertEqual(contentTypeQuery.headers.keys.count, 1)
+        XCTAssertEqual(contentTypeQuery.headers["key1"], "value1")
+    }
 
     #if !NO_FATAL_TEST
     static var allTests = [

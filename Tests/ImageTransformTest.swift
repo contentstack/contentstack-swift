@@ -12,12 +12,12 @@ import XCTest
 #endif
 
 class ImageTransformTest: XCTestCase {
-    let urlString = "https://images.contentstack.io/v3/assets/uid_136download"
+    let urlString = "https://images.contentstack.io/v3/assets/uid_136download&"
     let width: UInt = 100
     let height: UInt = 150
 
     func testAuto() {
-        let imageTransform = makeImageTransformSUT().auto()
+        let imageTransform = ImageTransform().auto()
         do {
             let url = try urlString.url(with: imageTransform)
             XCTAssertEqual(url.absoluteString, urlString + "?auto=webp")

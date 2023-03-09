@@ -18,6 +18,7 @@ public class ContentType: CachePolicyAccessible {
     var uid: String?
     internal var stack: Stack
     internal var parameters: Parameters = [:]
+    internal var headers: [String: String] = [:]
     public var cachePolicy: CachePolicy = .networkOnly
 
     internal required init(_ uid: String?, stack: Stack) {
@@ -98,6 +99,42 @@ public class ContentType: CachePolicyAccessible {
         }
         return query
     }
+    
+    /// The Query parameters dictionary that are converted to `URLComponents`.
+    /// - Parameters:
+    ///   - key: The key for header parameter,
+    ///   - value: The value for header  parameter.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///
+    /// // To fetch allContentTypes
+    /// stack.contentType().addValue("value", forHTTPHeaderField: "header")
+    /// .fetch { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
+    ///    switch result {
+    ///     case .success(let contentstackResponse):
+    ///         // Contentstack response with ContentTypeModel array in items.
+    ///    case .failure(let error):
+    ///         //Error Message
+    ///    }
+    /// }
+    /// // To fetch Assets
+    /// stack.asset().query().addValue("value", forHTTPHeaderField: "header")
+    /// .fetch { (result: Result<ContentTypeModel, Error>, response: ResponseType) in
+    ///    switch result {
+    ///    case .success(let model):
+    ///          //Model retrive from API
+    ///    case .failure(let error):
+    ///          //Error Message
+    ///    }
+    /// }
+    /// ```
+    public func  addValue(_ value: String, forHTTPHeaderField field: String) -> Self {
+        self.headers[field] = value
+        return self
+    }
 }
 
 extension ContentType: ResourceQueryable {
@@ -127,6 +164,7 @@ extension ContentType: ResourceQueryable {
         self.stack.fetch(endpoint: ResourceType.endpoint,
                          cachePolicy: self.cachePolicy,
                          parameters: parameters + [QueryParameter.uid: uid],
+                         headers: headers,
                          then: { (result: Result<ContentstackResponse<ResourceType>, Error>, response: ResponseType) in
                             switch result {
                             case .success(let contentStackResponse):

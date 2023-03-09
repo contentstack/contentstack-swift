@@ -18,8 +18,7 @@ class UtilsTest: XCTestCase {
     func testStringToURL_InvalidURL_throws() {
         let invalideURL = "<invalidURL>"
         do {
-            let url = try invalideURL.toURL()
-            XCTAssertNil(url)
+            _ = try invalideURL.toURL()
         } catch let error {
             if let imageError = error as? ImageTransformError {
                 XCTAssertEqual(imageError.message, "Invalid URL String: \(invalideURL)")

@@ -326,6 +326,12 @@ class QueryTest: XCTestCase {
         let orQuery = makeQuerySUT().operator(.or([query1, query2]))
         XCTAssertEqual(orQuery.queryParameter.jsonString!, "{\n  \"$or\" : [\n    {\n      \"title\" : \"Gold\"\n    },\n    {\n      \"name\" : \"John\"\n    }\n  ]\n}")
     }
+    
+    func testAssetQuery_addValue() {
+        let addValueQuery = makeAssetQuerySUT().addValue("value1", forHTTPHeaderField: "key1")
+        XCTAssertEqual(addValueQuery.headers.keys.count, 1)
+        XCTAssertEqual(addValueQuery.headers["key1"], "value1")
+    }
 
     static var allTests = [
            ("testCTQuery_whereCondition", testCTQuery_whereCondition),
@@ -342,7 +348,8 @@ class QueryTest: XCTestCase {
            ("testQuery_includeReferenceFieldOnly", testQuery_includeReferenceFieldOnly),
            ("testQuery_includeReferenceFieldExcept", testQuery_includeReferenceFieldExcept),
            ("testQuery_includeReferenceFieldBoth", testQuery_includeReferenceFieldBoth),
-           ("testQuery_andOrOperator", testQuery_andOrOperator)
+           ("testQuery_andOrOperator", testQuery_andOrOperator),
+           ("testAssetQuery_addValue", testAssetQuery_addValue)
        ]
 }
 

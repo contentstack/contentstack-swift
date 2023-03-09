@@ -68,4 +68,11 @@ class EntryTest: XCTestCase {
         let entry = makeEntrySut(contentTypeuid: "Content_type").locale("en-gb")
         XCTAssertEqual(entry.parameters.query(), "locale=en-gb")
     }
+    
+    func testContentTyp_addValue() {
+        let addValue = makeEntrySut(contentTypeuid: "Content_type", entryUid: "entry_uid").addValue("value1", forHTTPHeaderField: "key1")
+        XCTAssertEqual(addValue.headers.keys.count, 1)
+        XCTAssertEqual(addValue.headers["key1"], "value1")
+    }
 }
+
