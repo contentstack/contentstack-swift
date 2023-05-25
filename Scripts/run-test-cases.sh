@@ -38,7 +38,7 @@ xcodebuild \
     -scheme "Contentstack iOS" \
     -enableCodeCoverage YES \
     test \
-    -destination "OS=16.0,name=iPhone 14" \
+    -destination "OS=16.2,name=iPhone 14" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-iOS.xcresult" \
         | xcpretty \
             --color \
