@@ -126,6 +126,30 @@ public class Asset: CachePolicyAccessible {
         return self
     }
 
+    
+    /// To include the metadata in the response.
+    /// - Returns: A `Asset` to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// // To retrive single asset with dimension
+    /// stack.asset(uid: assetUID).includeMetadata()
+    /// .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+    ///    switch result {
+    ///    case .success(let model):
+    ///         //Model retrive from API
+    ///    case .failure(let error):
+    ///         //Error Message
+    ///    }
+    /// }
+    public func includeMetadata() -> Asset {
+        self.parameters[QueryParameter.includeMetadata] = true
+        return self
+    }
     /// To fetch all or find  Assets `query` method is used.
     ///
     /// - Returns: A `AssetQuery` to enable chaining.

@@ -36,6 +36,8 @@ public enum ContentstackRegion: String {
     case eu = "eu"
     /// This region is for AZURE-NA Cloud
     case azure_na = "azure-na"
+    /// This region is for AZURE-EU Cloud
+    case azure_eu = "azure-eu"
 }
 /// The cache policies allow you to define the source from where the SDK will retrieve the content.
 public enum CachePolicy {

@@ -52,6 +52,8 @@ internal enum QueryParameter {
     internal static let relativeUrls = "relative_urls"
 
     internal static let includeDimension = "include_dimension"
+    
+    internal static let includeMetadata = "include_metadata"
 
     internal static let includeGloablField    = "include_global_field_schema"
 
@@ -96,6 +98,10 @@ extension Query {
         public static let fallback: Include = Include(rawValue: 1 << 5)
         /// Include Embedded Objects (Entries and Assets) along with entry/entries details.
         public static let embeddedItems: Include = Include(rawValue: 1 << 6)
+        
+        /// Include Embedded Objects (Entries and Assets) along with entry/entries details.
+        public static let metadata: Include = Include(rawValue: 1 << 7)
+        
         /// To inclide all `Query.Include` values.
         public static let all: Include = [.count,
                                           .unpublished,
@@ -103,7 +109,8 @@ extension Query {
                                           .globalField,
                                           .refContentTypeUID,
                                           .fallback,
-                                          .embeddedItems]
+                                          .embeddedItems,
+                                          .metadata]
     }
 }
 
@@ -155,10 +162,12 @@ extension AssetQuery {
         public static let dimension: Include = Include(rawValue: 1 << 2)
         /// Retrieve the published content of the fallback locale if an entry is not localized in specified locale.
         public static let fallback: Include = Include(rawValue: 1 << 3)
+        /// Retrieve the published content of the fallback locale if an entry is not localized in specified locale.
+        public static let metadata: Include = Include(rawValue: 1 << 4)
         /// To inclide all `AssetQuery.Include` values.
         public static let all: Include = [.count,
                                           .relativeURL,
                                           .dimension,
-                                          .fallback]
+                                          .fallback,.metadata]
     }
 }
