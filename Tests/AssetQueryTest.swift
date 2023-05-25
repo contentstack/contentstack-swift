@@ -128,7 +128,8 @@ class AssetQueryTest: XCTestCase {
         let param: Parameters = [QueryParameter.includeCount: true,
                                  QueryParameter.relativeUrls: true,
                                  QueryParameter.includeDimension: true,
-                                 QueryParameter.includeFallback: true]
+                                 QueryParameter.includeFallback: true,
+                                 QueryParameter.includeMetadata: true]
         let allQuery = makeAssetQuerySUT().include(params: [.all])
         XCTAssertEqual(allQuery.parameters.query(), param.query())
     }

@@ -1,6 +1,23 @@
 fileignoreconfig:
+- filename: Contentstack.xcworkspace/xcshareddata/xcschemes/Contentstack macOS.xcscheme
+  checksum: 0f51b502dfb1608309256d8d7afa1395bb7cc7e1f7e7b46ea0843f86672c59b5
+- filename: Contentstack.xcworkspace/xcshareddata/xcschemes/Contentstack iOS.xcscheme
+  checksum: cb6f7774ef344bb8515d7a78b25efb34851471553962307da851d4f8176fa9c0
+- filename: Contentstack.xcworkspace/xcshareddata/xcschemes/Contentstack tvOS.xcscheme
+  checksum: 6c9a15e0e7fee2536ccf2dc5370a2a46a7f90982ca1e59f908c38e105ff7ad8a
+- filename: Contentstack.xcworkspace/xcshareddata/xcschemes/Contentstack watchOS.xcscheme
+  checksum: 414cf3b35c657684877ed8fe4e1a1a01f641df6f44ce4e8960c97c3d9b595a2c
+- filename: Sources/Decodable.swift
+  checksum: 45760eb1b21207395da2b631bb85049b300d399f20f59a79cfdc181a5d6b07f3
+- filename: Contentstack.xcodeproj/project.pbxproj
+  checksum: 5e73942ffcdf6031c37e1167029a89522dbb936e7292a08033db6b3f95c63d2c
+- filename: Sources/ContentstackConfig.swift
+  checksum: fdb57e110cb65443e853f0d79ced1e80427d0d1720d21309aa8c87984ea5fac5
 - filename: Tests/DVRRecordings/Asset.json
   checksum: a1c17f932d0b00df127851f50456923546ee912ba9b4d60d1f244768d61b858d
 - filename: Tests/DVRRecordings/SyncTest.json
   checksum: e5148d9f58da7689f249969c25a0c36d6d9f26be062a2c6bd9aaf389118f0039
+
+
+
 threshold: medium

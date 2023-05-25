@@ -543,6 +543,9 @@ public final class AssetQuery: BaseQuery {
         if params.contains(.fallback) {
             self.parameters[QueryParameter.includeFallback] = true
         }
+        if params.contains(.metadata) {
+            self.parameters[QueryParameter.includeMetadata] = true
+        }
         return self
     }
 }
