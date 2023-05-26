@@ -10,7 +10,9 @@ import Foundation
 /// files of your Contentstack account and deliver it to your web or mobile properties
 /// See [Image Delivery API](https://www.contentstack.com/docs/developers/apis/image-delivery-api)
 public class ImageTransform {
-    internal var imageOperation = [ImageOperation]()
+     var imageOperation = [ImageOperation]()
+
+    public init() {}
 
     /// The `auto` parameter lets you enable the functionality that automates certain image optimization features.
     /// See [Automate Optimization](https://www.contentstack.com/docs/developers/apis/image-delivery-api/#automate-optimization)

@@ -70,6 +70,7 @@ class EntryQueriableTest: XCTestCase {
                                  QueryParameter.includeGloablField: true,
                                  QueryParameter.includeRefContentTypeUID: true,
                                  QueryParameter.includeFallback: true,
+                                 QueryParameter.includeMetadata: true,
                                  QueryParameter.includeEmbeddedItems: ["BASE"]]
         let allQuery =  makeEntrySut(contentTypeuid: "content_type_uid").include(params: [.all])
         XCTAssertEqual(allQuery.parameters.query(), param.query())

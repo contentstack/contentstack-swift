@@ -3,12 +3,14 @@
 
 import PackageDescription
 
+
+
 let package = Package(
     name: "ContentstackSwift",
-    platforms: [.macOS(.v10_12),
-                .iOS(.v10),
-                .tvOS(.v10),
-                .watchOS(.v3)],
+    platforms: [.macOS(.v10_13),
+                .iOS(.v11),
+                .tvOS(.v11),
+                .watchOS(.v4)],
 
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
@@ -18,7 +20,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/contentstack/contentstack-utils-swift.git", from: "1.2.0"),
+        .package(url: "https://github.com/contentstack/contentstack-utils-swift.git", from: "1.3.0"),
         // Dev dependencies
         .package(url: "https://github.com/venmo/DVR.git", from: "2.1.0")
     ],

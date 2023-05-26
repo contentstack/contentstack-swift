@@ -163,6 +163,9 @@ extension EntryQueryable {
         if params.contains(Query.Include.embeddedItems) {
             self.parameters[QueryParameter.includeEmbeddedItems] = ["BASE"]
         }
+        if params.contains(Query.Include.metadata) {
+            self.parameters[QueryParameter.includeMetadata] = true
+        }
         return self
     }
 
@@ -263,4 +266,7 @@ extension EntryQueryable {
         }
         return query
     }
+    
+    
+    
 }
