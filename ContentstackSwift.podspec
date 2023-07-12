@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
     'uttamukkoji' => 'uttamukkoji@gmail.com',
     'Contentstack' => 'support@contentstack.io'
   }
-  s.source           = { :git => 'https://github.com/contentstack/contentstack-swift.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/TheNightmanCodeth/contentstack-swift.git', :branch => 'master' }
   s.social_media_url = 'https://twitter.com/Contentstack'
   s.swift_version             = '5'
 
