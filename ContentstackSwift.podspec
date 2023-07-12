@@ -7,11 +7,11 @@
 #
 #!/usr/bin/ruby
 
-require 'dotenv/load'
+#require 'dotenv/load'
 
 Pod::Spec.new do |s|
   s.name             = 'ContentstackSwift'
-  s.version          = ENV['CONTENTSTACK_SDK_VERSION']
+  s.version          = '1.5.0'
   s.summary          = 'Contentstack is a headless CMS with an API-first approach that puts content at the centre.'
 
   s.description      = <<-DESC
@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
     'uttamukkoji' => 'uttamukkoji@gmail.com',
     'Contentstack' => 'support@contentstack.io'
   }
-  s.source           = { :git => 'https://github.com/contentstack/contentstack-swift.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/TheNightmanCodeth/contentstack-swift.git', :branch => 'master' }
   s.social_media_url = 'https://twitter.com/Contentstack'
   s.swift_version             = '5'
 
