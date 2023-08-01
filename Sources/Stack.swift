@@ -86,7 +86,7 @@ public class Stack: CachePolicyAccessible {
         self.config.sessionConfiguration.httpAdditionalHeaders = contentstackHTTPHeaders
         self.urlSession = URLSession(configuration: config.sessionConfiguration)
 
-        self.config.sessionConfiguration.urlCache = CSURLCache.default
+        self.config.sessionConfiguration.urlCache = URLCache.shared
     }
 
     /// Get instance of `ContentType` to fetch content-types and schema or fetch entries of specific content-type.
@@ -219,7 +219,7 @@ public class Stack: CachePolicyAccessible {
                     let successMessage = "Success: 'GET' (\(response.statusCode)) \(url.absoluteString)"
                     ContentstackLogger.log(.info, message: successMessage)
 
-                    URLCache.shared.storeCachedResponse(
+                    CSURLCache.default.storeCachedResponse(
                         CachedURLResponse(response: response,
                                           data: data),
                         for: request
@@ -293,7 +293,7 @@ public class Stack: CachePolicyAccessible {
     }
 
     private func cachedResponse(for request: URLRequest) -> Data? {
-        if let response = URLCache.shared.cachedResponse(for: request) {
+        if let response = CSURLCache.default.cachedResponse(for: request) {
             return response.data
         }
         return nil
