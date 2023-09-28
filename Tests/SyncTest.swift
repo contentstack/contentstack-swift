@@ -13,23 +13,23 @@ class SyncTest: XCTestCase {
 
     func testSync_Init() {
         let syncStack = makeSyncStack()
-        XCTAssertEqual(syncStack.syncToken, "")
-        XCTAssertEqual(syncStack.paginationToken, "")
-        XCTAssertEqual(syncStack.parameter.query(), "init=true")
+        XCTAssertEqual(syncStack.syncToken, syncToken)
+        XCTAssertEqual(syncStack.paginationToken, paginationToken)
+        XCTAssertEqual(syncStack.parameter.query(), "sync_token=\(syncToken)")
     }
 
     func testSync_SyncToken() {
         let syncStack = makeSyncStack(syncToken: syncToken)
         XCTAssertEqual(syncStack.syncToken, syncToken)
-        XCTAssertEqual(syncStack.paginationToken, "")
+        XCTAssertEqual(syncStack.paginationToken, paginationToken)
         XCTAssertEqual(syncStack.parameter.query(), "sync_token=\(syncToken)")
     }
 
     func testSync_PaginationToken() {
         let syncStack = makeSyncStack(paginationToken: paginationToken)
-        XCTAssertEqual(syncStack.syncToken, "")
+        XCTAssertEqual(syncStack.syncToken, syncToken)
         XCTAssertEqual(syncStack.paginationToken, paginationToken)
-        XCTAssertEqual(syncStack.parameter.query(), "pagination_token=\(paginationToken)")
+        XCTAssertEqual(syncStack.parameter.query(), "sync_token=\(syncToken)")
     }
     #if !NO_FATAL_TEST
     func testSync_BothTokens_ShouldGetFatalError() {
