@@ -298,6 +298,88 @@ public class Stack: CachePolicyAccessible {
         }
         return nil
     }
+    
+    internal func asyncFetch<ResourceType>(endpoint: Endpoint,
+                                      cachePolicy: CachePolicy,
+                                      parameters: Parameters = [:],
+                                      headers: [String: String] = [:],
+                                           then completion: @escaping ResultsHandler<ResourceType>) async
+        where ResourceType: Decodable {
+        let url = self.url(endpoint: endpoint, parameters: parameters)
+            await self.asyncFetchUrl(url,
+                          headers: headers,
+                          cachePolicy: cachePolicy,
+                          then: { (result: Result<Data, Error>, responseType: ResponseType) in
+            switch result {
+            case .success(let data):
+                do {
+                    let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
+                    completion(Result.success(jsonParse), responseType)
+                } catch let error {
+                    completion(Result.failure(error), responseType)
+                }
+            case .failure(let error):
+                completion(Result.failure(error), responseType)
+            }
+        })
+    }
+
+    private func asyncFetchUrl(_ url: URL, headers:[String: String], cachePolicy: CachePolicy, then completion: @escaping ResultsHandler<Data>) async {
+        var dataTask: URLSessionDataTask?
+        var request = URLRequest(url: url)
+        for header in headers {
+            request.addValue(header.value, forHTTPHeaderField: header.key)
+        }
+        dataTask = await urlSession.dataTask(with: request,
+                                       completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            if let data = data {
+                if let response = response as? HTTPURLResponse {
+                    if response.statusCode != 200 {
+                        if cachePolicy == .networkElseCache,
+                            self.canFullfillRequestWithCache(request) {
+                            self.fullfillRequestWithCache(request, then: completion)
+                            return
+                        }
+                        completion(Result.failure(
+                            APIError.handleError(for: url,
+                                                 jsonDecoder: self.jsonDecoder,
+                                                 data: data,
+                                                 response: response)),
+                                   .network
+                        )
+                        return
+                    }
+                    let successMessage = "Success: 'GET' (\(response.statusCode)) \(url.absoluteString)"
+                    ContentstackLogger.log(.info, message: successMessage)
+
+                    CSURLCache.default.storeCachedResponse(
+                        CachedURLResponse(response: response,
+                                          data: data),
+                        for: request
+                    )
+                }
+                completion(Result.success(data), .network)
+                return
+            }
+
+            if let error = error {
+                if self.cachePolicy == .networkElseCache,
+                    self.canFullfillRequestWithCache(request) {
+                    self.fullfillRequestWithCache(request, then: completion)
+                    return
+                }
+                let errorMessage = """
+                Errored: 'GET' \(url.absoluteString)
+                Message: \(error.localizedDescription)
+                """
+                ContentstackLogger.log(.error, message: errorMessage)
+                completion(Result.failure(error), .network)
+                return
+            }
+
+        })
+        performDataTask(dataTask!, request: request, cachePolicy: cachePolicy, then: completion)
+    }
 }
 
 extension Stack {
