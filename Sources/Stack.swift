@@ -190,6 +190,29 @@ public class Stack: CachePolicyAccessible {
             }
         })
     }
+    
+    internal func asyncFetch<ResourceType>(endpoint: Endpoint,
+                                           cachePolicy: CachePolicy,
+                                           parameters: Parameters = [:],
+                                           headers: [String: String] = [:])
+        async throws -> (ResourceType, ResponseType)
+        where ResourceType: Decodable {
+            
+            let url = self.url(endpoint: endpoint, parameters: parameters)
+            
+            do {
+                let (data, responseType) = try await self.asyncFetchUrl(url: url, headers: headers, cachePolicy: cachePolicy)
+                do {
+                    let unwrappedData = try data.get()
+                    let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: unwrappedData)
+                    return (jsonParse, responseType)
+                } catch {
+                    throw error
+                }
+            } catch {
+                throw error
+            }
+    }
 
     private func fetchUrl(_ url: URL, headers:[String: String], cachePolicy: CachePolicy, then completion: @escaping ResultsHandler<Data>) {
         var dataTask: URLSessionDataTask?
@@ -247,6 +270,63 @@ public class Stack: CachePolicyAccessible {
         })
         performDataTask(dataTask!, request: request, cachePolicy: cachePolicy, then: completion)
     }
+    private func asyncFetchUrl(url: URL, headers: [String: String], cachePolicy: CachePolicy)
+    async throws -> (Result<Data, Error>, ResponseType) {
+        var request = try await createRequest(url: url, headers: headers)
+        
+        do {
+            let (data, response) = try await fetchDataAsync(request: request)
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode != 200 {
+                    if cachePolicy == .networkElseCache, canFullfillRequestWithCache(request) {
+                        return try await fulfillRequestWithCache(request)
+                    }
+                    let error = APIError.handleError(for: url, jsonDecoder: self.jsonDecoder, data: data, response: httpResponse)
+                    return (.failure(error), .network)
+                }
+                let successMessage = "Success: 'GET' (\(httpResponse.statusCode)) \(url.absoluteString)"
+                ContentstackLogger.log(.info, message: successMessage)
+                CSURLCache.default.storeCachedResponse(
+                    CachedURLResponse(response: httpResponse, data: data),
+                    for: request)
+                return (.success(data), .network)
+            }
+        } catch {
+            if cachePolicy == .networkElseCache, canFullfillRequestWithCache(request) {
+                return try await fulfillRequestWithCache(request)
+            }
+            let errorMessage = """
+            Errored: 'GET' \(url.absoluteString)
+            Message: \(error.localizedDescription)
+            """
+            ContentstackLogger.log(.error, message: errorMessage)
+            return (.failure(error), .network)
+        }
+        return (.failure(SDKError.stackError), .network)
+    }
+    
+    private func fetchDataAsync(request: URLRequest) async throws -> (Data, URLResponse) {
+        return try await withCheckedThrowingContinuation { continuation in
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else if let data = data, let response = response {
+                    continuation.resume(returning: (data, response))
+                } else {
+                    continuation.resume(throwing: SDKError.stackError)
+                }
+            }.resume()
+        }
+    }
+
+    private func createRequest(url: URL, headers: [String: String]) async throws -> URLRequest {
+        var request = URLRequest(url: url)
+        for (key, value) in headers {
+            request.addValue(value, forHTTPHeaderField: key)
+        }
+        return request
+    }
 
     private func performDataTask(_ dataTask: URLSessionDataTask,
                                  request: URLRequest,
@@ -279,6 +359,7 @@ public class Stack: CachePolicyAccessible {
             }
         }
     }
+
     //Cache handling methods
     private func fullfillRequestWithCache(_ request: URLRequest, then completion: @escaping ResultsHandler<Data>) {
         if let data = self.cachedResponse(for: request) {
@@ -287,7 +368,14 @@ public class Stack: CachePolicyAccessible {
         }
         completion(Result.failure(SDKError.cacheError), .cache)
     }
-
+    private func fulfillRequestWithCache(_ request: URLRequest) async throws -> (Result<Data, Error>, ResponseType) {
+        if let data = self.cachedResponse(for: request) {
+            return (.success(data), .cache)
+        } else {
+            throw SDKError.cacheError
+        }
+    }
+ 
     private func canFullfillRequestWithCache(_ request: URLRequest) -> Bool {
         return self.cachedResponse(for: request) != nil ? true : false
     }

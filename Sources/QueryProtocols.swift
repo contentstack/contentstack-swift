@@ -84,6 +84,27 @@ extension BaseQuery {
             await self.stack.asyncFetch(endpoint: ResourceType.endpoint,
                     cachePolicy: self.cachePolicy, parameters: parameters, headers: headers, then: completion)
     }
+
+    public func find<ResourceType>() async throws -> (Result<ResourceType, Error>, ResponseType)
+        where ResourceType: Decodable & EndpointAccessible {
+            if self.queryParameter.count > 0,
+               let query = self.queryParameter.jsonString {
+                self.parameters[QueryParameter.query] = query
+            }
+            do {
+                let (data, response) = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint,
+                                            cachePolicy: self.cachePolicy,
+                                            parameters: parameters,
+                                            headers: headers) as (ContentstackResponse<ResourceType>, ResponseType)
+                if let resource = data.items.first {
+                    return (.success(resource), response)
+                } else {
+                    throw SDKError.stackError
+                }
+            } catch {
+                throw error
+            }
+    }
 }
 /// A concrete implementation of BaseQuery which serves as the base class for `Query`,
 /// `ContentTypeQuery` and `AssetQuery`.

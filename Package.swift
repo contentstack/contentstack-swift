@@ -7,7 +7,7 @@ import PackageDescription
 
 let package = Package(
     name: "ContentstackSwift",
-    platforms: [.macOS(.v10_13),
+    platforms: [.macOS(.v10_15),
                 .iOS(.v11),
                 .tvOS(.v11),
                 .watchOS(.v4)],
