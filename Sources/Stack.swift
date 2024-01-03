@@ -195,19 +195,23 @@ public class Stack: CachePolicyAccessible {
                                            cachePolicy: CachePolicy,
                                            parameters: Parameters = [:],
                                            headers: [String: String] = [:])
-        async throws -> (ResourceType, ResponseType)
+        async throws -> (Result<ResourceType, Error>, ResponseType)
         where ResourceType: Decodable {
             
             let url = self.url(endpoint: endpoint, parameters: parameters)
             
             do {
-                let (data, responseType) = try await self.asyncFetchUrl(url: url, headers: headers, cachePolicy: cachePolicy)
-                do {
-                    let unwrappedData = try data.get()
-                    let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: unwrappedData)
-                    return (jsonParse, responseType)
-                } catch {
-                    throw error
+                let (result, responseType): (Result<Data, Error>, ResponseType) = try await self.asyncFetchUrl(url: url, headers: headers, cachePolicy: cachePolicy)
+                switch result {
+                case .success(let data):
+                    do {
+                        let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
+                        return (.success(jsonParse), responseType)
+                    } catch {
+                        throw error
+                    }
+                case .failure(let error):
+                    return (.failure(error), responseType)
                 }
             } catch {
                 throw error
@@ -270,62 +274,27 @@ public class Stack: CachePolicyAccessible {
         })
         performDataTask(dataTask!, request: request, cachePolicy: cachePolicy, then: completion)
     }
-    private func asyncFetchUrl(url: URL, headers: [String: String], cachePolicy: CachePolicy)
-    async throws -> (Result<Data, Error>, ResponseType) {
-        var request = try await createRequest(url: url, headers: headers)
-        
+    
+    private func asyncFetchUrl(url: URL, headers: [String: String], cachePolicy: CachePolicy) async throws -> (Result<Data, Error>, ResponseType) {
         do {
-            let (data, response) = try await fetchDataAsync(request: request)
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                if httpResponse.statusCode != 200 {
-                    if cachePolicy == .networkElseCache, canFullfillRequestWithCache(request) {
-                        return try await fulfillRequestWithCache(request)
-                    }
-                    let error = APIError.handleError(for: url, jsonDecoder: self.jsonDecoder, data: data, response: httpResponse)
-                    return (.failure(error), .network)
-                }
-                let successMessage = "Success: 'GET' (\(httpResponse.statusCode)) \(url.absoluteString)"
-                ContentstackLogger.log(.info, message: successMessage)
-                CSURLCache.default.storeCachedResponse(
-                    CachedURLResponse(response: httpResponse, data: data),
-                    for: request)
-                return (.success(data), .network)
-            }
+            let (data, response): (Data, ResponseType) = try await fetchDataAsync(url: url, headers: headers)
+            return (.success(data), response)
         } catch {
-            if cachePolicy == .networkElseCache, canFullfillRequestWithCache(request) {
-                return try await fulfillRequestWithCache(request)
-            }
-            let errorMessage = """
-            Errored: 'GET' \(url.absoluteString)
-            Message: \(error.localizedDescription)
-            """
-            ContentstackLogger.log(.error, message: errorMessage)
             return (.failure(error), .network)
         }
-        return (.failure(SDKError.stackError), .network)
     }
     
-    private func fetchDataAsync(request: URLRequest) async throws -> (Data, URLResponse) {
+    private func fetchDataAsync(url: URL, headers: [String: String]) async throws -> (Data, ResponseType) {
         return try await withCheckedThrowingContinuation { continuation in
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if let error = error {
+            self.fetchUrl(url, headers: headers, cachePolicy: cachePolicy, then: { (result: Result<Data, Error>, responseType: ResponseType) in
+                switch result {
+                case .success(let data):
+                    continuation.resume(returning: (data, responseType))
+                case .failure(let error):
                     continuation.resume(throwing: error)
-                } else if let data = data, let response = response {
-                    continuation.resume(returning: (data, response))
-                } else {
-                    continuation.resume(throwing: SDKError.stackError)
                 }
-            }.resume()
+            })
         }
-    }
-
-    private func createRequest(url: URL, headers: [String: String]) async throws -> URLRequest {
-        var request = URLRequest(url: url)
-        for (key, value) in headers {
-            request.addValue(value, forHTTPHeaderField: key)
-        }
-        return request
     }
 
     private func performDataTask(_ dataTask: URLSessionDataTask,

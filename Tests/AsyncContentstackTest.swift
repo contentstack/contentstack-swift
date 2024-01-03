@@ -13,7 +13,7 @@ private var _stackSharedInstance: Stack?
 class AsyncTestContentstackClient {
 
     static func config() -> [String: Any] {
-        #if API_TEST
+        #if DEBUG
         if let path = Bundle(for: AsyncTestContentstackClient.self).path(forResource: "config", ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.mappedIfSafe),
             let jsonDictionary = try? JSONSerialization.jsonObject(with: data,
@@ -42,7 +42,7 @@ class AsyncTestContentstackClient {
                                                           host: stackConfig["host"] as? String ??  Host.delivery)
             }
         }
-        #if !API_TEST
+        #if !DEBUG
         let dvrSession = DVR.Session(cassetteName: cassetteName, backingSession: _stackSharedInstance!.urlSession)
         _stackSharedInstance?.urlSession = dvrSession
         #endif

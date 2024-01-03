@@ -273,14 +273,20 @@ extension Asset: ResourceQueryable {
         guard let uid = self.uid else { fatalError("Please provide Asset uid") }
         
         do {
-            let (data, response) = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint,
+            let (data, response): (Result<ContentstackResponse<ResourceType>, Error>, ResponseType) = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint,
                                                                    cachePolicy: self.cachePolicy,
                                                                    parameters: parameters + [QueryParameter.uid: uid],
-                                                                   headers: headers) as (ContentstackResponse<ResourceType>, ResponseType)
-            if let resource = data.items.first {
-                return (.success(resource), response)
-            } else {
-                throw SDKError.stackError
+                                                                   headers: headers)
+            
+            switch data {
+            case .success(let contentstackResponse):
+                if let resource = contentstackResponse.items.first {
+                    return (.success(resource), response)
+                } else {
+                    return (.failure(SDKError.invalidUID(string: uid)), response)
+                }
+            case .failure(let error):
+                return (.failure(error), response)
             }
         } catch {
             throw error
