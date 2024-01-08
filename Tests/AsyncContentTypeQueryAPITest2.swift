@@ -14,7 +14,7 @@ class AsyncContentTypeQueryAPITest2: XCTestCase {
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "ContentType")
     
     func getContentType(uid: String? = nil) -> ContentType {
-        return AsyncContentTypeQueryAPITest.stack.contentType(uid: uid)
+        return AsyncContentTypeQueryAPITest2.stack.contentType(uid: uid)
     }
     
     func getContentTypeQuery() -> ContentTypeQuery {

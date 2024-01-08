@@ -13,7 +13,7 @@ class AsyncAssetQueryAPITest2: XCTestCase {
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "Asset")
     
     func getAsset(uid: String? = nil) -> Asset {
-        return AsyncAssetQueryAPITest.stack.asset(uid: uid)
+        return AsyncAssetQueryAPITest2.stack.asset(uid: uid)
     }
     
     func getAssetQuery() -> AssetQuery {
