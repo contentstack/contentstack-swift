@@ -248,6 +248,42 @@ public class Stack: CachePolicyAccessible {
         performDataTask(dataTask!, request: request, cachePolicy: cachePolicy, then: completion)
     }
     
+    internal func asyncFetch<ResourceType>(endpoint: Endpoint,
+                                               cachePolicy: CachePolicy,
+                                               parameters: Parameters = [:],
+                                               headers: [String: String] = [:])
+            async throws -> (Result<ResourceType, Error>, ResponseType)
+            where ResourceType: Decodable {
+
+        let url = self.url(endpoint: endpoint, parameters: parameters)
+
+        do {
+            let (result, responseType): (Result<Data, Error>, ResponseType) = try await self.asyncFetchUrl(url: url, headers: headers, cachePolicy: cachePolicy)
+            switch result {
+            case .success(let data):
+                do {
+                    let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
+                    return (.success(jsonParse), responseType)
+                } catch {
+                    throw error
+                }
+            case .failure(let error):
+                return (.failure(error), responseType)
+            }
+        } catch {
+            throw error
+        }
+    }
+    
+    private func asyncFetchUrl(url: URL, headers: [String: String], cachePolicy: CachePolicy) async throws -> (Result<Data, Error>, ResponseType) {
+        do {
+            let (data, response): (Data, ResponseType) = try await fetchDataAsync(url: url, headers: headers)
+            return (.success(data), response)
+        } catch {
+            return (.failure(error), .network)
+        }
+    }
+    
     private func fetchDataAsync(url: URL, headers: [String: String]) async throws -> (Data, ResponseType) {
         return try await withCheckedThrowingContinuation { continuation in
             self.fetchUrl(url, headers: headers, cachePolicy: cachePolicy, then: { (result: Result<Data, Error>, responseType: ResponseType) in

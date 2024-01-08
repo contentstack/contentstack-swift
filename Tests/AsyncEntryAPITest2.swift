@@ -13,7 +13,7 @@ class AsyncEntryAPITest2: XCTestCase {
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "Entry")
     
     func getEntry(uid: String? = nil) -> Entry {
-        return AsyncEntryAPITest.stack.contentType(uid: "session").entry(uid: uid)
+        return AsyncEntryAPITest2.stack.contentType(uid: "session").entry(uid: uid)
     }
     
     func getEntryQuery() -> Query {

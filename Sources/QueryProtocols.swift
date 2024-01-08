@@ -74,37 +74,23 @@ extension BaseQuery {
             self.stack.fetch(endpoint: ResourceType.endpoint,
                     cachePolicy: self.cachePolicy, parameters: parameters, headers: headers, then: completion)
     }
-    
-    public func asyncFind<ResourceType>(_ completion: @escaping ResultsHandler<ContentstackResponse<ResourceType>>) async
-        where ResourceType: Decodable & EndpointAccessible {
-            if self.queryParameter.count > 0,
-                let query = self.queryParameter.jsonString {
-                self.parameters[QueryParameter.query] = query
-            }
-            await self.stack.asyncFetch(endpoint: ResourceType.endpoint,
-                    cachePolicy: self.cachePolicy, parameters: parameters, headers: headers, then: completion)
-    }
 
     public func find<ResourceType>() async throws -> (Result<ContentstackResponse<ResourceType>, Error>, ResponseType)
         where ResourceType: Decodable & EndpointAccessible {
-            if self.queryParameter.count > 0,
-               let query = self.queryParameter.jsonString {
-                self.parameters[QueryParameter.query] = query
+        if self.queryParameter.count > 0, let query = self.queryParameter.jsonString {
+            self.parameters[QueryParameter.query] = query
+        }
+        do {
+            let (data, response): (Result<ContentstackResponse<ResourceType>, Error>, ResponseType) = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint, cachePolicy: self.cachePolicy, parameters: parameters, headers: headers)
+            switch data {
+            case .success(let contentstackResponse):
+                return (.success(contentstackResponse), response)
+            case .failure(let error):
+                return (.failure(error), response)
             }
-            do {
-                let (data, response): (Result<ContentstackResponse<ResourceType>, Error>, ResponseType) = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint,
-                                                                                            cachePolicy: self.cachePolicy,
-                                                                                                    parameters: parameters,
-                                                                                                    headers: headers)
-                switch data {
-                case .success(let contentstackResponse):
-                    return (.success(contentstackResponse), response)
-                case .failure(let error):
-                    return (.failure(error), response)
-                }
-            } catch {
-                throw error
-            }
+        } catch {
+            throw error
+        }
     }
 }
 /// A concrete implementation of BaseQuery which serves as the base class for `Query`,

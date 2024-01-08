@@ -224,6 +224,7 @@ class AsyncAssetQueryAPITest2: XCTestCase {
         case .failure(let error):
             XCTFail("\(error)")
         }
+        networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
     }
     
