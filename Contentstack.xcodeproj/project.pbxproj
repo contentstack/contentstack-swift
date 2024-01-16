@@ -269,6 +269,7 @@
 		478684752B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */; };
 		478684762B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */; };
 		479A93D62B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479A93D52B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift */; };
+		47A8DB312B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8DB302B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift */; };
 		47F96B752B4734270081B4C6 /* AsyncQueryOnAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F96B742B4734270081B4C6 /* AsyncQueryOnAPITest2.swift */; };
 		CE3C328A2AD50FE8006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
 		CE3C328B2AD50FE9006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
@@ -399,6 +400,7 @@
 		475C7A772B44945800814330 /* AsyncEntryAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncEntryAPITest2.swift; sourceTree = "<group>"; };
 		478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAssetQueryAPITest2.swift; sourceTree = "<group>"; };
 		479A93D52B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncContentTypeQueryAPITest2.swift; sourceTree = "<group>"; };
+		47A8DB302B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncSyncAPITest2.swift; sourceTree = "<group>"; };
 		47F96B742B4734270081B4C6 /* AsyncQueryOnAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncQueryOnAPITest2.swift; sourceTree = "<group>"; };
 		CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncContentstackTest.swift; sourceTree = "<group>"; };
 		CE3C328D2AD51D63006419E0 /* AsyncSyncAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncSyncAPITest.swift; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 				479A93D52B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift */,
 				475C7A772B44945800814330 /* AsyncEntryAPITest2.swift */,
 				47F96B742B4734270081B4C6 /* AsyncQueryOnAPITest2.swift */,
+				47A8DB302B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift */,
 			);
 			name = AsyncAPITests;
 			sourceTree = "<group>";
@@ -1107,6 +1110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F50EA12244EC44800E5D705 /* QueryOnAPITest.swift in Sources */,
+				47A8DB312B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift in Sources */,
 				0F60CA332428D02600ED67E6 /* QueryEntryType.swift in Sources */,
 				0F60CA2F2428949C00ED67E6 /* EntryTest.swift in Sources */,
 				0F4C0A8B243C6D8A006604B7 /* ContentstackTest.swift in Sources */,

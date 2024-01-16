@@ -417,4 +417,56 @@ extension Stack {
             }
         }
     }
+    
+    public func sync(_ syncStack: SyncStack = SyncStack(), syncTypes: [SyncStack.SyncableTypes] = [.all]) async throws -> AsyncThrowingStream<SyncStack, Error> {
+        return AsyncThrowingStream { continuation in
+            Task {
+                do {
+                    var currentPageStack = syncStack
+                    repeat {
+                        let result: Result<SyncStack, Error> = try await syncPage(currentPageStack, syncTypes: syncTypes)
+                        
+                        switch result {
+                        case .success(let data):
+                            // Emit the current result to the stream
+                            continuation.yield(data)
+                        case .failure(let error):
+                            continuation.finish(throwing: error)
+                        }
+                        // Update the current page stack for the next iteration
+                        currentPageStack = try result.get()
+                    } while (currentPageStack.hasMorePages)
+                    // Finish the stream when there are no more pages
+                    continuation.finish()
+                } catch {
+                    // If an error occurs, end the stream
+                    continuation.finish(throwing: error)
+                }
+            }
+        }
+    }
+    
+    public func syncPage(_ syncStack: SyncStack, syncTypes: [SyncStack.SyncableTypes]) async throws -> Result<SyncStack, Error> {
+        var parameter = syncStack.parameter
+        
+        if syncStack.isInitialSync {
+            for syncType in syncTypes {
+                parameter = parameter + syncType.parameters
+            }
+        }
+        
+        let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
+        let (data, _): (Result<Data, Error>, ResponseType) = try await asyncFetchUrl(url: url, headers: [:], cachePolicy: .networkOnly)
+        switch data {
+        case .success(let data):
+            do {
+                let syncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
+                return .success(syncStack)
+            } catch let error {
+                return .failure(error)
+            }
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
 }
