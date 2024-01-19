@@ -16,11 +16,11 @@ final class ContentTypeTests: XCTestCase {
         XCTAssertEqual(endPoint.pathComponent, "content_types")
     }
     #if !NO_FATAL_TEST
-    func testFetch_withoutUID() {
+    func testFetch_withoutUID() async {
+        let result: ContentstackResponse<AssetModel> = try! await makeContentTypeSut().fetch()
         expectFatalError(expectedMessage: "Please provide ContentType uid") {
-            makeContentTypeSut().fetch { (result: Result<AssetModel, Error>, response) in
-                
-            }
+            result
+            
         }
     }
 

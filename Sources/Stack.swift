@@ -166,31 +166,6 @@ public class Stack: CachePolicyAccessible {
         return urlComponents.url!
     }
 
-    internal func fetch<ResourceType>(endpoint: Endpoint,
-                                      cachePolicy: CachePolicy,
-                                      parameters: Parameters = [:],
-                                      headers: [String: String] = [:],
-                                      then completion: @escaping ResultsHandler<ResourceType>)
-        where ResourceType: Decodable {
-        let url = self.url(endpoint: endpoint, parameters: parameters)
-            self.fetchUrl(url,
-                          headers: headers,
-                          cachePolicy: cachePolicy,
-                          then: { (result: Result<Data, Error>, responseType: ResponseType) in
-            switch result {
-            case .success(let data):
-                do {
-                    let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
-                    completion(Result.success(jsonParse), responseType)
-                } catch let error {
-                    completion(Result.failure(error), responseType)
-                }
-            case .failure(let error):
-                completion(Result.failure(error), responseType)
-            }
-        })
-    }
-
     private func fetchUrl(_ url: URL, headers:[String: String], cachePolicy: CachePolicy, then completion: @escaping ResultsHandler<Data>) {
         var dataTask: URLSessionDataTask?
         var request = URLRequest(url: url)
@@ -252,23 +227,24 @@ public class Stack: CachePolicyAccessible {
                                                cachePolicy: CachePolicy,
                                                parameters: Parameters = [:],
                                                headers: [String: String] = [:])
-            async throws -> (Result<ResourceType, Error>, ResponseType)
+//            async throws -> (Result<ResourceType, Error>, ResponseType)
+            async throws -> ResourceType
             where ResourceType: Decodable {
 
         let url = self.url(endpoint: endpoint, parameters: parameters)
 
         do {
-            let (result, responseType): (Result<Data, Error>, ResponseType) = try await self.asyncFetchUrl(url: url, headers: headers, cachePolicy: cachePolicy)
+            let (result, _): (Result<Data, Error>, ResponseType) = try await self.asyncFetchUrl(url: url, headers: headers, cachePolicy: cachePolicy)
             switch result {
             case .success(let data):
                 do {
                     let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
-                    return (.success(jsonParse), responseType)
+                    return jsonParse
                 } catch {
                     throw error
                 }
             case .failure(let error):
-                return (.failure(error), responseType)
+                throw error
             }
         } catch {
             throw error
@@ -280,7 +256,7 @@ public class Stack: CachePolicyAccessible {
             let (data, response): (Data, ResponseType) = try await fetchDataAsync(url: url, headers: headers)
             return (.success(data), response)
         } catch {
-            return (.failure(error), .network)
+            throw error
         }
     }
     
@@ -337,14 +313,6 @@ public class Stack: CachePolicyAccessible {
         }
         completion(Result.failure(SDKError.cacheError), .cache)
     }
-
-    private func fulfillRequestWithCache(_ request: URLRequest) async throws -> (Result<Data, Error>, ResponseType) {
-        if let data = self.cachedResponse(for: request) {
-            return (.success(data), .cache)
-        } else {
-            throw SDKError.cacheError
-        }
-    }
  
     private func canFullfillRequestWithCache(_ request: URLRequest) -> Bool {
         return self.cachedResponse(for: request) != nil ? true : false
@@ -387,37 +355,6 @@ extension Stack {
     ///    }
     /// }
     ///```
-    public func sync(_ syncStack: SyncStack = SyncStack(),
-                     syncTypes: [SyncStack.SyncableTypes] = [.all],
-                     then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {
-        var parameter = syncStack.parameter
-        if syncStack.isInitialSync {
-            for syncType in syncTypes {
-                parameter = parameter + syncType.parameters
-            }
-        }
-        let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
-
-        fetchUrl(url,
-                 headers: [:],
-                 cachePolicy: .networkOnly) { (result: Result<Data, Error>, _: ResponseType) in
-            switch result {
-            case .success(let data):
-                do {
-                    let syncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
-                    completion(.success(syncStack))
-                    if  syncStack.hasMorePages {
-                        self.sync(syncStack, then: completion)
-                    }
-                } catch let error {
-                    completion(.failure(error))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-    
     public func sync(_ syncStack: SyncStack = SyncStack(), syncTypes: [SyncStack.SyncableTypes] = [.all]) async throws -> AsyncThrowingStream<SyncStack, Error> {
         return AsyncThrowingStream { continuation in
             Task {

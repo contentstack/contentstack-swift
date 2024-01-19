@@ -9,6 +9,9 @@ import XCTest
 @testable import Contentstack
 import DVR
 
+var paginationToken = ""
+var syncToken = ""
+
 class AsyncSyncAPITest2: XCTestCase {
     
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "SyncTest")

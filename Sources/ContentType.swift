@@ -158,46 +158,16 @@ extension ContentType: ResourceQueryable {
     ///    }
     /// }
     /// ```
-    public func fetch<ResourceType>(_ completion: @escaping (Result<ResourceType, Error>, ResponseType) -> Void)
-        where ResourceType: EndpointAccessible, ResourceType: Decodable {
-        guard let uid = self.uid else { fatalError("Please provide ContentType uid") }
-        self.stack.fetch(endpoint: ResourceType.endpoint,
-                         cachePolicy: self.cachePolicy,
-                         parameters: parameters + [QueryParameter.uid: uid],
-                         headers: headers,
-                         then: { (result: Result<ContentstackResponse<ResourceType>, Error>, response: ResponseType) in
-                            switch result {
-                            case .success(let contentStackResponse):
-                                if let resource = contentStackResponse.items.first {
-                                    completion(.success(resource), response)
-                                } else {
-                                    completion(.failure(SDKError.invalidUID(string: uid)), response)
-                                }
-                            case .failure(let error):
-                                completion(.failure(error), response)
-                            }
-        })
-    }
-
-    public func fetch<ResourceType>() async throws -> (Result<ResourceType, Error>, ResponseType)
+    public func fetch<ResourceType>() async throws -> ContentstackResponse<ResourceType>
     where ResourceType: EndpointAccessible, ResourceType: Decodable {
         guard let uid = self.uid else { fatalError("Please provide ContentType uid") }
         
         do {
-            let (data, response): (Result<ContentstackResponse<ResourceType>, Error>, ResponseType) = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint,
+            let data: ContentstackResponse<ResourceType> = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint,
                                                                    cachePolicy: self.cachePolicy,
                                                                    parameters: parameters + [QueryParameter.uid: uid],
                                                                    headers: headers)
-            switch data {
-            case .success(let contentstackResponse):
-                if let resource = contentstackResponse.items.first {
-                    return (.success(resource), response)
-                } else {
-                    return (.failure(SDKError.invalidUID(string: uid)), response)
-                }
-            case .failure(let error):
-                return (.failure(error), response)
-            }
+            return data
         } catch {
             throw error
         }

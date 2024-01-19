@@ -14,11 +14,10 @@ class AssetTest: XCTestCase {
         XCTAssertEqual(endPoint.pathComponent, "assets")
     }
     #if !NO_FATAL_TEST
-    func testFetch_withoutUID() {
+    func testFetch_withoutUID() async {
+        let result: ContentstackResponse<AssetModel> = try! await makeAssetSut().fetch()
         expectFatalError(expectedMessage: "Please provide Asset uid") {
-            makeAssetSut().fetch { (result: Result<AssetModel, Error>, response) in
-                
-            }
+            result
         }
     }
     #endif

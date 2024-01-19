@@ -9,6 +9,12 @@ import XCTest
 @testable import Contentstack
 import DVR
 
+var kAssetUID = ""
+var kAssetLocaliseUID = ""
+var kAssetTitle = ""
+var kFileName = ""
+let locale = "en-gb"
+
 class AsyncAssetQueryAPITest2: XCTestCase {
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "Asset")
     
@@ -20,7 +26,7 @@ class AsyncAssetQueryAPITest2: XCTestCase {
         return self.getAsset().query()
     }
 
-    func asyncQueryWhere(_ key: AssetModel.QueryableCodingKey, operation: Query.Operation) async -> (Result<ContentstackResponse<AssetModel>, Error>, ResponseType) {
+    func asyncQueryWhere(_ key: AssetModel.QueryableCodingKey, operation: Query.Operation) async -> ContentstackResponse<AssetModel> {
         return try! await self.getAssetQuery().where(queryableCodingKey: key, operation)
             .locale("en-us")
             .find()
@@ -38,17 +44,12 @@ class AsyncAssetQueryAPITest2: XCTestCase {
     
     func test01FindAll_AssetQuery() async {
         let networkExpectation = expectation(description: "Fetch All Assets Test")
-        let (data, _): (Result<ContentstackResponse<AssetModel>, Error>, ResponseType) = try! await self.getAssetQuery().locale("en-us").find()
-        switch data {
-            case .success(let contentstackResponse):
-                XCTAssertEqual(contentstackResponse.items.count, 8)
-            if let asset = contentstackResponse.items.first {
-                kAssetUID = asset.uid
-                kAssetTitle = asset.title
-                kFileName = asset.fileName
-            }
-            case .failure(let error):
-                XCTFail("\(error)")
+        let data: ContentstackResponse<AssetModel> = try! await self.getAssetQuery().locale("en-us").find()
+        XCTAssertEqual(data.items.count, 8)
+        if let asset = data.items.first {
+            kAssetUID = asset.uid
+            kAssetTitle = asset.title
+            kFileName = asset.fileName
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -56,14 +57,9 @@ class AsyncAssetQueryAPITest2: XCTestCase {
     
     func test02Find_AssetQuery_whereUIDEquals() async {
         let networkExpectation = expectation(description: "Fetch where UID equals Assets Test")
-        let (data, _) = await self.asyncQueryWhere(.uid, operation: .equals(kAssetUID))
-        switch data {
-        case .success(let contentstackResponse):
-            for asset in contentstackResponse.items {
-                XCTAssertEqual(asset.uid, kAssetUID)
-            }
-        case .failure(let error):
-            XCTFail("\(error)")
+        let data = await self.asyncQueryWhere(.uid, operation: .equals(kAssetUID))
+        for asset in data.items {
+            XCTAssertEqual(asset.uid, kAssetUID)
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -71,14 +67,9 @@ class AsyncAssetQueryAPITest2: XCTestCase {
     
     func test03Find_AssetQuery_whereTitleDNotEquals() async {
         let networkExpectation = expectation(description: "Fetch where Title equals Assets Test")
-        let (data, _) = await self.asyncQueryWhere(.title, operation: .notEquals(kAssetTitle))
-        switch data {
-        case .success(let contentstackResponse):
-            for asset in contentstackResponse.items {
-                XCTAssertNotEqual(asset.title, kAssetTitle)
-            }
-        case .failure(let error):
-            XCTFail("\(error)")
+        let data = await self.asyncQueryWhere(.title, operation: .notEquals(kAssetTitle))
+        for asset in data.items {
+            XCTAssertNotEqual(asset.title, kAssetTitle)
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -86,53 +77,33 @@ class AsyncAssetQueryAPITest2: XCTestCase {
     
     func test04Find_AssetQuery_whereFileNameexists() async {
         let networkExpectation = expectation(description: "Fetch where fileName exists Assets Test")
-        let (data, _) = await self.asyncQueryWhere(.fileName, operation: .exists(true))
-        switch data {
-        case .success(let contentstackResponse):
-            XCTAssertEqual(contentstackResponse.items.count, 8)
-        case .failure(let error):
-            XCTFail("\(error)")
-        }
+        let data = await self.asyncQueryWhere(.fileName, operation: .exists(true))
+        XCTAssertEqual(data.items.count, 8)
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
     }
     
     func test05Find_AssetQuery_whereTitleMatchRegex() async {
         let networkExpectation = expectation(description: "Fetch where Title Match Regex Assets Test")
-        let (data, _) = await self.asyncQueryWhere(.title, operation: .matches("im"))
-        switch data {
-        case .success(let contentstackResponse):
-            XCTAssertEqual(contentstackResponse.items.count, 4)
-        case .failure(let error):
-            XCTFail("\(error)")
-        }
+        let data = await self.asyncQueryWhere(.title, operation: .matches("im"))
+        XCTAssertEqual(data.items.count, 4)
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
     }
     
     func test06Fetch_Asset_fromUID() async {
         let networkExpectation = expectation(description: "Fetch Assets from UID Test")
-        let (data, _): (Result<AssetModel, Error>, ResponseType) = try! await self.getAsset(uid: kAssetUID).fetch()
-        switch data {
-        case .success(let model):
-            XCTAssertEqual(model.uid, kAssetUID)
-        case .failure(let error):
-            XCTFail("\(error)")
-        }
+        let data: ContentstackResponse<AssetModel> = try! await self.getAsset(uid: kAssetUID).fetch()
+        XCTAssertEqual(data.items.first?.uid, kAssetUID)
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
     }
     
     func test07Fetch_AssetQuery_WithDimensions() async {
         let networkExpectaton = expectation(description: "Fetch Assets with GlobalFields Test")
-        let (data, _): (Result<ContentstackResponse<AssetModel>, Error>, ResponseType) = try! await self.getAssetQuery().include(params: .dimension).find()
-        switch data {
-        case .success(let contentstackResponse):
-            contentstackResponse.items.forEach { (model: AssetModel) in
-                XCTAssertNotNil(model.dimension)
-            }
-        case .failure(let error):
-            XCTFail("\(error)")
+        let data: ContentstackResponse<AssetModel> = try! await self.getAssetQuery().include(params: .dimension).find()
+        data.items.forEach { (model: AssetModel) in
+            XCTAssertNotNil(model.dimension)
         }
         networkExpectaton.fulfill()
         wait(for: [networkExpectaton], timeout: 5)
@@ -140,37 +111,26 @@ class AsyncAssetQueryAPITest2: XCTestCase {
     
     func test08Fetch_Asset_WithGlobalFields() async {
         let networkExpectation = expectation(description: "Fetch Assets with GlobalFields Test")
-        let (data, _): (Result<AssetModel, Error>, ResponseType) = try! await self.getAsset(uid: kAssetUID).includeDimension().fetch()
-        switch data {
-        case .success(let model):
-            XCTAssertNotNil(model.dimension)
-        case .failure(let error):
-            XCTFail("\(error)")
-        }
+        let data: ContentstackResponse<AssetModel> = try! await self.getAsset(uid: kAssetUID).includeDimension().fetch()
+        XCTAssertNotNil(data.items.first?.dimension)
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
     }
     
     func test09Fetch_AssetQuery_WithCount() async {
         let networkExpectation = expectation(description: "Fetch Assets with Count Test")
-        let (data, _): (Result<ContentstackResponse<AssetModel>, Error>, ResponseType) = try! await self.getAssetQuery().locale("en-us").include(params: .count).find()
-        switch data {
-        case .success(let contentstackResponse):
-            XCTAssertEqual(contentstackResponse.count, 8)
-        case .failure(let error):
-            XCTFail("\(error)")
-        }
+        let data: ContentstackResponse<AssetModel> = try! await self.getAssetQuery().locale("en-us").include(params: .count).find()
+        XCTAssertEqual(data.count, 8)
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
     }
     
     func test10Fetch_Asset_WithWrongUID_shouldFail() async {
         let networkExpectation = expectation(description: "Fetch Assets from wrong UID Test")
-        let (data, _): (Result<AssetModel, Error>, ResponseType) = try! await self.getAsset(uid: "UID").fetch()
-        switch data {
-        case .success:
+        do {
+            let data: ContentstackResponse<AssetModel> = try await self.getAsset(uid: "UID").fetch()
             XCTFail("UID should not be present")
-        case .failure(let error):
+        } catch {
             if let error = error as? APIError {
                 XCTAssertEqual(error.errorCode, 145)
                 XCTAssertEqual(error.errorMessage, "Asset was not found.")
@@ -182,18 +142,13 @@ class AsyncAssetQueryAPITest2: XCTestCase {
     
     func test11Fetch_AssetQuery_WithoutFallback_Result() async {
         let networkExpectation = expectation(description: "Fetch Assets without Fallback Test")
-        let (data, _): (Result<ContentstackResponse<AssetModel>, Error>, ResponseType) = try! await self.getAssetQuery().locale(locale).find()
-        switch data {
-        case .success(let response):
-            for model in response.items {
-                if let fields = model.fields,
-                   let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
-                   let publishLocale = publishDetails["locale"] as? String {
-                    XCTAssertEqual(publishLocale, locale)
-                }
+        let data: ContentstackResponse<AssetModel> = try! await self.getAssetQuery().locale(locale).find()
+        for model in data.items {
+            if let fields = model.fields,
+               let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
+               let publishLocale = publishDetails["locale"] as? String {
+                XCTAssertEqual(publishLocale, locale)
             }
-        case .failure(let error):
-            XCTFail("\(error)")
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -201,28 +156,23 @@ class AsyncAssetQueryAPITest2: XCTestCase {
     
     func test12Fetch_AssetQuery_Fallback_Result() async {
         let networkExpectation = expectation(description: "Fetch Assets without Fallback Test")
-        let (data, _): (Result<ContentstackResponse<AssetModel>, Error>, ResponseType) = try! await self.getAssetQuery().locale(locale).include(params: .fallback).find()
-        switch data {
-        case .success(let response):
-            for model in response.items {
-                if let fields = model.fields,
-                   let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
-                   let publishLocale = publishDetails["locale"] as? String {
-                    XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
-                }
+        let data: ContentstackResponse<AssetModel> = try! await self.getAssetQuery().locale(locale).include(params: .fallback).find()
+        for model in data.items {
+            if let fields = model.fields,
+               let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
+               let publishLocale = publishDetails["locale"] as? String {
+                XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
             }
-            if let model = response.items.first(where: { (model) -> Bool in
-                if let fields = model.fields,
-                   let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
-                   let publishLocale = publishDetails["locale"] as? String {
-                    return publishLocale == "en-us"
-                }
-                return false
-            }) {
-                kAssetLocaliseUID = model.uid
+        }
+        if let model = data.items.first(where: { (model) -> Bool in
+            if let fields = model.fields,
+               let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
+               let publishLocale = publishDetails["locale"] as? String {
+                return publishLocale == "en-us"
             }
-        case .failure(let error):
-            XCTFail("\(error)")
+            return false
+        }) {
+            kAssetLocaliseUID = model.uid
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -230,11 +180,10 @@ class AsyncAssetQueryAPITest2: XCTestCase {
     
     func test12Fetch_Asset_UIDWithoutFallback_NoResult() async {
         let networkExpectation = expectation(description: "Fetch Asset from UID without Fallback Test")
-        let (data, _): (Result<AssetModel, Error>, ResponseType) = try! await self.getAsset(uid: kAssetLocaliseUID).locale("en-gb").fetch()
-        switch data {
-        case .success:
+        do {
+            let data: ContentstackResponse<AssetModel> = try await self.getAsset(uid: kAssetLocaliseUID).locale("en-gb").fetch()
             XCTFail("UID should not be present")
-        case .failure(let error):
+        } catch {
             if let error = error as? APIError {
                 XCTAssertEqual(error.errorCode, 145)
                 XCTAssertEqual(error.errorMessage, "Asset was not found")
@@ -246,16 +195,11 @@ class AsyncAssetQueryAPITest2: XCTestCase {
     
     func test13Fetch_Asset_UIDWithFallback_NoResult() async {
         let networkExpectation = expectation(description: "Fetch Asset from UID without Fallback Test")
-        let (data, _): (Result<AssetModel, Error>, ResponseType) = try! await self.getAsset(uid: kAssetLocaliseUID).locale(locale).includeFallback().fetch()
-        switch data {
-        case .success(let model):
-            if let fields = model.fields,
-               let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
-               let publishLocale = publishDetails["locale"] as? String {
-                XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
-            }
-        case .failure(let error):
-            XCTFail("\(error)")
+        let data: ContentstackResponse<AssetModel> = try! await self.getAsset(uid: kAssetLocaliseUID).locale(locale).includeFallback().fetch()
+        if let fields = data.fields,
+           let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
+           let publishLocale = publishDetails["locale"] as? String {
+            XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
