@@ -15,7 +15,7 @@ class EntryTest: XCTestCase {
     }
     #if !NO_FATAL_TEST
     func testFetch_withoutUID() async {
-        let result: (Result<AssetModel, Error>, ResponseType) = try! await makeEntrySut(contentTypeuid: "content").fetch()
+        let result: ContentstackResponse<EntryModel> = try! await makeEntrySut(contentTypeuid: "content").fetch()
         expectFatalError(expectedMessage: "Please provide Entry uid") {
             result
         }

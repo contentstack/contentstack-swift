@@ -660,7 +660,7 @@ class AsyncEntryAPITest2: XCTestCase {
     func test34Fetch_Entry_UIDWithoutFallback_NoResult() async {
         let networkExpectation = expectation(description: "Fetch Entry from UID without Fallback Test")
         do {
-            let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: kEntryLocaliseUID).locale("en-gb").fetch()
+            let data: ContentstackResponse<EntryModel> = try await self.getEntry(uid: kEntryLocaliseUID).locale("en-gb").fetch()
             XCTFail("UID should not be present")
         } catch {
             if let error = error as? APIError {

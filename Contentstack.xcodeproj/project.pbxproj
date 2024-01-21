@@ -25,8 +25,6 @@
 		0F096B14243610470094F042 /* ImageTransformTestAdditional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F096B13243610470094F042 /* ImageTransformTestAdditional.swift */; };
 		0F096B15243610470094F042 /* ImageTransformTestAdditional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F096B13243610470094F042 /* ImageTransformTestAdditional.swift */; };
 		0F096B16243610470094F042 /* ImageTransformTestAdditional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F096B13243610470094F042 /* ImageTransformTestAdditional.swift */; };
-		0F1DCC73243D991100EED404 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1DCC72243D991100EED404 /* DVR.framework */; };
-		0F1DCC75243D991100EED404 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F1DCC74243D991100EED404 /* OHHTTPStubs.framework */; };
 		0F1DCC7A243D9BD400EED404 /* SyncTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F1DCC77243D9BBF00EED404 /* SyncTest.json */; };
 		0F1DCC7B243D9BD400EED404 /* SyncTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F1DCC77243D9BBF00EED404 /* SyncTest.json */; };
 		0F1DCC80243DCF2500EED404 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1DCC7F243DCF2500EED404 /* EntryModel.swift */; };
@@ -132,10 +130,6 @@
 		0F60CA332428D02600ED67E6 /* QueryEntryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F60CA322428D02600ED67E6 /* QueryEntryType.swift */; };
 		0F60CA342428D02600ED67E6 /* QueryEntryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F60CA322428D02600ED67E6 /* QueryEntryType.swift */; };
 		0F60CA352428D02600ED67E6 /* QueryEntryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F60CA322428D02600ED67E6 /* QueryEntryType.swift */; };
-		0F6B6CE824508154007AB3C1 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6B6CE724508154007AB3C1 /* DVR.framework */; };
-		0F6B6CEA24508154007AB3C1 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6B6CE924508154007AB3C1 /* OHHTTPStubs.framework */; };
-		0F6B6CEC24508165007AB3C1 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6B6CEB24508165007AB3C1 /* DVR.framework */; };
-		0F6B6CEE24508165007AB3C1 /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F6B6CED24508165007AB3C1 /* OHHTTPStubs.framework */; };
 		0F7138C52424A70C00B314B0 /* AssetQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7138C42424A70C00B314B0 /* AssetQueryTest.swift */; };
 		0F7138C62424A70C00B314B0 /* AssetQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7138C42424A70C00B314B0 /* AssetQueryTest.swift */; };
 		0F7138C72424A70C00B314B0 /* AssetQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7138C42424A70C00B314B0 /* AssetQueryTest.swift */; };
@@ -252,6 +246,7 @@
 		478684762B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */; };
 		479A93D62B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479A93D52B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift */; };
 		47A8DB312B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8DB302B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift */; };
+		47C6D1C02B5D3CBB001FE585 /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 47C6D1BF2B5D3CBB001FE585 /* DVR */; };
 		47F96B752B4734270081B4C6 /* AsyncQueryOnAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F96B742B4734270081B4C6 /* AsyncQueryOnAPITest2.swift */; };
 		CE3C328A2AD50FE8006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
 		CE3C328B2AD50FE9006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
@@ -387,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FD6F8F22620194100636504 /* ContentstackUtils in Frameworks */,
+				47C6D1C02B5D3CBB001FE585 /* DVR in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,8 +390,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F1DCC73243D991100EED404 /* DVR.framework in Frameworks */,
-				0F1DCC75243D991100EED404 /* OHHTTPStubs.framework in Frameworks */,
 				0F4A75D4241BAC4300E3A024 /* Contentstack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,8 +406,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F6B6CE824508154007AB3C1 /* DVR.framework in Frameworks */,
-				0F6B6CEA24508154007AB3C1 /* OHHTTPStubs.framework in Frameworks */,
 				0F4A75F4241BAE6C00E3A024 /* Contentstack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,8 +422,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F6B6CEC24508165007AB3C1 /* DVR.framework in Frameworks */,
-				0F6B6CEE24508165007AB3C1 /* OHHTTPStubs.framework in Frameworks */,
 				0F4A7610241BAFE000E3A024 /* Contentstack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -764,6 +754,7 @@
 			name = "Contentstack iOS";
 			packageProductDependencies = (
 				0FD6F8F12620194100636504 /* ContentstackUtils */,
+				47C6D1BF2B5D3CBB001FE585 /* DVR */,
 			);
 			productName = "Contentstack iOS";
 			productReference = 0F4A75CB241BAC4300E3A024 /* Contentstack.framework */;
@@ -1580,6 +1571,7 @@
 				DEVELOPMENT_TEAM = J9SNGYGYZV;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1767,7 +1759,6 @@
 		0F4A7600241BAE6C00E3A024 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1833,7 +1824,6 @@
 		0F4A7601241BAE6C00E3A024 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -2047,7 +2037,6 @@
 		0F4A761C241BAFE000E3A024 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -2114,7 +2103,6 @@
 		0F4A761D241BAFE000E3A024 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -2510,6 +2498,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0FD6F8F02620194100636504 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
 			productName = ContentstackUtils;
+		};
+		47C6D1BF2B5D3CBB001FE585 /* DVR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47B020832B5A74A100A6BB8D /* XCRemoteSwiftPackageReference "DVR" */;
+			productName = DVR;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
