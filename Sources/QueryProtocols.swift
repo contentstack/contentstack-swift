@@ -66,8 +66,7 @@ extension BaseQuery {
     /// }
     /// ```
 
-    public func find<ResourceType>() async throws -> ContentstackResponse<ResourceType>
-        where ResourceType: Decodable & EndpointAccessible {
+    public func find<ResourceType>() async throws -> ContentstackResponse<ResourceType> where ResourceType: Decodable & EndpointAccessible {
         if self.queryParameter.count > 0, let query = self.queryParameter.jsonString {
             self.parameters[QueryParameter.query] = query
         }

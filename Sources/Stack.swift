@@ -226,11 +226,7 @@ public class Stack: CachePolicyAccessible {
     internal func asyncFetch<ResourceType>(endpoint: Endpoint,
                                                cachePolicy: CachePolicy,
                                                parameters: Parameters = [:],
-                                               headers: [String: String] = [:])
-//            async throws -> (Result<ResourceType, Error>, ResponseType)
-            async throws -> ResourceType
-            where ResourceType: Decodable {
-
+                                               headers: [String: String] = [:]) async throws -> ResourceType where ResourceType: Decodable {
         let url = self.url(endpoint: endpoint, parameters: parameters)
 
         do {

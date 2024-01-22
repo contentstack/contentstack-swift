@@ -240,6 +240,9 @@
 		0FFBB44C24470C43000D2795 /* ContentStackLogTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBB44B24470C43000D2795 /* ContentStackLogTest.swift */; };
 		0FFBB44D24470C43000D2795 /* ContentStackLogTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBB44B24470C43000D2795 /* ContentStackLogTest.swift */; };
 		0FFBB44E24470C43000D2795 /* ContentStackLogTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFBB44B24470C43000D2795 /* ContentStackLogTest.swift */; };
+		47161ACA2B5D747D00AD615B /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 47161AC92B5D747D00AD615B /* DVR */; };
+		47161ACC2B5D788E00AD615B /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47161ACB2B5D788E00AD615B /* DVR.framework */; };
+		47161ACD2B5D788E00AD615B /* DVR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 47161ACB2B5D788E00AD615B /* DVR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		475C7A782B44945800814330 /* AsyncEntryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C7A772B44945800814330 /* AsyncEntryAPITest2.swift */; };
 		478684742B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */; };
 		478684752B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */; };
@@ -276,6 +279,20 @@
 			remoteInfo = "Contentstack iOS";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		47161ACE2B5D788E00AD615B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				47161ACD2B5D788E00AD615B /* DVR.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0F0246652431F37300F72181 /* ImageTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransform.swift; sourceTree = "<group>"; };
@@ -365,6 +382,8 @@
 		0FFB22B3261C98E50056AEE0 /* .env */ = {isa = PBXFileReference; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
 		0FFBB4462446F9A4000D2795 /* Asset.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Asset.json; sourceTree = "<group>"; };
 		0FFBB44B24470C43000D2795 /* ContentStackLogTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStackLogTest.swift; sourceTree = "<group>"; };
+		47161AC42B5D744E00AD615B /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47161ACB2B5D788E00AD615B /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		475C7A772B44945800814330 /* AsyncEntryAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncEntryAPITest2.swift; sourceTree = "<group>"; };
 		478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAssetQueryAPITest2.swift; sourceTree = "<group>"; };
 		479A93D52B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncContentTypeQueryAPITest2.swift; sourceTree = "<group>"; };
@@ -382,7 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FD6F8F22620194100636504 /* ContentstackUtils in Frameworks */,
-				47C6D1C02B5D3CBB001FE585 /* DVR in Frameworks */,
+				47161ACA2B5D747D00AD615B /* DVR in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F4A75D4241BAC4300E3A024 /* Contentstack.framework in Frameworks */,
+				47161ACC2B5D788E00AD615B /* DVR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +485,8 @@
 		0F1DCC6D243D980900EED404 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47161ACB2B5D788E00AD615B /* DVR.framework */,
+				47161AC42B5D744E00AD615B /* DVR.framework */,
 				0F6B6CEB24508165007AB3C1 /* DVR.framework */,
 				0F6B6CED24508165007AB3C1 /* OHHTTPStubs.framework */,
 				0F6B6CE724508154007AB3C1 /* DVR.framework */,
@@ -754,7 +776,7 @@
 			name = "Contentstack iOS";
 			packageProductDependencies = (
 				0FD6F8F12620194100636504 /* ContentstackUtils */,
-				47C6D1BF2B5D3CBB001FE585 /* DVR */,
+				47161AC92B5D747D00AD615B /* DVR */,
 			);
 			productName = "Contentstack iOS";
 			productReference = 0F4A75CB241BAC4300E3A024 /* Contentstack.framework */;
@@ -767,6 +789,7 @@
 				0F4A75CF241BAC4300E3A024 /* Sources */,
 				0F4A75D0241BAC4300E3A024 /* Frameworks */,
 				0F4A75D1241BAC4300E3A024 /* Resources */,
+				47161ACE2B5D788E00AD615B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -931,7 +954,7 @@
 			mainGroup = OBJ_5;
 			packageReferences = (
 				0FD6F8F02620194100636504 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */,
-				47B020832B5A74A100A6BB8D /* XCRemoteSwiftPackageReference "DVR" */,
+				47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */,
 			);
 			productRefGroup = OBJ_14 /* Products */;
 			projectDirPath = "";
@@ -1428,6 +1451,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1466,7 +1490,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0F4FBC9A2420A17F007B8CAE /* Config.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"ARCHS[sdk=*]" = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1537,7 +1560,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0F4FBC9A2420A17F007B8CAE /* Config.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -2468,7 +2490,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		47B020832B5A74A100A6BB8D /* XCRemoteSwiftPackageReference "DVR" */ = {
+		47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/venmo/DVR.git";
 			requirement = {
@@ -2499,9 +2521,9 @@
 			package = 0FD6F8F02620194100636504 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
 			productName = ContentstackUtils;
 		};
-		47C6D1BF2B5D3CBB001FE585 /* DVR */ = {
+		47161AC92B5D747D00AD615B /* DVR */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 47B020832B5A74A100A6BB8D /* XCRemoteSwiftPackageReference "DVR" */;
+			package = 47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */;
 			productName = DVR;
 		};
 /* End XCSwiftPackageProductDependency section */

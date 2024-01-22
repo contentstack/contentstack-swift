@@ -9,9 +9,9 @@ import XCTest
 @testable import Contentstack
 import DVR
 
-var kEntryUID = ""
-var kEntryLocaliseUID = ""
-var kEntryTitle = ""
+//var kEntryUID = ""
+//var kEntryLocaliseUID = ""
+//var kEntryTitle = ""
 
 class AsyncEntryAPITest2: XCTestCase {
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "Entry")
@@ -245,7 +245,7 @@ class AsyncEntryAPITest2: XCTestCase {
 //            XCTFail("\(error)")
 //        }
 //        networkExpectationDate.fulfill()
-//        
+//
 //        let id = 2493
 //        let networkExpectation = expectation(description: "Fetch where Session ID less than Or equal Number Test")
 //        let (data1, _): (Result<ContentstackResponse<EntryModel>, Error>, ResponseType) = try! await self.getEntryQuery().where(valueAtKey: "session_id", .isGreaterThanOrEqual(id)).find()
@@ -268,7 +268,7 @@ class AsyncEntryAPITest2: XCTestCase {
 //        let formatter = Date.iso8601Formatter()
 //        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
 //        let date = formatter.date(from: "2018-08-27T12:30:00.000Z")!
-//        
+//
 //        let networkExpectationDate = expectation(description: "Fetch where Session Time Greater than Date Test")
 //        let (data, _): (Result<ContentstackResponse<EntryModel>, Error>, ResponseType) = try! await self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isGreaterThan(date)).find()
 //        switch data {
@@ -285,7 +285,7 @@ class AsyncEntryAPITest2: XCTestCase {
 //            XCTFail("\(error)")
 //        }
 //        networkExpectationDate.fulfill()
-//        
+//
 //        let id = 2493
 //        let networkExpectation = expectation(description: "Fetch where Session ID Greater than Number Test")
 //        let (data1, _): (Result<ContentstackResponse<EntryModel>, Error>, ResponseType) = try! await self.getEntryQuery().where(valueAtKey: "session_id", .isGreaterThan(id)).find()
@@ -308,7 +308,7 @@ class AsyncEntryAPITest2: XCTestCase {
 //        let formatter = Date.iso8601Formatter()
 //        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
 //        let date = formatter.date(from: "2018-08-27T12:30:00.000Z")!
-//        
+//
 //        let networkExpectationDate = expectation(description: "Fetch where Session Time Greater than or Equal Date Test")
 //        let (data, _): (Result<ContentstackResponse<EntryModel>, Error>, ResponseType) = try! await self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isGreaterThanOrEqual(date)).addValue("val", forHTTPHeaderField: "key").find()
 //        switch data {
@@ -325,7 +325,7 @@ class AsyncEntryAPITest2: XCTestCase {
 //            XCTFail("\(error)")
 //        }
 //        networkExpectationDate.fulfill()
-//        
+//
 //        let id = 2493
 //        let networkExpectation = expectation(description: "Fetch where Session ID Greater than or Equal Number Test")
 //        let (data1, _): (Result<ContentstackResponse<EntryModel>, Error>, ResponseType) = try! await self.getEntryQuery().where(valueAtKey: "session_id", .isGreaterThanOrEqual(id)).find()

@@ -226,15 +226,32 @@ extension Asset: ResourceQueryable {
     ///    }
     /// }
     /// ```
-    public func fetch<ResourceType>() async throws -> ContentstackResponse<ResourceType>
+    public func fetch<ResourceType>(_ completion: @escaping (Result<ResourceType, Error>, ResponseType) -> Void)
         where ResourceType: EndpointAccessible, ResourceType: Decodable {
         guard let uid = self.uid else { fatalError("Please provide Asset uid") }
-        
+        self.stack.fetch(endpoint: ResourceType.endpoint,
+                         cachePolicy: self.cachePolicy,
+                         parameters: parameters + [QueryParameter.uid: uid],
+                         headers: headers,
+                         then: { (result: Result<ContentstackResponse<ResourceType>, Error>, response: ResponseType) in
+                            switch result {
+                            case .success(let contentStackResponse):
+                                if let resource = contentStackResponse.items.first {
+                                    completion(.success(resource), response)
+                                } else {
+                                    completion(.failure(SDKError.invalidUID(string: uid)), response)
+                                }
+                            case .failure(let error):
+                                completion(.failure(error), response)
+                            }
+        })
+    }
+
+    public func fetch<ResourceType>() async throws -> ContentstackResponse<ResourceType> where ResourceType: EndpointAccessible, ResourceType: Decodable {
+        guard let uid = self.uid else { fatalError("Please provide Asset uid") }
+            
         do {
-            let (data): ContentstackResponse<ResourceType> = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint,
-                                                                   cachePolicy: self.cachePolicy,
-                                                                   parameters: parameters + [QueryParameter.uid: uid],
-                                                                   headers: headers)
+            let (data): ContentstackResponse<ResourceType> = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint, cachePolicy: self.cachePolicy, parameters: parameters + [QueryParameter.uid: uid], headers: headers)
             return data
         } catch {
             throw error
