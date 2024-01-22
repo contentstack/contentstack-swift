@@ -10,7 +10,7 @@ import XCTest
 import DVR
 
 //var kEntryUID = ""
-//var kEntryLocaliseUID = ""
+var kEntryLocaliseUID = ""
 //var kEntryTitle = ""
 
 class AsyncEntryAPITest2: XCTestCase {

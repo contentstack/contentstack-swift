@@ -223,6 +223,28 @@ public class Stack: CachePolicyAccessible {
         performDataTask(dataTask!, request: request, cachePolicy: cachePolicy, then: completion)
     }
     
+    internal func fetch<ResourceType>(endpoint: Endpoint,
+                                          cachePolicy: CachePolicy,
+                                          parameters: Parameters = [:],
+                                          headers: [String: String] = [:],
+                                          then completion: @escaping ResultsHandler<ResourceType>)
+            where ResourceType: Decodable {
+        let url = self.url(endpoint: endpoint, parameters: parameters)
+            self.fetchUrl(url, headers: headers, cachePolicy: cachePolicy, then: { (result: Result<Data, Error>, responseType: ResponseType) in
+            switch result {
+            case .success(let data):
+                do {
+                    let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
+                    completion(Result.success(jsonParse), responseType)
+                } catch let error {
+                    completion(Result.failure(error), responseType)
+                }
+            case .failure(let error):
+                completion(Result.failure(error), responseType)
+            }
+        })
+    }
+    
     internal func asyncFetch<ResourceType>(endpoint: Endpoint,
                                                cachePolicy: CachePolicy,
                                                parameters: Parameters = [:],

@@ -9,6 +9,9 @@ import XCTest
 @testable import Contentstack
 import DVR
 
+var kEntryUID = ""
+var kEntryTitle = ""
+
 class AsyncQueryOnAPITest2: XCTestCase {
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "QueryOn")
     

@@ -9,11 +9,11 @@ import XCTest
 @testable import Contentstack
 import DVR
 
-//var kAssetUID = ""
-//var kAssetLocaliseUID = ""
-//var kAssetTitle = ""
-//var kFileName = ""
-//let locale = "en-gb"
+var kAssetUID = ""
+var kAssetLocaliseUID = ""
+var kAssetTitle = ""
+var kFileName = ""
+let locale = "en-gb"
 
 class AsyncAssetQueryAPITest2: XCTestCase {
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "Asset")
