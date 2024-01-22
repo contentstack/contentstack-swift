@@ -75,19 +75,13 @@ extension BaseQuery {
                     cachePolicy: self.cachePolicy, parameters: parameters, headers: headers, then: completion)
     }
 
-    public func find<ResourceType>() async throws -> (Result<ContentstackResponse<ResourceType>, Error>, ResponseType)
-        where ResourceType: Decodable & EndpointAccessible {
+    public func find<ResourceType>() async throws -> ContentstackResponse<ResourceType> where ResourceType: Decodable & EndpointAccessible {
         if self.queryParameter.count > 0, let query = self.queryParameter.jsonString {
             self.parameters[QueryParameter.query] = query
         }
         do {
-            let (data, response): (Result<ContentstackResponse<ResourceType>, Error>, ResponseType) = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint, cachePolicy: self.cachePolicy, parameters: parameters, headers: headers)
-            switch data {
-            case .success(let contentstackResponse):
-                return (.success(contentstackResponse), response)
-            case .failure(let error):
-                return (.failure(error), response)
-            }
+            let data: ContentstackResponse<ResourceType> = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint, cachePolicy: self.cachePolicy, parameters: parameters, headers: headers)
+            return data
         } catch {
             throw error
         }

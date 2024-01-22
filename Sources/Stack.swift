@@ -251,10 +251,7 @@ public class Stack: CachePolicyAccessible {
     internal func asyncFetch<ResourceType>(endpoint: Endpoint,
                                                cachePolicy: CachePolicy,
                                                parameters: Parameters = [:],
-                                               headers: [String: String] = [:])
-            async throws -> (Result<ResourceType, Error>, ResponseType)
-            where ResourceType: Decodable {
-
+                                               headers: [String: String] = [:]) async throws -> ResourceType where ResourceType: Decodable {
         let url = self.url(endpoint: endpoint, parameters: parameters)
 
         do {
@@ -263,12 +260,12 @@ public class Stack: CachePolicyAccessible {
             case .success(let data):
                 do {
                     let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
-                    return (.success(jsonParse), responseType)
+                    return jsonParse
                 } catch {
                     throw error
                 }
             case .failure(let error):
-                return (.failure(error), responseType)
+                throw error
             }
         } catch {
             throw error

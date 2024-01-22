@@ -32,16 +32,11 @@ class AsyncQueryOnAPITest2: XCTestCase {
 
     func test01FindAll_Session() async {
         let networkExpectation = expectation(description: "Fetch All Entry Test")
-        let (data, _): (Result<ContentstackResponse<Session>, Error>, ResponseType) = try! await self.getEntryQuery(Session.self).locale("en-us").find()
-        switch data {
-        case .success(let contentstackResponse):
-            XCTAssertEqual(contentstackResponse.items.count, 31)
-            if let entry = contentstackResponse.items.first {
-                kEntryUID = entry.uid
-                kEntryTitle = entry.title
-            }
-        case .failure(let error):
-            XCTFail("\(error)")
+        let data: ContentstackResponse<Session> = try! await self.getEntryQuery(Session.self).locale("en-us").find()
+        XCTAssertEqual(data.items.count, 31)
+        if let entry = data.items.first {
+            kEntryUID = entry.uid
+            kEntryTitle = entry.title
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -49,19 +44,14 @@ class AsyncQueryOnAPITest2: XCTestCase {
 
     func test02FindAll_SessionReference() async {
         let networkExpectation = expectation(description: "Fetch All Entry Test")
-        let (data, _): (Result<ContentstackResponse<SessionWithTrackReference>, Error>, ResponseType) = try! await self.getEntryQuery(SessionWithTrackReference.self).locale("en-us").where(queryableCodingKey: SessionWithTrackReference.FieldKeys.sessionId, .equals(2695)).includeReference(with: ["track"]).find()
-        switch data {
-        case .success(let contentstackResponse):
-            XCTAssertEqual(contentstackResponse.items.count, 1)
-            if let session = contentstackResponse.items.first {
-                XCTAssertEqual(session.sessionId, 2695)
-                XCTAssertEqual(session.track.count, 1)
-                if let track = session.track.first {
-                    XCTAssertEqual(track.title, "Virtualizing Applications")
-                }
+        let data: ContentstackResponse<SessionWithTrackReference> = try! await self.getEntryQuery(SessionWithTrackReference.self).locale("en-us").where(queryableCodingKey: SessionWithTrackReference.FieldKeys.sessionId, .equals(2695)).includeReference(with: ["track"]).find()
+        XCTAssertEqual(data.items.count, 1)
+        if let session = data.items.first {
+            XCTAssertEqual(session.sessionId, 2695)
+            XCTAssertEqual(session.track.count, 1)
+            if let track = session.track.first {
+                XCTAssertEqual(track.title, "Virtualizing Applications")
             }
-        case .failure(let error):
-            XCTFail("\(error)")
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
