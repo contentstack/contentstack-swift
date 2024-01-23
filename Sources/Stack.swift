@@ -373,6 +373,33 @@ extension Stack {
     ///    }
     /// }
     ///```
+    public func sync(_ syncStack: SyncStack = SyncStack(), syncTypes: [SyncStack.SyncableTypes] = [.all], then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {
+        var parameter = syncStack.parameter
+        if syncStack.isInitialSync {
+            for syncType in syncTypes {
+                parameter = parameter + syncType.parameters
+            }
+        }
+        let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
+
+        fetchUrl(url, headers: [:], cachePolicy: .networkOnly) { (result: Result<Data, Error>, _: ResponseType) in
+            switch result {
+            case .success(let data):
+                do {
+                    let syncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
+                    completion(.success(syncStack))
+                    if syncStack.hasMorePages {
+                        self.sync(syncStack, then: completion)
+                    }
+                } catch let error {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+}
+    
     public func sync(_ syncStack: SyncStack = SyncStack(), syncTypes: [SyncStack.SyncableTypes] = [.all]) async throws -> AsyncThrowingStream<SyncStack, Error> {
         return AsyncThrowingStream { continuation in
             Task {

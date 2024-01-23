@@ -259,6 +259,9 @@
 		478684762B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */; };
 		479A93D62B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479A93D52B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift */; };
 		47A8DB312B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8DB302B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift */; };
+		47AAE0902B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
+		47AAE0912B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
+		47AAE0922B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
 		47F96B752B4734270081B4C6 /* AsyncQueryOnAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F96B742B4734270081B4C6 /* AsyncQueryOnAPITest2.swift */; };
 		CE3C328A2AD50FE8006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
 		CE3C328B2AD50FE9006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
@@ -388,6 +391,7 @@
 		478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAssetQueryAPITest2.swift; sourceTree = "<group>"; };
 		479A93D52B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncContentTypeQueryAPITest2.swift; sourceTree = "<group>"; };
 		47A8DB302B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncSyncAPITest2.swift; sourceTree = "<group>"; };
+		47AAE08F2B60420E0098655A /* SyncAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncAPITest.swift; sourceTree = "<group>"; };
 		47F96B742B4734270081B4C6 /* AsyncQueryOnAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncQueryOnAPITest2.swift; sourceTree = "<group>"; };
 		CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncContentstackTest.swift; sourceTree = "<group>"; };
 		OBJ_17 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -635,6 +639,7 @@
 				470657572B5E788400BBFF88 /* EntryAPITest.swift */,
 				4706575B2B5E78B300BBFF88 /* AssetQueryAPITest.swift */,
 				4706575F2B5E797300BBFF88 /* ContentstackTest.swift */,
+				47AAE08F2B60420E0098655A /* SyncAPITest.swift */,
 			);
 			name = APITests;
 			sourceTree = "<group>";
@@ -1111,6 +1116,7 @@
 				0FFBB44C24470C43000D2795 /* ContentStackLogTest.swift in Sources */,
 				0F77CFB824373B8A00C57764 /* ImageTransformEquatableTest.swift in Sources */,
 				0F02466B243201B500F72181 /* ImageTransformTest.swift in Sources */,
+				47AAE0902B60420E0098655A /* SyncAPITest.swift in Sources */,
 				470657542B5E785C00BBFF88 /* ContentTypeQueryAPITest.swift in Sources */,
 				470657602B5E797300BBFF88 /* ContentstackTest.swift in Sources */,
 				479A93D62B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift in Sources */,
@@ -1179,6 +1185,7 @@
 				0F244FA824406A4A003C3F26 /* EntryQueriableTest.swift in Sources */,
 				0F463114243B044F001CE1FA /* SyncTest.swift in Sources */,
 				CE3C328B2AD50FE9006419E0 /* AsyncContentstackTest.swift in Sources */,
+				47AAE0912B60420E0098655A /* SyncAPITest.swift in Sources */,
 				0FFA5DBD241F9A6C003B3AF5 /* XCTestCase+Extension.swift in Sources */,
 				0F4FBCA12420B0E4007B8CAE /* DateTest.swift in Sources */,
 				0FFA5D90241F8126003B3AF5 /* ContentstackConfigTest.swift in Sources */,
@@ -1255,6 +1262,7 @@
 				0F244FA924406A4A003C3F26 /* EntryQueriableTest.swift in Sources */,
 				0F463115243B044F001CE1FA /* SyncTest.swift in Sources */,
 				CE3C328C2AD50FEA006419E0 /* AsyncContentstackTest.swift in Sources */,
+				47AAE0922B60420E0098655A /* SyncAPITest.swift in Sources */,
 				0FFA5DBE241F9A6C003B3AF5 /* XCTestCase+Extension.swift in Sources */,
 				0F4FBCA22420B0E4007B8CAE /* DateTest.swift in Sources */,
 				0FFA5D91241F8127003B3AF5 /* ContentstackConfigTest.swift in Sources */,
