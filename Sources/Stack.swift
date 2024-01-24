@@ -398,7 +398,7 @@ extension Stack {
                 completion(.failure(error))
             }
         }
-}
+    }
     
     public func sync(_ syncStack: SyncStack = SyncStack(), syncTypes: [SyncStack.SyncableTypes] = [.all]) async throws -> AsyncThrowingStream<SyncStack, Error> {
         return AsyncThrowingStream { continuation in
