@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: snyk/actions/cocoapods@master
+      - uses: snyk/actions/setup@master
       - name: Run Snyk to check for vulnerabilities
         run: synk test --all-projects --fail-on=all
         env:
