@@ -11,4 +11,4 @@ jobs:
       - name: Test
         uses: actions/checkout@v1
       - name: Build and Test
-        run:  xcodebuild test -project Contentstack.xcodeproj -scheme Contentstack -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.3' build test
+        run:  xcodebuild test -project Contentstack.xcodeproj -scheme Contentstack iOS Tests -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.3' build test
