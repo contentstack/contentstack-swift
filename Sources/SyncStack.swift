@@ -45,7 +45,6 @@ public final class SyncStack: Decodable {
         } else if !lastSeqId.isEmpty {
             return ["seq_id": lastSeqId]
         }
-        print("lastSeqId.isEmpty", lastSeqId.isEmpty)
         return ["init": true, "seq_id": true]
     }
 
@@ -65,9 +64,6 @@ public final class SyncStack: Decodable {
         self.paginationToken = paginationToken
         let lastSeqId1 = lastSeqId
         self.lastSeqId = self.lastSeqId != lastSeqId ? lastSeqId : "";
-        print("self.syncToken", self.syncToken)
-        print("self.paginationToken", self.paginationToken)
-        print("self.lastSeqId", self.lastSeqId)
     }
 
     private enum CodingKeys: String, CodingKey {
