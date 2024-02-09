@@ -337,6 +337,7 @@ extension Stack {
                 parameter = parameter + syncType.parameters
             }
         }
+        print("parameter", parameter)
         let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
         fetchUrl(url,
                  headers: [:],
@@ -344,10 +345,11 @@ extension Stack {
             switch result {
             case .success(let data):
                 do {
-                    let syncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
-                    completion(.success(syncStack))
-                    if syncStack.hasMorePages {
-                        self.sync(syncStack, then: completion)
+                    let updatedSyncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
+                    updatedSyncStack.lastSeqId = syncStack.lastSeqId != updatedSyncStack.lastSeqId ? updatedSyncStack.lastSeqId : ""
+                    completion(.success(updatedSyncStack))
+                    if updatedSyncStack.hasMorePages {
+                        self.sync(updatedSyncStack, then: completion)
                     }
                 } catch let error {
                     completion(.failure(error))

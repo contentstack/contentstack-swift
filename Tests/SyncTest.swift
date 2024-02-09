@@ -10,12 +10,13 @@ import XCTest
 class SyncTest: XCTestCase {
     let paginationToken = "uid_138"
     let syncToken = "uid_138"
+    let lastSeqId = "uid_138"
 
     func testSync_Init() {
         let syncStack = makeSyncStack()
         XCTAssertEqual(syncStack.syncToken, "")
         XCTAssertEqual(syncStack.paginationToken, "")
-        XCTAssertEqual(syncStack.parameter.query(), "init=true")
+        XCTAssertEqual(syncStack.parameter.query(), "init=true&seq_id=true")
     }
 
     func testSync_SyncToken() {
@@ -30,6 +31,13 @@ class SyncTest: XCTestCase {
         XCTAssertEqual(syncStack.syncToken, "")
         XCTAssertEqual(syncStack.paginationToken, paginationToken)
         XCTAssertEqual(syncStack.parameter.query(), "pagination_token=\(paginationToken)")
+    }
+    
+    func testSync_LastSeqId() {
+        let syncStack = makeSyncStack(lastSeqId: lastSeqId)
+        XCTAssertEqual(syncStack.syncToken, "")
+        XCTAssertEqual(syncStack.lastSeqId, lastSeqId)
+        XCTAssertEqual(syncStack.parameter.query(), "seq_id=\(lastSeqId)")
     }
     #if !NO_FATAL_TEST
     func testSync_BothTokens_ShouldGetFatalError() {

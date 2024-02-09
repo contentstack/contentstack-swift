@@ -46,6 +46,7 @@ public final class SyncStack: Decodable {
             return ["seq_id": lastSeqId]
         }
         return ["init": true, "seq_id": true]
+        /// Test case should check
     }
 
     /// Initialization
