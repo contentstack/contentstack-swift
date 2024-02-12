@@ -337,7 +337,6 @@ extension Stack {
                 parameter = parameter + syncType.parameters
             }
         }
-        print("parameter", parameter)
         let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
         fetchUrl(url,
                  headers: [:],
@@ -355,7 +354,6 @@ extension Stack {
                     completion(.failure(error))
                 }
             case .failure(let error):
-                print("error", error);
                 completion(.failure(error))
             }
         }
