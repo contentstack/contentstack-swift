@@ -344,11 +344,41 @@ extension Stack {
             switch result {
             case .success(let data):
                 do {
+                    let syncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
+                    completion(.success(syncStack))
+                    if syncStack.hasMorePages {
+                        self.sync(syncStack, then: completion)
+                    }
+                } catch let error {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    public func seqSync(_ syncStack: SyncStack = SyncStack(),
+                     syncTypes: [SyncStack.SyncableTypes] = [.all],
+                     then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {
+        var parameter = syncStack.seqParameter
+        if syncStack.isInitialSeqSync {
+            for syncType in syncTypes {
+                parameter = parameter + syncType.parameters
+            }
+        }
+        let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
+        fetchUrl(url,
+                 headers: [:],
+                 cachePolicy: .networkOnly) { (result: Result<Data, Error>, _: ResponseType) in
+            switch result {
+            case .success(let data):
+                do {
                     let updatedSyncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
                     updatedSyncStack.lastSeqId = syncStack.lastSeqId != updatedSyncStack.lastSeqId ? updatedSyncStack.lastSeqId : ""
                     completion(.success(updatedSyncStack))
-                    if updatedSyncStack.hasMorePages {
-                        self.sync(updatedSyncStack, then: completion)
+                    if updatedSyncStack.hasMoreSeq {
+                        self.seqSync(updatedSyncStack, then: completion)
                     }
                 } catch let error {
                     completion(.failure(error))

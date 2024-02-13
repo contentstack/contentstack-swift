@@ -16,7 +16,14 @@ class SyncTest: XCTestCase {
         let syncStack = makeSyncStack()
         XCTAssertEqual(syncStack.syncToken, "")
         XCTAssertEqual(syncStack.paginationToken, "")
-        XCTAssertEqual(syncStack.parameter.query(), "init=true&seq_id=true")
+        XCTAssertEqual(syncStack.parameter.query(), "init=true")
+    }
+    
+    func testSeqSync_Init() {
+        let syncStack = makeSeqSyncStack()
+        XCTAssertEqual(syncStack.syncToken, "")
+        XCTAssertEqual(syncStack.paginationToken, "")
+        XCTAssertEqual(syncStack.seqParameter.query(), "init=true&seq_id=true")
     }
 
     func testSync_SyncToken() {
@@ -34,16 +41,15 @@ class SyncTest: XCTestCase {
     }
     
     func testSync_LastSeqId() {
-        let syncStack = makeSyncStack(lastSeqId: lastSeqId)
+        let syncStack = makeSeqSyncStack(lastSeqId: lastSeqId)
         XCTAssertEqual(syncStack.syncToken, "")
         XCTAssertEqual(syncStack.lastSeqId, lastSeqId)
-        XCTAssertEqual(syncStack.parameter.query(), "seq_id=\(lastSeqId)")
+        XCTAssertEqual(syncStack.seqParameter.query(), "seq_id=\(lastSeqId)")
     }
     #if !NO_FATAL_TEST
     func testSync_BothTokens_ShouldGetFatalError() {
         expectFatalError(expectedMessage: ("Both Sync Token and Pagination Token can not be presnet.")) {
             let syncStack = makeSyncStack(syncToken: self.syncToken, paginationToken: self.paginationToken, lastSeqId: self.lastSeqId)
-            XCTAssertNil(syncStack)
         }
     }
     #endif
@@ -71,4 +77,8 @@ class SyncTest: XCTestCase {
 
 func makeSyncStack(syncToken: String = "", paginationToken: String = "", lastSeqId: String = "") -> SyncStack {
     return SyncStack(syncToken: syncToken, paginationToken: paginationToken, lastSeqId: lastSeqId)
+}
+
+func makeSeqSyncStack(lastSeqId: String = "") -> SyncStack {
+    return SyncStack(lastSeqId: lastSeqId)
 }

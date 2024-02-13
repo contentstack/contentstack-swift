@@ -22,7 +22,14 @@ public final class SyncStack: Decodable {
     internal(set) public var items: [Any] = []
 
     internal var isInitialSync: Bool {
-        if syncToken.isEmpty && paginationToken.isEmpty && lastSeqId.isEmpty {
+        if syncToken.isEmpty && paginationToken.isEmpty {
+            return true
+        }
+        return false
+    }
+    
+    internal var isInitialSeqSync: Bool {
+        if lastSeqId.isEmpty {
             return true
         }
         return false
@@ -31,7 +38,12 @@ public final class SyncStack: Decodable {
     internal var hasMorePages: Bool {
         if !paginationToken.isEmpty {
             return true
-        } else if !lastSeqId.isEmpty {
+        }
+        return false
+    }
+    
+    internal var hasMoreSeq: Bool {
+        if !lastSeqId.isEmpty {
             return true
         }
         return false
@@ -42,7 +54,13 @@ public final class SyncStack: Decodable {
             return ["sync_token": syncToken]
         } else if !paginationToken.isEmpty {
             return ["pagination_token": paginationToken]
-        } else if !lastSeqId.isEmpty {
+        }
+        return ["init": true]
+        /// Test case should check
+    }
+    
+    internal var seqParameter: Parameters {
+        if !lastSeqId.isEmpty {
             return ["seq_id": lastSeqId]
         }
         return ["init": true, "seq_id": true]
@@ -63,7 +81,6 @@ public final class SyncStack: Decodable {
         }
         self.syncToken = syncToken
         self.paginationToken = paginationToken
-        let lastSeqId1 = lastSeqId
         self.lastSeqId = self.lastSeqId != lastSeqId ? lastSeqId : "";
     }
 
