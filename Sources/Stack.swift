@@ -458,7 +458,7 @@ extension Stack {
         }
     }
     
-    public func seqSync(_ syncStack: SyncStack = SyncStack(),
+    public func initSeqSync(_ syncStack: SyncStack = SyncStack(),
                      syncTypes: [SyncStack.SyncableTypes] = [.all],
                      then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {
         var parameter = syncStack.seqParameter
@@ -475,10 +475,10 @@ extension Stack {
             case .success(let data):
                 do {
                     let updatedSyncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
-                    updatedSyncStack.lastSeqId = syncStack.lastSeqId != updatedSyncStack.lastSeqId ? updatedSyncStack.lastSeqId : ""
+                    updatedSyncStack.lastSeqId = updatedSyncStack.items.count > 0 ? updatedSyncStack.lastSeqId : ""
                     completion(.success(updatedSyncStack))
                     if updatedSyncStack.hasMoreSeq {
-                        self.seqSync(updatedSyncStack, then: completion)
+                        self.initSeqSync(updatedSyncStack, then: completion)
                     }
                 } catch let error {
                     completion(.failure(error))
@@ -489,7 +489,7 @@ extension Stack {
         }
     }
 
-    public func seqSync(_ syncStack: SyncStack = SyncStack(), syncTypes: [SyncStack.SyncableTypes] = [.all]) async throws -> AsyncThrowingStream<SyncStack, Error> {
+    public func initSeqSync(_ syncStack: SyncStack = SyncStack(), syncTypes: [SyncStack.SyncableTypes] = [.all]) async throws -> AsyncThrowingStream<SyncStack, Error> {
         return AsyncThrowingStream { continuation in
             Task {
                 do {
@@ -532,7 +532,7 @@ extension Stack {
         case .success(let data):
             do {
                 let updatedSyncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
-                updatedSyncStack.lastSeqId = syncStack.lastSeqId != updatedSyncStack.lastSeqId ? updatedSyncStack.lastSeqId : ""
+                updatedSyncStack.lastSeqId = updatedSyncStack.items.count > 0 ? updatedSyncStack.lastSeqId : ""
                 return .success(updatedSyncStack)
             } catch let error {
                 return .failure(error)
