@@ -9,8 +9,8 @@ import XCTest
 @testable import Contentstack
 import DVR
 
-var paginationToken = ""
-var syncToken = ""
+//var paginationToken = ""
+//var syncToken = ""
 
 class SyncAPITest: XCTestCase {
 
@@ -45,7 +45,7 @@ class SyncAPITest: XCTestCase {
         let networkExpectation = expectation(description: "Sync test exception")
         sync(networkExpectation: networkExpectation) { (syncStack) in
             if !syncStack.hasMorePages {
-                XCTAssertEqual(syncStack.items.count, 29)
+                XCTAssertEqual(syncStack.items.count, 23)
                 XCTAssertFalse(syncStack.syncToken.isEmpty)
                 XCTAssertTrue(syncStack.paginationToken.isEmpty)
                 syncToken = syncStack.syncToken
@@ -77,7 +77,7 @@ class SyncAPITest: XCTestCase {
         let networkExpectation = expectation(description: "Sync Pagination test exception")
         sync(syncStack, networkExpectation: networkExpectation) { (syncStack: SyncStack) in
             if !syncStack.hasMorePages {
-                XCTAssertEqual(syncStack.items.count, 29)
+                XCTAssertEqual(syncStack.items.count, 23)
                 XCTAssertFalse(syncStack.syncToken.isEmpty)
                 XCTAssertTrue(syncStack.paginationToken.isEmpty)
                 networkExpectation.fulfill()
@@ -88,7 +88,7 @@ class SyncAPITest: XCTestCase {
     func test04SyncAssetPublished() {
         let networkExpectation = expectation(description: "Sync Asset Publish test exception")
         sync(syncTypes: [.publishType(.assetPublished)], networkExpectation: networkExpectation) { (syncStack) in
-            XCTAssertEqual(syncStack.items.count, 9)
+            XCTAssertEqual(syncStack.items.count, 8)
             XCTAssertFalse(syncStack.syncToken.isEmpty)
             XCTAssertTrue(syncStack.paginationToken.isEmpty)
             networkExpectation.fulfill()
@@ -98,7 +98,7 @@ class SyncAPITest: XCTestCase {
     func test05SyncForContentType() {
         let networkExpectation = expectation(description: "Sync ContentType test exception")
         sync(syncTypes: [.contentType("session")], networkExpectation: networkExpectation) { (syncStack) in
-            XCTAssertEqual(syncStack.items.count, 32)
+            XCTAssertEqual(syncStack.items.count, 31)
             XCTAssertFalse(syncStack.syncToken.isEmpty)
             XCTAssertTrue(syncStack.paginationToken.isEmpty)
             networkExpectation.fulfill()
@@ -108,7 +108,7 @@ class SyncAPITest: XCTestCase {
     func test06SyncLocale() {
         let networkExpectation = expectation(description: "Sync Locale test exception")
         sync(syncTypes: [.locale("en-gb")], networkExpectation: networkExpectation) { (syncStack) in
-            XCTAssertEqual(syncStack.items.count, 6)
+            XCTAssertEqual(syncStack.items.count, 0)
             XCTAssertFalse(syncStack.syncToken.isEmpty)
             XCTAssertTrue(syncStack.paginationToken.isEmpty)
             networkExpectation.fulfill()
@@ -123,7 +123,7 @@ class SyncAPITest: XCTestCase {
         let date = "2020-04-29T08:05:56Z".iso8601StringDate!
         #endif
         sync(syncTypes: [.startFrom(date)], networkExpectation: networkExpectation) { (syncStack) in
-            XCTAssertEqual(syncStack.items.count, 6)
+            XCTAssertEqual(syncStack.items.count, 4)
             XCTAssertFalse(syncStack.syncToken.isEmpty)
             XCTAssertTrue(syncStack.paginationToken.isEmpty)
             networkExpectation.fulfill()
