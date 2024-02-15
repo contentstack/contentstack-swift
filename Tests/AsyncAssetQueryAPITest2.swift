@@ -178,7 +178,7 @@ class AsyncAssetQueryAPITest2: XCTestCase {
         wait(for: [networkExpectation], timeout: 5)
     }
     
-    func test12Fetch_Asset_UIDWithoutFallback_NoResult() async {
+    func test13Fetch_Asset_UIDWithoutFallback_NoResult() async {
         let networkExpectation = expectation(description: "Fetch Asset from UID without Fallback Test")
         do {
             let data: ContentstackResponse<AssetModel> = try await self.getAsset(uid: kAssetLocaliseUID).locale("en-gb").fetch()
@@ -186,14 +186,14 @@ class AsyncAssetQueryAPITest2: XCTestCase {
         } catch {
             if let error = error as? APIError {
                 XCTAssertEqual(error.errorCode, 145)
-                XCTAssertEqual(error.errorMessage, "Asset was not found")
+                XCTAssertEqual(error.errorMessage, "Asset was not found.")
             }
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
     }
     
-    func test13Fetch_Asset_UIDWithFallback_NoResult() async {
+    func test14Fetch_Asset_UIDWithFallback_NoResult() async {
         let networkExpectation = expectation(description: "Fetch Asset from UID without Fallback Test")
         let data: ContentstackResponse<AssetModel> = try! await self.getAsset(uid: kAssetLocaliseUID).locale(locale).includeFallback().fetch()
         if let fields = data.fields,

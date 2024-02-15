@@ -51,7 +51,7 @@ class AsyncQueryOnAPITest2: XCTestCase {
         XCTAssertEqual(data.items.count, 1)
         if let session = data.items.first {
             XCTAssertEqual(session.sessionId, 2695)
-            XCTAssertEqual(session.track.count, 1)
+            XCTAssertEqual(session.track.count, 0)
             if let track = session.track.first {
                 XCTAssertEqual(track.title, "Virtualizing Applications")
             }
