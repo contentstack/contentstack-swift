@@ -373,7 +373,10 @@ extension Stack {
     ///    }
     /// }
     ///```
-    public func sync(_ syncStack: SyncStack = SyncStack(), syncTypes: [SyncStack.SyncableTypes] = [.all], then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {
+    @available(*, deprecated, message: "This method will be deprecated soon. Please use seqSync instead")
+    public func sync(_ syncStack: SyncStack = SyncStack(),
+                     syncTypes: [SyncStack.SyncableTypes] = [.all],
+                     then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {
         var parameter = syncStack.parameter
         if syncStack.isInitialSync {
             for syncType in syncTypes {
@@ -381,8 +384,9 @@ extension Stack {
             }
         }
         let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
-
-        fetchUrl(url, headers: [:], cachePolicy: .networkOnly) { (result: Result<Data, Error>, _: ResponseType) in
+        fetchUrl(url,
+                 headers: [:],
+                 cachePolicy: .networkOnly) { (result: Result<Data, Error>, _: ResponseType) in
             switch result {
             case .success(let data):
                 do {
@@ -399,7 +403,8 @@ extension Stack {
             }
         }
     }
-    
+
+    @available(*, deprecated, message: "This method will be deprecated soon. Please use seqSync instead")
     public func sync(_ syncStack: SyncStack = SyncStack(), syncTypes: [SyncStack.SyncableTypes] = [.all]) async throws -> AsyncThrowingStream<SyncStack, Error> {
         return AsyncThrowingStream { continuation in
             Task {
@@ -427,7 +432,8 @@ extension Stack {
             }
         }
     }
-    
+
+    @available(*, deprecated, message: "This method will be deprecated soon. Please use syncSequence instead")
     public func syncPage(_ syncStack: SyncStack, syncTypes: [SyncStack.SyncableTypes]) async throws -> Result<SyncStack, Error> {
         var parameter = syncStack.parameter
         
@@ -444,6 +450,90 @@ extension Stack {
             do {
                 let syncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
                 return .success(syncStack)
+            } catch let error {
+                return .failure(error)
+            }
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+    
+    public func initSeqSync(_ syncStack: SyncStack = SyncStack(),
+                     syncTypes: [SyncStack.SyncableTypes] = [.all],
+                     then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {
+        var parameter = syncStack.seqParameter
+        if syncStack.isInitialSeqSync {
+            for syncType in syncTypes {
+                parameter = parameter + syncType.parameters
+            }
+        }
+        let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
+        fetchUrl(url,
+                 headers: [:],
+                 cachePolicy: .networkOnly) { (result: Result<Data, Error>, _: ResponseType) in
+            switch result {
+            case .success(let data):
+                do {
+                    let updatedSyncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
+                    updatedSyncStack.lastSeqId = updatedSyncStack.items.count > 0 ? updatedSyncStack.lastSeqId : ""
+                    completion(.success(updatedSyncStack))
+                    if updatedSyncStack.hasMoreSeq {
+                        self.initSeqSync(updatedSyncStack, then: completion)
+                    }
+                } catch let error {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    public func initSeqSync(_ syncStack: SyncStack = SyncStack(), syncTypes: [SyncStack.SyncableTypes] = [.all]) async throws -> AsyncThrowingStream<SyncStack, Error> {
+        return AsyncThrowingStream { continuation in
+            Task {
+                do {
+                    var currentSeqStack = syncStack
+                    repeat {
+                        let result: Result<SyncStack, Error> = try await syncSequence(currentSeqStack, syncTypes: syncTypes)
+                        
+                        switch result {
+                        case .success(let data):
+                            // Emit the current result to the stream
+                            continuation.yield(data)
+                        case .failure(let error):
+                            continuation.finish(throwing: error)
+                        }
+                        // Update the current page stack for the next iteration
+                        currentSeqStack = try result.get()
+                    } while (currentSeqStack.hasMoreSeq)
+                    // Finish the stream when there are no more pages
+                    continuation.finish()
+                } catch {
+                    // If an error occurs, end the stream
+                    continuation.finish(throwing: error)
+                }
+            }
+        }
+    }
+
+    public func syncSequence(_ syncStack: SyncStack, syncTypes: [SyncStack.SyncableTypes]) async throws -> Result<SyncStack, Error> {
+        var parameter = syncStack.seqParameter
+        
+        if syncStack.isInitialSeqSync {
+            for syncType in syncTypes {
+                parameter = parameter + syncType.parameters
+            }
+        }
+        
+        let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
+        let (data, _): (Result<Data, Error>, ResponseType) = try await asyncFetchUrl(url: url, headers: [:], cachePolicy: .networkOnly)
+        switch data {
+        case .success(let data):
+            do {
+                let updatedSyncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
+                updatedSyncStack.lastSeqId = updatedSyncStack.items.count > 0 ? updatedSyncStack.lastSeqId : ""
+                return .success(updatedSyncStack)
             } catch let error {
                 return .failure(error)
             }
