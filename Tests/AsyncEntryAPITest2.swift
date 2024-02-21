@@ -9,11 +9,11 @@ import XCTest
 @testable import Contentstack
 import DVR
 
-//var kEntryUID = ""
-var kEntryLocaliseUID = ""
-//var kEntryTitle = ""
-
 class AsyncEntryAPITest2: XCTestCase {
+    var kEntryUID = ""
+    var kEntryLocaliseUID = ""
+    var kEntryTitle = ""
+    
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "Entry")
     
     func getEntry(uid: String? = nil) -> Entry {

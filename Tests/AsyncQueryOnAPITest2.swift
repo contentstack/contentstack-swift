@@ -9,10 +9,11 @@ import XCTest
 @testable import Contentstack
 import DVR
 
-var kEntryUID = ""
-var kEntryTitle = ""
-
 class AsyncQueryOnAPITest2: XCTestCase {
+    
+    var kEntryUID = ""
+    var kEntryTitle = ""
+    
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "QueryOn")
     
     func getEntry(uid: String? = nil) -> Entry {
@@ -38,8 +39,8 @@ class AsyncQueryOnAPITest2: XCTestCase {
         let data: ContentstackResponse<Session> = try! await self.getEntryQuery(Session.self).locale("en-us").find()
         XCTAssertEqual(data.items.count, 31)
         if let entry = data.items.first {
-            kEntryUID = entry.uid
-            kEntryTitle = entry.title
+            self.kEntryUID = entry.uid
+            self.kEntryTitle = entry.title
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)

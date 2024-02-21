@@ -9,10 +9,10 @@ import XCTest
 @testable import Contentstack
 import DVR
 
-var paginationToken = ""
-var syncToken = ""
-
 class AsyncSyncAPITest2: XCTestCase {
+    
+    var paginationToken = ""
+    var syncToken = ""
     
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "SyncTest")
 
@@ -50,12 +50,12 @@ class AsyncSyncAPITest2: XCTestCase {
                     XCTAssertEqual(data.items.count, 23)
                     XCTAssertFalse(data.syncToken.isEmpty)
                     XCTAssertTrue(data.paginationToken.isEmpty)
-                    syncToken = data.syncToken
+                    self.syncToken = data.syncToken
                 } else {
                     XCTAssertEqual(data.items.count, 100)
                     XCTAssertFalse(data.paginationToken.isEmpty)
                     XCTAssertTrue(data.syncToken.isEmpty)
-                    paginationToken = data.paginationToken
+                    self.paginationToken = data.paginationToken
                 }
             }
         } catch {
@@ -66,7 +66,7 @@ class AsyncSyncAPITest2: XCTestCase {
     }
     
     func test02SyncToken() async {
-        let syncStack = SyncStack(syncToken: syncToken)
+        let syncStack = SyncStack(syncToken: self.syncToken)
         let syncTypes: [SyncStack.SyncableTypes] = [.all]
         let networkExpectation = expectation(description: "Sync Token test exception")
         do {
@@ -86,7 +86,7 @@ class AsyncSyncAPITest2: XCTestCase {
     }
 
     func test03SyncPagination() async {
-        let syncStack = SyncStack(paginationToken: paginationToken)
+        let syncStack = SyncStack(paginationToken: self.paginationToken)
         let networkExpectation = expectation(description: "Sync Pagination test exception")
         do {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncStack)
