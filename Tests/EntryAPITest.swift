@@ -8,9 +8,9 @@
 import XCTest
 @testable import Contentstack
 import DVR
-//var kEntryUID = ""
-//var kEntryLocaliseUID = ""
-//var kEntryTitle = ""
+var kEntryUID = ""
+var kEntryLocaliseUID = ""
+var kEntryTitle = ""
 
 class EntryAPITest: XCTestCase {
     static let stack = TestContentstackClient.testStack(cassetteName: "Entry")

@@ -8,8 +8,8 @@
 import XCTest
 @testable import Contentstack
 import DVR
-//var kContentTypeUID = ""
-//var kContentTitle = ""
+var kContentTypeUID = ""
+var kContentTitle = ""
 
 class ContentTypeQueryAPITest: XCTestCase {
 

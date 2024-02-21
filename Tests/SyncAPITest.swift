@@ -9,8 +9,8 @@ import XCTest
 @testable import Contentstack
 import DVR
 
-//var paginationToken = ""
-//var syncToken = ""
+var paginationToken = ""
+var syncToken = ""
 
 class SyncAPITest: XCTestCase {
 
