@@ -74,7 +74,7 @@ class AsyncSyncAPITest2: XCTestCase {
             for try await data in syncStream {
                 if !data.hasMorePages {
                     XCTAssertEqual(syncStack.items.count, 0)
-                    XCTAssertTrue(syncStack.syncToken.isEmpty)
+                    XCTAssertFalse(syncStack.syncToken.isEmpty)
                     XCTAssertTrue(syncStack.paginationToken.isEmpty)
                 }
             }
