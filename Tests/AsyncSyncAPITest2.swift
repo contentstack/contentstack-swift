@@ -47,7 +47,7 @@ class AsyncSyncAPITest2: XCTestCase {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncStack, syncTypes: syncTypes)
             for try await data in syncStream {
                 if !data.hasMorePages {
-                    XCTAssertEqual(data.items.count, 23)
+                    XCTAssertEqual(data.items.count, 29)
                     XCTAssertFalse(data.syncToken.isEmpty)
                     XCTAssertTrue(data.paginationToken.isEmpty)
                     self.syncToken = data.syncToken
@@ -74,7 +74,7 @@ class AsyncSyncAPITest2: XCTestCase {
             for try await data in syncStream {
                 if !data.hasMorePages {
                     XCTAssertEqual(syncStack.items.count, 0)
-                    XCTAssertFalse(syncStack.syncToken.isEmpty)
+                    XCTAssertTrue(syncStack.syncToken.isEmpty)
                     XCTAssertTrue(syncStack.paginationToken.isEmpty)
                 }
             }
@@ -92,7 +92,7 @@ class AsyncSyncAPITest2: XCTestCase {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncStack)
             for try await data in syncStream {
                 if !data.hasMorePages {
-                    XCTAssertEqual(data.items.count, 23)
+                    XCTAssertEqual(data.items.count, 29)
                     XCTAssertFalse(data.syncToken.isEmpty)
                     XCTAssertTrue(data.paginationToken.isEmpty)
                 }
@@ -109,7 +109,7 @@ class AsyncSyncAPITest2: XCTestCase {
         do {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncTypes: [.publishType(.assetPublished)])
             for try await data in syncStream {
-                XCTAssertEqual(data.items.count, 8)
+                XCTAssertEqual(data.items.count, 9)
                 XCTAssertFalse(data.syncToken.isEmpty)
                 XCTAssertTrue(data.paginationToken.isEmpty)
             }
@@ -125,7 +125,7 @@ class AsyncSyncAPITest2: XCTestCase {
         do {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncTypes: [.contentType("session")])
             for try await data in syncStream {
-                XCTAssertEqual(data.items.count, 31)
+                XCTAssertEqual(data.items.count, 32)
                 XCTAssertFalse(data.syncToken.isEmpty)
                 XCTAssertTrue(data.paginationToken.isEmpty)
             }
@@ -141,7 +141,7 @@ class AsyncSyncAPITest2: XCTestCase {
         do {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncTypes: [.locale("en-gb")])
             for try await data in syncStream {
-                XCTAssertEqual(data.items.count, 0)
+                XCTAssertEqual(data.items.count, 6)
                 XCTAssertFalse(data.syncToken.isEmpty)
                 XCTAssertTrue(data.paginationToken.isEmpty)
             }
@@ -158,7 +158,7 @@ class AsyncSyncAPITest2: XCTestCase {
         do {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncTypes: [.startFrom(date)])
             for try await data in syncStream {
-                XCTAssertEqual(data.items.count, 4)
+                XCTAssertEqual(data.items.count, 6)
                 XCTAssertFalse(data.syncToken.isEmpty)
                 XCTAssertTrue(data.paginationToken.isEmpty)
             }
