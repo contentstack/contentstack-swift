@@ -14,6 +14,7 @@ class EntryAPITest: XCTestCase {
     static var kEntryUID = ""
     static var kEntryLocaliseUID = ""
     static var kEntryTitle = ""
+    let locale = "en-gb"
 
     func getEntry(uid: String? = nil) -> Entry {
         return EntryAPITest.stack.contentType(uid: "session").entry(uid: uid)
@@ -887,7 +888,7 @@ class EntryAPITest: XCTestCase {
                         if let fields = model.fields,
                         let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
                         let publishLocale = publishDetails["locale"] as? String {
-                            XCTAssertEqual(publishLocale, locale)
+                            XCTAssertEqual(publishLocale, self.locale)
                         }
                     }
                 case .failure(let error):
@@ -910,7 +911,7 @@ class EntryAPITest: XCTestCase {
                         if let fields = model.fields,
                         let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
                         let publishLocale = publishDetails["locale"] as? String {
-                            XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
+                            XCTAssert(["en-us", self.locale].contains(publishLocale), "\(publishLocale) not matching")
                         }
                     }
                     if let model =  response.items.first(where: { (model) -> Bool in
@@ -959,7 +960,7 @@ class EntryAPITest: XCTestCase {
             switch result {
             case .success(let model):
                 if let fields = model.fields, let publishLocale = fields["publish_details.locale"] as? String {
-                    XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
+                    XCTAssert(["en-us", self.locale].contains(publishLocale), "\(publishLocale) not matching")
                 }
             case .failure(let error):
                 XCTFail("\(error)")
