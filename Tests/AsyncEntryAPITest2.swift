@@ -13,7 +13,6 @@ class AsyncEntryAPITest2: XCTestCase {
     static var kEntryUID = ""
     static var kEntryLocaliseUID = ""
     static var kEntryTitle = ""
-    static let locale = "en-gb"
     
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "Entry")
     
