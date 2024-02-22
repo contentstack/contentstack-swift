@@ -11,8 +11,8 @@ import DVR
 
 class ContentTypeQueryAPITest: XCTestCase {
     
-    var kContentTypeUID = ""
-    var kContentTitle = ""
+    static var kContentTypeUID: String = ""
+    static var kContentTitle: String = ""
 
     static let stack = TestContentstackClient.testStack(cassetteName: "ContentType")
     
@@ -48,8 +48,8 @@ class ContentTypeQueryAPITest: XCTestCase {
             case .success(let contentstackResponse):
                 XCTAssertEqual(contentstackResponse.items.count, 11)
                 if let contentType = contentstackResponse.items.first {
-                    self.kContentTypeUID = contentType.uid
-                    self.kContentTitle = contentType.title
+                    ContentTypeQueryAPITest.kContentTypeUID = contentType.uid
+                    ContentTypeQueryAPITest.kContentTitle = contentType.title
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -61,11 +61,11 @@ class ContentTypeQueryAPITest: XCTestCase {
     
     func test02Find_ContentTypeQuery_whereUIDEquals() {
         let networkExpectation = expectation(description: "Fetch where UID equals ContentTypes Test")
-        self.queryWhere(.uid, operation: .equals(self.kContentTypeUID)) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
+        self.queryWhere(.uid, operation: .equals(ContentTypeQueryAPITest.kContentTypeUID)) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
             switch result {
             case .success(let contentstackResponse):
                 for contentType in contentstackResponse.items {
-                    XCTAssertEqual(contentType.uid, self.kContentTypeUID)
+                    XCTAssertEqual(contentType.uid, ContentTypeQueryAPITest.kContentTypeUID)
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -77,11 +77,11 @@ class ContentTypeQueryAPITest: XCTestCase {
     
     func test03Find_ContentTypeQuery_whereTitleDNotEquals() {
         let networkExpectation = expectation(description: "Fetch where Title equals ContentTypes Test")
-        self.queryWhere(.title, operation: .notEquals(self.kContentTitle)) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
+        self.queryWhere(.title, operation: .notEquals(ContentTypeQueryAPITest.kContentTitle)) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
             switch result {
             case .success(let contentstackResponse):
                 for contentType in contentstackResponse.items {
-                    XCTAssertNotEqual(contentType.title, self.kContentTitle)
+                    XCTAssertNotEqual(contentType.title, ContentTypeQueryAPITest.kContentTitle)
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -121,10 +121,10 @@ class ContentTypeQueryAPITest: XCTestCase {
 
     func test06Fetch_ContentType_fromUID() {
         let networkExpectation = expectation(description: "Fetch ContentTypes from UID Test")
-        self.getContentType(uid: self.kContentTypeUID).fetch { (result: Result<ContentTypeModel, Error>, response: ResponseType) in
+        self.getContentType(uid: ContentTypeQueryAPITest.kContentTypeUID).fetch { (result: Result<ContentTypeModel, Error>, response: ResponseType) in
             switch result {
             case .success(let model):
-                XCTAssertEqual(model.uid, self.kContentTypeUID)
+                XCTAssertEqual(model.uid, ContentTypeQueryAPITest.kContentTypeUID)
             case .failure(let error):
                 XCTFail("\(error)")
             }
@@ -144,7 +144,7 @@ class ContentTypeQueryAPITest: XCTestCase {
                         model.schema.forEach { (schema) in
                             if let dataType = schema["data_type"] as? String,
                                 dataType == "global_field" {
-                                self.kContentTypeUID = model.uid
+                                ContentTypeQueryAPITest.kContentTypeUID = model.uid
                                 XCTAssertNotNil(schema["schema"])
                             }
                         }
@@ -160,7 +160,7 @@ class ContentTypeQueryAPITest: XCTestCase {
     
     func test08Fetch_ContentType_WithGlobalFields() {
         let networkExpectation = expectation(description: "Fetch ContentTypes with GlobalFields Test")
-        self.getContentType(uid: self.kContentTypeUID)
+        self.getContentType(uid: ContentTypeQueryAPITest.kContentTypeUID)
             .includeGlobalFields()
             .fetch { (result: Result<ContentTypeModel, Error>, response: ResponseType) in
                 switch result {
