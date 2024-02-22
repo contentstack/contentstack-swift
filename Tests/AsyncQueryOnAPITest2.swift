@@ -11,8 +11,8 @@ import DVR
 
 class AsyncQueryOnAPITest2: XCTestCase {
     
-    var kEntryUID = ""
-    var kEntryTitle = ""
+    static var kEntryUID = ""
+    static var kEntryTitle = ""
     
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "QueryOn")
     
@@ -39,8 +39,8 @@ class AsyncQueryOnAPITest2: XCTestCase {
         let data: ContentstackResponse<Session> = try! await self.getEntryQuery(Session.self).locale("en-us").find()
         XCTAssertEqual(data.items.count, 31)
         if let entry = data.items.first {
-            self.kEntryUID = entry.uid
-            self.kEntryTitle = entry.title
+            AsyncQueryOnAPITest2.kEntryUID = entry.uid
+            AsyncQueryOnAPITest2.kEntryTitle = entry.title
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)

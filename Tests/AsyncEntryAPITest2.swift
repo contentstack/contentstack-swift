@@ -10,9 +10,10 @@ import XCTest
 import DVR
 
 class AsyncEntryAPITest2: XCTestCase {
-    var kEntryUID = ""
-    var kEntryLocaliseUID = ""
-    var kEntryTitle = ""
+    static var kEntryUID = ""
+    static var kEntryLocaliseUID = ""
+    static var kEntryTitle = ""
+    static let locale = "en-gb"
     
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "Entry")
     
@@ -43,8 +44,8 @@ class AsyncEntryAPITest2: XCTestCase {
         let data: ContentstackResponse<EntryModel> = try! await self.getEntryQuery().find()
         XCTAssertEqual(data.items.count, 31)
         if let entry = data.items.first {
-            kEntryUID = entry.uid
-            kEntryTitle = entry.title
+            AsyncEntryAPITest2.kEntryUID = entry.uid
+            AsyncEntryAPITest2.kEntryTitle = entry.title
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -52,9 +53,9 @@ class AsyncEntryAPITest2: XCTestCase {
     
     func test02Find_EntryQuery_whereUIDEquals() async {
         let networkExpectation = expectation(description: "Fetch where UID equals Entry Test")
-        let data: ContentstackResponse<EntryModel> = await self.asyncQueryWhere(.uid, operation: .equals(kEntryUID))
+        let data: ContentstackResponse<EntryModel> = await self.asyncQueryWhere(.uid, operation: .equals(AsyncEntryAPITest2.kEntryUID))
         for entry in data.items {
-            XCTAssertEqual(entry.uid, kEntryUID)
+            XCTAssertEqual(entry.uid, AsyncEntryAPITest2.kEntryUID)
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -62,9 +63,9 @@ class AsyncEntryAPITest2: XCTestCase {
 
     func test03Find_EntryQuery_whereTitleDNotEquals() async {
         let networkExpectation = expectation(description: "Fetch where Title equals Entry Test")
-        let data: ContentstackResponse<EntryModel> = await self.asyncQueryWhere(.title, operation: .notEquals(kEntryTitle))
+        let data: ContentstackResponse<EntryModel> = await self.asyncQueryWhere(.title, operation: .notEquals(AsyncEntryAPITest2.kEntryTitle))
         for entry in data.items {
-            XCTAssertNotEqual(entry.title, kEntryTitle)
+            XCTAssertNotEqual(entry.title, AsyncEntryAPITest2.kEntryTitle)
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -88,8 +89,8 @@ class AsyncEntryAPITest2: XCTestCase {
     
     func test06Fetch_Entry_fromUID() async {
         let networkExpectation = expectation(description: "Fetch Entry from UID Test")
-        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: kEntryUID).fetch()
-        XCTAssertEqual(data.items.first?.uid, kEntryUID)
+        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).fetch()
+        XCTAssertEqual(data.items.first?.uid, AsyncEntryAPITest2.kEntryUID)
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
     }
@@ -104,7 +105,7 @@ class AsyncEntryAPITest2: XCTestCase {
     
     func test08Fetch_Entry_WithGlobalFields() async {
         let networkExpectation = expectation(description: "Fetch Entry with GlobalFields Test")
-        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: kEntryUID).include(params: .globalField).fetch()
+        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).include(params: .globalField).fetch()
         if let contentType = data.items.first?.contentType {
             contentType.schema.forEach { (schema) in
                 if let dataType = schema["data_type"] as? String,
@@ -127,7 +128,7 @@ class AsyncEntryAPITest2: XCTestCase {
     
     func test10Fetch_Entry_WithIncludeContentType() async {
         let networkExpectation = expectation(description: "Fetch Entry with include ContentType Test")
-        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: kEntryUID).include(params: .contentType).fetch()
+        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).include(params: .contentType).fetch()
         XCTAssertNotNil(data.items.first?.contentType)
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -527,7 +528,7 @@ class AsyncEntryAPITest2: XCTestCase {
     func test27Fetch_Entry_IncludeReference() async {
         let networkExpectation = expectation(description: "Fetch Entry Include Reference Test")
         
-        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: kEntryUID).includeReference(with: ["track", "room"]).fetch()
+        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).includeReference(with: ["track", "room"]).fetch()
         if let fields = data.fields {
             if let track = fields["track"],
                 !(track is [EntryModel]) {
@@ -566,7 +567,7 @@ class AsyncEntryAPITest2: XCTestCase {
         let networkExpectation = expectation(description: "Fetch Entry Include Reference Only Test")
         let keys = ["track_color"]
         
-        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: kEntryUID).includeReferenceField(with: "track", only: keys).fetch()
+        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).includeReferenceField(with: "track", only: keys).fetch()
         if let fields = data.fields {
             if let tracks = fields["track"] as? [[String: Any]] {
                 for track in tracks {
@@ -605,7 +606,7 @@ class AsyncEntryAPITest2: XCTestCase {
         let networkExpectation = expectation(description: "Fetch Entry Include Reference Except Test")
         let keys = ["track_color"]
         
-        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: kEntryUID).includeReferenceField(with: "track", except: keys).fetch()
+        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).includeReferenceField(with: "track", except: keys).fetch()
         if let fields = data.fields {
             if let tracks = fields["track"] as? [EntryModel] {
                 for track in tracks {
@@ -651,7 +652,7 @@ class AsyncEntryAPITest2: XCTestCase {
             }
             return false
         }) {
-            kEntryLocaliseUID = model.uid
+            AsyncEntryAPITest2.kEntryLocaliseUID = model.uid
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -660,7 +661,7 @@ class AsyncEntryAPITest2: XCTestCase {
     func test34Fetch_Entry_UIDWithoutFallback_NoResult() async {
         let networkExpectation = expectation(description: "Fetch Entry from UID without Fallback Test")
         do {
-            let data: ContentstackResponse<EntryModel> = try await self.getEntry(uid: kEntryLocaliseUID).locale("en-gb").fetch()
+            let data: ContentstackResponse<EntryModel> = try await self.getEntry(uid: AsyncEntryAPITest2.kEntryLocaliseUID).locale("en-gb").fetch()
             XCTFail("UID should not be present")
         } catch {
             if let error = error as? APIError {
@@ -674,7 +675,7 @@ class AsyncEntryAPITest2: XCTestCase {
     
     func test35Fetch_Entry_UIDWithFallback_NoResult() async {
         let networkExpectation = expectation(description: "Fetch Entry from UID without Fallback Test")
-        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: kEntryLocaliseUID).locale(locale).include(params: .fallback).fetch()
+        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryLocaliseUID).locale(locale).include(params: .fallback).fetch()
         if let fields = data.fields, let publishLocale = fields["publish_details.locale"] as? String {
             XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
         }
