@@ -43,7 +43,7 @@ class AsyncQueryOnAPITest2: XCTestCase {
             AsyncQueryOnAPITest2.kEntryTitle = entry.title
         }
         networkExpectation.fulfill()
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 20)
     }
 
     func test02FindAll_SessionReference() async {
@@ -58,6 +58,6 @@ class AsyncQueryOnAPITest2: XCTestCase {
             }
         }
         networkExpectation.fulfill()
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 20)
     }
 }

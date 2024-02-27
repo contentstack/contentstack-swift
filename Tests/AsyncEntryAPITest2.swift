@@ -378,7 +378,7 @@ class AsyncEntryAPITest2: XCTestCase {
             }
         }
         networkExpectationDesc.fulfill()
-        wait(for: [networkExpectation, networkExpectationDesc], timeout: 5)
+        wait(for: [networkExpectation, networkExpectationDesc], timeout: 20)
     }
     
     func test20Find_EntryQuery_AndOrOperator() async {
