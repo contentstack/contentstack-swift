@@ -164,10 +164,6 @@
 		0FD39D4A24237A0400E34826 /* ContentTypeQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD39D4924237A0400E34826 /* ContentTypeQueryTest.swift */; };
 		0FD39D4B24237A0400E34826 /* ContentTypeQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD39D4924237A0400E34826 /* ContentTypeQueryTest.swift */; };
 		0FD39D4C24237A0400E34826 /* ContentTypeQueryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD39D4924237A0400E34826 /* ContentTypeQueryTest.swift */; };
-		0FD6F8F22620194100636504 /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 0FD6F8F12620194100636504 /* ContentstackUtils */; };
-		0FD6F9102620194C00636504 /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 0FD6F90F2620194C00636504 /* ContentstackUtils */; };
-		0FD6F9122620195300636504 /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 0FD6F9112620195300636504 /* ContentstackUtils */; };
-		0FD6F9142620195800636504 /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 0FD6F9132620195800636504 /* ContentstackUtils */; };
 		0FFA5D4A241F4DED003B3AF5 /* ContentstackConfigTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFA5D49241F4DED003B3AF5 /* ContentstackConfigTest.swift */; };
 		0FFA5D4E241F4FAC003B3AF5 /* Contentstack.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFA5D4B241F4FAC003B3AF5 /* Contentstack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0FFA5D4F241F4FAC003B3AF5 /* Contentstack.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FFA5D4B241F4FAC003B3AF5 /* Contentstack.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -263,6 +259,13 @@
 		47AAE0912B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
 		47AAE0922B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
 		47F96B752B4734270081B4C6 /* AsyncQueryOnAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F96B742B4734270081B4C6 /* AsyncQueryOnAPITest2.swift */; };
+		642AD4332B86110100E2AFDF /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD4322B86110100E2AFDF /* ContentstackUtils */; };
+		642AD4352B86111700E2AFDF /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD4342B86111700E2AFDF /* DVR */; };
+		642AD4372B86111A00E2AFDF /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD4362B86111A00E2AFDF /* ContentstackUtils */; };
+		642AD4392B86112100E2AFDF /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD4382B86112100E2AFDF /* ContentstackUtils */; };
+		642AD43B2B86112400E2AFDF /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD43A2B86112400E2AFDF /* DVR */; };
+		642AD43D2B86112C00E2AFDF /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD43C2B86112C00E2AFDF /* ContentstackUtils */; };
+		642AD43F2B86112F00E2AFDF /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD43E2B86112F00E2AFDF /* DVR */; };
 		CE3C328A2AD50FE8006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
 		CE3C328B2AD50FE9006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
 		CE3C328C2AD50FEA006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
@@ -404,8 +407,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FD6F8F22620194100636504 /* ContentstackUtils in Frameworks */,
 				47161ACA2B5D747D00AD615B /* DVR in Frameworks */,
+				642AD4332B86110100E2AFDF /* ContentstackUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +424,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FD6F9102620194C00636504 /* ContentstackUtils in Frameworks */,
+				642AD4352B86111700E2AFDF /* DVR in Frameworks */,
+				642AD4372B86111A00E2AFDF /* ContentstackUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +441,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FD6F9122620195300636504 /* ContentstackUtils in Frameworks */,
+				642AD4392B86112100E2AFDF /* ContentstackUtils in Frameworks */,
+				642AD43B2B86112400E2AFDF /* DVR in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +458,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FD6F9142620195800636504 /* ContentstackUtils in Frameworks */,
+				642AD43D2B86112C00E2AFDF /* ContentstackUtils in Frameworks */,
+				642AD43F2B86112F00E2AFDF /* DVR in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,8 +790,8 @@
 			);
 			name = "Contentstack iOS";
 			packageProductDependencies = (
-				0FD6F8F12620194100636504 /* ContentstackUtils */,
 				47161AC92B5D747D00AD615B /* DVR */,
+				642AD4322B86110100E2AFDF /* ContentstackUtils */,
 			);
 			productName = "Contentstack iOS";
 			productReference = 0F4A75CB241BAC4300E3A024 /* Contentstack.framework */;
@@ -824,7 +830,8 @@
 			);
 			name = "Contentstack macOS";
 			packageProductDependencies = (
-				0FD6F90F2620194C00636504 /* ContentstackUtils */,
+				642AD4342B86111700E2AFDF /* DVR */,
+				642AD4362B86111A00E2AFDF /* ContentstackUtils */,
 			);
 			productName = "Contentstack macOS";
 			productReference = 0F4A75EB241BAE6C00E3A024 /* Contentstack.framework */;
@@ -863,7 +870,8 @@
 			);
 			name = "Contentstack tvOS";
 			packageProductDependencies = (
-				0FD6F9112620195300636504 /* ContentstackUtils */,
+				642AD4382B86112100E2AFDF /* ContentstackUtils */,
+				642AD43A2B86112400E2AFDF /* DVR */,
 			);
 			productName = "Contentstack tvOS";
 			productReference = 0F4A7607241BAFE000E3A024 /* Contentstack.framework */;
@@ -902,7 +910,8 @@
 			);
 			name = "Contentstack watchOS";
 			packageProductDependencies = (
-				0FD6F9132620195800636504 /* ContentstackUtils */,
+				642AD43C2B86112C00E2AFDF /* ContentstackUtils */,
+				642AD43E2B86112F00E2AFDF /* DVR */,
 			);
 			productName = "Contentstack watchOS";
 			productReference = 0F4A7623241BB0A300E3A024 /* Contentstack.framework */;
@@ -961,8 +970,8 @@
 			);
 			mainGroup = OBJ_5;
 			packageReferences = (
-				0FD6F8F02620194100636504 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */,
 				47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */,
+				642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */,
 			);
 			productRefGroup = OBJ_14 /* Products */;
 			projectDirPath = "";
@@ -1385,7 +1394,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = J9SNGYGYZV;
+				DEVELOPMENT_TEAM = SMAKUMV86W;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1406,7 +1415,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1468,7 +1477,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = J9SNGYGYZV;
+				DEVELOPMENT_TEAM = SMAKUMV86W;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1485,7 +1494,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1543,7 +1552,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J9SNGYGYZV;
+				DEVELOPMENT_TEAM = SMAKUMV86W;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				"EXCLUDED_ARCHS[sdk=*]" = arm64;
@@ -1573,7 +1582,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "\"-D NO_FATAL_TEST\"";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1613,7 +1622,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = J9SNGYGYZV;
+				DEVELOPMENT_TEAM = SMAKUMV86W;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1708,7 +1717,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.2.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1785,7 +1794,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = 1.2.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1855,7 +1864,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-macOSTests";
@@ -1916,7 +1925,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-macOSTests";
@@ -1998,7 +2007,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.4;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -2071,7 +2080,7 @@
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.4;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -2368,6 +2377,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0F4FBC9A2420A17F007B8CAE /* Config.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -2382,7 +2392,7 @@
 					"DEBUG=1",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2400,6 +2410,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0F4FBC9A2420A17F007B8CAE /* Config.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
@@ -2412,7 +2423,7 @@
 					"SWIFT_PACKAGE=1",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2505,14 +2516,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0FD6F8F02620194100636504 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/contentstack/contentstack-utils-swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/venmo/DVR.git";
@@ -2521,30 +2524,53 @@
 				minimumVersion = 1.3.1;
 			};
 		};
+		642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/contentstack/contentstack-utils-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0FD6F8F12620194100636504 /* ContentstackUtils */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0FD6F8F02620194100636504 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
-			productName = ContentstackUtils;
-		};
-		0FD6F90F2620194C00636504 /* ContentstackUtils */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0FD6F8F02620194100636504 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
-			productName = ContentstackUtils;
-		};
-		0FD6F9112620195300636504 /* ContentstackUtils */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0FD6F8F02620194100636504 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
-			productName = ContentstackUtils;
-		};
-		0FD6F9132620195800636504 /* ContentstackUtils */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0FD6F8F02620194100636504 /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
-			productName = ContentstackUtils;
-		};
 		47161AC92B5D747D00AD615B /* DVR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */;
+			productName = DVR;
+		};
+		642AD4322B86110100E2AFDF /* ContentstackUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
+			productName = ContentstackUtils;
+		};
+		642AD4342B86111700E2AFDF /* DVR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */;
+			productName = DVR;
+		};
+		642AD4362B86111A00E2AFDF /* ContentstackUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
+			productName = ContentstackUtils;
+		};
+		642AD4382B86112100E2AFDF /* ContentstackUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
+			productName = ContentstackUtils;
+		};
+		642AD43A2B86112400E2AFDF /* DVR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */;
+			productName = DVR;
+		};
+		642AD43C2B86112C00E2AFDF /* ContentstackUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
+			productName = ContentstackUtils;
+		};
+		642AD43E2B86112F00E2AFDF /* DVR */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */;
 			productName = DVR;

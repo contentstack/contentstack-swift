@@ -9,12 +9,11 @@ import XCTest
 @testable import Contentstack
 import DVR
 
- var kContentTypeUID = ""
- var kContentTitle = ""
-
 class AsyncContentTypeQueryAPITest2: XCTestCase {
     
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "ContentType")
+    static var kContentTypeUID = ""
+    static var kContentTitle = ""
     
     func getContentType(uid: String? = nil) -> ContentType {
         return AsyncContentTypeQueryAPITest2.stack.contentType(uid: uid)
@@ -43,8 +42,8 @@ class AsyncContentTypeQueryAPITest2: XCTestCase {
         let data: ContentstackResponse<ContentTypeModel> = try! await self.getContentTypeQuery().find()
         XCTAssertEqual(data.items.count, 11)
         if let contentType = data.items.first {
-            kContentTypeUID = contentType.uid
-            kContentTitle = contentType.title
+            AsyncContentTypeQueryAPITest2.kContentTypeUID = contentType.uid
+            AsyncContentTypeQueryAPITest2.kContentTitle = contentType.title
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -52,9 +51,9 @@ class AsyncContentTypeQueryAPITest2: XCTestCase {
 
     func test02Find_ContentTypeQuery_whereUIDEquals() async {
         let networkExpectation = expectation(description: "Fetch where UID equals ContentTypes Test")
-        let data: ContentstackResponse<ContentTypeModel> = await self.asyncQueryWhere(.uid, operation: .equals(kContentTypeUID))
+        let data: ContentstackResponse<ContentTypeModel> = await self.asyncQueryWhere(.uid, operation: .equals(AsyncContentTypeQueryAPITest2.kContentTypeUID))
         for contentType in data.items {
-            XCTAssertEqual(contentType.uid, kContentTypeUID)
+            XCTAssertEqual(contentType.uid, AsyncContentTypeQueryAPITest2.kContentTypeUID)
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -62,9 +61,9 @@ class AsyncContentTypeQueryAPITest2: XCTestCase {
     
     func test03Find_ContentTypeQuery_whereTitleDNotEquals() async {
         let networkExpectation = expectation(description: "Fetch where Title equals ContentTypes Test")
-        let data: ContentstackResponse<ContentTypeModel> = await self.asyncQueryWhere(.title, operation: .notEquals(kContentTitle))
+        let data: ContentstackResponse<ContentTypeModel> = await self.asyncQueryWhere(.title, operation: .notEquals(AsyncContentTypeQueryAPITest2.kContentTitle))
         for contentType in data.items {
-            XCTAssertNotEqual(contentType.title, kContentTitle)
+            XCTAssertNotEqual(contentType.title, AsyncContentTypeQueryAPITest2.kContentTitle)
         }
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
@@ -88,8 +87,8 @@ class AsyncContentTypeQueryAPITest2: XCTestCase {
     
     func test06Fetch_ContentType_fromUID() async {
         let networkExpectation = expectation(description: "Fetch ContentTypes from UID Test")
-        let data: ContentstackResponse<ContentTypeModel> = try! await self.getContentType(uid: kContentTypeUID).fetch()
-        XCTAssertEqual(data.items.first?.uid, kContentTypeUID)
+        let data: ContentstackResponse<ContentTypeModel> = try! await self.getContentType(uid: AsyncContentTypeQueryAPITest2.kContentTypeUID).fetch()
+        XCTAssertEqual(data.items.first?.uid, AsyncContentTypeQueryAPITest2.kContentTypeUID)
         networkExpectation.fulfill()
         wait(for: [networkExpectation], timeout: 5)
     }
@@ -101,7 +100,7 @@ class AsyncContentTypeQueryAPITest2: XCTestCase {
             model.schema.forEach { (schema) in
                 if let dataType = schema["data_type"] as? String,
                    dataType == "global_field" {
-                    kContentTypeUID = model.uid
+                    AsyncContentTypeQueryAPITest2.kContentTypeUID = model.uid
                     XCTAssertNotNil(schema["schema"])
                 }
             }
@@ -112,7 +111,7 @@ class AsyncContentTypeQueryAPITest2: XCTestCase {
     
     func test08Fetch_ContentType_WithGlobalFields() async {
         let networkExpectation = expectation(description: "Fetch ContentTypes with GlobalFields Test")
-        let data: ContentstackResponse<ContentTypeModel> = try! await self.getContentType(uid: kContentTypeUID).includeGlobalFields().fetch()
+        let data: ContentstackResponse<ContentTypeModel> = try! await self.getContentType(uid: AsyncContentTypeQueryAPITest2.kContentTypeUID).includeGlobalFields().fetch()
         data.items.first?.schema.forEach { (schema) in
             if let dataType = schema["data_type"] as? String,
                dataType == "global_field" {

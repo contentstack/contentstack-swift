@@ -9,14 +9,15 @@ import XCTest
 
 @testable import Contentstack
 import DVR
-//var kAssetUID = ""
-//var kAssetLocaliseUID = ""
-//var kAssetTitle = ""
-//var kFileName = ""
-//let locale = "en-gb"
+
 class AssetQueryAPITest: XCTestCase {
 
     static let stack = TestContentstackClient.testStack(cassetteName: "Asset")
+    static var kAssetUID = ""
+    static var kAssetLocaliseUID = ""
+    static var kAssetTitle = ""
+    static var kFileName = ""
+    static let locale = "en-gb"
     
     func getAsset(uid: String? = nil) -> Asset {
         return AssetQueryAPITest.stack.asset(uid: uid)
@@ -51,9 +52,9 @@ class AssetQueryAPITest: XCTestCase {
             case .success(let contentstackResponse):
                 XCTAssertEqual(contentstackResponse.items.count, 8)
                 if let asset = contentstackResponse.items.first {
-                    kAssetUID = asset.uid
-                    kAssetTitle = asset.title
-                    kFileName = asset.fileName
+                    AssetQueryAPITest.kAssetUID = asset.uid
+                    AssetQueryAPITest.kAssetTitle = asset.title
+                    AssetQueryAPITest.kFileName = asset.fileName
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -65,11 +66,11 @@ class AssetQueryAPITest: XCTestCase {
     
     func test02Find_AssetQuery_whereUIDEquals() {
         let networkExpectation = expectation(description: "Fetch where UID equals Assets Test")
-        self.queryWhere(.uid, operation: .equals(kAssetUID)) { (result: Result<ContentstackResponse<AssetModel>, Error>) in
+        self.queryWhere(.uid, operation: .equals(AssetQueryAPITest.kAssetUID)) { (result: Result<ContentstackResponse<AssetModel>, Error>) in
             switch result {
             case .success(let contentstackResponse):
                 for asset in contentstackResponse.items {
-                    XCTAssertEqual(asset.uid, kAssetUID)
+                    XCTAssertEqual(asset.uid, AssetQueryAPITest.kAssetUID)
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -81,11 +82,11 @@ class AssetQueryAPITest: XCTestCase {
     
     func test03Find_AssetQuery_whereTitleDNotEquals() {
         let networkExpectation = expectation(description: "Fetch where Title equals Assets Test")
-        self.queryWhere(.title, operation: .notEquals(kAssetTitle)) { (result: Result<ContentstackResponse<AssetModel>, Error>) in
+        self.queryWhere(.title, operation: .notEquals(AssetQueryAPITest.kAssetTitle)) { (result: Result<ContentstackResponse<AssetModel>, Error>) in
             switch result {
             case .success(let contentstackResponse):
                 for asset in contentstackResponse.items {
-                    XCTAssertNotEqual(asset.title, kAssetTitle)
+                    XCTAssertNotEqual(asset.title, AssetQueryAPITest.kAssetTitle)
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -97,11 +98,11 @@ class AssetQueryAPITest: XCTestCase {
 
     func test03Find_AssetQuery_whereFileNameEquals() {
         let networkExpectation = expectation(description: "Fetch where Title equals Assets Test")
-        self.queryWhere(.fileName, operation: .notEquals(kFileName)) { (result: Result<ContentstackResponse<AssetModel>, Error>) in
+        self.queryWhere(.fileName, operation: .notEquals(AssetQueryAPITest.kFileName)) { (result: Result<ContentstackResponse<AssetModel>, Error>) in
             switch result {
             case .success(let contentstackResponse):
                 for asset in contentstackResponse.items {
-                    XCTAssertNotEqual(asset.title, kAssetTitle)
+                    XCTAssertNotEqual(asset.title, AssetQueryAPITest.kAssetTitle)
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -141,10 +142,10 @@ class AssetQueryAPITest: XCTestCase {
 
     func test06Fetch_Asset_fromUID() {
         let networkExpectation = expectation(description: "Fetch Assets from UID Test")
-        self.getAsset(uid: kAssetUID).fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
+        self.getAsset(uid: AssetQueryAPITest.kAssetUID).fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
             switch result {
             case .success(let model):
-                XCTAssertEqual(model.uid, kAssetUID)
+                XCTAssertEqual(model.uid, AssetQueryAPITest.kAssetUID)
             case .failure(let error):
                 XCTFail("\(error)")
             }
@@ -174,7 +175,7 @@ class AssetQueryAPITest: XCTestCase {
     
     func test08Fetch_Asset_WithGlobalFields() {
         let networkExpectation = expectation(description: "Fetch Assets with GlobalFields Test")
-        self.getAsset(uid: kAssetUID)
+        self.getAsset(uid: AssetQueryAPITest.kAssetUID)
             .includeDimension()
             .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
                 switch result {
@@ -225,7 +226,7 @@ class AssetQueryAPITest: XCTestCase {
     
     func test12Fetch_AssetQuery_WithoutFallback_Result() {
         let networkExpectation = expectation(description: "Fetch Assets without Fallback Test")
-        self.getAssetQuery().locale(locale)
+        self.getAssetQuery().locale(AssetQueryAPITest.locale)
             .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
                 switch result {
                 case .success(let response):
@@ -233,7 +234,7 @@ class AssetQueryAPITest: XCTestCase {
                         if let fields = model.fields,
                             let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
                             let publishLocale = publishDetails["locale"] as? String {
-                            XCTAssertEqual(publishLocale, locale)
+                            XCTAssertEqual(publishLocale, AssetQueryAPITest.locale)
                         }
                     }
                 case .failure(let error):
@@ -247,7 +248,7 @@ class AssetQueryAPITest: XCTestCase {
     func test13Fetch_AssetQuery_Fallback_Result() {
         let networkExpectation = expectation(description: "Fetch Assets without Fallback Test")
         self.getAssetQuery()
-            .locale(locale)
+            .locale(AssetQueryAPITest.locale)
             .include(params: .fallback)
             .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
                 switch result {
@@ -256,7 +257,7 @@ class AssetQueryAPITest: XCTestCase {
                         if let fields = model.fields,
                             let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
                             let publishLocale = publishDetails["locale"] as? String {
-                            XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
+                            XCTAssert(["en-us", AssetQueryAPITest.locale].contains(publishLocale), "\(publishLocale) not matching")
                         }
                     }
                     if let model =  response.items.first(where: { (model) -> Bool in
@@ -267,7 +268,7 @@ class AssetQueryAPITest: XCTestCase {
                         }
                         return false
                     }) {
-                        kAssetLocaliseUID = model.uid
+                        AssetQueryAPITest.kAssetLocaliseUID = model.uid
                     }
                 case .failure(let error):
                     XCTFail("\(error)")
@@ -279,7 +280,7 @@ class AssetQueryAPITest: XCTestCase {
     
     func test14Fetch_Asset_UIDWithoutFallback_NoResult() {
         let networkExpectation = expectation(description: "Fetch Asset from UID without Fallback Test")
-        self.getAsset(uid: kAssetLocaliseUID)
+        self.getAsset(uid: AssetQueryAPITest.kAssetLocaliseUID)
             .locale("en-gb")
             .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
             switch result {
@@ -298,8 +299,8 @@ class AssetQueryAPITest: XCTestCase {
     
     func test15Fetch_Asset_UIDWithFallback_NoResult() {
         let networkExpectation = expectation(description: "Fetch Asset from UID without Fallback Test")
-        self.getAsset(uid: kAssetLocaliseUID)
-            .locale(locale)
+        self.getAsset(uid: AssetQueryAPITest.kAssetLocaliseUID)
+            .locale(AssetQueryAPITest.locale)
             .includeFallback()
             .fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
             switch result {
@@ -307,7 +308,7 @@ class AssetQueryAPITest: XCTestCase {
                 if let fields = model.fields,
                     let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
                     let publishLocale = publishDetails["locale"] as? String {
-                    XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
+                    XCTAssert(["en-us", AssetQueryAPITest.locale].contains(publishLocale), "\(publishLocale) not matching")
                 }
             case .failure(let error):
                 XCTFail("\(error)")

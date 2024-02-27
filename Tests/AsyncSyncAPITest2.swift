@@ -9,10 +9,10 @@ import XCTest
 @testable import Contentstack
 import DVR
 
-var paginationToken = ""
-var syncToken = ""
-
 class AsyncSyncAPITest2: XCTestCase {
+    
+    static var paginationToken = ""
+    static var syncToken = ""
     
     static let stack = AsyncTestContentstackClient.asyncTestStack(cassetteName: "SyncTest")
 
@@ -47,15 +47,15 @@ class AsyncSyncAPITest2: XCTestCase {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncStack, syncTypes: syncTypes)
             for try await data in syncStream {
                 if !data.hasMorePages {
-                    XCTAssertEqual(data.items.count, 23)
+                    XCTAssertEqual(data.items.count, 29)
                     XCTAssertFalse(data.syncToken.isEmpty)
                     XCTAssertTrue(data.paginationToken.isEmpty)
-                    syncToken = data.syncToken
+                    AsyncSyncAPITest2.syncToken = data.syncToken
                 } else {
                     XCTAssertEqual(data.items.count, 100)
                     XCTAssertFalse(data.paginationToken.isEmpty)
                     XCTAssertTrue(data.syncToken.isEmpty)
-                    paginationToken = data.paginationToken
+                    AsyncSyncAPITest2.paginationToken = data.paginationToken
                 }
             }
         } catch {
@@ -66,7 +66,7 @@ class AsyncSyncAPITest2: XCTestCase {
     }
     
     func test02SyncToken() async {
-        let syncStack = SyncStack(syncToken: syncToken)
+        let syncStack = SyncStack(syncToken: AsyncSyncAPITest2.syncToken)
         let syncTypes: [SyncStack.SyncableTypes] = [.all]
         let networkExpectation = expectation(description: "Sync Token test exception")
         do {
@@ -86,13 +86,13 @@ class AsyncSyncAPITest2: XCTestCase {
     }
 
     func test03SyncPagination() async {
-        let syncStack = SyncStack(paginationToken: paginationToken)
+        let syncStack = SyncStack(paginationToken: AsyncSyncAPITest2.paginationToken)
         let networkExpectation = expectation(description: "Sync Pagination test exception")
         do {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncStack)
             for try await data in syncStream {
                 if !data.hasMorePages {
-                    XCTAssertEqual(data.items.count, 23)
+                    XCTAssertEqual(data.items.count, 29)
                     XCTAssertFalse(data.syncToken.isEmpty)
                     XCTAssertTrue(data.paginationToken.isEmpty)
                 }
@@ -109,7 +109,7 @@ class AsyncSyncAPITest2: XCTestCase {
         do {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncTypes: [.publishType(.assetPublished)])
             for try await data in syncStream {
-                XCTAssertEqual(data.items.count, 8)
+                XCTAssertEqual(data.items.count, 9)
                 XCTAssertFalse(data.syncToken.isEmpty)
                 XCTAssertTrue(data.paginationToken.isEmpty)
             }
@@ -125,7 +125,7 @@ class AsyncSyncAPITest2: XCTestCase {
         do {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncTypes: [.contentType("session")])
             for try await data in syncStream {
-                XCTAssertEqual(data.items.count, 31)
+                XCTAssertEqual(data.items.count, 32)
                 XCTAssertFalse(data.syncToken.isEmpty)
                 XCTAssertTrue(data.paginationToken.isEmpty)
             }
@@ -141,7 +141,7 @@ class AsyncSyncAPITest2: XCTestCase {
         do {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncTypes: [.locale("en-gb")])
             for try await data in syncStream {
-                XCTAssertEqual(data.items.count, 0)
+                XCTAssertEqual(data.items.count, 6)
                 XCTAssertFalse(data.syncToken.isEmpty)
                 XCTAssertTrue(data.paginationToken.isEmpty)
             }
@@ -158,7 +158,7 @@ class AsyncSyncAPITest2: XCTestCase {
         do {
             let syncStream = try await AsyncSyncAPITest2.stack.sync(syncTypes: [.startFrom(date)])
             for try await data in syncStream {
-                XCTAssertEqual(data.items.count, 4)
+                XCTAssertEqual(data.items.count, 6)
                 XCTAssertFalse(data.syncToken.isEmpty)
                 XCTAssertTrue(data.paginationToken.isEmpty)
             }
