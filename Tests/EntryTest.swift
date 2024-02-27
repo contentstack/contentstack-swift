@@ -14,10 +14,10 @@ class EntryTest: XCTestCase {
         XCTAssertEqual(endPoint.pathComponent, "entries")
     }
     #if !NO_FATAL_TEST
-    func testFetch_withoutUID() {
+    func testFetch_withoutUID() async {
         expectFatalError(expectedMessage: "Please provide Entry uid") {
             makeEntrySut(contentTypeuid: "content").fetch { (result: Result<AssetModel, Error>, response) in
-                
+                        
             }
         }
     }

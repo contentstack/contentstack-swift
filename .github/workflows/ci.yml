@@ -2,9 +2,9 @@ name: "Contentstack CI"
 
 on:
   push:
-    branches: [ master, development ]
+    branches: [ master, next ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, next ]
 
 jobs:
   macOS:

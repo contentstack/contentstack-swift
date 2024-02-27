@@ -14,6 +14,8 @@ public final class SyncStack: Decodable {
     /// If there are more than 100 records, you get a `pagination_token` in response.
     /// This token can be used to fetch the next batch of data.
     internal(set) public var paginationToken = ""
+    /// This is `seq_id`, a replacement for `syncToken` and `Pagination Token`
+    internal(set) public var lastSeqId = ""
     /// The total number of resources which matched the original request.
     internal(set) public var totalCount: Int = 0
     /// The resources which are part of the array response.
@@ -25,9 +27,23 @@ public final class SyncStack: Decodable {
         }
         return false
     }
+    
+    internal var isInitialSeqSync: Bool {
+        if lastSeqId.isEmpty {
+            return true
+        }
+        return false
+    }
 
     internal var hasMorePages: Bool {
         if !paginationToken.isEmpty {
+            return true
+        }
+        return false
+    }
+    
+    internal var hasMoreSeq: Bool {
+        if !lastSeqId.isEmpty {
             return true
         }
         return false
@@ -40,33 +56,50 @@ public final class SyncStack: Decodable {
             return ["pagination_token": paginationToken]
         }
         return ["init": true]
+        /// Test case should check
+    }
+    
+    internal var seqParameter: Parameters {
+        if !lastSeqId.isEmpty {
+            return ["seq_id": lastSeqId]
+        }
+        return ["init": true, "seq_id": true]
+        /// Test case should check
     }
 
     /// Initialization
     /// - Parameters:
     ///   - syncToken: The syncToken from the previous syncronization.
     ///   - paginationToken: The paginationToken to fetch next batch of data.
-    public init(syncToken: String = "", paginationToken: String = "") {
+    ///   - lastSeqId: The sequenceId to fetch next batch of data
+    public init(syncToken: String = "", paginationToken: String = "", lastSeqId: String = "") {
         if !syncToken.isEmpty && !paginationToken.isEmpty {
-            fatalError("Both Sync Token and Pagination Token can not be presnet.")
+            fatalError("Both Sync Token and Pagination Token can not be present.")
+        }
+        if (!syncToken.isEmpty || !paginationToken.isEmpty) && !lastSeqId.isEmpty {
+            fatalError("Pagination Token or Sync Token cannot be present with sequenceId.")
         }
         self.syncToken = syncToken
         self.paginationToken = paginationToken
+        self.lastSeqId = self.lastSeqId != lastSeqId ? lastSeqId : "";
     }
 
     private enum CodingKeys: String, CodingKey {
         case syncToken = "sync_token"
-        case paginationToke = "pagination_token"
+        case paginationToken = "pagination_token"
         case totalCount = "total_count"
+        case lastSeqId = "last_seq_id"
         case items
     }
 
     public init(from decoder: Decoder) throws {
         let container   = try decoder.container(keyedBy: CodingKeys.self)
         self.syncToken     = try container.decodeIfPresent(String.self, forKey: .syncToken) ?? ""
-        self.paginationToken = try container.decodeIfPresent(String.self, forKey: .paginationToke) ?? ""
+        self.paginationToken = try container.decodeIfPresent(String.self, forKey: .paginationToken) ?? ""
+        let lastSeqId = try container.decodeIfPresent(String.self, forKey: .lastSeqId) ?? ""
+        self.lastSeqId = self.lastSeqId != lastSeqId ? lastSeqId : ""
         self.totalCount = try container.decodeIfPresent(Int.self, forKey: .totalCount) ?? 0
-        if (!syncToken.isEmpty && !paginationToken.isEmpty) || (syncToken.isEmpty && paginationToken.isEmpty) {
+        if (!syncToken.isEmpty && !paginationToken.isEmpty) {
             throw SDKError.syncError
         }
 

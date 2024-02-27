@@ -14,10 +14,11 @@ class AssetTest: XCTestCase {
         XCTAssertEqual(endPoint.pathComponent, "assets")
     }
     #if !NO_FATAL_TEST
-    func testFetch_withoutUID() {
+//    The test runner exited with code 6 before finishing running tests. This may be due to your code calling 'exit', consider adding a symbolic breakpoint on 'exit' to debug.
+    func testFetch_withoutUID() async {
         expectFatalError(expectedMessage: "Please provide Asset uid") {
             makeAssetSut().fetch { (result: Result<AssetModel, Error>, response) in
-                
+                        
             }
         }
     }

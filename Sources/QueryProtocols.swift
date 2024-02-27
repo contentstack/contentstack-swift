@@ -65,19 +65,32 @@ extension BaseQuery {
     ///    }
     /// }
     /// ```
+    /// 
     public func find<ResourceType>(_ completion: @escaping ResultsHandler<ContentstackResponse<ResourceType>>)
-        where ResourceType: Decodable & EndpointAccessible {
-            if self.queryParameter.count > 0,
-                let query = self.queryParameter.jsonString {
-                self.parameters[QueryParameter.query] = query
-            }
-            self.stack.fetch(endpoint: ResourceType.endpoint,
-                    cachePolicy: self.cachePolicy, parameters: parameters, headers: headers, then: completion)
+    where ResourceType: Decodable & EndpointAccessible {
+        if self.queryParameter.count > 0,
+            let query = self.queryParameter.jsonString {
+            self.parameters[QueryParameter.query] = query
+        }
+        self.stack.fetch(endpoint: ResourceType.endpoint,
+                cachePolicy: self.cachePolicy, parameters: parameters, headers: headers, then: completion)
+}
+
+    public func find<ResourceType>() async throws -> ContentstackResponse<ResourceType> where ResourceType: Decodable & EndpointAccessible {
+        if self.queryParameter.count > 0, let query = self.queryParameter.jsonString {
+            self.parameters[QueryParameter.query] = query
+        }
+        do {
+            let data: ContentstackResponse<ResourceType> = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint, cachePolicy: self.cachePolicy, parameters: parameters, headers: headers)
+            return data
+        } catch {
+            throw error
+        }
     }
 }
 /// A concrete implementation of BaseQuery which serves as the base class for `Query`,
 /// `ContentTypeQuery` and `AssetQuery`.
-public protocol BaseQuery: QueryProtocol, Queryable {}
+public protocol BaseQuery: QueryProtocol {}
 extension BaseQuery {
     /// Method to adding Query.Operation to a Query/
     /// - Parameters:
@@ -554,8 +567,8 @@ public protocol ResourceQueryable {
     /// This call fetches the latest version of a specific `ContentType`, `Asset`, and `Entry` of a particular stack.
     /// - Parameters:
     ///   - completion: A handler which will be called on completion of the operation.
-    func fetch<ResourceType>(_ completion: @escaping ResultsHandler<ResourceType>)
-        where ResourceType: Decodable & EndpointAccessible
+//    func fetch<ResourceType>() async throws -> (Result<ResourceType, Error>, ResponseType) where ResourceType: Decodable & EndpointAccessible
+    func fetch<ResourceType>() async throws -> ContentstackResponse<ResourceType> where ResourceType: Decodable & EndpointAccessible
 }
 
 /// The base Queryable protocol to find collections for content types, assets, and entries.
@@ -564,6 +577,5 @@ public protocol Queryable {
     /// `Entry`, and `Asset` instances.
     /// - Parameters:
     ///   - completion: A handler which will be called on completion of the operation.
-    func find<ResourceType>(_ completion: @escaping ResultsHandler<ContentstackResponse<ResourceType>>)
-        where ResourceType: Decodable & EndpointAccessible
+    func find<ResourceType>() async throws -> ResultsHandler<ContentstackResponse<ResourceType>>
 }
