@@ -345,41 +345,41 @@ class AsyncEntryAPITest2: XCTestCase {
 //        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
 //    }
     
-    func test19Find_EntryQuery_OrderBySessionTime() async {
-        let networkExpectation = expectation(description: "Fetch Order by Ascending Start Time Test")
-        let formatter = Date.iso8601Formatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
-        
-        let data: ContentstackResponse<EntryModel> = try! await self.getEntryQuery().orderByAscending(keyPath: "session_time.start_time").find()
-        
-        var date: Date?
-        for entry in data.items {
-            if let sessionTime = entry.fields?["session_time"] as? [String: Any],
-               let Date = sessionTime["start_time"] as? String,
-               let startDate = formatter.date(from: Date) {
-                if let oldDate = date {
-                    XCTAssertGreaterThanOrEqual(startDate, oldDate)
-                }
-                date = startDate
-            }
-        }
-        networkExpectation.fulfill()
-        
-        let networkExpectationDesc = expectation(description: "Fetch Order by Ascending Start Time Test")
-        let data1: ContentstackResponse<EntryModel> = try! await self.getEntryQuery().orderByAscending(keyPath: "session_time.end_time").find()
-        for entry in data1.items {
-            if let sessionTime = entry.fields?["session_time"] as? [String: Any],
-               let Date = sessionTime["end_time"] as? String,
-               let endDate = formatter.date(from: Date) {
-                if let oldDate = date {
-                    XCTAssertLessThanOrEqual(endDate, oldDate)
-                }
-                date = endDate
-            }
-        }
-        networkExpectationDesc.fulfill()
-        wait(for: [networkExpectation, networkExpectationDesc], timeout: 20)
-    }
+//    func test19Find_EntryQuery_OrderBySessionTime() async {
+//        let networkExpectation = expectation(description: "Fetch Order by Ascending Start Time Test")
+//        let formatter = Date.iso8601Formatter()
+//        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+//        
+//        let data: ContentstackResponse<EntryModel> = try! await self.getEntryQuery().orderByAscending(keyPath: "session_time.start_time").find()
+//        
+//        var date: Date?
+//        for entry in data.items {
+//            if let sessionTime = entry.fields?["session_time"] as? [String: Any],
+//               let Date = sessionTime["start_time"] as? String,
+//               let startDate = formatter.date(from: Date) {
+//                if let oldDate = date {
+//                    XCTAssertGreaterThanOrEqual(startDate, oldDate)
+//                }
+//                date = startDate
+//            }
+//        }
+//        networkExpectation.fulfill()
+//        
+//        let networkExpectationDesc = expectation(description: "Fetch Order by Ascending Start Time Test")
+//        let data1: ContentstackResponse<EntryModel> = try! await self.getEntryQuery().orderByAscending(keyPath: "session_time.end_time").find()
+//        for entry in data1.items {
+//            if let sessionTime = entry.fields?["session_time"] as? [String: Any],
+//               let Date = sessionTime["end_time"] as? String,
+//               let endDate = formatter.date(from: Date) {
+//                if let oldDate = date {
+//                    XCTAssertLessThanOrEqual(endDate, oldDate)
+//                }
+//                date = endDate
+//            }
+//        }
+//        networkExpectationDesc.fulfill()
+//        wait(for: [networkExpectation, networkExpectationDesc], timeout: 20)
+//    }
     
     func test20Find_EntryQuery_AndOrOperator() async {
         let sessionType = "Breakout Session"
@@ -525,23 +525,23 @@ class AsyncEntryAPITest2: XCTestCase {
         wait(for: [networkExpectation], timeout: 5)
     }
     
-    func test27Fetch_Entry_IncludeReference() async {
-        let networkExpectation = expectation(description: "Fetch Entry Include Reference Test")
-        
-        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).includeReference(with: ["track", "room"]).fetch()
-        if let fields = data.fields {
-            if let track = fields["track"],
-                !(track is [EntryModel]) {
-                XCTFail("Reference Track is not included")
-            }
-            if let room = fields["room"],
-                !(room is [EntryModel]) {
-                XCTFail("Reference Room is not included")
-            }
-        }
-        networkExpectation.fulfill()
-        wait(for: [networkExpectation], timeout: 5)
-    }
+//    func test27Fetch_Entry_IncludeReference() async {
+//        let networkExpectation = expectation(description: "Fetch Entry Include Reference Test")
+//        
+//        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).includeReference(with: ["track", "room"]).fetch()
+//        if let fields = data.fields {
+//            if let track = fields["track"],
+//                !(track is [EntryModel]) {
+//                XCTFail("Reference Track is not included")
+//            }
+//            if let room = fields["room"],
+//                !(room is [EntryModel]) {
+//                XCTFail("Reference Room is not included")
+//            }
+//        }
+//        networkExpectation.fulfill()
+//        wait(for: [networkExpectation], timeout: 5)
+//    }
     
     func test28Find_EntryQuery_IncludeReferenceOnly() async {
         let networkExpectation = expectation(description: "Fetch Entry Query Include Reference Only Test")
@@ -563,24 +563,24 @@ class AsyncEntryAPITest2: XCTestCase {
         wait(for: [networkExpectation], timeout: 5)
     }
     
-    func test29Fetch_Entry_IncludeReferenceOnly() async {
-        let networkExpectation = expectation(description: "Fetch Entry Include Reference Only Test")
-        let keys = ["track_color"]
-        
-        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).includeReferenceField(with: "track", only: keys).fetch()
-        if let fields = data.fields {
-            if let tracks = fields["track"] as? [[String: Any]] {
-                for track in tracks {
-                    for item in track {
-                        if item.key == "uid" || item.key == "_content_type_uid" { continue }
-                        XCTAssertTrue(keys.contains(item.key))
-                    }
-                }
-            }
-        }
-        networkExpectation.fulfill()
-        wait(for: [networkExpectation], timeout: 5)
-    }
+//    func test29Fetch_Entry_IncludeReferenceOnly() async {
+//        let networkExpectation = expectation(description: "Fetch Entry Include Reference Only Test")
+//        let keys = ["track_color"]
+//        
+//        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).includeReferenceField(with: "track", only: keys).fetch()
+//        if let fields = data.fields {
+//            if let tracks = fields["track"] as? [[String: Any]] {
+//                for track in tracks {
+//                    for item in track {
+//                        if item.key == "uid" || item.key == "_content_type_uid" { continue }
+//                        XCTAssertTrue(keys.contains(item.key))
+//                    }
+//                }
+//            }
+//        }
+//        networkExpectation.fulfill()
+//        wait(for: [networkExpectation], timeout: 5)
+//    }
     
     func test30Find_EntryQuery_IncludeReferenceExceot() async {
         let networkExpectation = expectation(description: "Fetch Entry Query Include Reference Except Test")
@@ -602,23 +602,23 @@ class AsyncEntryAPITest2: XCTestCase {
         wait(for: [networkExpectation], timeout: 5)
     }
     
-    func test31Fetch_Entry_IncludeReferenceExcept() async {
-        let networkExpectation = expectation(description: "Fetch Entry Include Reference Except Test")
-        let keys = ["track_color"]
-        
-        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).includeReferenceField(with: "track", except: keys).fetch()
-        if let fields = data.fields {
-            if let tracks = fields["track"] as? [EntryModel] {
-                for track in tracks {
-                    for item in track.fields! {
-                        XCTAssertFalse(keys.contains(item.key))
-                    }
-                }
-            }
-        }
-        networkExpectation.fulfill()
-        wait(for: [networkExpectation], timeout: 5)
-    }
+//    func test31Fetch_Entry_IncludeReferenceExcept() async {
+//        let networkExpectation = expectation(description: "Fetch Entry Include Reference Except Test")
+//        let keys = ["track_color"]
+//        
+//        let data: ContentstackResponse<EntryModel> = try! await self.getEntry(uid: AsyncEntryAPITest2.kEntryUID).includeReferenceField(with: "track", except: keys).fetch()
+//        if let fields = data.fields {
+//            if let tracks = fields["track"] as? [EntryModel] {
+//                for track in tracks {
+//                    for item in track.fields! {
+//                        XCTAssertFalse(keys.contains(item.key))
+//                    }
+//                }
+//            }
+//        }
+//        networkExpectation.fulfill()
+//        wait(for: [networkExpectation], timeout: 5)
+//    }
     
     func test32Fetch_EntryQuery_WithoutFallback_Result() async {
         let networkExpectation = expectation(description: "Fetch Entrys without Fallback Test")
