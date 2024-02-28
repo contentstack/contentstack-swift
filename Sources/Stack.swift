@@ -14,6 +14,66 @@ public enum Host {
 
 public typealias ResultsHandler<T> = (_ result: Result<T, Error>, ResponseType) -> Void
 
+enum RetryError: Error {
+    case maximumAttemptsReached
+    case fetchFailed(Error)
+}
+
+func retry<T>(_ operation: @escaping (@escaping (Result<T, Error>, ResponseType) -> Void) -> Void, times retryCount: Int, withDelay initialDelay: TimeInterval, delayIncrement: TimeInterval, then completion: @escaping (Result<T, RetryError>, ResponseType) -> Void) {
+    var attempts = 0
+    var currentDelay = initialDelay
+    
+    func retryOperation() {
+        attempts += 1
+        operation { result, responseType in
+            switch result {
+            case .success(let data):
+                completion(.success(data), responseType)
+            case .failure(let error):
+                if (attempts < retryCount) {
+                    print("Attempt \(attempts) failed with error: \(error). Retrying...")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + currentDelay) {
+                        currentDelay += delayIncrement
+                        retryOperation() // Retry recursively
+                    }
+                } else {
+                    completion(.failure(.maximumAttemptsReached), responseType)
+                }
+            }
+        }
+    }
+    retryOperation()
+}
+
+enum AsyncRetryError: Error {
+    case maximumAttemptsReached
+    case asyncOperationFailed(Error)
+}
+
+func retryAsync<T>(_ operation: @escaping () async throws -> T,
+                   times retryCount: Int,
+                   withDelay initialDelay: TimeInterval,
+                   delayIncrement: TimeInterval) async throws -> T {
+    var attempts = 0
+    var currentDelay = initialDelay
+    
+    while attempts < retryCount {
+        do {
+            return try await operation()
+        } catch {
+            if attempts < retryCount {
+                print("Attempt \(attempts + 1) failed with error: \(error). Retrying in \(currentDelay) seconds...")
+                await Task.sleep(UInt64(currentDelay * 1_000_000_000)) // Convert seconds to nanoseconds
+                currentDelay += delayIncrement
+                attempts += 1
+            } else {
+                throw AsyncRetryError.maximumAttemptsReached
+            }
+        }
+    }
+    throw AsyncRetryError.maximumAttemptsReached
+}
+
 /// Stack is instance for performing Contentstack Delivery API request.
 public class Stack: CachePolicyAccessible {
     internal var urlSession: URLSession
@@ -229,20 +289,25 @@ public class Stack: CachePolicyAccessible {
                                           headers: [String: String] = [:],
                                           then completion: @escaping ResultsHandler<ResourceType>)
             where ResourceType: Decodable {
-        let url = self.url(endpoint: endpoint, parameters: parameters)
-            self.fetchUrl(url, headers: headers, cachePolicy: cachePolicy, then: { (result: Result<Data, Error>, responseType: ResponseType) in
-            switch result {
-            case .success(let data):
-                do {
-                    let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
-                    completion(Result.success(jsonParse), responseType)
-                } catch let error {
-                    completion(Result.failure(error), responseType)
+                
+            let url = self.url(endpoint: endpoint, parameters: parameters)
+            retry({ completion1 in
+                self.fetchUrl(url, headers: headers, cachePolicy: cachePolicy) { result, responseType  in
+                    completion1(result.mapError{ RetryError.fetchFailed($0) }, responseType)
                 }
-            case .failure(let error):
-                completion(Result.failure(error), responseType)
+            }, times: 3, withDelay: 0.3, delayIncrement: 0.3) { result, responseType in
+                switch result {
+                case .success(let data):
+                    do {
+                        let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
+                        completion(.success(jsonParse), responseType)
+                    } catch {
+                        completion(.failure(error), responseType)
+                    }
+                case .failure(let error):
+                    completion(.failure(error), responseType)
+                }
             }
-        })
     }
     
     internal func asyncFetch<ResourceType>(endpoint: Endpoint,
@@ -252,7 +317,9 @@ public class Stack: CachePolicyAccessible {
         let url = self.url(endpoint: endpoint, parameters: parameters)
 
         do {
-            let (result, _): (Result<Data, Error>, ResponseType) = try await self.asyncFetchUrl(url: url, headers: headers, cachePolicy: cachePolicy)
+            let (result, _): (Result<Data, Error>, ResponseType) = try await retryAsync({
+                return try await self.asyncFetchUrl(url: url, headers: headers, cachePolicy: cachePolicy)
+            }, times: 3, withDelay: 0.3, delayIncrement: 0.3)
             switch result {
             case .success(let data):
                 do {
