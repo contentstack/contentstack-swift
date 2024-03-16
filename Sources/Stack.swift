@@ -69,8 +69,6 @@ public class Stack: CachePolicyAccessible {
         }
         
         var contentstackHTTPHeaders: [AnyHashable: Any] = [
-            "api_key": apiKey,
-            "access_token": deliveryToken,
             "X-User-Agent": config.sdkVersionString(),
             "User-Agent": config.userAgentString()
         ]
@@ -194,6 +192,8 @@ public class Stack: CachePolicyAccessible {
     private func fetchUrl(_ url: URL, headers:[String: String], cachePolicy: CachePolicy, then completion: @escaping ResultsHandler<Data>) {
         var dataTask: URLSessionDataTask?
         var request = URLRequest(url: url)
+        request.setValue(self.deliveryToken, forHTTPHeaderField: "access_token")
+        request.setValue(self.apiKey, forHTTPHeaderField: "api_key")
         for header in headers {
             request.addValue(header.value, forHTTPHeaderField: header.key)
         }
