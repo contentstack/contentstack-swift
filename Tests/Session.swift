@@ -30,10 +30,10 @@ class Session: EntryDecodable {
     var desc: String
     var type: String
     var isPopular: Bool
-    var track: [[String: String]]
-    var speakers: [[String: String]]
-    var room: [[String: String]]
-    var sessionTime: DateTime
+    var track: [String]
+    var speakers: [String]
+    var room: [String]
+    var sessionTime: DateTime?
 
     public required init(from decoder: Decoder) throws {
         let container   = try decoder.container(keyedBy: FieldKeys.self)
@@ -48,11 +48,11 @@ class Session: EntryDecodable {
         desc = try container.decode(String.self, forKey: .desc)
         type = try container.decode(String.self, forKey: .type)
         isPopular = try container.decode(Bool.self, forKey: .isPopular)
-        track = try container.decode([[String: String]].self, forKey: .track)
-        speakers = try container.decode([[String: String]].self, forKey: .speakers)
-        room = try container.decode([[String: String]].self, forKey: .room)
+        track = try container.decode([String].self, forKey: .track)
+        speakers = try container.decode([String].self, forKey: .speakers)
+        room = try container.decode([String].self, forKey: .room)
         desc = try container.decode(String.self, forKey: .desc)
-        sessionTime = try container.decode(DateTime.self, forKey: .sessionTime)
+        sessionTime = try container.decodeIfPresent(DateTime.self, forKey: .sessionTime)
     }
 }
 
@@ -72,7 +72,9 @@ class DateTime: Decodable {
 }
 
 
-class Track: EntryDecodable {
+class Track: EntryDecodable, ContentTypeIncludable {
+    var contentType: ContentTypeModel?
+    
     var locale: String
     var createdBy: String?
     var updatedBy: String?
@@ -111,7 +113,9 @@ class Track: EntryDecodable {
 }
 
 
-class SessionWithTrackReference: EntryDecodable {
+class SessionWithTrackReference: EntryDecodable, ContentTypeIncludable {
+    var contentType: ContentTypeModel?
+    
     public enum FieldKeys: String, CodingKey {
         case title, uid, locale, type, room, speakers, track
         case createdAt = "created_at"
@@ -135,9 +139,9 @@ class SessionWithTrackReference: EntryDecodable {
     var type: String
     var isPopular: Bool
     var track: [Track]
-    var speakers: [[String: String]]
-    var room: [[String: String]]
-    var sessionTime: DateTime
+    var speakers: [String]
+    var room: [String]
+    var sessionTime: DateTime?
 
     public required init(from decoder: Decoder) throws {
         let container   = try decoder.container(keyedBy: FieldKeys.self)
@@ -153,9 +157,9 @@ class SessionWithTrackReference: EntryDecodable {
         type = try container.decode(String.self, forKey: .type)
         isPopular = try container.decode(Bool.self, forKey: .isPopular)
         track = try container.decode([Track].self, forKey: .track)
-        speakers = try container.decode([[String: String]].self, forKey: .speakers)
-        room = try container.decode([[String: String]].self, forKey: .room)
+        speakers = try container.decode([String].self, forKey: .speakers)
+        room = try container.decode([String].self, forKey: .room)
         desc = try container.decode(String.self, forKey: .desc)
-        sessionTime = try container.decode(DateTime.self, forKey: .sessionTime)
+        sessionTime = try container.decodeIfPresent(DateTime.self, forKey: .sessionTime)
     }
 }

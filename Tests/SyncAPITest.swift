@@ -9,12 +9,11 @@ import XCTest
 @testable import Contentstack
 import DVR
 
-var paginationToken = ""
-var syncToken = ""
-
 class SyncAPITest: XCTestCase {
 
     static let stack = TestContentstackClient.testStack(cassetteName: "SyncTest")
+    static var paginationToken = ""
+    static var syncToken = ""
     override class func setUp() {
         super.setUp()
         (stack.urlSession as? DVR.Session)?.beginRecording()
@@ -48,19 +47,19 @@ class SyncAPITest: XCTestCase {
                 XCTAssertEqual(syncStack.items.count, 29)
                 XCTAssertFalse(syncStack.syncToken.isEmpty)
                 XCTAssertTrue(syncStack.paginationToken.isEmpty)
-                syncToken = syncStack.syncToken
+                SyncAPITest.syncToken = syncStack.syncToken
                 networkExpectation.fulfill()
             } else {
                 XCTAssertEqual(syncStack.items.count, 100)
                 XCTAssertFalse(syncStack.paginationToken.isEmpty)
                 XCTAssertTrue(syncStack.syncToken.isEmpty)
-                paginationToken = syncStack.paginationToken
+                SyncAPITest.paginationToken = syncStack.paginationToken
             }
         }
     }
 
     func test02SyncToken() {
-        let syncStack = SyncStack(syncToken: syncToken)
+        let syncStack = SyncStack(syncToken: SyncAPITest.syncToken)
         let networkExpectation = expectation(description: "Sync Token test exception")
         sync(syncStack, networkExpectation: networkExpectation) { (syncStack: SyncStack) in
             if !syncStack.hasMorePages {
@@ -73,7 +72,7 @@ class SyncAPITest: XCTestCase {
     }
 
     func test03SyncPagination() {
-        let syncStack = SyncStack(paginationToken: paginationToken)
+        let syncStack = SyncStack(paginationToken: SyncAPITest.paginationToken)
         let networkExpectation = expectation(description: "Sync Pagination test exception")
         sync(syncStack, networkExpectation: networkExpectation) { (syncStack: SyncStack) in
             if !syncStack.hasMorePages {
