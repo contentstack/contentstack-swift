@@ -10,7 +10,7 @@ fileignoreconfig:
 - filename: Sources/Decodable.swift
   checksum: 45760eb1b21207395da2b631bb85049b300d399f20f59a79cfdc181a5d6b07f3
 - filename: Contentstack.xcodeproj/project.pbxproj
-  checksum: 5e73942ffcdf6031c37e1167029a89522dbb936e7292a08033db6b3f95c63d2c
+  checksum: d6e294f366b1360458c31edbfc4601e7e75d3cafbebd594d83221801ee88dc07
 - filename: Sources/ContentstackConfig.swift
   checksum: fdb57e110cb65443e853f0d79ced1e80427d0d1720d21309aa8c87984ea5fac5
 - filename: Tests/DVRRecordings/Asset.json
