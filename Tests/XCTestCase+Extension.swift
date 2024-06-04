@@ -120,6 +120,42 @@ extension XCTestCase {
                 paramsIn.isEquals(to: value) {
                 return true
             }
+        case .eqBelow(let value):
+            if let params = queryParameter as? [String: QueryableRange],
+                let queryParam = operation.query as? [String: QueryableRange],
+                let paramsIn = params["$eq_below"],
+                let queryParamIn = queryParam["$eq_below"],
+                paramsIn.isEquals(to: queryParamIn),
+                paramsIn.isEquals(to: value) {
+                return true
+            }
+        case .below(let value):
+            if let params = queryParameter as? [String: QueryableRange],
+                let queryParam = operation.query as? [String: QueryableRange],
+                let paramsIn = params["$below"],
+                let queryParamIn = queryParam["$below"],
+                paramsIn.isEquals(to: queryParamIn),
+                paramsIn.isEquals(to: value) {
+                return true
+            }
+        case .eqAbove(let value):
+            if let params = queryParameter as? [String: QueryableRange],
+                let queryParam = operation.query as? [String: QueryableRange],
+                let paramsIn = params["$eq_above"],
+                let queryParamIn = queryParam["$eq_above"],
+                paramsIn.isEquals(to: queryParamIn),
+                paramsIn.isEquals(to: value) {
+                return true
+            }
+        case .above(let value):
+            if let params = queryParameter as? [String: QueryableRange],
+                let queryParam = operation.query as? [String: QueryableRange],
+                let paramsIn = params["$above"],
+                let queryParamIn = queryParam["$above"],
+                paramsIn.isEquals(to: queryParamIn),
+                paramsIn.isEquals(to: value) {
+                return true
+            }
         }
         return false
     }

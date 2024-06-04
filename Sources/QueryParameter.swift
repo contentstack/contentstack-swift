@@ -31,6 +31,8 @@ internal enum QueryParameter {
     internal static let tags             = "tags"
 
     internal static let contentType      = "content_type"
+    
+    internal static let taxonomies       = "taxonomies"
 
     internal static let uid              = "uid"
 

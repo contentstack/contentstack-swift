@@ -85,6 +85,10 @@ extension Query {
         case exists(Bool)
         /// Search on a field by Regex. <https://www.contentstack.com/docs/developers/apis/content-delivery-api/#search-by-regex>
         case matches(String)
+        case eqBelow(String)
+        case below(String)
+        case eqAbove(String)
+        case above(String)
 
         internal var string: String {
             switch self {
@@ -98,6 +102,10 @@ extension Query {
             case .isGreaterThanOrEqual:     return "$gte"
             case .exists:                   return "$exists"
             case .matches:                  return "$regex"
+            case .eqBelow:                  return "$eq_below"
+            case .below:                    return "$below"
+            case .eqAbove:                  return "$eq_above"
+            case .above:                    return "$above"
             }
         }
 
@@ -137,6 +145,10 @@ extension Query {
                 return value.stringValue
             case .exists(let value):                return value
             case .matches(let value):               return value
+            case .eqBelow(let value):               return value
+            case .below(let value):                 return value
+            case .eqAbove(let value):               return value
+            case .above(let value):                 return value
             }
         }
         internal var query: Any {
