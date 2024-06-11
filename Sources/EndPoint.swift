@@ -20,6 +20,8 @@ public enum Endpoint: String {
     case assets
     /// The synchronization endpoint.
     case sync = "stacks/sync"
+    
+    case taxnomies = "taxonomies"
     /// The path component string for the current endpoint.
     public var pathComponent: String {
         return rawValue

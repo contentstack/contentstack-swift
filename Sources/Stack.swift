@@ -106,6 +106,10 @@ public class Stack: CachePolicyAccessible {
     public func contentType(uid: String? = nil) -> ContentType {
         return ContentType(uid, stack: self)
     }
+    
+    public func taxonomy(uid: String? = nil) -> Taxonomy {
+        return Taxonomy(stack: self)
+    }
 
     /// Get instance of `Asset` to fetch `Assets` or fetch specific `Asset`.
     ///
@@ -132,9 +136,14 @@ public class Stack: CachePolicyAccessible {
         switch endpoint {
         case .entries:
             urlComponents.path = "\(urlComponents.path)/\(Endpoint.contenttype.pathComponent)/\(String(describing: parameters[QueryParameter.contentType]!))"
+        case .taxnomies:
+            urlComponents.path = "\(urlComponents.path)/\(Endpoint.taxnomies.pathComponent)/entries"
         default: break
         }
-        urlComponents.path = "\(urlComponents.path)/\(endpoint.pathComponent)"
+        
+        if endpoint != .taxnomies {
+            urlComponents.path = "\(urlComponents.path)/\(endpoint.pathComponent)"
+        }
 
         if let uid = parameters[QueryParameter.uid] {
             urlComponents.path = "\(urlComponents.path)/\(uid)"
