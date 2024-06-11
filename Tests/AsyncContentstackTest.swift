@@ -1,8 +1,8 @@
 //
-//  ContentstackTest.swift
+//  AsyncTestContentstackClient.swift
 //  Contentstack
 //
-//  Created by Uttam Ukkoji on 07/04/20.
+//  Created by Jigar Kanani on 09/10/23.
 //
 
 import XCTest
@@ -10,11 +10,11 @@ import XCTest
 import DVR
 private var _stackSharedInstance: Stack?
 
-class TestContentstackClient {
+class AsyncTestContentstackClient {
 
     static func config() -> [String: Any] {
         #if DEBUG
-        if let path = Bundle(for: TestContentstackClient.self).path(forResource: "config", ofType: "json"),
+        if let path = Bundle(for: AsyncTestContentstackClient.self).path(forResource: "config", ofType: "json"),
             let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.mappedIfSafe),
             let jsonDictionary = try? JSONSerialization.jsonObject(with: data,
                                                                    options: .allowFragments) as? [String: Any] {
@@ -30,7 +30,7 @@ class TestContentstackClient {
         #endif
     }
 
-    static func testStack(cassetteName: String) -> Stack {
+    static func asyncTestStack(cassetteName: String) -> Stack {
         if _stackSharedInstance == nil {
             let stackConfig = config()
             if let apiKey = stackConfig["api_key"] as? String,
@@ -49,7 +49,7 @@ class TestContentstackClient {
         return _stackSharedInstance!
     }
 
-    static func testCacheStack() -> Stack {
+    static func asyncTestCacheStack() -> Stack {
         let stackConfig = config()
         if let apiKey = stackConfig["api_key"] as? String,
             let deliveryToken = stackConfig["delivery_token"] as? String,
