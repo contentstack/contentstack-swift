@@ -35,6 +35,13 @@ final class ContentstackTests: XCTestCase {
         XCTAssertEqual(stack.region, ContentstackRegion.azure_na)
         XCTAssertNil(stack.branch)
     }
+    
+    func testStack_GCP_NAHostRegion_ReturnStackWithGCPValue () {
+        let stack = makeStackSut(region: .gcp_na)
+        XCTAssertEqual(stack.host, "gcp-na-cdn.contentstack.com")
+        XCTAssertEqual(stack.region, ContentstackRegion.gcp_na)
+        XCTAssertNil(stack.branch)
+    }
 
     func testStack_NewHost_ReturnStackWithNewHost () {
         let host = "api.contentstack.com"

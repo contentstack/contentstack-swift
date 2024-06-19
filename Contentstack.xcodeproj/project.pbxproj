@@ -748,6 +748,7 @@
 				0F4A762B241BB0D200E3A024 /* Contentstack.swift */,
 				0FFA5D56241F5085003B3AF5 /* ContentstackConfig.swift */,
 				47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */,
+				64F522052BF5C65300AE6E0F /* PrivacyInfo.xcprivacy */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -1008,6 +1009,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F522062BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1021,6 +1023,7 @@
 				0F359991257BE29B00B3DB89 /* Asset.json in Resources */,
 				0F359992257BE2A700B3DB89 /* ContentType.json in Resources */,
 				0F4C0A87243C6990006604B7 /* config.json in Resources */,
+				64F522072BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 				0F5794C2266A37120082815C /* Paragraph.Json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1029,6 +1032,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F522082BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1042,6 +1046,7 @@
 				0F50EA17244ED7F500E5D705 /* QueryOn.json in Resources */,
 				0F796C532449EA8700EA04D5 /* Entry.json in Resources */,
 				0F4C0A88243C6990006604B7 /* config.json in Resources */,
+				64F522092BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 				0F5794C3266A37120082815C /* Paragraph.Json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1050,6 +1055,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F5220A2BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1063,6 +1069,7 @@
 				0F50EA18244ED7F500E5D705 /* QueryOn.json in Resources */,
 				0F796C542449EA8700EA04D5 /* Entry.json in Resources */,
 				0F4C0A89243C6990006604B7 /* config.json in Resources */,
+				64F5220B2BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 				0F5794C4266A37120082815C /* Paragraph.Json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1071,6 +1078,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F5220C2BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
