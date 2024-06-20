@@ -106,6 +106,10 @@ public class Stack: CachePolicyAccessible {
     public func contentType(uid: String? = nil) -> ContentType {
         return ContentType(uid, stack: self)
     }
+    
+    public func taxonomy(uid: String? = nil) -> Taxonomy {
+        return Taxonomy(stack: self)
+    }
 
     /// Get instance of `Asset` to fetch `Assets` or fetch specific `Asset`.
     ///
@@ -132,9 +136,14 @@ public class Stack: CachePolicyAccessible {
         switch endpoint {
         case .entries:
             urlComponents.path = "\(urlComponents.path)/\(Endpoint.contenttype.pathComponent)/\(String(describing: parameters[QueryParameter.contentType]!))"
+        case .taxnomies:
+            urlComponents.path = "\(urlComponents.path)/\(Endpoint.taxnomies.pathComponent)/entries"
         default: break
         }
-        urlComponents.path = "\(urlComponents.path)/\(endpoint.pathComponent)"
+        
+        if endpoint != .taxnomies {
+            urlComponents.path = "\(urlComponents.path)/\(endpoint.pathComponent)"
+        }
 
         if let uid = parameters[QueryParameter.uid] {
             urlComponents.path = "\(urlComponents.path)/\(uid)"
@@ -162,31 +171,6 @@ public class Stack: CachePolicyAccessible {
         urlComponents.percentEncodedQuery = percentEncodedQuery
 
         return urlComponents.url!
-    }
-
-    internal func fetch<ResourceType>(endpoint: Endpoint,
-                                      cachePolicy: CachePolicy,
-                                      parameters: Parameters = [:],
-                                      headers: [String: String] = [:],
-                                      then completion: @escaping ResultsHandler<ResourceType>)
-        where ResourceType: Decodable {
-        let url = self.url(endpoint: endpoint, parameters: parameters)
-            self.fetchUrl(url,
-                          headers: headers,
-                          cachePolicy: cachePolicy,
-                          then: { (result: Result<Data, Error>, responseType: ResponseType) in
-            switch result {
-            case .success(let data):
-                do {
-                    let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
-                    completion(Result.success(jsonParse), responseType)
-                } catch let error {
-                    completion(Result.failure(error), responseType)
-                }
-            case .failure(let error):
-                completion(Result.failure(error), responseType)
-            }
-        })
     }
 
     private func fetchUrl(_ url: URL, headers:[String: String], cachePolicy: CachePolicy, then completion: @escaping ResultsHandler<Data>) {
@@ -247,6 +231,28 @@ public class Stack: CachePolicyAccessible {
         })
         performDataTask(dataTask!, request: request, cachePolicy: cachePolicy, then: completion)
     }
+    
+    internal func fetch<ResourceType>(endpoint: Endpoint,
+                                          cachePolicy: CachePolicy,
+                                          parameters: Parameters = [:],
+                                          headers: [String: String] = [:],
+                                          then completion: @escaping ResultsHandler<ResourceType>)
+            where ResourceType: Decodable {
+        let url = self.url(endpoint: endpoint, parameters: parameters)
+            self.fetchUrl(url, headers: headers, cachePolicy: cachePolicy, then: { (result: Result<Data, Error>, responseType: ResponseType) in
+            switch result {
+            case .success(let data):
+                do {
+                    let jsonParse = try self.jsonDecoder.decode(ResourceType.self, from: data)
+                    completion(Result.success(jsonParse), responseType)
+                } catch let error {
+                    completion(Result.failure(error), responseType)
+                }
+            case .failure(let error):
+                completion(Result.failure(error), responseType)
+            }
+        })
+    }
 
     private func performDataTask(_ dataTask: URLSessionDataTask,
                                  request: URLRequest,
@@ -279,6 +285,7 @@ public class Stack: CachePolicyAccessible {
             }
         }
     }
+
     //Cache handling methods
     private func fullfillRequestWithCache(_ request: URLRequest, then completion: @escaping ResultsHandler<Data>) {
         if let data = self.cachedResponse(for: request) {
@@ -287,7 +294,7 @@ public class Stack: CachePolicyAccessible {
         }
         completion(Result.failure(SDKError.cacheError), .cache)
     }
-
+ 
     private func canFullfillRequestWithCache(_ request: URLRequest) -> Bool {
         return self.cachedResponse(for: request) != nil ? true : false
     }
@@ -299,6 +306,7 @@ public class Stack: CachePolicyAccessible {
         return nil
     }
 }
+
 
 extension Stack {
 
@@ -328,6 +336,7 @@ extension Stack {
     ///    }
     /// }
     ///```
+    @available(*, deprecated, message: "This method will be deprecated soon. Please use seqSync instead")
     public func sync(_ syncStack: SyncStack = SyncStack(),
                      syncTypes: [SyncStack.SyncableTypes] = [.all],
                      then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {
@@ -338,7 +347,6 @@ extension Stack {
             }
         }
         let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
-
         fetchUrl(url,
                  headers: [:],
                  cachePolicy: .networkOnly) { (result: Result<Data, Error>, _: ResponseType) in
@@ -347,7 +355,7 @@ extension Stack {
                 do {
                     let syncStack = try self.jsonDecoder.decode(SyncStack.self, from: data)
                     completion(.success(syncStack))
-                    if  syncStack.hasMorePages {
+                    if syncStack.hasMorePages {
                         self.sync(syncStack, then: completion)
                     }
                 } catch let error {

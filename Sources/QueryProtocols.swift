@@ -65,19 +65,20 @@ extension BaseQuery {
     ///    }
     /// }
     /// ```
+    /// 
     public func find<ResourceType>(_ completion: @escaping ResultsHandler<ContentstackResponse<ResourceType>>)
-        where ResourceType: Decodable & EndpointAccessible {
-            if self.queryParameter.count > 0,
-                let query = self.queryParameter.jsonString {
-                self.parameters[QueryParameter.query] = query
-            }
-            self.stack.fetch(endpoint: ResourceType.endpoint,
-                    cachePolicy: self.cachePolicy, parameters: parameters, headers: headers, then: completion)
+    where ResourceType: Decodable & EndpointAccessible {
+        if self.queryParameter.count > 0,
+            let query = self.queryParameter.jsonString {
+            self.parameters[QueryParameter.query] = query
+        }
+        self.stack.fetch(endpoint: ResourceType.endpoint,
+                cachePolicy: self.cachePolicy, parameters: parameters, headers: headers, then: completion)
     }
 }
 /// A concrete implementation of BaseQuery which serves as the base class for `Query`,
 /// `ContentTypeQuery` and `AssetQuery`.
-public protocol BaseQuery: QueryProtocol, Queryable {}
+public protocol BaseQuery: QueryProtocol {}
 extension BaseQuery {
     /// Method to adding Query.Operation to a Query/
     /// - Parameters:

@@ -12,7 +12,7 @@ public class Query: BaseQuery, EntryQueryable {
     
     public typealias ResourceType = EntryModel
 
-    internal var contentTypeUid: String
+    internal var contentTypeUid: String?
     /// Stack instance for Entry to be fetched
     public var stack: Stack
     /// URI Parameters
@@ -23,11 +23,16 @@ public class Query: BaseQuery, EntryQueryable {
     public var cachePolicy: CachePolicy
     
 
-    internal required init(contentType: ContentType) {
-        self.stack = contentType.stack
-        self.contentTypeUid = contentType.uid!
-        self.cachePolicy = contentType.cachePolicy
-        self.parameters[QueryParameter.contentType] = contentTypeUid
+    internal required init(contentType: ContentType?, stack: Stack? = nil, cachePolicy: CachePolicy? = nil) {
+        if let contentType = contentType {
+            self.stack = contentType.stack
+            self.contentTypeUid = contentType.uid!
+            self.cachePolicy = contentType.cachePolicy
+            self.parameters[QueryParameter.contentType] = contentTypeUid
+        } else {
+            self.stack = stack!
+            self.cachePolicy = cachePolicy!
+        }
     }
 
     /// Use this method to do a search on `Entries` which enables
