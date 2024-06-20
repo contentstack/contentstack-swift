@@ -165,14 +165,4 @@ extension Entry: ResourceQueryable {
                             }
         })
     }
-
-    public func fetch<ResourceType>() async throws -> ContentstackResponse<ResourceType> where ResourceType: EndpointAccessible, ResourceType: Decodable {
-        do {
-            guard let uid = self.uid else { fatalError("Please provide Entry uid") }
-            let data: ContentstackResponse<ResourceType> = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint, cachePolicy: self.cachePolicy, parameters: parameters + [QueryParameter.uid: uid], headers: headers)
-            return data
-        } catch {
-            throw error
-        }
-    }
 }

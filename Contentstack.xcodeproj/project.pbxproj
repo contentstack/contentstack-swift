@@ -253,21 +253,16 @@
 		470657612B5E797300BBFF88 /* ContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706575F2B5E797300BBFF88 /* ContentstackTest.swift */; };
 		470657622B5E797300BBFF88 /* ContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706575F2B5E797300BBFF88 /* ContentstackTest.swift */; };
 		47161ACA2B5D747D00AD615B /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 47161AC92B5D747D00AD615B /* DVR */; };
-		475C7A782B44945800814330 /* AsyncEntryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475C7A772B44945800814330 /* AsyncEntryAPITest2.swift */; };
-		47658BB02C0E75DE00876052 /* AsyncTaxonomyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47658BAF2C0E75DE00876052 /* AsyncTaxonomyTest.swift */; };
-		478684742B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */; };
-		478684752B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */; };
-		478684762B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */; };
-		479A93D62B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479A93D52B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift */; };
-		47A8DB312B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8DB302B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift */; };
 		47AAE0902B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
 		47AAE0912B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
 		47AAE0922B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
+		47B4DC622C232A8200370CFC /* TaxonomyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DC612C232A8200370CFC /* TaxonomyTest.swift */; };
+		47B4DC632C232A8200370CFC /* TaxonomyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DC612C232A8200370CFC /* TaxonomyTest.swift */; };
+		47B4DC642C232A8200370CFC /* TaxonomyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DC612C232A8200370CFC /* TaxonomyTest.swift */; };
 		47C6EFC22C0B5B9400F0D5CF /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */; };
 		47C6EFC32C0B5B9400F0D5CF /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */; };
 		47C6EFC42C0B5B9400F0D5CF /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */; };
 		47C6EFC52C0B5B9400F0D5CF /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */; };
-		47F96B752B4734270081B4C6 /* AsyncQueryOnAPITest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F96B742B4734270081B4C6 /* AsyncQueryOnAPITest2.swift */; };
 		642AD4332B86110100E2AFDF /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD4322B86110100E2AFDF /* ContentstackUtils */; };
 		642AD4352B86111700E2AFDF /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD4342B86111700E2AFDF /* DVR */; };
 		642AD4372B86111A00E2AFDF /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD4362B86111A00E2AFDF /* ContentstackUtils */; };
@@ -275,9 +270,6 @@
 		642AD43B2B86112400E2AFDF /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD43A2B86112400E2AFDF /* DVR */; };
 		642AD43D2B86112C00E2AFDF /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD43C2B86112C00E2AFDF /* ContentstackUtils */; };
 		642AD43F2B86112F00E2AFDF /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD43E2B86112F00E2AFDF /* DVR */; };
-		CE3C328A2AD50FE8006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
-		CE3C328B2AD50FE9006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
-		CE3C328C2AD50FEA006419E0 /* AsyncContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -400,15 +392,9 @@
 		470657632B5E7F5400BBFF88 /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47161AC42B5D744E00AD615B /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47161ACB2B5D788E00AD615B /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		475C7A772B44945800814330 /* AsyncEntryAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncEntryAPITest2.swift; sourceTree = "<group>"; };
-		47658BAF2C0E75DE00876052 /* AsyncTaxonomyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncTaxonomyTest.swift; sourceTree = "<group>"; };
-		478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAssetQueryAPITest2.swift; sourceTree = "<group>"; };
-		479A93D52B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncContentTypeQueryAPITest2.swift; sourceTree = "<group>"; };
-		47A8DB302B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncSyncAPITest2.swift; sourceTree = "<group>"; };
 		47AAE08F2B60420E0098655A /* SyncAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncAPITest.swift; sourceTree = "<group>"; };
+		47B4DC612C232A8200370CFC /* TaxonomyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyTest.swift; sourceTree = "<group>"; };
 		47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxonomy.swift; sourceTree = "<group>"; };
-		47F96B742B4734270081B4C6 /* AsyncQueryOnAPITest2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncQueryOnAPITest2.swift; sourceTree = "<group>"; };
-		CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncContentstackTest.swift; sourceTree = "<group>"; };
 		OBJ_17 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		OBJ_18 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -659,6 +645,7 @@
 				4706575B2B5E78B300BBFF88 /* AssetQueryAPITest.swift */,
 				4706575F2B5E797300BBFF88 /* ContentstackTest.swift */,
 				47AAE08F2B60420E0098655A /* SyncAPITest.swift */,
+				47B4DC612C232A8200370CFC /* TaxonomyTest.swift */,
 			);
 			name = APITests;
 			sourceTree = "<group>";
@@ -671,20 +658,6 @@
 			name = Utilities;
 			sourceTree = "<group>";
 		};
-		CE3C32822AD504F8006419E0 /* AsyncAPITests */ = {
-			isa = PBXGroup;
-			children = (
-				CE3C32852AD50579006419E0 /* AsyncContentstackTest.swift */,
-				478684732B22438C000FA417 /* AsyncAssetQueryAPITest2.swift */,
-				479A93D52B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift */,
-				475C7A772B44945800814330 /* AsyncEntryAPITest2.swift */,
-				47F96B742B4734270081B4C6 /* AsyncQueryOnAPITest2.swift */,
-				47A8DB302B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift */,
-				47658BAF2C0E75DE00876052 /* AsyncTaxonomyTest.swift */,
-			);
-			name = AsyncAPITests;
-			sourceTree = "<group>";
-		};
 		OBJ_10 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,7 +666,6 @@
 				0F38D7DE242C7C8300232D7F /* Models */,
 				0FFA5DA6241F9403003B3AF5 /* Utilities */,
 				0FFA5D9D241F8F9B003B3AF5 /* APITests */,
-				CE3C32822AD504F8006419E0 /* AsyncAPITests */,
 				0FFA5D9C241F8F81003B3AF5 /* UnitTests */,
 				0F4A763B241BB36100E3A024 /* Supporting Files */,
 				0FFA5DA2241F90BF003B3AF5 /* SutBuilder.swift */,
@@ -748,7 +720,6 @@
 				0F4A762B241BB0D200E3A024 /* Contentstack.swift */,
 				0FFA5D56241F5085003B3AF5 /* ContentstackConfig.swift */,
 				47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */,
-				64F522052BF5C65300AE6E0F /* PrivacyInfo.xcprivacy */,
 			);
 			path = Sources;
 			sourceTree = SOURCE_ROOT;
@@ -1009,7 +980,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64F522062BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1023,7 +993,6 @@
 				0F359991257BE29B00B3DB89 /* Asset.json in Resources */,
 				0F359992257BE2A700B3DB89 /* ContentType.json in Resources */,
 				0F4C0A87243C6990006604B7 /* config.json in Resources */,
-				64F522072BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 				0F5794C2266A37120082815C /* Paragraph.Json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1032,7 +1001,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64F522082BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,7 +1014,6 @@
 				0F50EA17244ED7F500E5D705 /* QueryOn.json in Resources */,
 				0F796C532449EA8700EA04D5 /* Entry.json in Resources */,
 				0F4C0A88243C6990006604B7 /* config.json in Resources */,
-				64F522092BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 				0F5794C3266A37120082815C /* Paragraph.Json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1055,7 +1022,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64F5220A2BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1069,7 +1035,6 @@
 				0F50EA18244ED7F500E5D705 /* QueryOn.json in Resources */,
 				0F796C542449EA8700EA04D5 /* Entry.json in Resources */,
 				0F4C0A89243C6990006604B7 /* config.json in Resources */,
-				64F5220B2BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 				0F5794C4266A37120082815C /* Paragraph.Json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1078,7 +1043,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64F5220C2BF5C65300AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1131,18 +1095,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47A8DB312B4DCBAD008F19E8 /* AsyncSyncAPITest2.swift in Sources */,
 				0F60CA332428D02600ED67E6 /* QueryEntryType.swift in Sources */,
 				4706575C2B5E78B300BBFF88 /* AssetQueryAPITest.swift in Sources */,
 				0F60CA2F2428949C00ED67E6 /* EntryTest.swift in Sources */,
-				478684742B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */,
 				0F244FA724406A4A003C3F26 /* EntryQueriableTest.swift in Sources */,
-				47F96B752B4734270081B4C6 /* AsyncQueryOnAPITest2.swift in Sources */,
 				0F463113243B044F001CE1FA /* SyncTest.swift in Sources */,
-				CE3C328A2AD50FE8006419E0 /* AsyncContentstackTest.swift in Sources */,
 				0FFA5DBC241F9A6C003B3AF5 /* XCTestCase+Extension.swift in Sources */,
 				0F4FBCA02420B0E4007B8CAE /* DateTest.swift in Sources */,
 				0FFA5D4A241F4DED003B3AF5 /* ContentstackConfigTest.swift in Sources */,
+				47B4DC622C232A8200370CFC /* TaxonomyTest.swift in Sources */,
 				0F50EA1D244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */,
 				470657582B5E788400BBFF88 /* EntryAPITest.swift in Sources */,
 				0F096B14243610470094F042 /* ImageTransformTestAdditional.swift in Sources */,
@@ -1153,14 +1114,11 @@
 				47AAE0902B60420E0098655A /* SyncAPITest.swift in Sources */,
 				470657542B5E785C00BBFF88 /* ContentTypeQueryAPITest.swift in Sources */,
 				470657602B5E797300BBFF88 /* ContentstackTest.swift in Sources */,
-				479A93D62B4418AA000C9612 /* AsyncContentTypeQueryAPITest2.swift in Sources */,
 				0F4FBCA92420B615007B8CAE /* UtilsTest.swift in Sources */,
 				0F7138CD2424A94000B314B0 /* QueryTest.swift in Sources */,
 				0F50EA0E244EC3DD00E5D705 /* Session.swift in Sources */,
-				475C7A782B44945800814330 /* AsyncEntryAPITest2.swift in Sources */,
 				0FFA5D9F241F8FFE003B3AF5 /* ContentTypeTest.swift in Sources */,
 				0F4A7646241BB3CB00E3A024 /* ContentstackTests.swift in Sources */,
-				47658BB02C0E75DE00876052 /* AsyncTaxonomyTest.swift in Sources */,
 				0F7138C52424A70C00B314B0 /* AssetQueryTest.swift in Sources */,
 				0FFA5D8F241F8123003B3AF5 /* StackTest.swift in Sources */,
 				0FFA5DA3241F90BF003B3AF5 /* SutBuilder.swift in Sources */,
@@ -1218,13 +1176,12 @@
 				0F60CA342428D02600ED67E6 /* QueryEntryType.swift in Sources */,
 				470657552B5E785C00BBFF88 /* ContentTypeQueryAPITest.swift in Sources */,
 				0F60CA302428949C00ED67E6 /* EntryTest.swift in Sources */,
-				478684752B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */,
 				0F244FA824406A4A003C3F26 /* EntryQueriableTest.swift in Sources */,
 				0F463114243B044F001CE1FA /* SyncTest.swift in Sources */,
-				CE3C328B2AD50FE9006419E0 /* AsyncContentstackTest.swift in Sources */,
 				47AAE0912B60420E0098655A /* SyncAPITest.swift in Sources */,
 				0FFA5DBD241F9A6C003B3AF5 /* XCTestCase+Extension.swift in Sources */,
 				0F4FBCA12420B0E4007B8CAE /* DateTest.swift in Sources */,
+				47B4DC632C232A8200370CFC /* TaxonomyTest.swift in Sources */,
 				0FFA5D90241F8126003B3AF5 /* ContentstackConfigTest.swift in Sources */,
 				0F50EA1E244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */,
 				0F096B15243610470094F042 /* ImageTransformTestAdditional.swift in Sources */,
@@ -1297,13 +1254,12 @@
 				0F60CA352428D02600ED67E6 /* QueryEntryType.swift in Sources */,
 				470657562B5E785C00BBFF88 /* ContentTypeQueryAPITest.swift in Sources */,
 				0F60CA312428949C00ED67E6 /* EntryTest.swift in Sources */,
-				478684762B22438C000FA417 /* AsyncAssetQueryAPITest2.swift in Sources */,
 				0F244FA924406A4A003C3F26 /* EntryQueriableTest.swift in Sources */,
 				0F463115243B044F001CE1FA /* SyncTest.swift in Sources */,
-				CE3C328C2AD50FEA006419E0 /* AsyncContentstackTest.swift in Sources */,
 				47AAE0922B60420E0098655A /* SyncAPITest.swift in Sources */,
 				0FFA5DBE241F9A6C003B3AF5 /* XCTestCase+Extension.swift in Sources */,
 				0F4FBCA22420B0E4007B8CAE /* DateTest.swift in Sources */,
+				47B4DC642C232A8200370CFC /* TaxonomyTest.swift in Sources */,
 				0FFA5D91241F8127003B3AF5 /* ContentstackConfigTest.swift in Sources */,
 				0F50EA1F244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */,
 				0F096B16243610470094F042 /* ImageTransformTestAdditional.swift in Sources */,

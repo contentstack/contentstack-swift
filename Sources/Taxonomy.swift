@@ -33,12 +33,18 @@ public class Taxonomy: CachePolicyAccessible {
 }
 
 extension Taxonomy: ResourceQueryable {
-    public func fetch<ResourceType>() async throws -> ContentstackResponse<ResourceType> where ResourceType: EndpointAccessible, ResourceType: Decodable {
-        do {
-            let data: ContentstackResponse<ResourceType> = try await self.stack.asyncFetch(endpoint: ResourceType.endpoint, cachePolicy: self.cachePolicy)
-            return data
-        } catch {
-            throw error
-        }
+    public func fetch<ResourceType>(_ completion: @escaping (Result<ResourceType, Error>, ResponseType) -> Void) where ResourceType: EndpointAccessible, ResourceType: Decodable {
+        self.stack.fetch(endpoint: ResourceType.endpoint, cachePolicy: self.cachePolicy, then: { (result: Result<ContentstackResponse<ResourceType>, Error>, response: ResponseType) in
+            switch result {
+            case .success(let contentstackResponse):
+                if let resource = contentstackResponse.items.first {
+                    completion(.success(resource), response)
+                } else {
+                    completion(.failure(SDKError.invalidURL(string: "Something went wrong.")), response)
+                }
+            case .failure(let error):
+                completion(.failure(error), response)
+            }
+        })
     }
 }
