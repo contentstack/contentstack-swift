@@ -74,5 +74,17 @@ class EntryTest: XCTestCase {
         XCTAssertEqual(addValue.headers.keys.count, 1)
         XCTAssertEqual(addValue.headers["key1"], "value1")
     }
+    
+    func testSingleVariant() {
+        let entry = makeEntrySut(contentTypeuid: "Content_type", entryUid: "entry_uid").Variants(uid: "variant1")
+        XCTAssertEqual(entry.headers.keys.count, 1)
+        XCTAssertEqual(entry.headers["x-cs-variant-uid"], "variant1")
+    }
+    
+    func testMultipleVariants() {
+        let entry = makeEntrySut(contentTypeuid: "Content_type", entryUid: "entry_uid").Variants(uids: ["variant1", "variant2", "variant3"])
+        XCTAssertEqual(entry.headers.keys.count, 1)
+        XCTAssertEqual(entry.headers["x-cs-variant-uid"], "variant1,variant2,variant3")
+    }
 }
 

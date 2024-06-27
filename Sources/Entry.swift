@@ -94,6 +94,16 @@ public class Entry: EntryQueryable, CachePolicyAccessible {
             return query
     }
     
+    public func Variants(uid: String) -> Self {
+        self.headers["x-cs-variant-uid"] = uid
+        return self
+    }
+    
+    public func Variants(uids: [String]) -> Self {
+        self.headers["x-cs-variant-uid"] = uids.joined(separator: ",")
+        return self
+    }
+    
     /// The Query parameters dictionary that are converted to `URLComponents`.
     /// - Parameters:
     ///   - key: The key for header parameter,
