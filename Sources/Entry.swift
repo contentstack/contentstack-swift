@@ -94,12 +94,12 @@ public class Entry: EntryQueryable, CachePolicyAccessible {
             return query
     }
     
-    public func Variants(uid: String) -> Self {
+    public func variants(uid: String) -> Self {
         self.headers["x-cs-variant-uid"] = uid
         return self
     }
     
-    public func Variants(uids: [String]) -> Self {
+    public func variants(uids: [String]) -> Self {
         self.headers["x-cs-variant-uid"] = uids.joined(separator: ",")
         return self
     }
