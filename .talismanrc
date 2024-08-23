@@ -17,6 +17,11 @@ fileignoreconfig:
   checksum: a1c17f932d0b00df127851f50456923546ee912ba9b4d60d1f244768d61b858d
 - filename: Tests/DVRRecordings/SyncTest.json
   checksum: e5148d9f58da7689f249969c25a0c36d6d9f26be062a2c6bd9aaf389118f0039
+- filename: Contentstack.xcodeproj/xcshareddata/xcschemes/Contentstack iOS.xcscheme
+  checksum: 10ca4b0b986ae6166f69d7f985ca5b06238ac70dac3dd378fbf3dbdfd966afff
+- filename: Contentstack.xcodeproj/xcshareddata/xcschemes/Contentstack iOS Tests.xcscheme
+  checksum: c439f6d268ae2ea0af023daeffdff2af5928d0610f90fa14c9e6e6ce7e4b3fad
+version: ""
 
 
 

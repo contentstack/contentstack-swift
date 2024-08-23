@@ -81,6 +81,15 @@ where ItemType: EndpointAccessible & Decodable {
                 }
                 self.items = [entry]
             }
+        case .taxnomies:
+            if let taxonomies = try container.decodeIfPresent([ItemType].self, forKey: .entries) {
+                let containerFields = try decoder.container(keyedBy: JSONCodingKeys.self)
+                let response = try containerFields.decode(Dictionary<String, Any>.self)
+                if let contentType = response["content_type"] as? ContentTypeModel {
+                    fields = ["content_type": contentType]
+                }
+                self.items = taxonomies
+            }
         default:
             print("sync")
         }
