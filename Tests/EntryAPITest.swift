@@ -8,12 +8,13 @@
 import XCTest
 @testable import Contentstack
 import DVR
-var kEntryUID = ""
-var kEntryLocaliseUID = ""
-var kEntryTitle = ""
 
 class EntryAPITest: XCTestCase {
     static let stack = TestContentstackClient.testStack(cassetteName: "Entry")
+    static var kEntryUID = ""
+    static var kEntryLocaliseUID = ""
+    static var kEntryTitle = ""
+    let locale = "en-gb"
 
     func getEntry(uid: String? = nil) -> Entry {
         return EntryAPITest.stack.contentType(uid: "session").entry(uid: uid)
@@ -47,8 +48,8 @@ class EntryAPITest: XCTestCase {
             case .success(let contentstackResponse):
                 XCTAssertEqual(contentstackResponse.items.count, 31)
                 if let entry = contentstackResponse.items.first {
-                    kEntryUID = entry.uid
-                    kEntryTitle = entry.title
+                    EntryAPITest.kEntryUID = entry.uid
+                    EntryAPITest.kEntryTitle = entry.title
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -60,11 +61,11 @@ class EntryAPITest: XCTestCase {
     
     func test02Find_EntryQuery_whereUIDEquals() {
         let networkExpectation = expectation(description: "Fetch where UID equals Entry Test")
-        self.queryWhere(.uid, operation: .equals(kEntryUID)) { (result: Result<ContentstackResponse<EntryModel>, Error>) in
+        self.queryWhere(.uid, operation: .equals(EntryAPITest.kEntryUID)) { (result: Result<ContentstackResponse<EntryModel>, Error>) in
             switch result {
             case .success(let contentstackResponse):
                 for entry in contentstackResponse.items {
-                    XCTAssertEqual(entry.uid, kEntryUID)
+                    XCTAssertEqual(entry.uid, EntryAPITest.kEntryUID)
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -76,11 +77,11 @@ class EntryAPITest: XCTestCase {
     
     func test03Find_EntryQuery_whereTitleDNotEquals() {
         let networkExpectation = expectation(description: "Fetch where Title equals Entry Test")
-        self.queryWhere(.title, operation: .notEquals(kEntryTitle)) { (result: Result<ContentstackResponse<EntryModel>, Error>) in
+        self.queryWhere(.title, operation: .notEquals(EntryAPITest.kEntryTitle)) { (result: Result<ContentstackResponse<EntryModel>, Error>) in
             switch result {
             case .success(let contentstackResponse):
                 for entry in contentstackResponse.items {
-                    XCTAssertNotEqual(entry.title, kEntryTitle)
+                    XCTAssertNotEqual(entry.title, EntryAPITest.kEntryTitle)
                 }
             case .failure(let error):
                 XCTFail("\(error)")
@@ -120,10 +121,10 @@ class EntryAPITest: XCTestCase {
 
     func test06Fetch_Entry_fromUID() {
         let networkExpectation = expectation(description: "Fetch Entry from UID Test")
-        self.getEntry(uid: kEntryUID).fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
+        self.getEntry(uid: EntryAPITest.kEntryUID).fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
             switch result {
             case .success(let model):
-                XCTAssertEqual(model.uid, kEntryUID)
+                XCTAssertEqual(model.uid, EntryAPITest.kEntryUID)
             case .failure(let error):
                 XCTFail("\(error)")
             }
@@ -151,7 +152,7 @@ class EntryAPITest: XCTestCase {
     
     func test08Fetch_Entry_WithGlobalFields() {
         let networkExpectation = expectation(description: "Fetch Entry with GlobalFields Test")
-        self.getEntry(uid: kEntryUID)
+        self.getEntry(uid: EntryAPITest.kEntryUID)
             .include(params: .globalField)
             .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
                 switch result {
@@ -191,7 +192,7 @@ class EntryAPITest: XCTestCase {
 
     func test10Fetch_Entry_WithIncludeContentType() {
         let networkExpectation = expectation(description: "Fetch Entry with include ContentType Test")
-        self.getEntry(uid: kEntryUID)
+        self.getEntry(uid: EntryAPITest.kEntryUID)
             .include(params: .contentType)
             .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
                 switch result {
@@ -742,7 +743,7 @@ class EntryAPITest: XCTestCase {
     func test27Fetch_Entry_IncludeReference() {
         let networkExpectation = expectation(description: "Fetch Entry Include Reference Test")
 
-        self.getEntry(uid: kEntryUID)
+        self.getEntry(uid: EntryAPITest.kEntryUID)
             .includeReference(with: ["track", "room"])
             .fetch { (result: Result<EntryModel, Error>, response) in
             switch result {
@@ -798,7 +799,7 @@ class EntryAPITest: XCTestCase {
         let networkExpectation = expectation(description: "Fetch Entry Include Reference Only Test")
         let keys = ["track_color"]
 
-        self.getEntry(uid: kEntryUID)
+        self.getEntry(uid: EntryAPITest.kEntryUID)
             .includeReferenceField(with: "track", only: keys)
             .fetch { (result: Result<EntryModel, Error>, response) in
             switch result {
@@ -854,7 +855,7 @@ class EntryAPITest: XCTestCase {
         let networkExpectation = expectation(description: "Fetch Entry Include Reference Except Test")
         let keys = ["track_color"]
 
-        self.getEntry(uid: kEntryUID)
+        self.getEntry(uid: EntryAPITest.kEntryUID)
             .includeReferenceField(with: "track", except: keys)
             .fetch { (result: Result<EntryModel, Error>, response) in
             switch result {
@@ -887,7 +888,7 @@ class EntryAPITest: XCTestCase {
                         if let fields = model.fields,
                         let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
                         let publishLocale = publishDetails["locale"] as? String {
-                            XCTAssertEqual(publishLocale, locale)
+                            XCTAssertEqual(publishLocale, self.locale)
                         }
                     }
                 case .failure(let error):
@@ -910,7 +911,7 @@ class EntryAPITest: XCTestCase {
                         if let fields = model.fields,
                         let publishDetails = fields["publish_details"] as? [AnyHashable: Any],
                         let publishLocale = publishDetails["locale"] as? String {
-                            XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
+                            XCTAssert(["en-us", self.locale].contains(publishLocale), "\(publishLocale) not matching")
                         }
                     }
                     if let model =  response.items.first(where: { (model) -> Bool in
@@ -921,7 +922,7 @@ class EntryAPITest: XCTestCase {
                         }
                         return false
                     }) {
-                        kEntryLocaliseUID = model.uid
+                        EntryAPITest.kEntryLocaliseUID = model.uid
                     }
                 case .failure(let error):
                     XCTFail("\(error)")
@@ -933,7 +934,7 @@ class EntryAPITest: XCTestCase {
     
     func test34Fetch_Entry_UIDWithoutFallback_NoResult() {
         let networkExpectation = expectation(description: "Fetch Entry from UID without Fallback Test")
-        self.getEntry(uid: kEntryLocaliseUID)
+        self.getEntry(uid: EntryAPITest.kEntryLocaliseUID)
             .locale("en-gb")
             .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
             switch result {
@@ -952,14 +953,14 @@ class EntryAPITest: XCTestCase {
     
     func test35Fetch_Entry_UIDWithFallback_NoResult() {
         let networkExpectation = expectation(description: "Fetch Entry from UID without Fallback Test")
-        self.getEntry(uid: kEntryLocaliseUID)
+        self.getEntry(uid: EntryAPITest.kEntryLocaliseUID)
             .locale(locale)
             .include(params: .fallback)
             .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
             switch result {
             case .success(let model):
                 if let fields = model.fields, let publishLocale = fields["publish_details.locale"] as? String {
-                    XCTAssert(["en-us", locale].contains(publishLocale), "\(publishLocale) not matching")
+                    XCTAssert(["en-us", self.locale].contains(publishLocale), "\(publishLocale) not matching")
                 }
             case .failure(let error):
                 XCTFail("\(error)")
