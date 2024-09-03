@@ -2,7 +2,7 @@ name: "Contentstack CI"
 
 on:
   push:
-    branches: [ master, next ]
+    branches: [ fix/dx-1287, master, next ]
   pull_request:
     branches: [ master, next ]
 
