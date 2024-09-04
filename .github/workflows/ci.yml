@@ -15,6 +15,7 @@ jobs:
     steps:
     - name: Set carthage.sh to executable
       run: |
+        ls -al
         chmod +x ./Scripts/carthage.sh
     - uses: actions/checkout@v1
       with:
