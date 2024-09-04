@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: Set carthage.sh to executable
       run: |
-        chmod +x ./carthage.sh
+        chmod +x ./Scripts/carthage.sh
     - uses: actions/checkout@v1
       with:
         path: Carthage
@@ -23,7 +23,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-carthage-
     - name: Dependencies
-      run: ./carthage.sh bootstrap --no-use-binaries --platform macOS
+      run: ./Scripts/carthage.sh bootstrap --no-use-binaries --platform macOS
     - name: Dependency libxml2
       run: brew install libxml2 && brew link --force libxml2
     - name: macOS
@@ -39,7 +39,7 @@ jobs:
     steps:
     - name: Set carthage.sh to executable
       run: |
-        chmod +x ./carthage.sh
+        chmod +x ./Scripts/carthage.sh
     - uses: actions/checkout@v1
       with:
         path: Carthage
@@ -47,7 +47,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-carthage-
     - name: Dependencies
-      run: ./carthage.sh bootstrap --no-use-binaries --platform iOS  --use-xcframeworks
+      run: ./Scripts/carthage.sh bootstrap --no-use-binaries --platform iOS  --use-xcframeworks
     - name: iOS - ${{ matrix.destination }}
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack iOS" SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" -destination "${{ matrix.destination }}" test | xcpretty
 
@@ -62,7 +62,7 @@ jobs:
     steps:
     - name: Set carthage.sh to executable
       run: |
-        chmod +x ./carthage.sh
+        chmod +x ./Scripts/carthage.sh
     - uses: actions/checkout@v1
       with:
         path: Carthage
@@ -70,7 +70,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-carthage-
     - name: Dependencies
-      run: ./carthage.sh bootstrap --no-use-binaries --platform tvOS  --use-xcframeworks
+      run: ./Scripts/carthage.sh bootstrap --no-use-binaries --platform tvOS  --use-xcframeworks
     - name: tvOS - ${{ matrix.destination }}
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack tvOS" SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" -destination "${{ matrix.destination }}" test | xcpretty
 
@@ -85,7 +85,7 @@ jobs:
     steps:
     - name: Set carthage.sh to executable
       run: |
-        chmod +x ./carthage.sh
+        chmod +x ./Scripts/carthage.sh
     - uses: actions/checkout@v1
       with:
         path: Carthage
