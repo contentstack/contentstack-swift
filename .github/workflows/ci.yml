@@ -13,16 +13,15 @@ jobs:
     env:
       DEVELOPER_DIR: /Applications/Xcode_15.4.app/Contents/Developer
     steps:
-    - name: Set carthage.sh to executable
-      run: |
-        ls -al
-        chmod +x ./Scripts/carthage.sh
     - uses: actions/checkout@v1
       with:
         path: Carthage
         key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
         restore-keys: |
           ${{ runner.os }}-carthage-
+    - name: Set carthage.sh to executable
+      run: |
+        chmod +x ./Scripts/carthage.sh
     - name: Dependencies
       run: ./Scripts/carthage.sh bootstrap --no-use-binaries --platform macOS
     - name: Dependency libxml2
@@ -38,15 +37,15 @@ jobs:
       matrix:
         destination: ["OS=16.2,name=iPhone 14 Pro"]
     steps:
-    - name: Set carthage.sh to executable
-      run: |
-        chmod +x ./Scripts/carthage.sh
     - uses: actions/checkout@v1
       with:
         path: Carthage
         key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
         restore-keys: |
           ${{ runner.os }}-carthage-
+    - name: Set carthage.sh to executable
+      run: |
+        chmod +x ./Scripts/carthage.sh
     - name: Dependencies
       run: ./Scripts/carthage.sh bootstrap --no-use-binaries --platform iOS  --use-xcframeworks
     - name: iOS - ${{ matrix.destination }}
@@ -61,15 +60,15 @@ jobs:
       matrix:
         destination: ["OS=16.1,name=Apple TV 4K (2nd generation)"]
     steps:
-    - name: Set carthage.sh to executable
-      run: |
-        chmod +x ./Scripts/carthage.sh
     - uses: actions/checkout@v1
       with:
         path: Carthage
         key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
         restore-keys: |
           ${{ runner.os }}-carthage-
+    - name: Set carthage.sh to executable
+      run: |
+        chmod +x ./Scripts/carthage.sh
     - name: Dependencies
       run: ./Scripts/carthage.sh bootstrap --no-use-binaries --platform tvOS  --use-xcframeworks
     - name: tvOS - ${{ matrix.destination }}
@@ -84,14 +83,14 @@ jobs:
       matrix:
         destination: ["OS=9.1,name=Apple Watch Series 6 (44mm)"]
     steps:
-    - name: Set carthage.sh to executable
-      run: |
-        chmod +x ./Scripts/carthage.sh
     - uses: actions/checkout@v1
       with:
         path: Carthage
         key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
         restore-keys: |
           ${{ runner.os }}-carthage-
+    - name: Set carthage.sh to executable
+      run: |
+        chmod +x ./Scripts/carthage.sh
     - name: watchOS - ${{ matrix.destination }}
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack watchOS" -destination "${{ matrix.destination }}" build | xcpretty
