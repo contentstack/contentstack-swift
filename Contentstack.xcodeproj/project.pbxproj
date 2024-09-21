@@ -252,7 +252,6 @@
 		470657602B5E797300BBFF88 /* ContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706575F2B5E797300BBFF88 /* ContentstackTest.swift */; };
 		470657612B5E797300BBFF88 /* ContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706575F2B5E797300BBFF88 /* ContentstackTest.swift */; };
 		470657622B5E797300BBFF88 /* ContentstackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4706575F2B5E797300BBFF88 /* ContentstackTest.swift */; };
-		47161ACA2B5D747D00AD615B /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 47161AC92B5D747D00AD615B /* DVR */; };
 		47AAE0902B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
 		47AAE0912B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
 		47AAE0922B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
@@ -263,13 +262,8 @@
 		47C6EFC32C0B5B9400F0D5CF /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */; };
 		47C6EFC42C0B5B9400F0D5CF /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */; };
 		47C6EFC52C0B5B9400F0D5CF /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */; };
-		642AD4332B86110100E2AFDF /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD4322B86110100E2AFDF /* ContentstackUtils */; };
-		642AD4352B86111700E2AFDF /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD4342B86111700E2AFDF /* DVR */; };
-		642AD4372B86111A00E2AFDF /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD4362B86111A00E2AFDF /* ContentstackUtils */; };
-		642AD4392B86112100E2AFDF /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD4382B86112100E2AFDF /* ContentstackUtils */; };
-		642AD43B2B86112400E2AFDF /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD43A2B86112400E2AFDF /* DVR */; };
-		642AD43D2B86112C00E2AFDF /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD43C2B86112C00E2AFDF /* ContentstackUtils */; };
-		642AD43F2B86112F00E2AFDF /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 642AD43E2B86112F00E2AFDF /* DVR */; };
+		47D561512C9EF97D00DC085D /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 47D561502C9EF97D00DC085D /* ContentstackUtils */; };
+		47D561572C9EFA5900DC085D /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 47D561562C9EFA5900DC085D /* DVR */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -393,6 +387,8 @@
 		47161AC42B5D744E00AD615B /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47161ACB2B5D788E00AD615B /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47AAE08F2B60420E0098655A /* SyncAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncAPITest.swift; sourceTree = "<group>"; };
+		47AEE8D92C9ED4C9007884A7 /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47AEE8E72C9EDF3E007884A7 /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B4DC612C232A8200370CFC /* TaxonomyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyTest.swift; sourceTree = "<group>"; };
 		47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxonomy.swift; sourceTree = "<group>"; };
 		OBJ_17 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -405,8 +401,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47161ACA2B5D747D00AD615B /* DVR in Frameworks */,
-				642AD4332B86110100E2AFDF /* ContentstackUtils in Frameworks */,
+				47D561512C9EF97D00DC085D /* ContentstackUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F4A75D4241BAC4300E3A024 /* Contentstack.framework in Frameworks */,
+				47D561572C9EFA5900DC085D /* DVR in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,8 +418,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				642AD4352B86111700E2AFDF /* DVR in Frameworks */,
-				642AD4372B86111A00E2AFDF /* ContentstackUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,8 +433,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				642AD4392B86112100E2AFDF /* ContentstackUtils in Frameworks */,
-				642AD43B2B86112400E2AFDF /* DVR in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,8 +448,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				642AD43D2B86112C00E2AFDF /* ContentstackUtils in Frameworks */,
-				642AD43F2B86112F00E2AFDF /* DVR in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +483,8 @@
 		0F1DCC6D243D980900EED404 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47AEE8E72C9EDF3E007884A7 /* DVR.framework */,
+				47AEE8D92C9ED4C9007884A7 /* DVR.framework */,
 				470657632B5E7F5400BBFF88 /* DVR.framework */,
 				47161ACB2B5D788E00AD615B /* DVR.framework */,
 				47161AC42B5D744E00AD615B /* DVR.framework */,
@@ -777,8 +769,7 @@
 			);
 			name = "Contentstack iOS";
 			packageProductDependencies = (
-				47161AC92B5D747D00AD615B /* DVR */,
-				642AD4322B86110100E2AFDF /* ContentstackUtils */,
+				47D561502C9EF97D00DC085D /* ContentstackUtils */,
 			);
 			productName = "Contentstack iOS";
 			productReference = 0F4A75CB241BAC4300E3A024 /* Contentstack.framework */;
@@ -798,6 +789,9 @@
 				0F4A764D241BB42100E3A024 /* PBXTargetDependency */,
 			);
 			name = "Contentstack iOS Tests";
+			packageProductDependencies = (
+				47D561562C9EFA5900DC085D /* DVR */,
+			);
 			productName = "Contentstack iOSTests";
 			productReference = 0F4A75D3241BAC4300E3A024 /* Contentstack iOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -817,8 +811,6 @@
 			);
 			name = "Contentstack macOS";
 			packageProductDependencies = (
-				642AD4342B86111700E2AFDF /* DVR */,
-				642AD4362B86111A00E2AFDF /* ContentstackUtils */,
 			);
 			productName = "Contentstack macOS";
 			productReference = 0F4A75EB241BAE6C00E3A024 /* Contentstack.framework */;
@@ -857,8 +849,6 @@
 			);
 			name = "Contentstack tvOS";
 			packageProductDependencies = (
-				642AD4382B86112100E2AFDF /* ContentstackUtils */,
-				642AD43A2B86112400E2AFDF /* DVR */,
 			);
 			productName = "Contentstack tvOS";
 			productReference = 0F4A7607241BAFE000E3A024 /* Contentstack.framework */;
@@ -897,8 +887,6 @@
 			);
 			name = "Contentstack watchOS";
 			packageProductDependencies = (
-				642AD43C2B86112C00E2AFDF /* ContentstackUtils */,
-				642AD43E2B86112F00E2AFDF /* DVR */,
 			);
 			productName = "Contentstack watchOS";
 			productReference = 0F4A7623241BB0A300E3A024 /* Contentstack.framework */;
@@ -957,8 +945,8 @@
 			);
 			mainGroup = OBJ_5;
 			packageReferences = (
-				47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */,
-				642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */,
+				47D5614F2C9EF96D00DC085D /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */,
+				47D561532C9EFA1400DC085D /* XCRemoteSwiftPackageReference "DVR" */,
 			);
 			productRefGroup = OBJ_14 /* Products */;
 			projectDirPath = "";
@@ -2508,63 +2496,33 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */ = {
+		47D5614F2C9EF96D00DC085D /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/venmo/DVR.git";
+			repositoryURL = "https://github.com/vkalta/contentstack-utils-swift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.1;
+				branch = master;
+				kind = branch;
 			};
 		};
-		642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */ = {
+		47D561532C9EFA1400DC085D /* XCRemoteSwiftPackageReference "DVR" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/contentstack/contentstack-utils-swift";
+			repositoryURL = "https://github.com/vkalta/DVR.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.3.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		47161AC92B5D747D00AD615B /* DVR */ = {
+		47D561502C9EF97D00DC085D /* ContentstackUtils */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */;
-			productName = DVR;
-		};
-		642AD4322B86110100E2AFDF /* ContentstackUtils */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
+			package = 47D5614F2C9EF96D00DC085D /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
 			productName = ContentstackUtils;
 		};
-		642AD4342B86111700E2AFDF /* DVR */ = {
+		47D561562C9EFA5900DC085D /* DVR */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */;
-			productName = DVR;
-		};
-		642AD4362B86111A00E2AFDF /* ContentstackUtils */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
-			productName = ContentstackUtils;
-		};
-		642AD4382B86112100E2AFDF /* ContentstackUtils */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
-			productName = ContentstackUtils;
-		};
-		642AD43A2B86112400E2AFDF /* DVR */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */;
-			productName = DVR;
-		};
-		642AD43C2B86112C00E2AFDF /* ContentstackUtils */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 642AD4312B8610F200E2AFDF /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
-			productName = ContentstackUtils;
-		};
-		642AD43E2B86112F00E2AFDF /* DVR */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 47161AC82B5D747600AD615B /* XCRemoteSwiftPackageReference "DVR" */;
+			package = 47D561532C9EFA1400DC085D /* XCRemoteSwiftPackageReference "DVR" */;
 			productName = DVR;
 		};
 /* End XCSwiftPackageProductDependency section */
