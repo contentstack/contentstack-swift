@@ -22,7 +22,7 @@ let package = Package(
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/contentstack/contentstack-utils-swift.git", from: "1.3.0"),
         // Dev dependencies
-        .package(url: "https://github.com/venmo/DVR.git", from: "2.1.0")
+        .package(url: "https://github.com/vkalta/DVR.git", from: "master")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
