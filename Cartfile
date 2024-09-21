@@ -1,1 +1,2 @@
 github "vkalta/DVR" "master"
+github "vkalta/contentstack-utils-swift.git" "master"

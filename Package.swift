@@ -20,7 +20,7 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/contentstack/contentstack-utils-swift.git", from: "1.3.0"),
+        .package(url: "https://github.com/vkalta/contentstack-utils-swift.git", from: "master"),
         // Dev dependencies
         .package(url: "https://github.com/vkalta/DVR.git", from: "master")
     ],
