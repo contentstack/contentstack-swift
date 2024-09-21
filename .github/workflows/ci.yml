@@ -41,8 +41,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-carthage-
     - name: Dependencies
-      # run: carthage bootstrap --no-use-binaries --platform iOS  --use-xcframeworks
-      run: carthage bootstrap --platform iOS --use-xcframeworks
+      run: carthage bootstrap --no-use-binaries --platform iOS  --use-xcframeworks
     - name: iOS - ${{ matrix.destination }}
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack iOS" SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" -destination "${{ matrix.destination }}" test | xcpretty
 
