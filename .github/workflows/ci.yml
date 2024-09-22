@@ -34,12 +34,12 @@ jobs:
       matrix:
         destination: ["OS=16.2,name=iPhone 14 Pro"]
     steps:
-    - uses: actions/checkout@v2
-      with:
-        path: Carthage
-        key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
-        restore-keys: |
-          ${{ runner.os }}-carthage-
+    - uses: actions/checkout@v1
+      # with:
+      #   path: Carthage
+      #   key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+      #   restore-keys: |
+      #     ${{ runner.os }}-carthage-
     # - name: Dependencies
     #   run: carthage bootstrap --no-use-binaries --platform iOS  --use-xcframeworks
     # Step 2: Set up dependencies
