@@ -40,8 +40,19 @@ jobs:
         key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
         restore-keys: |
           ${{ runner.os }}-carthage-
+    # - name: Dependencies
+    #   run: carthage bootstrap --no-use-binaries --platform iOS  --use-xcframeworks
+    # Step 2: Set up dependencies
     - name: Dependencies
-      run: carthage bootstrap --no-use-binaries --platform iOS  --use-xcframeworks
+      run: |
+        # Check if the machine is running on Apple Silicon
+        if [[ "$(uname -m)" == "arm64" ]]; then
+          # Use Rosetta to run Carthage in x86_64 mode on Apple Silicon
+          arch -x86_64 carthage bootstrap --no-use-binaries --platform iOS --use-xcframeworks
+        else
+          # Run Carthage normally on Intel machines
+          carthage bootstrap --no-use-binaries --platform iOS --use-xcframeworks
+        fi
     - name: iOS - ${{ matrix.destination }}
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack iOS" SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" -destination "${{ matrix.destination }}" test | xcpretty
 
