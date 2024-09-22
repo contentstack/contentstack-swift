@@ -20,7 +20,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-carthage-
     - name: Dependencies
-      run: arch -x86_64 carthage bootstrap --no-use-binaries --platform macOS --use-xcframeworks
+      run: carthage bootstrap --no-use-binaries --platform macOS --use-xcframeworks
     - name: Dependency libxml2
       run: brew install libxml2 && brew link --force libxml2
     - name: macOS
@@ -41,7 +41,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-carthage-
     - name: Dependencies
-      run: arch -x86_64 carthage bootstrap --no-use-binaries --platform iOS  --use-xcframeworks
+      run: carthage bootstrap --no-use-binaries --platform iOS  --use-xcframeworks
     - name: iOS - ${{ matrix.destination }}
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack iOS" SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" -destination "${{ matrix.destination }}" test | xcpretty
 
