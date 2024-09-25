@@ -63,7 +63,8 @@ jobs:
           -scheme "Contentstack iOS Tests" \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
           -sdk iphonesimulator \
-          ONLY_ACTIVE_ARCH=NO
+          ONLY_ACTIVE_ARCH=NO \
+          EXCLUDED_ARCHS="arm64"
     # env:
     #   DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
     # strategy:
