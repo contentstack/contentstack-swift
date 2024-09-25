@@ -37,9 +37,6 @@ jobs:
       with:
         ruby-version: '3.0'
     
-    - name: Install Bundler
-      run: bundle install
-    
     - name: Install Carthage
       run: |
         brew install carthage
@@ -48,6 +45,9 @@ jobs:
       run: |
         carthage bootstrap --platform iOS --cache-builds
       
+    - name: Install dependencies via Swift Package Manager
+      run: swift package resolve
+
     - name: Set up Xcode
       uses: maxim-lobanov/setup-xcode@v1
       with:
