@@ -28,16 +28,46 @@ jobs:
   iOS:
     name: Test iOS
     runs-on: macos-latest
-    env:
-      DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
-    strategy:
-      matrix:
-        destination: ["OS=16.2,name=iPhone 14 Pro"]
     steps:
-    - uses: actions/checkout@v1
-    # Clean derived data
-    - name: Clean derived data
-      run: rm -rf ~/Library/Developer/Xcode/DerivedData/*
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Ruby (for installing Bundler and Fastlane)
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+    
+    - name: Install Bundler
+      run: bundle install
+    
+    - name: Install Carthage
+      run: |
+        brew install carthage
+    
+    - name: Install dep via Carthage
+      run: |
+        carthage bootstrap --platform iOS --cache-builds
+      
+    - name: Set up Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '14.0'
+
+    - name: Build and run tests
+      run: |
+        xcodebuild test \
+          -scheme "Contentstack iOS" \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
+    # env:
+    #   DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
+    # strategy:
+    #   matrix:
+    #     destination: ["OS=16.2,name=iPhone 14 Pro"]
+    # steps:
+    # - uses: actions/checkout@v1
+    # # Clean derived data
+    # - name: Clean derived data
+    #   run: rm -rf ~/Library/Developer/Xcode/DerivedData/*
       # with:
       #   path: Carthage
       #   key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
@@ -57,10 +87,10 @@ jobs:
     #       carthage bootstrap --no-use-binaries --platform iOS --use-xcframeworks
     #     fi
     # Resolve dependencies using Swift Package Manager
-    - name: Resolve dependencies
-      run: arch -x86_64 swift package resolve
-    - name: iOS - ${{ matrix.destination }}
-      run: arch -x86_64 set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack iOS" SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" -destination "${{ matrix.destination }}" test | xcpretty
+    # - name: Resolve dependencies
+    #   run: arch -x86_64 swift package resolve
+    # - name: iOS - ${{ matrix.destination }}
+    #   run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack iOS" SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" -destination "${{ matrix.destination }}" test | xcpretty
 
   tvOS:
     name: Test tvOS
