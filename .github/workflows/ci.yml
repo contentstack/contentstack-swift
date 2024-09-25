@@ -57,6 +57,10 @@ jobs:
       run: |
         xcodebuild -list
 
+    - name: Build for Simulator
+      run: |
+        xcodebuild -scheme "Contentstack iOS Tests" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' build
+
     - name: Build and run tests
       run: |
         xcodebuild test \
