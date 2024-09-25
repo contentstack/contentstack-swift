@@ -53,10 +53,14 @@ jobs:
       with:
         xcode-version: '15.4.0'
 
+    - name: List Available Schemes
+      run: |
+        xcodebuild -list
+
     - name: Build and run tests
       run: |
         xcodebuild test \
-          -scheme "Contentstack iOS" \
+          -scheme "Contentstack iOS Tests" \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest'
     # env:
     #   DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
