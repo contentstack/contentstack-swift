@@ -57,18 +57,15 @@ jobs:
       run: |
         xcodebuild -list
 
-    - name: Build for Simulator
-      run: |
-        xcodebuild -scheme "Contentstack iOS Tests" -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' build
-
     - name: Build and run tests
       run: |
         xcodebuild test \
+          -workspace Contentstack.xcworkspace \
           -scheme "Contentstack iOS Tests" \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
           -sdk iphonesimulator \
-          ONLY_ACTIVE_ARCH=NO \
-          EXCLUDED_ARCHS="arm64"
+          ONLY_ACTIVE_ARCH=NO
+    # EXCLUDED_ARCHS="arm64"
     # env:
     #   DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
     # strategy:
