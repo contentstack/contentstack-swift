@@ -28,7 +28,6 @@ jobs:
   iOS:
     name: Test iOS
     runs-on: macos-latest
-    # runs-on: macos-13-xlarge
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
@@ -54,10 +53,6 @@ jobs:
       with:
         xcode-version: '15.4.0'
 
-    - name: List Available Schemes
-      run: |
-        xcodebuild -list
-
     - name: Build and run tests
       run: |
         xcodebuild test \
@@ -65,42 +60,8 @@ jobs:
           -scheme "Contentstack iOS Tests" \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=latest' \
           -sdk iphonesimulator \
-          ONLY_ACTIVE_ARCH=NO
-    # EXCLUDED_ARCHS="arm64"
-    # env:
-    #   DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
-    # strategy:
-    #   matrix:
-    #     destination: ["OS=16.2,name=iPhone 14 Pro"]
-    # steps:
-    # - uses: actions/checkout@v1
-    # # Clean derived data
-    # - name: Clean derived data
-    #   run: rm -rf ~/Library/Developer/Xcode/DerivedData/*
-      # with:
-      #   path: Carthage
-      #   key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
-      #   restore-keys: |
-      #     ${{ runner.os }}-carthage-
-    # - name: Dependencies
-    #   run: carthage bootstrap --no-use-binaries --platform iOS  --use-xcframeworks
-    # Step 2: Set up dependencies
-    # - name: Dependencies
-    #   run: |
-    #     # Check if the machine is running on Apple Silicon
-    #     if [[ "$(uname -m)" == "arm64" ]]; then
-    #       # Use Rosetta to run Carthage in x86_64 mode on Apple Silicon
-    #       arch -x86_64 carthage bootstrap --no-use-binaries --platform iOS --use-xcframeworks
-    #     else
-    #       # Run Carthage normally on Intel machines
-    #       carthage bootstrap --no-use-binaries --platform iOS --use-xcframeworks
-    #     fi
-    # Resolve dependencies using Swift Package Manager
-    # - name: Resolve dependencies
-    #   run: arch -x86_64 swift package resolve
-    # - name: iOS - ${{ matrix.destination }}
-    #   run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack iOS" SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" -destination "${{ matrix.destination }}" test | xcpretty
-
+          ONLY_ACTIVE_ARCH=NO \
+          CODE_SIGNING_ALLOWED=NO
   tvOS:
     name: Test tvOS
     runs-on: macos-latest
