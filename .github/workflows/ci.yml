@@ -27,8 +27,8 @@ jobs:
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -workspace "Contentstack.xcworkspace" -scheme "Contentstack macOS" SWIFT_ACTIVE_COMPILATION_CONDITIONS="NO_FATAL_TEST" -destination "platform=macOS" test | xcpretty
   iOS:
     name: Test iOS
-    # runs-on: macos-latest
-    runs-on: macos-13-xlarge
+    runs-on: macos-latest
+    # runs-on: macos-13-xlarge
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
