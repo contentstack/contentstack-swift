@@ -30,13 +30,6 @@ jobs:
       uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: '15.4.0'
-    
-    - name: List available schemes
-      run: |
-        xcodebuild -list -project Contentstack.xcodeproj
-    - name: List available schemes workspace
-      run: |
-        xcodebuild -list -workspace Contentstack.xcworkspace
 
     - name: Build and run tests
       run: |
