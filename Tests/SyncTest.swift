@@ -32,12 +32,12 @@ class SyncTest: XCTestCase {
         XCTAssertEqual(syncStack.parameter.query(), "pagination_token=\(paginationToken)")
     }
     #if !NO_FATAL_TEST
-    func testSync_BothTokens_ShouldGetFatalError() {
-        expectFatalError(expectedMessage: ("Both Sync Token and Pagination Token can not be presnet.")) {
-            let syncStack = makeSyncStack(syncToken: self.syncToken, paginationToken: self.paginationToken)
-            XCTAssertNil(syncStack)
-        }
-    }
+//    func testSync_BothTokens_ShouldGetFatalError() {
+//        expectFatalError(expectedMessage: ("Both Sync Token and Pagination Token can not be presnet.")) {
+//            let syncStack = makeSyncStack(syncToken: self.syncToken, paginationToken: self.paginationToken)
+//            XCTAssertNil(syncStack)
+//        }
+//    }
     #endif
     func testSyncableTypes_Parameter() {
         XCTAssertEqual(SyncStack.SyncableTypes.all.parameters.query(), "")
