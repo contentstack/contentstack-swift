@@ -255,6 +255,9 @@
 		47AAE0902B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
 		47AAE0912B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
 		47AAE0922B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
+		47B09C252CA952E400B8AB41 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47B09C242CA952E400B8AB41 /* DVR.framework */; };
+		47B09C262CA952E400B8AB41 /* DVR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 47B09C242CA952E400B8AB41 /* DVR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		47B09C292CA9530100B8AB41 /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 47B09C282CA9530100B8AB41 /* ContentstackUtils */; };
 		47B4DC622C232A8200370CFC /* TaxonomyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DC612C232A8200370CFC /* TaxonomyTest.swift */; };
 		47B4DC632C232A8200370CFC /* TaxonomyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DC612C232A8200370CFC /* TaxonomyTest.swift */; };
 		47B4DC642C232A8200370CFC /* TaxonomyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DC612C232A8200370CFC /* TaxonomyTest.swift */; };
@@ -289,6 +292,20 @@
 			remoteInfo = "Contentstack iOS";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		47B09C272CA952E400B8AB41 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				47B09C262CA952E400B8AB41 /* DVR.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0F0246652431F37300F72181 /* ImageTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransform.swift; sourceTree = "<group>"; };
@@ -389,6 +406,7 @@
 		47AAE08F2B60420E0098655A /* SyncAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncAPITest.swift; sourceTree = "<group>"; };
 		47AEE8D92C9ED4C9007884A7 /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47AEE8E72C9EDF3E007884A7 /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		47B09C242CA952E400B8AB41 /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B4DC612C232A8200370CFC /* TaxonomyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyTest.swift; sourceTree = "<group>"; };
 		47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxonomy.swift; sourceTree = "<group>"; };
 		OBJ_17 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -418,6 +436,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47B09C292CA9530100B8AB41 /* ContentstackUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F4A75F4241BAE6C00E3A024 /* Contentstack.framework in Frameworks */,
+				47B09C252CA952E400B8AB41 /* DVR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +503,7 @@
 		0F1DCC6D243D980900EED404 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47B09C242CA952E400B8AB41 /* DVR.framework */,
 				47AEE8E72C9EDF3E007884A7 /* DVR.framework */,
 				47AEE8D92C9ED4C9007884A7 /* DVR.framework */,
 				470657632B5E7F5400BBFF88 /* DVR.framework */,
@@ -811,6 +832,7 @@
 			);
 			name = "Contentstack macOS";
 			packageProductDependencies = (
+				47B09C282CA9530100B8AB41 /* ContentstackUtils */,
 			);
 			productName = "Contentstack macOS";
 			productReference = 0F4A75EB241BAE6C00E3A024 /* Contentstack.framework */;
@@ -823,6 +845,7 @@
 				0F4A75EF241BAE6C00E3A024 /* Sources */,
 				0F4A75F0241BAE6C00E3A024 /* Frameworks */,
 				0F4A75F1241BAE6C00E3A024 /* Resources */,
+				47B09C272CA952E400B8AB41 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1696,7 +1719,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.2.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1773,7 +1796,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.2.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1843,7 +1866,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-macOSTests";
@@ -1904,7 +1927,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-macOSTests";
@@ -2515,6 +2538,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		47B09C282CA9530100B8AB41 /* ContentstackUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47D5614F2C9EF96D00DC085D /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
+			productName = ContentstackUtils;
+		};
 		47D561502C9EF97D00DC085D /* ContentstackUtils */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 47D5614F2C9EF96D00DC085D /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */;
