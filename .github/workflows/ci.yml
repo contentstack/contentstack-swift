@@ -33,13 +33,13 @@ jobs:
     
     - name: List available schemes
       run: |
-        xcodebuild -list -workspace Contentstack.xcworkspace
+        xcodebuild -list -project Contentstack.xcodeproj
 
     - name: Build and run tests
       run: |
         xcodebuild test \
-          -workspace Contentstack.xcworkspace \
-          -scheme "Contentstack macOS" \
+          -project Contentstack.xcodeproj \
+          -scheme "Contentstack macOS Tests" \
           -destination 'platform=macOS,arch=arm64' \
           ONLY_ACTIVE_ARCH=NO \
           CODE_SIGNING_ALLOWED=NO
