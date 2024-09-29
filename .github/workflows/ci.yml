@@ -40,7 +40,7 @@ jobs:
         xcodebuild test \
           -project Contentstack.xcodeproj \
           -scheme "Contentstack macOS Tests" \
-          -destination 'platform=macOS,arch=arm64' \
+          -destination 'platform=macOS,arch=x86_64' \
           ONLY_ACTIVE_ARCH=NO \
           CODE_SIGNING_ALLOWED=NO
   iOS:
