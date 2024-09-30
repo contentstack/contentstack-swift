@@ -11,6 +11,7 @@ public struct ContentstackConfig {
 
     /// The singleton instance of 'ContentstackConfig'.
     public static let `default` = ContentstackConfig()
+    public var earlyAccess: [String]?
 
     /// Initialize 'ContentstackConfig' default values.
     public init() {}
@@ -51,6 +52,9 @@ public struct ContentstackConfig {
         }
 
         return userAgentString
+    }
+    public mutating func setEarlyAccess(_ earlyAccess: [String]) {
+         self.earlyAccess = earlyAccess
     }
 
     // MARK: Private
@@ -111,4 +115,18 @@ public struct ContentstackConfig {
 
         return appBundleId + "/" + versionNumberString
     }
+    
+    /// Internal method to get headers including early access
+     internal func getHeaders() -> [String: String] {
+         var headers: [String: String] = [
+             "X-User-Agent": sdkVersionString(),
+             "User-Agent": userAgentString()
+         ]
+         
+         if let earlyAccess = earlyAccess, !earlyAccess.isEmpty {
+             headers["x-header-ea"] = earlyAccess.joined(separator: ",")
+         }
+         
+         return headers
+     }
 }
