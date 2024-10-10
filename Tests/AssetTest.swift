@@ -15,13 +15,13 @@ class AssetTest: XCTestCase {
     }
     #if !NO_FATAL_TEST
 //    The test runner exited with code 6 before finishing running tests. This may be due to your code calling 'exit', consider adding a symbolic breakpoint on 'exit' to debug.
-    func testFetch_withoutUID() async {
-        expectFatalError(expectedMessage: "Please provide Asset uid") {
-            makeAssetSut().fetch { (result: Result<AssetModel, Error>, response) in
-                        
-            }
-        }
-    }
+//    func testFetch_withoutUID() async {
+//        expectFatalError(expectedMessage: "Please provide Asset uid") {
+//            makeAssetSut().fetch { (result: Result<AssetModel, Error>, response) in
+//                        
+//            }
+//        }
+//    }
     #endif
     
     func testAssetQuery_Locale() {
