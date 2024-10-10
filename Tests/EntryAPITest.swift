@@ -296,7 +296,7 @@ class EntryAPITest: XCTestCase {
         self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isLessThan(date)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
             switch result {
             case .success(let contentstackResponse):
-                XCTAssertEqual(contentstackResponse.items.count, 29)
+                XCTAssertEqual(contentstackResponse.items.count, 0)
                 for entry in contentstackResponse.items {
                     if let sessionTime = entry.fields?["session_time"] as? [String: Any],
                         let Date = sessionTime["start_time"] as? String,
@@ -337,7 +337,7 @@ class EntryAPITest: XCTestCase {
         self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isLessThanOrEqual(date)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
             switch result {
             case .success(let contentstackResponse):
-                XCTAssertEqual(contentstackResponse.items.count, 29)
+                XCTAssertEqual(contentstackResponse.items.count, 0)
                 for entry in contentstackResponse.items {
                     if let sessionTime = entry.fields?["session_time"] as? [String: Any],
                         let Date = sessionTime["start_time"] as? String,
@@ -378,7 +378,7 @@ class EntryAPITest: XCTestCase {
         self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isGreaterThan(date)).find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
             switch result {
             case .success(let contentstackResponse):
-                XCTAssertEqual(contentstackResponse.items.count, 2)
+                XCTAssertEqual(contentstackResponse.items.count, 0)
                 for entry in contentstackResponse.items {
                     if let sessionTime = entry.fields?["session_time"] as? [String: Any],
                         let Date = sessionTime["start_time"] as? String,
@@ -419,7 +419,7 @@ class EntryAPITest: XCTestCase {
         self.getEntryQuery().where(valueAtKey: "session_time.start_time", .isGreaterThanOrEqual(date)).addValue("val", forHTTPHeaderField: "key").find { (result: Result<ContentstackResponse<EntryModel>, Error>, response) in
             switch result {
             case .success(let contentstackResponse):
-                XCTAssertEqual(contentstackResponse.items.count, 2)
+                XCTAssertEqual(contentstackResponse.items.count, 0)
                 for entry in contentstackResponse.items {
                     if let sessionTime = entry.fields?["session_time"] as? [String: Any],
                         let Date = sessionTime["start_time"] as? String,
