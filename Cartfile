@@ -1,2 +1,2 @@
-github "AliSoftware/OHHTTPStubs" "8.0.0"
-github "venmo/DVR" "v2.0.1"
+github "venmo/DVR"
+github "contentstack/contentstack-utils-swift.git"

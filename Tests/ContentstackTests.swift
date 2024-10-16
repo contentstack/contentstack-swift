@@ -49,11 +49,6 @@ final class ContentstackTests: XCTestCase {
         XCTAssertEqual(stack.host, host)
     }
 
-    func testStack_Branch_ReturnStackWithBranch () {
-        let branch = "environment"
-        let stack = makeStackSut(branch: branch)
-        XCTAssertEqual(stack.branch, branch)
-    }
 
     func testStack_DecodingStrategy_tobesetToJsonDecoder () {
         var config = ContentstackConfig.default

@@ -176,6 +176,8 @@ public class APIError: Decodable, Error, CustomDebugStringConvertible {
                                      jsonDecoder: JSONDecoder,
                                      data: Data,
                                      response: HTTPURLResponse) -> Error {
+        // let responseString = String(data: data, encoding: .utf8)
+        // print("Raw Response Data: \(responseString ?? "No readable data")")
         if let apiError = APIError.error(with: jsonDecoder, data: data, statusCode: response.statusCode) {
             let errorMessage = """
             Errored: 'GET' (\(response.statusCode)) \(url.absoluteString)

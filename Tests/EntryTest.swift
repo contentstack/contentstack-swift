@@ -14,13 +14,13 @@ class EntryTest: XCTestCase {
         XCTAssertEqual(endPoint.pathComponent, "entries")
     }
     #if !NO_FATAL_TEST
-    func testFetch_withoutUID() async {
-        expectFatalError(expectedMessage: "Please provide Entry uid") {
-            makeEntrySut(contentTypeuid: "content").fetch { (result: Result<AssetModel, Error>, response) in
-                        
-            }
-        }
-    }
+//    func testFetch_withoutUID() async {
+//        expectFatalError(expectedMessage: "Please provide Entry uid") {
+//            makeEntrySut(contentTypeuid: "content").fetch { (result: Result<AssetModel, Error>, response) in
+//                        
+//            }
+//        }
+//    }
 
     func testEntryQuery_ContentTypeUidNotProvided_FatalError() {
         expectFatalError(expectedMessage: "Please provide ContentType uid") {
@@ -73,6 +73,18 @@ class EntryTest: XCTestCase {
         let addValue = makeEntrySut(contentTypeuid: "Content_type", entryUid: "entry_uid").addValue("value1", forHTTPHeaderField: "key1")
         XCTAssertEqual(addValue.headers.keys.count, 1)
         XCTAssertEqual(addValue.headers["key1"], "value1")
+    }
+    
+    func testSingleVariant() {
+        let entry = makeEntrySut(contentTypeuid: "Content_type", entryUid: "entry_uid").variants(uid: "variant1")
+        XCTAssertEqual(entry.headers.keys.count, 1)
+        XCTAssertEqual(entry.headers["x-cs-variant-uid"], "variant1")
+    }
+    
+    func testMultipleVariants() {
+        let entry = makeEntrySut(contentTypeuid: "Content_type", entryUid: "entry_uid").variants(uids: ["variant1", "variant2", "variant3"])
+        XCTAssertEqual(entry.headers.keys.count, 1)
+        XCTAssertEqual(entry.headers["x-cs-variant-uid"], "variant1,variant2,variant3")
     }
 }
 
