@@ -46,7 +46,7 @@ class ContentTypeQueryAPITest: XCTestCase {
         self.getContentTypeQuery().find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
             switch result {
             case .success(let contentstackResponse):
-                XCTAssertEqual(contentstackResponse.items.count, 11)
+                XCTAssertEqual(contentstackResponse.items.count, 13)
                 if let contentType = contentstackResponse.items.first {
                     ContentTypeQueryAPITest.kContentTypeUID = contentType.uid
                     ContentTypeQueryAPITest.kContentTitle = contentType.title
@@ -96,7 +96,7 @@ class ContentTypeQueryAPITest: XCTestCase {
         self.queryWhere(.description, operation: .exists(true)) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
             switch result {
             case .success(let contentstackResponse):
-                XCTAssertEqual(contentstackResponse.items.count, 11)
+                XCTAssertEqual(contentstackResponse.items.count, 13)
             case .failure(let error):
                 XCTFail("\(error)")
             }
@@ -186,7 +186,7 @@ class ContentTypeQueryAPITest: XCTestCase {
             .find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
                 switch result {
                 case .success(let contentstackResponse):
-                    XCTAssertEqual(contentstackResponse.count, 11)
+                    XCTAssertEqual(contentstackResponse.count, 13)
                 case .failure(let error):
                     XCTFail("\(error)")
                 }
