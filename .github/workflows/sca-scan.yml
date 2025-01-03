@@ -8,6 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: snyk/actions/setup@master
+      # Set up GitHub Token for authentication with private repos
+      - name: Set up GitHub Token
+        run: git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com".insteadOf "https://github.com"
       - name: Resolve Swift package dependencies
         run: swift package resolve 
       - name: Run Snyk to check for vulnerabilities
