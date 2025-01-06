@@ -17,21 +17,13 @@ jobs:
       #   run: swift package resolve
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.PKG_TOKEN }} 
-      - name: Debug - Test Git Configuration
-        run: |
-          echo "Testing Git configuration..."
-          git config --global --list
-          # Test specific repo access (token will be masked in logs)
-          git ls-remote https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/contentstack/contentstack-swift-dvr.git
-
       - name: Configure Git credentials
         run: |
+          touch ~/.gitconfig
           git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/".insteadOf "https://github.com/"
-      
+    
       - name: Resolve Swift package dependencies
-        run: |
-          echo "Resolving packages..."
-          swift package resolve --verbose
+        run: swift package resolve
         env:
           GITHUB_TOKEN: ${{ secrets.PKG_TOKEN }}
       - name: Run Snyk to check for vulnerabilities
@@ -39,3 +31,6 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.PKG_TOKEN }} 
+      - name: Cleanup credentials
+        if: always()
+        run: rm -f ~/.gitconfig
