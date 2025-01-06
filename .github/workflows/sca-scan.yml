@@ -8,13 +8,13 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: snyk/actions/setup@master
-      # Set up GitHub Token for authentication with private repos
-      - name: Set up GitHub Token
+      - name: Set up GitHub Token for Swift Package Manager
         run: |
-         git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com".insteadOf "https://github.com"
-         git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com".insteadOf "git@github.com:"
+          git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com".insteadOf "https://github.com"
+      
+      # Step 4: Resolve Swift package dependencies
       - name: Resolve Swift package dependencies
-        run: swift package resolve 
+        run: swift package resolve
         env:
           GITHUB_TOKEN: ${{ secrets.PKG_TOKEN }} 
       - name: Run Snyk to check for vulnerabilities
