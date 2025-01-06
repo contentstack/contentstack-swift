@@ -8,15 +8,32 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: snyk/actions/setup@master
-      - name: Set up GitHub Token for Swift Package Manager
+      # - name: Set up GitHub Token for Swift Package Manager
+      #   run: |
+      #     git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/".insteadOf "https://github.com/"
+      
+      # # Step 4: Resolve Swift package dependencies
+      # - name: Resolve Swift package dependencies
+      #   run: swift package resolve
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.PKG_TOKEN }} 
+      - name: Debug - Test Git Configuration
+        run: |
+          echo "Testing Git configuration..."
+          git config --global --list
+          # Test specific repo access (token will be masked in logs)
+          git ls-remote https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/contentstack/contentstack-swift-dvr.git
+
+      - name: Configure Git credentials
         run: |
           git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/".insteadOf "https://github.com/"
       
-      # Step 4: Resolve Swift package dependencies
       - name: Resolve Swift package dependencies
-        run: swift package resolve
+        run: |
+          echo "Resolving packages..."
+          swift package resolve --verbose
         env:
-          GITHUB_TOKEN: ${{ secrets.PKG_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.PKG_TOKEN }}
       - name: Run Snyk to check for vulnerabilities
         run: snyk test --all-projects --fail-on=all
         env:
