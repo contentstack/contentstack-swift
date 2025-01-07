@@ -8,15 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: snyk/actions/setup@master
-      # - name: Set up GitHub Token for Swift Package Manager
-      #   run: |
-      #     git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/".insteadOf "https://github.com/"
-      
-      # # Step 4: Resolve Swift package dependencies
-      # - name: Resolve Swift package dependencies
-      #   run: swift package resolve
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.PKG_TOKEN }} 
       - name: Configure Git credentials
         run: |
           git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/".insteadOf "https://github.com/"
