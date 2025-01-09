@@ -31,6 +31,14 @@ jobs:
       with:
         xcode-version: '15.4.0'
 
+    - name: Create config file
+      run: |
+        echo '{
+            "api_key": "${{ secrets.CS_API_KEY }}",
+            "delivery_token": "${{ secrets.CS_DELIVERY_TOKEN }}",
+            "environment": "${{ secrets.CS_ENVIRONMENT }}"
+          }' > Tests/config.json
+
     - name: Build and run tests
       run: |
         xcodebuild test \
@@ -62,6 +70,14 @@ jobs:
       uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: '15.4.0'
+    
+    - name: Create config file
+      run: |
+        echo '{
+            "api_key": "${{ secrets.CS_API_KEY }}",
+            "delivery_token": "${{ secrets.CS_DELIVERY_TOKEN }}",
+            "environment": "${{ secrets.CS_ENVIRONMENT }}"
+          }' > Tests/config.json
 
     - name: Build and run tests
       run: |
