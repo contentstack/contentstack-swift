@@ -34,9 +34,9 @@ jobs:
     - name: Create config file
       run: |
         echo '{
-            "api_key": "${{ secrets.CS_API_KEY }}",
-            "delivery_token": "${{ secrets.CS_DELIVERY_TOKEN }}",
-            "environment": "${{ secrets.CS_ENVIRONMENT }}"
+          "api_key": "${{ secrets.api_key }}",
+          "delivery_token": "${{ secrets.delivery_token }}",
+          "environment": "${{ secrets.environment }}"
           }' > Tests/config.json
 
     - name: Build and run tests
@@ -74,9 +74,9 @@ jobs:
     - name: Create config file
       run: |
         echo '{
-            "api_key": "${{ secrets.CS_API_KEY }}",
-            "delivery_token": "${{ secrets.CS_DELIVERY_TOKEN }}",
-            "environment": "${{ secrets.CS_ENVIRONMENT }}"
+            "api_key": "${{ secrets.api_key }}",
+            "delivery_token": "${{ secrets.delivery_token }}",
+            "environment": "${{ secrets.environment }}"
           }' > Tests/config.json
 
     - name: Build and run tests
