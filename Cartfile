@@ -1,2 +1,2 @@
-github "venmo/DVR"
-github "contentstack/contentstack-utils-swift.git"
+github "contentstack/contentstack-swift-dvr" "master"
+github "contentstack/contentstack-utils-swift"
