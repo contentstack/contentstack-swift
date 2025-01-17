@@ -2598,7 +2598,7 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		47D5614F2C9EF96D00DC085D /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vkalta/contentstack-utils-swift";
+			repositoryURL = "https://github.com/contentstack/contentstack-utils-swift";
 			requirement = {
 				branch = master;
 				kind = branch;
