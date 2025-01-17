@@ -14,6 +14,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - name: Configure Git credentials
+      run: |
+        git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/".insteadOf "https://github.com/"
+
     - name: Set up Ruby (for installing Bundler and Fastlane)
       uses: ruby/setup-ruby@v1
       with:
@@ -53,6 +57,10 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      
+    - name: Configure Git credentials
+      run: |
+        git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/".insteadOf "https://github.com/"
     
     - name: Set up Ruby (for installing Bundler and Fastlane)
       uses: ruby/setup-ruby@v1
