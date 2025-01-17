@@ -1,2 +1,2 @@
-github "vkalta/DVR" "8bb79349473d1ff595f07d216662ee5163854f42"
-github "vkalta/contentstack-utils-swift" "dacaf16bd8e4e182e0bef57df2957c7c8697082c"
+github "contentstack/contentstack-swift-dvr" "c8040a2451e4bc2c312347531cac6c73f23ce50c"
+github "contentstack/contentstack-utils-swift" "v1.3.4"
