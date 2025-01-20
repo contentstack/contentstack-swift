@@ -255,8 +255,6 @@
 		47AAE0902B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
 		47AAE0912B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
 		47AAE0922B60420E0098655A /* SyncAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AAE08F2B60420E0098655A /* SyncAPITest.swift */; };
-		47B09C252CA952E400B8AB41 /* DVR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47B09C242CA952E400B8AB41 /* DVR.framework */; };
-		47B09C262CA952E400B8AB41 /* DVR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 47B09C242CA952E400B8AB41 /* DVR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		47B09C292CA9530100B8AB41 /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 47B09C282CA9530100B8AB41 /* ContentstackUtils */; };
 		47B4DC622C232A8200370CFC /* TaxonomyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DC612C232A8200370CFC /* TaxonomyTest.swift */; };
 		47B4DC632C232A8200370CFC /* TaxonomyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B4DC612C232A8200370CFC /* TaxonomyTest.swift */; };
@@ -267,6 +265,7 @@
 		47C6EFC52C0B5B9400F0D5CF /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */; };
 		47D561512C9EF97D00DC085D /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 47D561502C9EF97D00DC085D /* ContentstackUtils */; };
 		47D561572C9EFA5900DC085D /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 47D561562C9EFA5900DC085D /* DVR */; };
+		6750778E2D3E256A0076A066 /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 6750778D2D3E256A0076A066 /* DVR */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -292,20 +291,6 @@
 			remoteInfo = "Contentstack iOS";
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		47B09C272CA952E400B8AB41 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				47B09C262CA952E400B8AB41 /* DVR.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0F0246652431F37300F72181 /* ImageTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransform.swift; sourceTree = "<group>"; };
@@ -444,8 +429,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6750778E2D3E256A0076A066 /* DVR in Frameworks */,
 				0F4A75F4241BAE6C00E3A024 /* Contentstack.framework in Frameworks */,
-				47B09C252CA952E400B8AB41 /* DVR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,7 +830,6 @@
 				0F4A75EF241BAE6C00E3A024 /* Sources */,
 				0F4A75F0241BAE6C00E3A024 /* Frameworks */,
 				0F4A75F1241BAE6C00E3A024 /* Resources */,
-				47B09C272CA952E400B8AB41 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2626,6 +2610,11 @@
 			productName = ContentstackUtils;
 		};
 		47D561562C9EFA5900DC085D /* DVR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47D561532C9EFA1400DC085D /* XCRemoteSwiftPackageReference "contentstack-swift-dvr" */;
+			productName = DVR;
+		};
+		6750778D2D3E256A0076A066 /* DVR */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 47D561532C9EFA1400DC085D /* XCRemoteSwiftPackageReference "contentstack-swift-dvr" */;
 			productName = DVR;
