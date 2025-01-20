@@ -141,7 +141,7 @@ class TaxonomyTest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        networkExpectation.fulfill()
+        
         wait(for: [networkExpectation], timeout: 5)
     }
 }
