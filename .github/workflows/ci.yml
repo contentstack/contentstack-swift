@@ -13,6 +13,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      
     - name: Configure Git credentials
       run: |
         git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/".insteadOf "https://github.com/"
