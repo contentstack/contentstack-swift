@@ -8,7 +8,16 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: snyk/actions/setup@master
+      - name: Configure Git credentials
+        run: |
+          git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/".insteadOf "https://github.com/"
+    
+      - name: Resolve Swift package dependencies
+        run: swift package resolve
       - name: Run Snyk to check for vulnerabilities
         run: snyk test --all-projects --fail-on=all
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - name: Cleanup credentials
+        if: always()
+        run: rm -f ~/.gitconfig
