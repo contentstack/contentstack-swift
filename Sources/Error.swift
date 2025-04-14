@@ -7,6 +7,10 @@
 
 import Foundation
 
+// Add these type aliases at the top level
+public typealias CSAPIError = APIError
+public typealias CSSDKError = SDKError
+
 /// Possible errors being thrown by the SDK
 public enum SDKError: Error, CustomDebugStringConvertible {
 
