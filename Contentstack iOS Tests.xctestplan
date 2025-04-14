@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "2A2297B9-D608-493E-86C3-89A25834B643",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Contentstack.xcodeproj",
+        "identifier" : "0F4A75D2241BAC4300E3A024",
+        "name" : "Contentstack iOS Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

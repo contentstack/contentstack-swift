@@ -1,2 +1,1 @@
-github "contentstack/contentstack-swift-dvr" "master"
-github "contentstack/contentstack-utils-swift"
+github "contentstack/contentstack-utils-swift" ~> 1.3.4
