@@ -35,6 +35,11 @@ jobs:
       with:
         xcode-version: '15.4.0'
 
+    - name: Unzip DVR for Testing
+      run: |
+        unzip -q Utility/contentstack-swift-dvr.zip -d Utility/
+        echo "DVR unzipped for testing"
+
     - name: Create config file
       run: |
         echo '{
@@ -79,6 +84,11 @@ jobs:
       with:
         xcode-version: '15.4.0'
     
+    - name: Unzip DVR for Testing
+      run: |
+        unzip -q Utility/contentstack-swift-dvr.zip -d Utility/
+        echo "DVR unzipped for testing"
+        
     - name: Create config file
       run: |
         echo '{

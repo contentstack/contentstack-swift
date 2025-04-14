@@ -1541,7 +1541,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SMAKUMV86W;
+				DEVELOPMENT_TEAM = FLVTD4X723;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1611,7 +1611,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = SMAKUMV86W;
+				DEVELOPMENT_TEAM = FLVTD4X723;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -2583,14 +2583,6 @@
 		47D5614F2C9EF96D00DC085D /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/contentstack/contentstack-utils-swift";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		47D561532C9EFA1400DC085D /* XCRemoteSwiftPackageReference "contentstack-swift-dvr" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/contentstack/contentstack-swift-dvr.git";
 			requirement = {
 				branch = master;
 				kind = branch;

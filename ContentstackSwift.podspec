@@ -31,18 +31,18 @@ Pod::Spec.new do |s|
   }
   s.source           = { :git => 'https://github.com/contentstack/contentstack-swift.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/Contentstack'
-  s.swift_version             = '5'
+  s.swift_version             = '5.6'
 
-  s.ios.deployment_target = '11.0'
-  s.osx.deployment_target     = '10.13'
-  s.watchos.deployment_target = '4.0'
-  s.tvos.deployment_target    = '11.0'
+  s.ios.deployment_target = '13.0'
+  s.osx.deployment_target = '10.15'
+  s.watchos.deployment_target = '6.0'
+  s.tvos.deployment_target = '13.0'
 
 
   s.source_files = 'Sources/**/*'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit'
-  s.dependency 'ContentstackUtils', '~> 1.3.0'
+  s.dependency 'ContentstackUtils', '~> 1.3.4'
 end
 
