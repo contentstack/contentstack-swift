@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Contentstack
+@testable import ContentstackSwift
 import DVR
 #if (os(iOS) || os(tvOS) || os(watchOS)) && API_TEST
 class StackCacheAPITest: XCTestCase {

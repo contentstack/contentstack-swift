@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Contentstack
+@testable import ContentstackSwift
 class EntryTest: XCTestCase {
 
     func testEntry_EndPoint() {
