@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Contentstack
+@testable import ContentstackSwift
 class SyncTest: XCTestCase {
     let paginationToken = "uid_138"
     let syncToken = "uid_138"
