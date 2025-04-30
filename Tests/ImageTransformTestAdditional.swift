@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Contentstack
+@testable import ContentstackSwift
 #if os(iOS) || os(tvOS) || os(watchOS)
     import UIKit
 #endif

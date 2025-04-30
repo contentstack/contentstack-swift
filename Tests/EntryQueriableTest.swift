@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Contentstack
+@testable import ContentstackSwift
 class EntryQueriableTest: XCTestCase {
 
     let refUID = "reference_uid"
