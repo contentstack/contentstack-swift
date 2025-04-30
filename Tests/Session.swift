@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Contentstack
+import ContentstackSwift
 class Session: EntryDecodable {
     public enum FieldKeys: String, CodingKey {
         case title, uid, locale, type, room, speakers, track

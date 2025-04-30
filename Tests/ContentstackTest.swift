@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Contentstack
+@testable import ContentstackSwift
 import DVR
 private var _stackSharedInstance: Stack?
 
