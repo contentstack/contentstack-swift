@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Contentstack
+@testable import ContentstackSwift
 
 final class StackTests: XCTestCase {
     let uid = "testUID"
