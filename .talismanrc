@@ -1,4 +1,7 @@
 fileignoreconfig:
+- filename: .github/workflows/secrets-scan.yml
+  ignore_detectors:
+    - filecontent
 - filename: Contentstack.xcworkspace/xcshareddata/xcschemes/Contentstack macOS.xcscheme
   checksum: 0f51b502dfb1608309256d8d7afa1395bb7cc7e1f7e7b46ea0843f86672c59b5
 - filename: Contentstack.xcworkspace/xcshareddata/xcschemes/Contentstack iOS.xcscheme
