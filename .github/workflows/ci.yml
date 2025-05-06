@@ -2,9 +2,9 @@ name: "Contentstack CI"
 
 on:
   push:
-    branches: [ master, next ]
+    branches: [ master, staging ]
   pull_request:
-    branches: [ master, next ]
+    branches: [ master, staging ]
 
 jobs:
   macOS:
@@ -46,8 +46,8 @@ jobs:
     - name: Build and run tests
       run: |
         xcodebuild test \
-          -workspace Contentstack.xcworkspace \
-          -scheme "Contentstack macOS Tests" \
+          -workspace ContentstackSwift.xcworkspace \
+          -scheme "ContentstackSwift macOS Tests" \
           -destination 'platform=macOS,arch=arm64' \
           ONLY_ACTIVE_ARCH=NO \
           CODE_SIGNING_ALLOWED=NO
@@ -86,13 +86,13 @@ jobs:
             "delivery_token": "${{ secrets.delivery_token }}",
             "environment": "${{ secrets.environment }}"
           }' > Tests/config.json
-
+        
     - name: Build and run tests
       run: |
-        xcodebuild test \
-          -workspace Contentstack.xcworkspace \
-          -scheme "Contentstack iOS Tests" \
-          -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.2' \
-          -sdk iphonesimulator \
-          ONLY_ACTIVE_ARCH=NO \
-          CODE_SIGNING_ALLOWED=NO
+            xcodebuild test \
+              -workspace ContentstackSwift.xcworkspace \
+              -scheme "ContentstackSwift iOS Tests" \
+              -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
+              -sdk iphonesimulator \
+              ONLY_ACTIVE_ARCH=NO \
+              CODE_SIGNING_ALLOWED=NO
