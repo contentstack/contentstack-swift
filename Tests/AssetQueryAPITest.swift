@@ -7,7 +7,7 @@
 
 import XCTest
 
-@testable import Contentstack
+@testable import ContentstackSwift
 import DVR
 
 class AssetQueryAPITest: XCTestCase {

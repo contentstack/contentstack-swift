@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Contentstack
+@testable import ContentstackSwift
 class ContentTypeQueryTest: XCTestCase {
     let testStringValue = "TESTVALUE"
     let testIntValue = 100

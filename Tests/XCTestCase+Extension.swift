@@ -7,7 +7,7 @@
 
 import Foundation
 import XCTest
-@testable import Contentstack
+@testable import ContentstackSwift
 extension XCTestCase {
     func expectFatalError(expectedMessage: String, testcase: @escaping () -> Void) {
         let expectation = self.expectation(description: "expectingFatalError")

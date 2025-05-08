@@ -1,5 +1,5 @@
 import XCTest
-@testable import Contentstack
+@testable import ContentstackSwift
 
 final class ContentstackTests: XCTestCase {
 

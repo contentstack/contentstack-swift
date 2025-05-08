@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.6
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -20,9 +20,9 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/contentstack/contentstack-utils-swift.git", .branch("master")),
+        .package(url: "https://github.com/contentstack/contentstack-utils-swift.git", exact:"1.3.4"),
         // Dev dependencies
-        .package(url: "https://github.com/contentstack/contentstack-swift-dvr.git", .branch("master"))
+        .package(url: "https://github.com/contentstack/contentstack-swift-dvr.git", branch:"master")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -30,11 +30,14 @@ let package = Package(
         //and on products in packages which this package depends on.
         .target(
             name: "ContentstackSwift",
-            dependencies: ["ContentstackUtils"],
+            dependencies: [
+                .product(name: "ContentstackUtils", package: "contentstack-utils-swift"), 
+                .product(name: "DVR", package: "contentstack-swift-dvr")],
             path: "Sources"),
         .testTarget(
             name: "ContentstackTests",
-            dependencies: ["ContentstackSwift", "DVR"],
+            dependencies: ["ContentstackSwift", 
+                           .product(name: "DVR", package: "contentstack-swift-dvr")],
             path: "Tests")
     ]
 )

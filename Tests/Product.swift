@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Contentstack
+import ContentstackSwift
 
 class Product: EntryDecodable {
     public enum FieldKeys: String, CodingKey {

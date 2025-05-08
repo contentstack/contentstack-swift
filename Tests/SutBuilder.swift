@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Contentstack
+import ContentstackSwift
 
 func makeEntrySut(contentTypeuid: String? = nil, entryUid: String? = nil) -> Entry {
     let stack = Contentstack.stack(apiKey: "api_key",
