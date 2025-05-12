@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Contentstack
+@testable import ContentstackSwift
 class UtilsTest: XCTestCase {
     let urlString = "https://images.contentstack.io/v3/assets/uid_136download"
 

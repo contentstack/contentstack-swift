@@ -70,9 +70,9 @@
 		0F4A245D24224D3100159C24 /* ContentstackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A245B24224D3100159C24 /* ContentstackResponse.swift */; };
 		0F4A245E24224D3100159C24 /* ContentstackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A245B24224D3100159C24 /* ContentstackResponse.swift */; };
 		0F4A245F24224D3100159C24 /* ContentstackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A245B24224D3100159C24 /* ContentstackResponse.swift */; };
-		0F4A75D4241BAC4300E3A024 /* Contentstack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4A75CB241BAC4300E3A024 /* Contentstack.framework */; };
-		0F4A75F4241BAE6C00E3A024 /* Contentstack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4A75EB241BAE6C00E3A024 /* Contentstack.framework */; };
-		0F4A7610241BAFE000E3A024 /* Contentstack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4A7607241BAFE000E3A024 /* Contentstack.framework */; };
+		0F4A75D4241BAC4300E3A024 /* ContentstackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4A75CB241BAC4300E3A024 /* ContentstackSwift.framework */; };
+		0F4A75F4241BAE6C00E3A024 /* ContentstackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4A75EB241BAE6C00E3A024 /* ContentstackSwift.framework */; };
+		0F4A7610241BAFE000E3A024 /* ContentstackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4A7607241BAFE000E3A024 /* ContentstackSwift.framework */; };
 		0F4A762C241BB0D200E3A024 /* Contentstack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A762B241BB0D200E3A024 /* Contentstack.swift */; };
 		0F4A762D241BB0D200E3A024 /* Contentstack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A762B241BB0D200E3A024 /* Contentstack.swift */; };
 		0F4A762E241BB0D200E3A024 /* Contentstack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4A762B241BB0D200E3A024 /* Contentstack.swift */; };
@@ -314,13 +314,13 @@
 		0F38D7E3242C831300232D7F /* AssetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTest.swift; sourceTree = "<group>"; };
 		0F463112243B044F001CE1FA /* SyncTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncTest.swift; sourceTree = "<group>"; };
 		0F4A245B24224D3100159C24 /* ContentstackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentstackResponse.swift; sourceTree = "<group>"; };
-		0F4A75CB241BAC4300E3A024 /* Contentstack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Contentstack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F4A75D3241BAC4300E3A024 /* Contentstack iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Contentstack iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F4A75EB241BAE6C00E3A024 /* Contentstack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Contentstack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F4A75F3241BAE6C00E3A024 /* Contentstack macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Contentstack macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F4A7607241BAFE000E3A024 /* Contentstack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Contentstack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F4A760F241BAFE000E3A024 /* Contentstack tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Contentstack tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0F4A7623241BB0A300E3A024 /* Contentstack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Contentstack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F4A75CB241BAC4300E3A024 /* ContentstackSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ContentstackSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F4A75D3241BAC4300E3A024 /* ContentstackSwift iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ContentstackSwift iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F4A75EB241BAE6C00E3A024 /* ContentstackSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ContentstackSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F4A75F3241BAE6C00E3A024 /* ContentstackSwift macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ContentstackSwift macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F4A7607241BAFE000E3A024 /* ContentstackSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ContentstackSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F4A760F241BAFE000E3A024 /* ContentstackSwift tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ContentstackSwift tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F4A7623241BB0A300E3A024 /* ContentstackSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ContentstackSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F4A762B241BB0D200E3A024 /* Contentstack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contentstack.swift; sourceTree = "<group>"; };
 		0F4A763C241BB38C00E3A024 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F4A7641241BB3C600E3A024 /* ContentstackTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentstackTests.swift; sourceTree = "<group>"; };
@@ -412,7 +412,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F4A75D4241BAC4300E3A024 /* Contentstack.framework in Frameworks */,
+				0F4A75D4241BAC4300E3A024 /* ContentstackSwift.framework in Frameworks */,
 				47D561572C9EFA5900DC085D /* DVR in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,7 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6750778E2D3E256A0076A066 /* DVR in Frameworks */,
-				0F4A75F4241BAE6C00E3A024 /* Contentstack.framework in Frameworks */,
+				0F4A75F4241BAE6C00E3A024 /* ContentstackSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +445,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F4A7610241BAFE000E3A024 /* Contentstack.framework in Frameworks */,
+				0F4A7610241BAFE000E3A024 /* ContentstackSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,13 +674,13 @@
 		OBJ_14 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0F4A75CB241BAC4300E3A024 /* Contentstack.framework */,
-				0F4A75D3241BAC4300E3A024 /* Contentstack iOS Tests.xctest */,
-				0F4A75EB241BAE6C00E3A024 /* Contentstack.framework */,
-				0F4A75F3241BAE6C00E3A024 /* Contentstack macOS Tests.xctest */,
-				0F4A7607241BAFE000E3A024 /* Contentstack.framework */,
-				0F4A760F241BAFE000E3A024 /* Contentstack tvOS Tests.xctest */,
-				0F4A7623241BB0A300E3A024 /* Contentstack.framework */,
+				0F4A75CB241BAC4300E3A024 /* ContentstackSwift.framework */,
+				0F4A75D3241BAC4300E3A024 /* ContentstackSwift iOS Tests.xctest */,
+				0F4A75EB241BAE6C00E3A024 /* ContentstackSwift.framework */,
+				0F4A75F3241BAE6C00E3A024 /* ContentstackSwift macOS Tests.xctest */,
+				0F4A7607241BAFE000E3A024 /* ContentstackSwift.framework */,
+				0F4A760F241BAFE000E3A024 /* ContentstackSwift tvOS Tests.xctest */,
+				0F4A7623241BB0A300E3A024 /* ContentstackSwift.framework */,
 			);
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
@@ -760,9 +760,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0F4A75CA241BAC4300E3A024 /* Contentstack iOS */ = {
+		0F4A75CA241BAC4300E3A024 /* ContentstackSwift iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F4A75E0241BAC4300E3A024 /* Build configuration list for PBXNativeTarget "Contentstack iOS" */;
+			buildConfigurationList = 0F4A75E0241BAC4300E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift iOS" */;
 			buildPhases = (
 				0F4A75C6241BAC4300E3A024 /* Headers */,
 				0F4A75C7241BAC4300E3A024 /* Sources */,
@@ -773,17 +773,17 @@
 			);
 			dependencies = (
 			);
-			name = "Contentstack iOS";
+			name = "ContentstackSwift iOS";
 			packageProductDependencies = (
 				47D561502C9EF97D00DC085D /* ContentstackUtils */,
 			);
 			productName = "Contentstack iOS";
-			productReference = 0F4A75CB241BAC4300E3A024 /* Contentstack.framework */;
+			productReference = 0F4A75CB241BAC4300E3A024 /* ContentstackSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		0F4A75D2241BAC4300E3A024 /* Contentstack iOS Tests */ = {
+		0F4A75D2241BAC4300E3A024 /* ContentstackSwift iOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F4A75E1241BAC4300E3A024 /* Build configuration list for PBXNativeTarget "Contentstack iOS Tests" */;
+			buildConfigurationList = 0F4A75E1241BAC4300E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift iOS Tests" */;
 			buildPhases = (
 				0F4A75CF241BAC4300E3A024 /* Sources */,
 				0F4A75D0241BAC4300E3A024 /* Frameworks */,
@@ -794,17 +794,17 @@
 			dependencies = (
 				0F4A764D241BB42100E3A024 /* PBXTargetDependency */,
 			);
-			name = "Contentstack iOS Tests";
+			name = "ContentstackSwift iOS Tests";
 			packageProductDependencies = (
 				47D561562C9EFA5900DC085D /* DVR */,
 			);
 			productName = "Contentstack iOSTests";
-			productReference = 0F4A75D3241BAC4300E3A024 /* Contentstack iOS Tests.xctest */;
+			productReference = 0F4A75D3241BAC4300E3A024 /* ContentstackSwift iOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0F4A75EA241BAE6C00E3A024 /* Contentstack macOS */ = {
+		0F4A75EA241BAE6C00E3A024 /* ContentstackSwift macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F4A75FC241BAE6C00E3A024 /* Build configuration list for PBXNativeTarget "Contentstack macOS" */;
+			buildConfigurationList = 0F4A75FC241BAE6C00E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift macOS" */;
 			buildPhases = (
 				0F4A75E6241BAE6C00E3A024 /* Headers */,
 				0F4A75E7241BAE6C00E3A024 /* Sources */,
@@ -815,17 +815,17 @@
 			);
 			dependencies = (
 			);
-			name = "Contentstack macOS";
+			name = "ContentstackSwift macOS";
 			packageProductDependencies = (
 				47B09C282CA9530100B8AB41 /* ContentstackUtils */,
 			);
 			productName = "Contentstack macOS";
-			productReference = 0F4A75EB241BAE6C00E3A024 /* Contentstack.framework */;
+			productReference = 0F4A75EB241BAE6C00E3A024 /* ContentstackSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		0F4A75F2241BAE6C00E3A024 /* Contentstack macOS Tests */ = {
+		0F4A75F2241BAE6C00E3A024 /* ContentstackSwift macOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F4A75FF241BAE6C00E3A024 /* Build configuration list for PBXNativeTarget "Contentstack macOS Tests" */;
+			buildConfigurationList = 0F4A75FF241BAE6C00E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift macOS Tests" */;
 			buildPhases = (
 				0F4A75EF241BAE6C00E3A024 /* Sources */,
 				0F4A75F0241BAE6C00E3A024 /* Frameworks */,
@@ -836,14 +836,14 @@
 			dependencies = (
 				0F4A75F6241BAE6C00E3A024 /* PBXTargetDependency */,
 			);
-			name = "Contentstack macOS Tests";
+			name = "ContentstackSwift macOS Tests";
 			productName = "Contentstack macOSTests";
-			productReference = 0F4A75F3241BAE6C00E3A024 /* Contentstack macOS Tests.xctest */;
+			productReference = 0F4A75F3241BAE6C00E3A024 /* ContentstackSwift macOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0F4A7606241BAFE000E3A024 /* Contentstack tvOS */ = {
+		0F4A7606241BAFE000E3A024 /* ContentstackSwift tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F4A7618241BAFE000E3A024 /* Build configuration list for PBXNativeTarget "Contentstack tvOS" */;
+			buildConfigurationList = 0F4A7618241BAFE000E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift tvOS" */;
 			buildPhases = (
 				0F4A7602241BAFE000E3A024 /* Headers */,
 				0F4A7603241BAFE000E3A024 /* Sources */,
@@ -854,16 +854,16 @@
 			);
 			dependencies = (
 			);
-			name = "Contentstack tvOS";
+			name = "ContentstackSwift tvOS";
 			packageProductDependencies = (
 			);
 			productName = "Contentstack tvOS";
-			productReference = 0F4A7607241BAFE000E3A024 /* Contentstack.framework */;
+			productReference = 0F4A7607241BAFE000E3A024 /* ContentstackSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		0F4A760E241BAFE000E3A024 /* Contentstack tvOS Tests */ = {
+		0F4A760E241BAFE000E3A024 /* ContentstackSwift tvOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F4A761B241BAFE000E3A024 /* Build configuration list for PBXNativeTarget "Contentstack tvOS Tests" */;
+			buildConfigurationList = 0F4A761B241BAFE000E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift tvOS Tests" */;
 			buildPhases = (
 				0F4A760B241BAFE000E3A024 /* Sources */,
 				0F4A760C241BAFE000E3A024 /* Frameworks */,
@@ -874,14 +874,14 @@
 			dependencies = (
 				0F4A7612241BAFE000E3A024 /* PBXTargetDependency */,
 			);
-			name = "Contentstack tvOS Tests";
+			name = "ContentstackSwift tvOS Tests";
 			productName = "Contentstack tvOSTests";
-			productReference = 0F4A760F241BAFE000E3A024 /* Contentstack tvOS Tests.xctest */;
+			productReference = 0F4A760F241BAFE000E3A024 /* ContentstackSwift tvOS Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0F4A7622241BB0A300E3A024 /* Contentstack watchOS */ = {
+		0F4A7622241BB0A300E3A024 /* ContentstackSwift watchOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0F4A7628241BB0A300E3A024 /* Build configuration list for PBXNativeTarget "Contentstack watchOS" */;
+			buildConfigurationList = 0F4A7628241BB0A300E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift watchOS" */;
 			buildPhases = (
 				0F4A761E241BB0A300E3A024 /* Headers */,
 				0F4A761F241BB0A300E3A024 /* Sources */,
@@ -892,11 +892,11 @@
 			);
 			dependencies = (
 			);
-			name = "Contentstack watchOS";
+			name = "ContentstackSwift watchOS";
 			packageProductDependencies = (
 			);
 			productName = "Contentstack watchOS";
-			productReference = 0F4A7623241BB0A300E3A024 /* Contentstack.framework */;
+			productReference = 0F4A7623241BB0A300E3A024 /* ContentstackSwift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -908,7 +908,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftMigration = 9999;
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					0F4A75CA241BAC4300E3A024 = {
 						CreatedOnToolsVersion = 11.0;
@@ -944,29 +944,30 @@
 					};
 				};
 			};
-			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "Contentstack" */;
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "ContentstackSwift" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = OBJ_5;
 			packageReferences = (
 				47D5614F2C9EF96D00DC085D /* XCRemoteSwiftPackageReference "contentstack-utils-swift" */,
-				47D561532C9EFA1400DC085D /* XCRemoteSwiftPackageReference "contentstack-swift-dvr" */,
+				6700D9E32DAE76ED00D9B55C /* XCRemoteSwiftPackageReference "contentstack-swift-dvr" */,
 			);
 			productRefGroup = OBJ_14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0F4A75CA241BAC4300E3A024 /* Contentstack iOS */,
-				0F4A75D2241BAC4300E3A024 /* Contentstack iOS Tests */,
-				0F4A75EA241BAE6C00E3A024 /* Contentstack macOS */,
-				0F4A75F2241BAE6C00E3A024 /* Contentstack macOS Tests */,
-				0F4A7606241BAFE000E3A024 /* Contentstack tvOS */,
-				0F4A760E241BAFE000E3A024 /* Contentstack tvOS Tests */,
-				0F4A7622241BB0A300E3A024 /* Contentstack watchOS */,
+				0F4A75CA241BAC4300E3A024 /* ContentstackSwift iOS */,
+				0F4A75D2241BAC4300E3A024 /* ContentstackSwift iOS Tests */,
+				0F4A75EA241BAE6C00E3A024 /* ContentstackSwift macOS */,
+				0F4A75F2241BAE6C00E3A024 /* ContentstackSwift macOS Tests */,
+				0F4A7606241BAFE000E3A024 /* ContentstackSwift tvOS */,
+				0F4A760E241BAFE000E3A024 /* ContentstackSwift tvOS Tests */,
+				0F4A7622241BB0A300E3A024 /* ContentstackSwift watchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -1326,17 +1327,17 @@
 /* Begin PBXTargetDependency section */
 		0F4A75F6241BAE6C00E3A024 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0F4A75EA241BAE6C00E3A024 /* Contentstack macOS */;
+			target = 0F4A75EA241BAE6C00E3A024 /* ContentstackSwift macOS */;
 			targetProxy = 0F4A75F5241BAE6C00E3A024 /* PBXContainerItemProxy */;
 		};
 		0F4A7612241BAFE000E3A024 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0F4A7606241BAFE000E3A024 /* Contentstack tvOS */;
+			target = 0F4A7606241BAFE000E3A024 /* ContentstackSwift tvOS */;
 			targetProxy = 0F4A7611241BAFE000E3A024 /* PBXContainerItemProxy */;
 		};
 		0F4A764D241BB42100E3A024 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0F4A75CA241BAC4300E3A024 /* Contentstack iOS */;
+			target = 0F4A75CA241BAC4300E3A024 /* ContentstackSwift iOS */;
 			targetProxy = 0F4A764C241BB42100E3A024 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1411,7 +1412,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.contentstack.Contentstack;
-				PRODUCT_NAME = Contentstack;
+				PRODUCT_NAME = ContentstackSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -1492,7 +1493,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.contentstack.Contentstack;
-				PRODUCT_NAME = Contentstack;
+				PRODUCT_NAME = ContentstackSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -1541,7 +1542,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SMAKUMV86W;
+				DEVELOPMENT_TEAM = FLVTD4X723;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1611,7 +1612,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = SMAKUMV86W;
+				DEVELOPMENT_TEAM = FLVTD4X723;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1713,7 +1714,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.contentstack.Contentstack;
-				PRODUCT_NAME = Contentstack;
+				PRODUCT_NAME = ContentstackSwift;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -1792,7 +1793,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.contentstack.Contentstack;
-				PRODUCT_NAME = Contentstack;
+				PRODUCT_NAME = ContentstackSwift;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = macosx;
 				SWIFT_VERSION = 5.0;
@@ -1997,7 +1998,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-tvOS";
-				PRODUCT_NAME = Contentstack;
+				PRODUCT_NAME = ContentstackSwift;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
@@ -2075,7 +2076,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-tvOS";
-				PRODUCT_NAME = Contentstack;
+				PRODUCT_NAME = ContentstackSwift;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "appletvsimulator appletvos";
@@ -2286,7 +2287,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-watchOS";
-				PRODUCT_NAME = Contentstack;
+				PRODUCT_NAME = ContentstackSwift;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
@@ -2366,7 +2367,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.contentstack.Contentstack-watchOS";
-				PRODUCT_NAME = Contentstack;
+				PRODUCT_NAME = ContentstackSwift;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "watchsimulator watchos";
@@ -2386,6 +2387,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				"ARCHS[sdk=*]" = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -2448,6 +2450,7 @@
 			baseConfigurationReference = 0F4FBC9A2420A17F007B8CAE /* Config.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -2505,7 +2508,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0F4A75E0241BAC4300E3A024 /* Build configuration list for PBXNativeTarget "Contentstack iOS" */ = {
+		0F4A75E0241BAC4300E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F4A75DC241BAC4300E3A024 /* Debug */,
@@ -2514,7 +2517,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		0F4A75E1241BAC4300E3A024 /* Build configuration list for PBXNativeTarget "Contentstack iOS Tests" */ = {
+		0F4A75E1241BAC4300E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift iOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F4A75DE241BAC4300E3A024 /* Debug */,
@@ -2523,7 +2526,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		0F4A75FC241BAE6C00E3A024 /* Build configuration list for PBXNativeTarget "Contentstack macOS" */ = {
+		0F4A75FC241BAE6C00E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F4A75FD241BAE6C00E3A024 /* Debug */,
@@ -2532,7 +2535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		0F4A75FF241BAE6C00E3A024 /* Build configuration list for PBXNativeTarget "Contentstack macOS Tests" */ = {
+		0F4A75FF241BAE6C00E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift macOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F4A7600241BAE6C00E3A024 /* Debug */,
@@ -2541,7 +2544,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		0F4A7618241BAFE000E3A024 /* Build configuration list for PBXNativeTarget "Contentstack tvOS" */ = {
+		0F4A7618241BAFE000E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F4A7619241BAFE000E3A024 /* Debug */,
@@ -2550,7 +2553,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		0F4A761B241BAFE000E3A024 /* Build configuration list for PBXNativeTarget "Contentstack tvOS Tests" */ = {
+		0F4A761B241BAFE000E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift tvOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F4A761C241BAFE000E3A024 /* Debug */,
@@ -2559,7 +2562,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		0F4A7628241BB0A300E3A024 /* Build configuration list for PBXNativeTarget "Contentstack watchOS" */ = {
+		0F4A7628241BB0A300E3A024 /* Build configuration list for PBXNativeTarget "ContentstackSwift watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0F4A7629241BB0A300E3A024 /* Debug */,
@@ -2568,7 +2571,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		OBJ_2 /* Build configuration list for PBXProject "Contentstack" */ = {
+		OBJ_2 /* Build configuration list for PBXProject "ContentstackSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				OBJ_3 /* Debug */,
@@ -2584,11 +2587,11 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/contentstack/contentstack-utils-swift";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = exactVersion;
+				version = 1.3.4;
 			};
 		};
-		47D561532C9EFA1400DC085D /* XCRemoteSwiftPackageReference "contentstack-swift-dvr" */ = {
+		6700D9E32DAE76ED00D9B55C /* XCRemoteSwiftPackageReference "contentstack-swift-dvr" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/contentstack/contentstack-swift-dvr.git";
 			requirement = {
@@ -2611,12 +2614,12 @@
 		};
 		47D561562C9EFA5900DC085D /* DVR */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 47D561532C9EFA1400DC085D /* XCRemoteSwiftPackageReference "contentstack-swift-dvr" */;
+			package = 6700D9E32DAE76ED00D9B55C /* XCRemoteSwiftPackageReference "contentstack-swift-dvr" */;
 			productName = DVR;
 		};
 		6750778D2D3E256A0076A066 /* DVR */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 47D561532C9EFA1400DC085D /* XCRemoteSwiftPackageReference "contentstack-swift-dvr" */;
+			package = 6700D9E32DAE76ED00D9B55C /* XCRemoteSwiftPackageReference "contentstack-swift-dvr" */;
 			productName = DVR;
 		};
 /* End XCSwiftPackageProductDependency section */
