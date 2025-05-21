@@ -82,7 +82,13 @@ public class Stack: CachePolicyAccessible {
             contentstackHTTPHeaders["branch"] = branchId
         }
         self.config.sessionConfiguration.httpAdditionalHeaders = contentstackHTTPHeaders
-        self.urlSession = URLSession(configuration: config.sessionConfiguration)
+        if let sessionDelegate = config.urlSessionDelegate {
+                    self.urlSession = URLSession(configuration: config.sessionConfiguration,
+                                                 delegate: sessionDelegate,
+                                                 delegateQueue: nil)
+                } else {
+                    self.urlSession = URLSession(configuration: config.sessionConfiguration)
+                }
 
         self.config.sessionConfiguration.urlCache = URLCache.shared
     }
