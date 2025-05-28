@@ -44,6 +44,14 @@ public protocol AssetFields: SystemFields {
     var url: String { get }
 }
 
+public protocol GlobalFields: SystemFields {
+    var maintainRevisions: Bool? { get }
+    var inbuiltClass: Bool? { get }
+    var version: Int? { get }
+    var branch : String? { get }
+
+}
+
 /// The cache policy for while fetching entity.
 public protocol CachePolicyAccessible {
     /// The cachePolicy that is use for fetching entity.

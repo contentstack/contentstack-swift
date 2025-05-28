@@ -552,7 +552,7 @@ extension BaseQuery {
 }
 /// The base Queryable protocol to fetch instance for `ContentType`, `Asset`, and `Entry`.
 public protocol ResourceQueryable {
-    /// This call fetches the latest version of a specific `ContentType`, `Asset`, and `Entry` of a particular stack.
+    /// This call fetches the latest version of a specific `ContentType`, `Asset`, `Entry`and `Global Field` of a particular stack.
     /// - Parameters:
     ///   - completion: A handler which will be called on completion of the operation.
     func fetch<ResourceType>(_ completion: @escaping ResultsHandler<ResourceType>)
@@ -562,7 +562,7 @@ public protocol ResourceQueryable {
 /// The base Queryable protocol to find collections for content types, assets, and entries.
 public protocol Queryable {
     /// This is a generic find method which can be used to fetch collections of `ContentType`,
-    /// `Entry`, and `Asset` instances.
+    /// `Entry`,  `Asset` ,`Global fields`instances.
     /// - Parameters:
     ///   - completion: A handler which will be called on completion of the operation.
     func find<ResourceType>(_ completion: @escaping ResultsHandler<ContentstackResponse<ResourceType>>)

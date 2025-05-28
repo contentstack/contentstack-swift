@@ -26,6 +26,8 @@ fileignoreconfig:
   checksum: c439f6d268ae2ea0af023daeffdff2af5928d0610f90fa14c9e6e6ce7e4b3fad
 - filename: ContentstackSwift.xcodeproj/project.pbxproj
   checksum: dfabf06aeff3576c9347e52b3c494635477d81c7d121d8f1435d79f28829f4d1
+- filename: ContentstackSwift.xcodeproj/project.pbxproj
+  checksum: 8937f832171f26061a209adcd808683f7bdfb739e7fc49aecd853d5055466251
 version: ""
 
 
