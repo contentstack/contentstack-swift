@@ -1,0 +1,1058 @@
+{
+  "name": "GlobalField",
+  "interactions": [
+    {
+      "response": {
+        "url": "https://cdn.contentstack.io/v3/global_fields?environment=web",
+        "headers": {
+          "Vary": "Accept-Encoding",
+          "x-request-id": "16f8134b-10bb-4cf6-aef9-3962ebd4d9d8",
+          "x-cache-hits": "0, 0",
+          "Via": "1.1 varnish, 1.1 varnish",
+          "x-timer": "S1748426825.842153,VS0,VE2",
+          "x-ratelimit-limit": "500",
+          "cache-tag": "api.global_fields",
+          "x-runtime": "9",
+          "Date": "Wed, 28 May 2025 10:07:04 GMT",
+          "x-cache": "MISS, HIT",
+          "Content-Encoding": "gzip",
+          "x-ratelimit-remaining": "499",
+          "Accept-Ranges": "bytes",
+          "Server": "contentstack",
+          "Content-Length": "676",
+          "Content-Type": "application/json; charset=utf-8",
+          "x-contentstack-organization": "blt8d282118e2094bb8",
+          "x-cluster": "default",
+          "x-served-by": "cache-bfi-kbfi7400022-BFI, cache-hyd1100030-HYD",
+          "Access-Control-Allow-Origin": "*",
+          "Strict-Transport-Security": "max-age=31557600"
+        },
+        "status": 200,
+        "body": {
+          "global_fields": [
+            {
+              "schema": [
+                {
+                  "format": "",
+                  "uid": "single_line",
+                  "field_metadata": {
+                    "default_value": "",
+                    "description": ""
+                  },
+                  "error_messages": {
+                    "format": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "unique": false,
+                  "display_name": "Single Line Textbox",
+                  "non_localizable": false,
+                  "data_type": "text"
+                },
+                {
+                  "blocks": [
+                    {
+                      "title": "Image",
+                      "uid": "image",
+                      "schema": [
+                        {
+                          "unique": false,
+                          "uid": "rich_text_editor",
+                          "field_metadata": {
+                            "rich_text_type": "advanced",
+                            "version": 3,
+                            "options": [],
+                            "description": "",
+                            "allow_rich_text": true,
+                            "multiline": false
+                          },
+                          "multiple": false,
+                          "mandatory": false,
+                          "display_name": "Rich Text Editor",
+                          "non_localizable": false,
+                          "data_type": "text"
+                        },
+                        {
+                          "format": "",
+                          "uid": "single_line",
+                          "field_metadata": {
+                            "default_value": "",
+                            "description": ""
+                          },
+                          "error_messages": {
+                            "format": ""
+                          },
+                          "multiple": false,
+                          "mandatory": false,
+                          "unique": false,
+                          "display_name": "Single Line Textbox",
+                          "non_localizable": false,
+                          "data_type": "text"
+                        }
+                      ]
+                    }
+                  ],
+                  "uid": "modular_blocks",
+                  "field_metadata": {
+                    "description": "",
+                    "instruction": ""
+                  },
+                  "multiple": true,
+                  "unique": false,
+                  "mandatory": false,
+                  "display_name": "Modular Blocks",
+                  "non_localizable": false,
+                  "data_type": "blocks"
+                },
+                {
+                  "unique": false,
+                  "uid": "number",
+                  "field_metadata": {
+                    "default_value": "",
+                    "description": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "display_name": "Number",
+                  "non_localizable": false,
+                  "data_type": "number"
+                },
+                {
+                  "reference_to": "seo",
+                  "field_metadata": {
+                    "description": ""
+                  },
+                  "uid": "global_field",
+                  "multiple": false,
+                  "unique": false,
+                  "mandatory": false,
+                  "schema": [
+                    {
+                      "format": "",
+                      "uid": "meta_title",
+                      "field_metadata": {
+                        "default_value": "",
+                        "version": 3,
+                        "description": ""
+                      },
+                      "error_messages": {
+                        "format": ""
+                      },
+                      "multiple": false,
+                      "mandatory": false,
+                      "unique": false,
+                      "display_name": "Meta Title",
+                      "non_localizable": false,
+                      "data_type": "text"
+                    },
+                    {
+                      "format": "",
+                      "uid": "meta_description",
+                      "field_metadata": {
+                        "default_value": "",
+                        "version": 3,
+                        "description": "",
+                        "multiline": true
+                      },
+                      "error_messages": {
+                        "format": ""
+                      },
+                      "multiple": false,
+                      "mandatory": false,
+                      "unique": false,
+                      "display_name": "Meta Description",
+                      "non_localizable": false,
+                      "data_type": "text"
+                    },
+                    {
+                      "format": "",
+                      "uid": "keywords",
+                      "field_metadata": {
+                        "default_value": "",
+                        "version": 3,
+                        "description": ""
+                      },
+                      "error_messages": {
+                        "format": ""
+                      },
+                      "multiple": false,
+                      "mandatory": false,
+                      "unique": false,
+                      "display_name": "Meta Keywords",
+                      "non_localizable": false,
+                      "data_type": "text"
+                    },
+                    {
+                      "unique": false,
+                      "uid": "enable_search_indexing",
+                      "field_metadata": {
+                        "default_value": true,
+                        "description": ""
+                      },
+                      "multiple": false,
+                      "mandatory": false,
+                      "display_name": "Enable Search Indexing",
+                      "non_localizable": false,
+                      "data_type": "boolean"
+                    }
+                  ],
+                  "display_name": "Global",
+                  "non_localizable": false,
+                  "data_type": "global_field"
+                }
+              ],
+              "uid": "feature",
+              "inbuilt_class": false,
+              "_version": 1,
+              "last_activity": {},
+              "title": "feature",
+              "created_at": "2025-05-27T11:40:58.740Z",
+              "maintain_revisions": true,
+              "description": "",
+              "updated_at": "2025-05-27T11:40:58.740Z"
+            },
+            {
+              "schema": [
+                {
+                  "format": "",
+                  "uid": "meta_title",
+                  "field_metadata": {
+                    "default_value": "",
+                    "version": 3,
+                    "description": ""
+                  },
+                  "error_messages": {
+                    "format": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "unique": false,
+                  "display_name": "Meta Title",
+                  "non_localizable": false,
+                  "data_type": "text"
+                },
+                {
+                  "format": "",
+                  "uid": "meta_description",
+                  "field_metadata": {
+                    "default_value": "",
+                    "version": 3,
+                    "description": "",
+                    "multiline": true
+                  },
+                  "error_messages": {
+                    "format": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "unique": false,
+                  "display_name": "Meta Description",
+                  "non_localizable": false,
+                  "data_type": "text"
+                },
+                {
+                  "format": "",
+                  "uid": "keywords",
+                  "field_metadata": {
+                    "default_value": "",
+                    "version": 3,
+                    "description": ""
+                  },
+                  "error_messages": {
+                    "format": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "unique": false,
+                  "display_name": "Meta Keywords",
+                  "non_localizable": false,
+                  "data_type": "text"
+                },
+                {
+                  "unique": false,
+                  "uid": "enable_search_indexing",
+                  "field_metadata": {
+                    "default_value": true,
+                    "description": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "display_name": "Enable Search Indexing",
+                  "non_localizable": false,
+                  "data_type": "boolean"
+                }
+              ],
+              "uid": "seo",
+              "inbuilt_class": false,
+              "_version": 1,
+              "last_activity": {},
+              "title": "SEO",
+              "created_at": "2025-05-27T10:40:24.996Z",
+              "maintain_revisions": true,
+              "description": "It contains SEO related information.",
+              "updated_at": "2025-05-27T10:40:24.996Z"
+            }
+          ]
+        }
+      },
+      "recorded_at": 1748426824.8019462,
+      "request": {
+        "headers": {
+          "access_token": "at",
+          "apiey": "api"
+        },
+        "url": "https://cdn.contentstack.io/v3/global_fields?environment=web",
+        "method": "GET"
+      }
+    },
+    {
+      "request": {
+        "url": "https://cdn.contentstack.io/v3/global_fields/feature?environment=web",
+        "headers": {
+          "apiey": "api",
+          "access_token": "at"
+        },
+        "method": "GET"
+      },
+      "recorded_at": 1748427038.607697,
+      "response": {
+        "body": {
+          "global_field": {
+            "schema": [
+              {
+                "format": "",
+                "uid": "single_line",
+                "field_metadata": {
+                  "default_value": "",
+                  "description": ""
+                },
+                "error_messages": {
+                  "format": ""
+                },
+                "multiple": false,
+                "mandatory": false,
+                "unique": false,
+                "display_name": "Single Line Textbox",
+                "non_localizable": false,
+                "data_type": "text"
+              },
+              {
+                "blocks": [
+                  {
+                    "title": "Image",
+                    "uid": "image",
+                    "schema": [
+                      {
+                        "unique": false,
+                        "uid": "rich_text_editor",
+                        "field_metadata": {
+                          "rich_text_type": "advanced",
+                          "version": 3,
+                          "options": [],
+                          "description": "",
+                          "allow_rich_text": true,
+                          "multiline": false
+                        },
+                        "multiple": false,
+                        "mandatory": false,
+                        "display_name": "Rich Text Editor",
+                        "non_localizable": false,
+                        "data_type": "text"
+                      },
+                      {
+                        "format": "",
+                        "uid": "single_line",
+                        "field_metadata": {
+                          "default_value": "",
+                          "description": ""
+                        },
+                        "error_messages": {
+                          "format": ""
+                        },
+                        "multiple": false,
+                        "mandatory": false,
+                        "unique": false,
+                        "display_name": "Single Line Textbox",
+                        "non_localizable": false,
+                        "data_type": "text"
+                      }
+                    ]
+                  }
+                ],
+                "uid": "modular_blocks",
+                "field_metadata": {
+                  "description": "",
+                  "instruction": ""
+                },
+                "multiple": true,
+                "unique": false,
+                "mandatory": false,
+                "display_name": "Modular Blocks",
+                "non_localizable": false,
+                "data_type": "blocks"
+              },
+              {
+                "unique": false,
+                "uid": "number",
+                "field_metadata": {
+                  "default_value": "",
+                  "description": ""
+                },
+                "multiple": false,
+                "mandatory": false,
+                "display_name": "Number",
+                "non_localizable": false,
+                "data_type": "number"
+              },
+              {
+                "reference_to": "seo",
+                "field_metadata": {
+                  "description": ""
+                },
+                "uid": "global_field",
+                "multiple": false,
+                "unique": false,
+                "mandatory": false,
+                "schema": [
+                  {
+                    "format": "",
+                    "uid": "meta_title",
+                    "field_metadata": {
+                      "default_value": "",
+                      "version": 3,
+                      "description": ""
+                    },
+                    "error_messages": {
+                      "format": ""
+                    },
+                    "multiple": false,
+                    "mandatory": false,
+                    "unique": false,
+                    "display_name": "Meta Title",
+                    "non_localizable": false,
+                    "data_type": "text"
+                  },
+                  {
+                    "format": "",
+                    "uid": "meta_description",
+                    "field_metadata": {
+                      "default_value": "",
+                      "version": 3,
+                      "description": "",
+                      "multiline": true
+                    },
+                    "error_messages": {
+                      "format": ""
+                    },
+                    "multiple": false,
+                    "mandatory": false,
+                    "unique": false,
+                    "display_name": "Meta Description",
+                    "non_localizable": false,
+                    "data_type": "text"
+                  },
+                  {
+                    "format": "",
+                    "uid": "keywords",
+                    "field_metadata": {
+                      "default_value": "",
+                      "version": 3,
+                      "description": ""
+                    },
+                    "error_messages": {
+                      "format": ""
+                    },
+                    "multiple": false,
+                    "mandatory": false,
+                    "unique": false,
+                    "display_name": "Meta Keywords",
+                    "non_localizable": false,
+                    "data_type": "text"
+                  },
+                  {
+                    "unique": false,
+                    "uid": "enable_search_indexing",
+                    "field_metadata": {
+                      "default_value": true,
+                      "description": ""
+                    },
+                    "multiple": false,
+                    "mandatory": false,
+                    "display_name": "Enable Search Indexing",
+                    "non_localizable": false,
+                    "data_type": "boolean"
+                  }
+                ],
+                "display_name": "Global",
+                "non_localizable": false,
+                "data_type": "global_field"
+              }
+            ],
+            "uid": "feature",
+            "inbuilt_class": false,
+            "_version": 1,
+            "last_activity": {},
+            "title": "feature",
+            "created_at": "2025-05-27T11:40:58.740Z",
+            "maintain_revisions": true,
+            "description": "",
+            "updated_at": "2025-05-27T11:40:58.740Z"
+          }
+        },
+        "status": 200,
+        "url": "https://cdn.contentstack.io/v3/global_fields/feature?environment=web",
+        "headers": {
+          "x-cache": "MISS, HIT",
+          "Content-Type": "application/json; charset=utf-8",
+          "x-ratelimit-remaining": "499",
+          "Date": "Wed, 28 May 2025 10:10:38 GMT",
+          "x-timer": "S1748427039.665120,VS0,VE1",
+          "x-request-id": "0a73384d-589b-4f1f-89cb-81618761b40b",
+          "Content-Length": "607",
+          "Access-Control-Allow-Origin": "*",
+          "Age": "78006",
+          "Vary": "Accept-Encoding",
+          "x-runtime": "6",
+          "x-cluster": "default",
+          "x-ratelimit-limit": "500",
+          "Accept-Ranges": "bytes",
+          "x-contentstack-organization": "blt8d282118e2094bb8",
+          "Content-Encoding": "gzip",
+          "x-cache-hits": "0, 2",
+          "Strict-Transport-Security": "max-age=31557600",
+          "Server": "contentstack",
+          "cache-tag": "api.global_fields,api.global_fields.feature",
+          "Via": "1.1 varnish, 1.1 varnish",
+          "x-served-by": "cache-bfi-kbfi7400116-BFI, cache-hyd1100024-HYD"
+        }
+      }
+    },
+    {
+      "response": {
+        "headers": {
+          "x-cluster": "default",
+          "x-timer": "S1748427111.826020,VS0,VE2",
+          "x-served-by": "cache-bfi-kbfi7400083-BFI, cache-hyd1100027-HYD",
+          "Strict-Transport-Security": "max-age=31557600",
+          "Via": "1.1 varnish, 1.1 varnish",
+          "x-request-id": "3ca6518b-be5e-4e61-afa2-b3ada86c96a6",
+          "x-contentstack-organization": "blt8d282118e2094bb8",
+          "Content-Encoding": "gzip",
+          "x-cache-hits": "0, 0",
+          "cache-tag": "api.global_fields",
+          "Accept-Ranges": "bytes",
+          "x-ratelimit-remaining": "499",
+          "x-runtime": "6",
+          "Access-Control-Allow-Origin": "*",
+          "Date": "Wed, 28 May 2025 10:11:50 GMT",
+          "x-cache": "MISS, HIT",
+          "Server": "contentstack",
+          "x-ratelimit-limit": "500",
+          "Vary": "Accept-Encoding",
+          "Content-Type": "application/json; charset=utf-8",
+          "Content-Length": "688"
+        },
+        "url": "https://cdn.contentstack.io/v3/global_fields?include_branch=true&environment=web",
+        "body": {
+          "global_fields": [
+            {
+              "schema": [
+                {
+                  "format": "",
+                  "uid": "single_line",
+                  "field_metadata": {
+                    "default_value": "",
+                    "description": ""
+                  },
+                  "error_messages": {
+                    "format": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "unique": false,
+                  "display_name": "Single Line Textbox",
+                  "non_localizable": false,
+                  "data_type": "text"
+                },
+                {
+                  "blocks": [
+                    {
+                      "title": "Image",
+                      "uid": "image",
+                      "schema": [
+                        {
+                          "unique": false,
+                          "uid": "rich_text_editor",
+                          "field_metadata": {
+                            "rich_text_type": "advanced",
+                            "version": 3,
+                            "options": [],
+                            "description": "",
+                            "allow_rich_text": true,
+                            "multiline": false
+                          },
+                          "multiple": false,
+                          "mandatory": false,
+                          "display_name": "Rich Text Editor",
+                          "non_localizable": false,
+                          "data_type": "text"
+                        },
+                        {
+                          "format": "",
+                          "uid": "single_line",
+                          "field_metadata": {
+                            "default_value": "",
+                            "description": ""
+                          },
+                          "error_messages": {
+                            "format": ""
+                          },
+                          "multiple": false,
+                          "mandatory": false,
+                          "unique": false,
+                          "display_name": "Single Line Textbox",
+                          "non_localizable": false,
+                          "data_type": "text"
+                        }
+                      ]
+                    }
+                  ],
+                  "uid": "modular_blocks",
+                  "field_metadata": {
+                    "description": "",
+                    "instruction": ""
+                  },
+                  "multiple": true,
+                  "unique": false,
+                  "mandatory": false,
+                  "display_name": "Modular Blocks",
+                  "non_localizable": false,
+                  "data_type": "blocks"
+                },
+                {
+                  "unique": false,
+                  "uid": "number",
+                  "field_metadata": {
+                    "default_value": "",
+                    "description": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "display_name": "Number",
+                  "non_localizable": false,
+                  "data_type": "number"
+                },
+                {
+                  "reference_to": "seo",
+                  "field_metadata": {
+                    "description": ""
+                  },
+                  "uid": "global_field",
+                  "multiple": false,
+                  "unique": false,
+                  "mandatory": false,
+                  "schema": [
+                    {
+                      "format": "",
+                      "uid": "meta_title",
+                      "field_metadata": {
+                        "default_value": "",
+                        "version": 3,
+                        "description": ""
+                      },
+                      "error_messages": {
+                        "format": ""
+                      },
+                      "multiple": false,
+                      "mandatory": false,
+                      "unique": false,
+                      "display_name": "Meta Title",
+                      "non_localizable": false,
+                      "data_type": "text"
+                    },
+                    {
+                      "format": "",
+                      "uid": "meta_description",
+                      "field_metadata": {
+                        "default_value": "",
+                        "version": 3,
+                        "description": "",
+                        "multiline": true
+                      },
+                      "error_messages": {
+                        "format": ""
+                      },
+                      "multiple": false,
+                      "mandatory": false,
+                      "unique": false,
+                      "display_name": "Meta Description",
+                      "non_localizable": false,
+                      "data_type": "text"
+                    },
+                    {
+                      "format": "",
+                      "uid": "keywords",
+                      "field_metadata": {
+                        "default_value": "",
+                        "version": 3,
+                        "description": ""
+                      },
+                      "error_messages": {
+                        "format": ""
+                      },
+                      "multiple": false,
+                      "mandatory": false,
+                      "unique": false,
+                      "display_name": "Meta Keywords",
+                      "non_localizable": false,
+                      "data_type": "text"
+                    },
+                    {
+                      "unique": false,
+                      "uid": "enable_search_indexing",
+                      "field_metadata": {
+                        "default_value": true,
+                        "description": ""
+                      },
+                      "multiple": false,
+                      "mandatory": false,
+                      "display_name": "Enable Search Indexing",
+                      "non_localizable": false,
+                      "data_type": "boolean"
+                    }
+                  ],
+                  "display_name": "Global",
+                  "non_localizable": false,
+                  "data_type": "global_field"
+                }
+              ],
+              "uid": "feature",
+              "inbuilt_class": false,
+              "_version": 1,
+              "last_activity": {},
+              "title": "feature",
+              "created_at": "2025-05-27T11:40:58.740Z",
+              "maintain_revisions": true,
+              "_branch": "main",
+              "description": "",
+              "updated_at": "2025-05-27T11:40:58.740Z"
+            },
+            {
+              "schema": [
+                {
+                  "format": "",
+                  "uid": "meta_title",
+                  "field_metadata": {
+                    "default_value": "",
+                    "version": 3,
+                    "description": ""
+                  },
+                  "error_messages": {
+                    "format": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "unique": false,
+                  "display_name": "Meta Title",
+                  "non_localizable": false,
+                  "data_type": "text"
+                },
+                {
+                  "format": "",
+                  "uid": "meta_description",
+                  "field_metadata": {
+                    "default_value": "",
+                    "version": 3,
+                    "description": "",
+                    "multiline": true
+                  },
+                  "error_messages": {
+                    "format": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "unique": false,
+                  "display_name": "Meta Description",
+                  "non_localizable": false,
+                  "data_type": "text"
+                },
+                {
+                  "format": "",
+                  "uid": "keywords",
+                  "field_metadata": {
+                    "default_value": "",
+                    "version": 3,
+                    "description": ""
+                  },
+                  "error_messages": {
+                    "format": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "unique": false,
+                  "display_name": "Meta Keywords",
+                  "non_localizable": false,
+                  "data_type": "text"
+                },
+                {
+                  "unique": false,
+                  "uid": "enable_search_indexing",
+                  "field_metadata": {
+                    "default_value": true,
+                    "description": ""
+                  },
+                  "multiple": false,
+                  "mandatory": false,
+                  "display_name": "Enable Search Indexing",
+                  "non_localizable": false,
+                  "data_type": "boolean"
+                }
+              ],
+              "uid": "seo",
+              "inbuilt_class": false,
+              "_version": 1,
+              "last_activity": {},
+              "title": "SEO",
+              "created_at": "2025-05-27T10:40:24.996Z",
+              "maintain_revisions": true,
+              "_branch": "main",
+              "description": "It contains SEO related information.",
+              "updated_at": "2025-05-27T10:40:24.996Z"
+            }
+          ]
+        },
+        "status": 200
+      },
+      "recorded_at": 1748427110.7687712,
+      "request": {
+        "url": "https://cdn.contentstack.io/v3/global_fields?include_branch=true&environment=web",
+        "headers": {
+          "apiey": "api",
+          "access_token": "at"
+        },
+        "method": "GET"
+      }
+    },
+    {
+      "response": {
+        "url": "https://cdn.contentstack.io/v3/global_fields/feature?include_global_field_schema=true&environment=web",
+        "headers": {
+          "x-ratelimit-limit": "500",
+          "Content-Type": "application/json; charset=utf-8",
+          "Access-Control-Allow-Origin": "*",
+          "x-ratelimit-remaining": "499",
+          "x-contentstack-organization": "blt8d282118e2094bb8",
+          "Via": "1.1 varnish, 1.1 varnish",
+          "Content-Encoding": "gzip",
+          "Strict-Transport-Security": "max-age=31557600",
+          "Vary": "Accept-Encoding",
+          "x-timer": "S1748427205.614216,VS0,VE249",
+          "x-cache": "MISS, MISS",
+          "x-cache-hits": "0, 0",
+          "Server": "contentstack",
+          "cache-tag": "api.global_fields,api.global_fields.feature",
+          "x-served-by": "cache-bfi-kbfi7400096-BFI, cache-hyd1100022-HYD",
+          "x-runtime": "6",
+          "Content-Length": "607",
+          "x-request-id": "6d712f78-4bfd-4a57-956c-99a485397d16",
+          "x-cluster": "default",
+          "Date": "Wed, 28 May 2025 10:13:24 GMT",
+          "Accept-Ranges": "bytes"
+        },
+        "status": 200,
+        "body": {
+          "global_field": {
+            "schema": [
+              {
+                "format": "",
+                "uid": "single_line",
+                "field_metadata": {
+                  "default_value": "",
+                  "description": ""
+                },
+                "error_messages": {
+                  "format": ""
+                },
+                "multiple": false,
+                "mandatory": false,
+                "unique": false,
+                "display_name": "Single Line Textbox",
+                "non_localizable": false,
+                "data_type": "text"
+              },
+              {
+                "blocks": [
+                  {
+                    "title": "Image",
+                    "uid": "image",
+                    "schema": [
+                      {
+                        "unique": false,
+                        "uid": "rich_text_editor",
+                        "field_metadata": {
+                          "rich_text_type": "advanced",
+                          "version": 3,
+                          "options": [],
+                          "description": "",
+                          "allow_rich_text": true,
+                          "multiline": false
+                        },
+                        "multiple": false,
+                        "mandatory": false,
+                        "display_name": "Rich Text Editor",
+                        "non_localizable": false,
+                        "data_type": "text"
+                      },
+                      {
+                        "format": "",
+                        "uid": "single_line",
+                        "field_metadata": {
+                          "default_value": "",
+                          "description": ""
+                        },
+                        "error_messages": {
+                          "format": ""
+                        },
+                        "multiple": false,
+                        "mandatory": false,
+                        "unique": false,
+                        "display_name": "Single Line Textbox",
+                        "non_localizable": false,
+                        "data_type": "text"
+                      }
+                    ]
+                  }
+                ],
+                "uid": "modular_blocks",
+                "field_metadata": {
+                  "description": "",
+                  "instruction": ""
+                },
+                "multiple": true,
+                "unique": false,
+                "mandatory": false,
+                "display_name": "Modular Blocks",
+                "non_localizable": false,
+                "data_type": "blocks"
+              },
+              {
+                "unique": false,
+                "uid": "number",
+                "field_metadata": {
+                  "default_value": "",
+                  "description": ""
+                },
+                "multiple": false,
+                "mandatory": false,
+                "display_name": "Number",
+                "non_localizable": false,
+                "data_type": "number"
+              },
+              {
+                "reference_to": "seo",
+                "field_metadata": {
+                  "description": ""
+                },
+                "uid": "global_field",
+                "multiple": false,
+                "unique": false,
+                "mandatory": false,
+                "schema": [
+                  {
+                    "format": "",
+                    "uid": "meta_title",
+                    "field_metadata": {
+                      "default_value": "",
+                      "version": 3,
+                      "description": ""
+                    },
+                    "error_messages": {
+                      "format": ""
+                    },
+                    "multiple": false,
+                    "mandatory": false,
+                    "unique": false,
+                    "display_name": "Meta Title",
+                    "non_localizable": false,
+                    "data_type": "text"
+                  },
+                  {
+                    "format": "",
+                    "uid": "meta_description",
+                    "field_metadata": {
+                      "default_value": "",
+                      "version": 3,
+                      "description": "",
+                      "multiline": true
+                    },
+                    "error_messages": {
+                      "format": ""
+                    },
+                    "multiple": false,
+                    "mandatory": false,
+                    "unique": false,
+                    "display_name": "Meta Description",
+                    "non_localizable": false,
+                    "data_type": "text"
+                  },
+                  {
+                    "format": "",
+                    "uid": "keywords",
+                    "field_metadata": {
+                      "default_value": "",
+                      "version": 3,
+                      "description": ""
+                    },
+                    "error_messages": {
+                      "format": ""
+                    },
+                    "multiple": false,
+                    "mandatory": false,
+                    "unique": false,
+                    "display_name": "Meta Keywords",
+                    "non_localizable": false,
+                    "data_type": "text"
+                  },
+                  {
+                    "unique": false,
+                    "uid": "enable_search_indexing",
+                    "field_metadata": {
+                      "default_value": true,
+                      "description": ""
+                    },
+                    "multiple": false,
+                    "mandatory": false,
+                    "display_name": "Enable Search Indexing",
+                    "non_localizable": false,
+                    "data_type": "boolean"
+                  }
+                ],
+                "display_name": "Global",
+                "non_localizable": false,
+                "data_type": "global_field"
+              }
+            ],
+            "uid": "feature",
+            "inbuilt_class": false,
+            "_version": 1,
+            "last_activity": {},
+            "title": "feature",
+            "created_at": "2025-05-27T11:40:58.740Z",
+            "maintain_revisions": true,
+            "description": "",
+            "updated_at": "2025-05-27T11:40:58.740Z"
+          }
+        }
+      },
+      "request": {
+        "headers": {
+          "apiey": "api",
+          "access_token": "at"
+        },
+        "method": "GET",
+        "url": "https://cdn.contentstack.io/v3/global_fields/feature?include_global_field_schema=true&environment=web"
+      },
+      "recorded_at": 1748427204.8098221
+    }
+  ]
+}

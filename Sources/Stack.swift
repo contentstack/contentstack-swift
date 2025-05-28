@@ -136,6 +136,31 @@ public class Stack: CachePolicyAccessible {
     public func asset(uid: String? = nil) -> Asset {
         return Asset(uid, stack: self)
     }
+    
+    /// Get instance of `Global field` to fetch `global fields` or fetch specific `global field`.
+    ///
+    /// - Parameters:
+    ///   - uid: The UId of `global field` you want to fetch data,
+    /// - Returns: `global field` instance
+    ///
+    /// Example usage:
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///```
+    /// // To perform `Global field`:
+    /// let globalFields = stack.globalField()
+    /// // To get specific `Asset` instance from uid:
+    /// let globalField = stack.globalField(uid: globalFieldUid)
+    ///```
+    
+    public func globalField() -> GlobalField {
+        return GlobalField(stack: self)
+    }
+    
+    public func globalField(uid: String? = nil) -> GlobalField {
+        return GlobalField(uid, stack: self)
+    }
 
     private func url(endpoint: Endpoint, parameters: Parameters = [:]) -> URL {
         var urlComponents: URLComponents = URLComponents(string: "https://\(self.host)/\(self.apiVersion)")!
@@ -175,6 +200,9 @@ public class Stack: CachePolicyAccessible {
         let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "")
             + "environment=\(self.environment)"
         urlComponents.percentEncodedQuery = percentEncodedQuery
+        
+        
+        print("Constructed URL: \(urlComponents.url!.absoluteString)") 
 
         return urlComponents.url!
     }
