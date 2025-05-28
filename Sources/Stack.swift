@@ -200,10 +200,7 @@ public class Stack: CachePolicyAccessible {
         let percentEncodedQuery = (urlComponents.percentEncodedQuery.map { $0 + "&" } ?? "")
             + "environment=\(self.environment)"
         urlComponents.percentEncodedQuery = percentEncodedQuery
-        
-        
-        print("Constructed URL: \(urlComponents.url!.absoluteString)") 
-
+    
         return urlComponents.url!
     }
 
