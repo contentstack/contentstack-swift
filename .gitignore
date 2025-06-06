@@ -79,3 +79,6 @@ fastlane/
 Gemfile
 #config file
 Tests/config.json
+
+snyk_output.json
+talisman_output.json
