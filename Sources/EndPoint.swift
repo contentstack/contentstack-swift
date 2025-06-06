@@ -22,6 +22,8 @@ public enum Endpoint: String {
     case sync = "stacks/sync"
     
     case taxnomies = "taxonomies"
+    
+    case globalfields = "global_fields"
     /// The path component string for the current endpoint.
     public var pathComponent: String {
         return rawValue
