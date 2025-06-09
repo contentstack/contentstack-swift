@@ -26,6 +26,9 @@ public struct ContentstackConfig {
     /// The configuration for the URLSession.
     /// Note that HTTP headers will be overwritten internally by the SDK so that requests can be authorized correctly.
     public var sessionConfiguration: URLSessionConfiguration = .default
+    
+    /// Delegate for handling SSL pinning and URL session customization
+    public var urlSessionDelegate: CSURLSessionDelegate?
 
     /// Computed version of the user agent, including OS name and version
     internal func userAgentString() -> String {

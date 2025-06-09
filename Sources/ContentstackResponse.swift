@@ -19,7 +19,7 @@ private protocol HomogeneousResponse: ResponseParams {
 }
 
 internal enum ResponseCodingKeys: String, CodingKey {
-    case entries, entry, assets, asset, skip, limit, errors, count
+    case entries, entry, assets, asset, skip, limit, errors, count, globalFields, globalField
     case contentTypes = "content_types", contentType = "content_type"
 }
 
@@ -90,6 +90,23 @@ where ItemType: EndpointAccessible & Decodable {
                 }
                 self.items = taxonomies
             }
+        case .globalfields:
+            // Decode entire response as [String: AnyDecodable] using singleValueContainer
+            let fullResponseContainer = try decoder.singleValueContainer()
+            let fullResponse = try fullResponseContainer.decode([String: AnyDecodable].self)
+
+            if let globalFieldsArray = fullResponse["global_fields"]?.value as? [[String: Any]] {
+                for item in globalFieldsArray {
+                    let data = try JSONSerialization.data(withJSONObject: item, options: [])
+                    let model = try JSONDecoder().decode(ItemType.self, from: data)
+                    self.items.append(model)
+                }
+            } else if let globalField = fullResponse["global_field"]?.value as? [String: Any] {
+                let data = try JSONSerialization.data(withJSONObject: globalField, options: [])
+                let model = try JSONDecoder().decode(ItemType.self, from: data)
+                self.items = [model]
+            }
+
         default:
             print("sync")
         }

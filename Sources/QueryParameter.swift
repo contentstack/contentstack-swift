@@ -68,6 +68,10 @@ internal enum QueryParameter {
     internal static let includeFallback  = "include_fallback"
     
     internal static let includeEmbeddedItems  = "include_embedded_items"
+    
+    internal static let includeBranch = "include_branch"
+    
+    internal static let includeGlobalFieldSchema = "include_global_field_schema"
 }
 
 extension Query {
