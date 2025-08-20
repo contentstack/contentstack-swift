@@ -80,6 +80,29 @@ extension GlobalField: ResourceQueryable {
                             }
         })
     }
+    
+    // MARK: - Async/Await Implementation for fetch
+    
+    /// Async version of fetch that returns the GlobalField directly
+    /// - Returns: The fetched GlobalField
+    /// - Throws: Network, decoding, or cache errors
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    public func fetch<ResourceType>() async throws -> ResourceType
+        where ResourceType: EndpointAccessible & Decodable {
+        guard let uid = self.uid else { fatalError("Please provide Global Field uid") }
+        let response: ContentstackResponse<ResourceType> = try await self.stack.fetch(
+            endpoint: ResourceType.endpoint,
+            cachePolicy: self.cachePolicy,
+            parameters: parameters + [QueryParameter.uid: uid],
+            headers: headers
+        )
+        
+        if let resource = response.items.first {
+            return resource
+        } else {
+            throw SDKError.invalidUID(string: uid)
+        }
+    }
 }
 
 extension GlobalField : Queryable{
@@ -92,4 +115,19 @@ extension GlobalField : Queryable{
         cachePolicy: self.cachePolicy, parameters: parameters, headers: headers, then: completion)
     }
     
+    // MARK: - Async/Await Implementation
+    
+    /// Async implementation of find for GlobalField
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    public func find<ResourceType>() async throws -> ContentstackResponse<ResourceType>
+        where ResourceType: Decodable & EndpointAccessible {
+        if self.queryParameter.count > 0,
+            let query = self.queryParameter.jsonString {
+            self.parameters[QueryParameter.query] = query
+        }
+        return try await self.stack.fetch(endpoint: ResourceType.endpoint,
+                                         cachePolicy: self.cachePolicy,
+                                         parameters: parameters,
+                                         headers: headers)
+    }
 }
