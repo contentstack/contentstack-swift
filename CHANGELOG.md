@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v2.2.0
+
+### Date: 01-Sep-2025
+
+- Async/await support added
+
 ## v2.1.0
 
 ### Date: 06-Jun-2025
