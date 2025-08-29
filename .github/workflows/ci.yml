@@ -66,7 +66,17 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.0'
-    
+
+    - name: Patch DVR project for Xcode
+      run: |
+        mkdir -p Carthage/Checkouts
+        git clone https://github.com/contentstack/contentstack-swift-dvr.git Carthage/Checkouts/contentstack-swift-dvr
+        cd Carthage/Checkouts/contentstack-swift-dvr
+        # Force Swift 5
+        sed -i '' 's/SWIFT_VERSION = 4.0;/SWIFT_VERSION = 5.0;/g' DVR.xcodeproj/project.pbxproj
+        # Share the DVR-iOS scheme so Carthage can find it
+        xcodebuild -project DVR.xcodeproj -scheme DVR-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15'
+
     - name: Install dep via Carthage
       run: |
         carthage bootstrap --platform iOS --cache-builds
