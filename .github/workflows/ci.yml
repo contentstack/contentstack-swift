@@ -57,30 +57,26 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      
+
     - name: Configure Git credentials
       run: |
         git config --global url."https://x-access-token:${{ secrets.PKG_TOKEN }}@github.com/".insteadOf "https://github.com/"
-    
-    - name: Set up Ruby (for installing Bundler and Fastlane)
+
+    - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.0'
 
-    - name: Patch DVR project for Xcode
+    - name: Patch DVR (Swift 5)
       run: |
         mkdir -p Carthage/Checkouts
         git clone https://github.com/contentstack/contentstack-swift-dvr.git Carthage/Checkouts/contentstack-swift-dvr
         cd Carthage/Checkouts/contentstack-swift-dvr
-        # Force Swift 5
         sed -i '' 's/SWIFT_VERSION = 4.0;/SWIFT_VERSION = 5.0;/g' DVR.xcodeproj/project.pbxproj
-        # Share the DVR-iOS scheme so Carthage can find it
-        xcodebuild -project DVR.xcodeproj -scheme DVR-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15'
 
     - name: Install dep via Carthage
-      run: |
-        carthage bootstrap --platform iOS --cache-builds
-      
+      run: carthage bootstrap --platform iOS --cache-builds
+
     - name: Install dependencies via Swift Package Manager
       run: swift package resolve
 
@@ -88,20 +84,22 @@ jobs:
       uses: maxim-lobanov/setup-xcode@v1
       with:
         xcode-version: latest
+
     - name: Create config file
       run: |
         echo '{
-            "api_key": "${{ secrets.api_key }}",
-            "delivery_token": "${{ secrets.delivery_token }}",
-            "environment": "${{ secrets.environment }}"
-          }' > Tests/config.json
-        
+          "api_key": "${{ secrets.api_key }}",
+          "delivery_token": "${{ secrets.delivery_token }}",
+          "environment": "${{ secrets.environment }}"
+        }' > Tests/config.json
+
     - name: Build and run tests
       run: |
-            xcodebuild test \
-              -workspace ContentstackSwift.xcworkspace \
-              -scheme "ContentstackSwift iOS Tests" \
-              -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
-              -sdk iphonesimulator \
-              ONLY_ACTIVE_ARCH=NO \
-              CODE_SIGNING_ALLOWED=NO
+        xcodebuild test \
+          -workspace ContentstackSwift.xcworkspace \
+          -scheme "ContentstackSwift iOS Tests" \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.4' \
+          -sdk iphonesimulator \
+          ONLY_ACTIVE_ARCH=NO \
+          CODE_SIGNING_ALLOWED=NO
+
