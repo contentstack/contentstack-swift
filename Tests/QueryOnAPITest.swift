@@ -30,7 +30,7 @@ class QueryOnAPITest: XCTestCase {
         (stack.urlSession as? DVR.Session)?.endRecording()
     }
 
-    func test01FindAll_Session() {
+    func test01FindAll_Session() async {
         let networkExpectation = expectation(description: "Fetch All Entry Test")
         self.getEntryQuery(Session.self)
             .locale("en-us")
@@ -47,11 +47,11 @@ class QueryOnAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
             }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
 
     }
     
-    func test01FindAll_SessionReference() {
+    func test01FindAll_SessionReference() async {
             let networkExpectation = expectation(description: "Fetch All Entry Test")
         self.getEntryQuery(SessionWithTrackReference.self)
             .locale("en-us")
@@ -73,7 +73,7 @@ class QueryOnAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
 
     }
 
