@@ -69,7 +69,7 @@ jobs:
     
     - name: Install dep via Carthage
       run: |
-        carthage bootstrap --platform iOS --cache-builds
+        carthage bootstrap --platform iOS --use-xcframeworks --cache-builds
       
     - name: Install dependencies via Swift Package Manager
       run: swift package resolve
