@@ -2,9 +2,10 @@
 
 ## v2.2.0
 
-### Date: 01-Sep-2025
+### Date: 15-Sep-2025
 
 - Async/await support added
+- Added AU and GCP-EU region support
 
 ## v2.1.0
 
