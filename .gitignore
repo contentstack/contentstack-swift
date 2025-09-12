@@ -80,5 +80,5 @@ Gemfile
 #config file
 Tests/config.json
 
-snyk_output.json
-talisman_output.json
+snyk_output.log
+talisman_output.log

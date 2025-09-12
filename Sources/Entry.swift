@@ -175,4 +175,28 @@ extension Entry: ResourceQueryable {
                             }
         })
     }
+    
+    // MARK: - Async/Await Implementation
+    
+    /// Async version of fetch that returns the Entry directly
+    /// - Returns: The fetched Entry
+    /// - Throws: Network, decoding, or cache errors
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    public func fetch<ResourceType>() async throws -> ResourceType
+        where ResourceType: EndpointAccessible & Decodable {
+        guard let uid = self.uid else { fatalError("Please provide Entry uid") }
+        let response: ContentstackResponse<ResourceType> = try await self.stack.fetch(
+            endpoint: ResourceType.endpoint,
+            cachePolicy: self.cachePolicy,
+            parameters: parameters + [QueryParameter.uid: uid,
+                                     QueryParameter.contentType: self.contentType.uid!],
+            headers: headers
+        )
+        
+        if let resource = response.items.first {
+            return resource
+        } else {
+            throw SDKError.invalidUID(string: uid)
+        }
+    }
 }

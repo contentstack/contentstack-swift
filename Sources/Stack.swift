@@ -263,6 +263,29 @@ public class Stack: CachePolicyAccessible {
         performDataTask(dataTask!, request: request, cachePolicy: cachePolicy, then: completion)
     }
     
+    // MARK: - Async/Await Support
+    
+    /// Async version of fetchUrl that returns the result directly
+    /// - Parameters:
+    ///   - url: The URL to fetch
+    ///   - headers: HTTP headers to include in the request
+    ///   - cachePolicy: The cache policy to use
+    /// - Returns: A tuple containing the data and response type
+    /// - Throws: Network or cache errors
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    private func fetchUrl(_ url: URL, headers: [String: String], cachePolicy: CachePolicy) async throws -> (Data, ResponseType) {
+        return try await withCheckedThrowingContinuation { continuation in
+            fetchUrl(url, headers: headers, cachePolicy: cachePolicy) { result, responseType in
+                switch result {
+                case .success(let data):
+                    continuation.resume(returning: (data, responseType))
+                case .failure(let error):
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+    
     internal func fetch<ResourceType>(endpoint: Endpoint,
                                           cachePolicy: CachePolicy,
                                           parameters: Parameters = [:],
@@ -283,6 +306,25 @@ public class Stack: CachePolicyAccessible {
                 completion(Result.failure(error), responseType)
             }
         })
+    }
+    
+    /// Async version of fetch that returns the decoded resource directly
+    /// - Parameters:
+    ///   - endpoint: The API endpoint to fetch from
+    ///   - cachePolicy: The cache policy to use
+    ///   - parameters: Query parameters
+    ///   - headers: HTTP headers
+    /// - Returns: The decoded resource
+    /// - Throws: Network, decoding, or cache errors
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    internal func fetch<ResourceType>(endpoint: Endpoint,
+                                     cachePolicy: CachePolicy,
+                                     parameters: Parameters = [:],
+                                     headers: [String: String] = [:]) async throws -> ResourceType
+        where ResourceType: Decodable {
+        let url = self.url(endpoint: endpoint, parameters: parameters)
+        let (data, _) = try await fetchUrl(url, headers: headers, cachePolicy: cachePolicy)
+        return try self.jsonDecoder.decode(ResourceType.self, from: data)
     }
 
     private func performDataTask(_ dataTask: URLSessionDataTask,
@@ -396,5 +438,46 @@ extension Stack {
                 completion(.failure(error))
             }
         }
+    }
+    
+    /// Async version of sync that returns the SyncStack directly
+    /// - Parameters:
+    ///   - syncStack: The relevant `SyncStack` to perform the subsequent sync on.
+    ///   Defaults to a new empty instance of `SyncStack`.
+    ///   - syncTypes: `SyncableTypes` that can be sync.
+    /// - Returns: The SyncStack with synced data
+    /// - Throws: Network or decoding errors
+    ///
+    /// Example usage:
+    ///```
+    /// let stack = Contentstack.stack(apiKey: apiKey,
+    ///             deliveryToken: deliveryToken,
+    ///             environment: environment)
+    ///
+    /// do {
+    ///     let syncStack = try await stack.sync()
+    ///     let items = syncStack.items
+    /// } catch {
+    ///     print(error)
+    /// }
+    ///```
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    public func sync(_ syncStack: SyncStack = SyncStack(),
+                     syncTypes: [SyncStack.SyncableTypes] = [.all]) async throws -> SyncStack {
+        var parameter = syncStack.parameter
+        if syncStack.isInitialSync {
+            for syncType in syncTypes {
+                parameter = parameter + syncType.parameters
+            }
+        }
+        let url = self.url(endpoint: SyncStack.endpoint, parameters: parameter)
+        let (data, _) = try await fetchUrl(url, headers: [:], cachePolicy: .networkOnly)
+        let result = try self.jsonDecoder.decode(SyncStack.self, from: data)
+        
+        if result.hasMorePages {
+            return try await sync(result, syncTypes: syncTypes)
+        }
+        
+        return result
     }
 }

@@ -41,7 +41,7 @@ class EntryAPITest: XCTestCase {
         }
     }
 
-    func test01FindAll_EntryQuery() {
+    func test01FindAll_EntryQuery() async {
         let networkExpectation = expectation(description: "Fetch All Entry Test")
         self.getEntryQuery().find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
             switch result {
@@ -56,10 +56,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
     
-    func test02Find_EntryQuery_whereUIDEquals() {
+    func test02Find_EntryQuery_whereUIDEquals() async {
         let networkExpectation = expectation(description: "Fetch where UID equals Entry Test")
         self.queryWhere(.uid, operation: .equals(EntryAPITest.kEntryUID)) { (result: Result<ContentstackResponse<EntryModel>, Error>) in
             switch result {
@@ -72,10 +72,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
     
-    func test03Find_EntryQuery_whereTitleDNotEquals() {
+    func test03Find_EntryQuery_whereTitleDNotEquals() async {
         let networkExpectation = expectation(description: "Fetch where Title equals Entry Test")
         self.queryWhere(.title, operation: .notEquals(EntryAPITest.kEntryTitle)) { (result: Result<ContentstackResponse<EntryModel>, Error>) in
             switch result {
@@ -88,10 +88,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
     
-    func test04Find_EntryQuery_whereTitleexists() {
+    func test04Find_EntryQuery_whereTitleexists() async {
         let networkExpectation = expectation(description: "Fetch where Title exists Entry Test")
         self.queryWhere(.title, operation: .exists(true)) { (result: Result<ContentstackResponse<EntryModel>, Error>) in
             switch result {
@@ -102,10 +102,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
     
-    func test05Find_EntryQuery_whereTitleMatchRegex() {
+    func testtest05Find_EntryQuery_whereTitleMatchRegex() async {
         let networkExpectation = expectation(description: "Fetch where Title Match Regex Entry Test")
         self.queryWhere(.title, operation: .matches("Tr")) { (result: Result<ContentstackResponse<EntryModel>, Error>) in
             switch result {
@@ -116,10 +116,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
 
-    func test06Fetch_Entry_fromUID() {
+    func test06Fetch_Entry_fromUID() async {
         let networkExpectation = expectation(description: "Fetch Entry from UID Test")
         self.getEntry(uid: EntryAPITest.kEntryUID).fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
             switch result {
@@ -130,10 +130,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
 
-    func test07Fetch_EntryQuery_WithIncludeContentType() {
+    func test07Fetch_EntryQuery_WithIncludeContentType() async {
         let networkExpectation = expectation(description: "Fetch Entry Query with include ContentType Test")
         self.getEntryQuery()
             .include(params: .contentType)
@@ -146,11 +146,11 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
 
     }
     
-    func test08Fetch_Entry_WithGlobalFields() {
+    func test08Fetch_Entry_WithGlobalFields() async {
         let networkExpectation = expectation(description: "Fetch Entry with GlobalFields Test")
         self.getEntry(uid: EntryAPITest.kEntryUID)
             .include(params: .globalField)
@@ -170,10 +170,10 @@ class EntryAPITest: XCTestCase {
                 }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
     
-    func test09Fetch_EntryQuery_WithCount() {
+    func test09Fetch_EntryQuery_WithCount() async {
         let networkExpectation = expectation(description: "Fetch Entry with Count Test")
         self.getEntryQuery()
             .include(params: .count)
@@ -186,11 +186,11 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
 
     }
 
-    func test10Fetch_Entry_WithIncludeContentType() {
+    func test10Fetch_Entry_WithIncludeContentType() async {
         let networkExpectation = expectation(description: "Fetch Entry with include ContentType Test")
         self.getEntry(uid: EntryAPITest.kEntryUID)
             .include(params: .contentType)
@@ -203,10 +203,10 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
 
-    func test11Fetch_Entry_WithWrongUID_shouldFail() {
+    func test11Fetch_Entry_WithWrongUID_shouldFail() async {
          let networkExpectation = expectation(description: "Fetch Entry from wrong UID Test")
         self.getEntry(uid: "UID")
             .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in
@@ -221,10 +221,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
 
-    func test12Fetch_EntryQuery_WithGlobalFields() {
+    func test12Fetch_EntryQuery_WithGlobalFields() async {
         let networkExpectation = expectation(description: "Fetch Entry Query with GlobalFields Test")
         self.getEntryQuery()
             .include(params: .globalField)
@@ -244,10 +244,10 @@ class EntryAPITest: XCTestCase {
                 }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
 
-    func test13Find_EntryQuery_whereTitleIncludes() {
+    func test13Find_EntryQuery_whereTitleIncludes() async {
         let titleArray = ["Management Strategy and Roadmap", "The Cloud is Over The Top"]
         let networkExpectation = expectation(description: "Fetch where Title Include Entry Test")
         self.queryWhere(.title, operation: .includes(titleArray)) { (result: Result<ContentstackResponse<EntryModel>, Error>) in
@@ -264,10 +264,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
 
-    func test14Find_EntryQuery_whereTitleExclude() {
+    func test14Find_EntryQuery_whereTitleExclude()  async {
         let titleArray = ["Management Strategy and Roadmap", "The Cloud is Over The Top"]
         let networkExpectation = expectation(description: "Fetch where Title Exclude Entry Test")
         self.queryWhere(.title, operation: .excludes(titleArray)) { (result: Result<ContentstackResponse<EntryModel>, Error>) in
@@ -284,10 +284,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
 
-    func test15Find_EntryQuery_wherelessThan() {
+    func test15Find_EntryQuery_wherelessThan() async {
         let formatter = Date.iso8601Formatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         let date = formatter.date(from: "2018-08-27T12:30:00.000Z")!
@@ -325,10 +325,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+        await fulfillment(of: [networkExpectation, networkExpectationDate], timeout: 5)
     }
     
-    func test16Find_EntryQuery_wherelessThanEqual() {
+    func test16Find_EntryQuery_wherelessThanEqual() async {
         let formatter = Date.iso8601Formatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         let date = formatter.date(from: "2018-08-27T12:30:00.000Z")!
@@ -366,10 +366,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+        await fulfillment(of: [networkExpectation, networkExpectationDate], timeout: 5)
     }
     
-    func test17Find_EntryQuery_whereGreaterThan() {
+    func test17Find_EntryQuery_whereGreaterThan() async {
         let formatter = Date.iso8601Formatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         let date = formatter.date(from: "2018-08-27T12:30:00.000Z")!
@@ -407,10 +407,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+        await fulfillment(of: [networkExpectation, networkExpectationDate], timeout: 5)
     }
 
-    func test18Find_EntryQuery_whereGreaterThanEqual() {
+    func test18Find_EntryQuery_whereGreaterThanEqual() async {
         let formatter = Date.iso8601Formatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
         let date = formatter.date(from: "2018-08-27T12:30:00.000Z")!
@@ -448,10 +448,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+        await fulfillment(of: [networkExpectation, networkExpectationDate], timeout: 5)
     }
 
-    func test19Find_EntryQuery_OrderBySessionTime() {
+    func test19Find_EntryQuery_OrderBySessionTime() async {
         let networkExpectation = expectation(description: "Fetch Order by Ascending Start Time Test")
         let formatter = Date.iso8601Formatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
@@ -500,10 +500,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectationDesc.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationDesc], timeout: 5)
+        await fulfillment(of: [networkExpectation, networkExpectationDesc], timeout: 5)
     }
 
-    func test20Find_EntryQuery_AndOrOperator() {
+    func test20Find_EntryQuery_AndOrOperator() async {
         let sessionType = "Breakout Session"
         let query1 = getEntryQuery().where(valueAtKey: "type", .equals(sessionType))
         let query2 = getEntryQuery().where(valueAtKey: "is_popular", .equals(false))
@@ -551,10 +551,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectationOr.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationOr], timeout: 5)
+        await fulfillment(of: [networkExpectation, networkExpectationOr], timeout: 5)
     }
 
-    func test21Find_EntryQuery_SkipLimit() {
+    func test21Find_EntryQuery_SkipLimit() async {
         let networkExpectation = expectation(description: "Fetch Entry Skip Test")
 
         self.getEntryQuery()
@@ -582,10 +582,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectationOr.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationOr], timeout: 5)
+        await fulfillment(of: [networkExpectation, networkExpectationOr], timeout: 5)
     }
 
-    func test22Find_EntryQuery_AddQuery() {
+    func test22Find_EntryQuery_AddQuery() async {
         let sessionType = "Breakout Session"
         let networkExpectation = expectation(description: "Fetch Entry Add Query Dictionary Test")
 
@@ -624,11 +624,11 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectationKeyValue.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationKeyValue], timeout: 5)
+        await fulfillment(of: [networkExpectation, networkExpectationKeyValue], timeout: 5)
 
     }
 
-    func test23Find_EntryQuery_AddParam() {
+    func test23Find_EntryQuery_AddParam() async {
         let networkExpectation = expectation(description: "Fetch Entry Add Parameter Dictionary Test")
 
         self.getEntryQuery()
@@ -656,10 +656,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectationKeyValue.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationKeyValue], timeout: 5)
+        await fulfillment(of: [networkExpectation, networkExpectationKeyValue], timeout: 5)
     }
 
-    func test24Find_EntryQuery_IncludeOnlyFields() {
+    func test24Find_EntryQuery_IncludeOnlyFields()async {
         let networkExpectation = expectation(description: "Fetch Entry Include Only Fields Test")
         let keys = ["title", "session_id", "track"]
         self.getEntryQuery()
@@ -681,10 +681,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
 
-    func test25Find_EntryQuery_ExcludeFields() {
+    func test25Find_EntryQuery_ExcludeFields() async {
         let networkExpectation = expectation(description: "Fetch Entry Exclude Fields Test")
         let keys = ["title", "session_id", "track"]
 
@@ -706,10 +706,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
 
-    func test26Find_EntryQuery_IncludeReference() {
+    func testtest26Find_EntryQuery_IncludeReference() async {
         let networkExpectation = expectation(description: "Fetch Entry Query Include Reference Test")
 
         self.getEntryQuery()
@@ -736,11 +736,11 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
 
     }
 
-    func test27Fetch_Entry_IncludeReference() {
+    func test27Fetch_Entry_IncludeReference()  async {
         let networkExpectation = expectation(description: "Fetch Entry Include Reference Test")
 
         self.getEntry(uid: EntryAPITest.kEntryUID)
@@ -763,10 +763,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
 
     }
-    func test28Find_EntryQuery_IncludeReferenceOnly() {
+    func test28Find_EntryQuery_IncludeReferenceOnly() async {
         let networkExpectation = expectation(description: "Fetch Entry Query Include Reference Only Test")
         let keys = ["track_color"]
         self.getEntryQuery()
@@ -791,11 +791,11 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
 
     }
 
-    func test29Fetch_Entry_IncludeReferenceOnly() {
+    func test29Fetch_Entry_IncludeReferenceOnly() async {
         let networkExpectation = expectation(description: "Fetch Entry Include Reference Only Test")
         let keys = ["track_color"]
 
@@ -819,10 +819,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
 
     }
-    func test30Find_EntryQuery_IncludeReferenceExceot() {
+    func test30Find_EntryQuery_IncludeReferenceExceot() async {
         let networkExpectation = expectation(description: "Fetch Entry Query Include Reference Except Test")
         let keys = ["track_color"]
 
@@ -847,11 +847,11 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
 
     }
 
-    func test31Fetch_Entry_IncludeReferenceExcept() {
+    func test31Fetch_Entry_IncludeReferenceExcept()async {
         let networkExpectation = expectation(description: "Fetch Entry Include Reference Except Test")
         let keys = ["track_color"]
 
@@ -874,11 +874,11 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
 
     }
     
-    func test32Fetch_EntryQuery_WithoutFallback_Result() {
+    func test32Fetch_EntryQuery_WithoutFallback_Result() async {
         let networkExpectation = expectation(description: "Fetch Entrys without Fallback Test")
         self.getEntryQuery().locale(locale)
             .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in
@@ -896,10 +896,10 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
             }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
     
-    func test33Fetch_EntryQuery_Fallback_Result() {
+    func test33Fetch_EntryQuery_Fallback_Result() async {
         let networkExpectation = expectation(description: "Fetch Entrys without Fallback Test")
         self.getEntryQuery()
             .locale(locale)
@@ -929,10 +929,10 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
             }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
     
-    func test34Fetch_Entry_UIDWithoutFallback_NoResult() {
+    func test34Fetch_Entry_UIDWithoutFallback_NoResult() async {
         let networkExpectation = expectation(description: "Fetch Entry from UID without Fallback Test")
         self.getEntry(uid: EntryAPITest.kEntryLocaliseUID)
             .locale("en-gb")
@@ -948,10 +948,10 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
     
-    func test35Fetch_Entry_UIDWithFallback_NoResult() {
+    func test35Fetch_Entry_UIDWithFallback_NoResult() async {
         let networkExpectation = expectation(description: "Fetch Entry from UID without Fallback Test")
         self.getEntry(uid: EntryAPITest.kEntryLocaliseUID)
             .locale(locale)
@@ -967,7 +967,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 5)
     }
     
 }

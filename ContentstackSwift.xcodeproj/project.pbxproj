@@ -265,6 +265,9 @@
 		47C6EFC52C0B5B9400F0D5CF /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */; };
 		47D561512C9EF97D00DC085D /* ContentstackUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 47D561502C9EF97D00DC085D /* ContentstackUtils */; };
 		47D561572C9EFA5900DC085D /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 47D561562C9EFA5900DC085D /* DVR */; };
+		672F76992E55ADBE00C248D6 /* AsyncAwaitAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672F76982E55ADBE00C248D6 /* AsyncAwaitAPITest.swift */; };
+		672F769A2E55ADBE00C248D6 /* AsyncAwaitAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672F76982E55ADBE00C248D6 /* AsyncAwaitAPITest.swift */; };
+		672F769B2E55ADBE00C248D6 /* AsyncAwaitAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672F76982E55ADBE00C248D6 /* AsyncAwaitAPITest.swift */; };
 		6750778E2D3E256A0076A066 /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 6750778D2D3E256A0076A066 /* DVR */; };
 		67EE21DF2DDB4013005AC119 /* CSURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE21DE2DDB3FFE005AC119 /* CSURLSessionDelegate.swift */; };
 		67EE21E02DDB4013005AC119 /* CSURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE21DE2DDB3FFE005AC119 /* CSURLSessionDelegate.swift */; };
@@ -416,6 +419,7 @@
 		47B09C242CA952E400B8AB41 /* DVR.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DVR.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B4DC612C232A8200370CFC /* TaxonomyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyTest.swift; sourceTree = "<group>"; };
 		47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxonomy.swift; sourceTree = "<group>"; };
+		672F76982E55ADBE00C248D6 /* AsyncAwaitAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwaitAPITest.swift; sourceTree = "<group>"; };
 		67EE21DE2DDB3FFE005AC119 /* CSURLSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSURLSessionDelegate.swift; sourceTree = "<group>"; };
 		67EE222B2DE4868F005AC119 /* GlobalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalField.swift; sourceTree = "<group>"; };
 		67EE22302DE58B51005AC119 /* GlobalFieldModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFieldModel.swift; sourceTree = "<group>"; };
@@ -666,6 +670,7 @@
 		0FFA5D9D241F8F9B003B3AF5 /* APITests */ = {
 			isa = PBXGroup;
 			children = (
+				672F76982E55ADBE00C248D6 /* AsyncAwaitAPITest.swift */,
 				67EE22352DE5BAF2005AC119 /* GlobalFieldAPITest.swift */,
 				0F50EA1C244ED88C00E5D705 /* StackCacheAPITest.swift */,
 				470657532B5E785C00BBFF88 /* ContentTypeQueryAPITest.swift */,
@@ -1146,6 +1151,7 @@
 				47B4DC622C232A8200370CFC /* TaxonomyTest.swift in Sources */,
 				0F50EA1D244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */,
 				470657582B5E788400BBFF88 /* EntryAPITest.swift in Sources */,
+				672F76992E55ADBE00C248D6 /* AsyncAwaitAPITest.swift in Sources */,
 				0F096B14243610470094F042 /* ImageTransformTestAdditional.swift in Sources */,
 				0FD39D4A24237A0400E34826 /* ContentTypeQueryTest.swift in Sources */,
 				0FFBB44C24470C43000D2795 /* ContentStackLogTest.swift in Sources */,
@@ -1228,6 +1234,7 @@
 				47B4DC632C232A8200370CFC /* TaxonomyTest.swift in Sources */,
 				0FFA5D90241F8126003B3AF5 /* ContentstackConfigTest.swift in Sources */,
 				0F50EA1E244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */,
+				672F769B2E55ADBE00C248D6 /* AsyncAwaitAPITest.swift in Sources */,
 				0F096B15243610470094F042 /* ImageTransformTestAdditional.swift in Sources */,
 				0FD39D4B24237A0400E34826 /* ContentTypeQueryTest.swift in Sources */,
 				0FFBB44D24470C43000D2795 /* ContentStackLogTest.swift in Sources */,
@@ -1310,6 +1317,7 @@
 				47B4DC642C232A8200370CFC /* TaxonomyTest.swift in Sources */,
 				0FFA5D91241F8127003B3AF5 /* ContentstackConfigTest.swift in Sources */,
 				0F50EA1F244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */,
+				672F769A2E55ADBE00C248D6 /* AsyncAwaitAPITest.swift in Sources */,
 				0F096B16243610470094F042 /* ImageTransformTestAdditional.swift in Sources */,
 				0FD39D4C24237A0400E34826 /* ContentTypeQueryTest.swift in Sources */,
 				0FFBB44E24470C43000D2795 /* ContentStackLogTest.swift in Sources */,
