@@ -52,7 +52,7 @@ class GlobalFieldAPITest: XCTestCase {
             }
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 5)
+        wait(for: [expectation], timeout: 30)
     }
 
     func test02FetchSingleGlobalField() {
@@ -78,7 +78,7 @@ class GlobalFieldAPITest: XCTestCase {
             }
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 5)
+        wait(for: [expectation], timeout: 30)
     }
 
     func test03FetchGlobalFieldsWithBranch() {
@@ -96,7 +96,7 @@ class GlobalFieldAPITest: XCTestCase {
             }
             expectation.fulfill()
         }
-        wait(for: [expectation], timeout: 5)
+        wait(for: [expectation], timeout: 30)
     }
 
     func test04FetchGlobalFieldWithSchema() {
@@ -114,6 +114,6 @@ class GlobalFieldAPITest: XCTestCase {
                 }
                 expectation.fulfill()
             }
-        wait(for: [expectation], timeout: 5)
+        wait(for: [expectation], timeout: 30)
     }
 }

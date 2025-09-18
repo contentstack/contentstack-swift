@@ -56,7 +56,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test02Find_EntryQuery_whereUIDEquals() {
@@ -72,7 +72,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test03Find_EntryQuery_whereTitleDNotEquals() {
@@ -88,7 +88,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test04Find_EntryQuery_whereTitleexists() {
@@ -102,7 +102,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test05Find_EntryQuery_whereTitleMatchRegex() {
@@ -116,7 +116,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 
     func test06Fetch_Entry_fromUID() {
@@ -130,7 +130,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 
     func test07Fetch_EntryQuery_WithIncludeContentType() {
@@ -146,7 +146,7 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
 
     }
     
@@ -170,7 +170,7 @@ class EntryAPITest: XCTestCase {
                 }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test09Fetch_EntryQuery_WithCount() {
@@ -186,7 +186,7 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
 
     }
 
@@ -203,7 +203,7 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 
     func test11Fetch_Entry_WithWrongUID_shouldFail() {
@@ -221,7 +221,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 
     func test12Fetch_EntryQuery_WithGlobalFields() {
@@ -244,7 +244,7 @@ class EntryAPITest: XCTestCase {
                 }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 
     func test13Find_EntryQuery_whereTitleIncludes() {
@@ -264,7 +264,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 
     func test14Find_EntryQuery_whereTitleExclude() {
@@ -284,7 +284,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 
     func test15Find_EntryQuery_wherelessThan() {
@@ -325,7 +325,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+        wait(for: [networkExpectation, networkExpectationDate], timeout: 30)
     }
     
     func test16Find_EntryQuery_wherelessThanEqual() {
@@ -366,7 +366,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+        wait(for: [networkExpectation, networkExpectationDate], timeout: 30)
     }
     
     func test17Find_EntryQuery_whereGreaterThan() {
@@ -407,7 +407,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+        wait(for: [networkExpectation, networkExpectationDate], timeout: 30)
     }
 
     func test18Find_EntryQuery_whereGreaterThanEqual() {
@@ -448,7 +448,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationDate], timeout: 5)
+        wait(for: [networkExpectation, networkExpectationDate], timeout: 30)
     }
 
     func test19Find_EntryQuery_OrderBySessionTime() {
@@ -500,7 +500,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectationDesc.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationDesc], timeout: 5)
+        wait(for: [networkExpectation, networkExpectationDesc], timeout: 30)
     }
 
     func test20Find_EntryQuery_AndOrOperator() {
@@ -551,7 +551,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectationOr.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationOr], timeout: 5)
+        wait(for: [networkExpectation, networkExpectationOr], timeout: 30)
     }
 
     func test21Find_EntryQuery_SkipLimit() {
@@ -582,7 +582,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectationOr.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationOr], timeout: 5)
+        wait(for: [networkExpectation, networkExpectationOr], timeout: 30)
     }
 
     func test22Find_EntryQuery_AddQuery() {
@@ -624,7 +624,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectationKeyValue.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationKeyValue], timeout: 5)
+        wait(for: [networkExpectation, networkExpectationKeyValue], timeout: 30)
 
     }
 
@@ -656,7 +656,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectationKeyValue.fulfill()
         }
-        wait(for: [networkExpectation, networkExpectationKeyValue], timeout: 5)
+        wait(for: [networkExpectation, networkExpectationKeyValue], timeout: 30)
     }
 
     func test24Find_EntryQuery_IncludeOnlyFields() {
@@ -681,7 +681,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 
     func test25Find_EntryQuery_ExcludeFields() {
@@ -706,7 +706,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 
     func test26Find_EntryQuery_IncludeReference() {
@@ -736,7 +736,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
 
     }
 
@@ -763,7 +763,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
 
     }
     func test28Find_EntryQuery_IncludeReferenceOnly() {
@@ -791,7 +791,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
 
     }
 
@@ -819,7 +819,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
 
     }
     func test30Find_EntryQuery_IncludeReferenceExceot() {
@@ -847,7 +847,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
 
     }
 
@@ -874,7 +874,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
 
     }
     
@@ -896,7 +896,7 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
             }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test33Fetch_EntryQuery_Fallback_Result() {
@@ -929,7 +929,7 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
             }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test34Fetch_Entry_UIDWithoutFallback_NoResult() {
@@ -948,7 +948,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test35Fetch_Entry_UIDWithFallback_NoResult() {
@@ -967,7 +967,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
 }
