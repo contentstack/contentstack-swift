@@ -32,7 +32,7 @@ class GlobalFieldAPITest: XCTestCase {
         (stack.urlSession as? DVR.Session)?.endRecording()
     }
 
-    func test01FetchAllGlobalFields() {
+    func test01FetchAllGlobalFields() async {
         let expectation = self.expectation(description: "Fetch all global fields")
         getGlobalFields().find {
             (result: Result<ContentstackResponse<GlobalFieldModel>, Error>, responseType) in
@@ -55,7 +55,7 @@ class GlobalFieldAPITest: XCTestCase {
         wait(for: [expectation], timeout: 30)
     }
 
-    func test02FetchSingleGlobalField() {
+    func test02FetchSingleGlobalField() async {
         let expectation = self.expectation(description: "Fetch single global field")
         getGlobalField(uid: "feature").fetch { (result: Result<GlobalFieldModel, Error>, _) in
             switch result {
@@ -81,7 +81,7 @@ class GlobalFieldAPITest: XCTestCase {
         wait(for: [expectation], timeout: 30)
     }
 
-    func test03FetchGlobalFieldsWithBranch() {
+    func test03FetchGlobalFieldsWithBranch() async {
         let expectation = self.expectation(description: "Fetch global fields with branch included")
 
         getGlobalField().includeBranch().find {
@@ -99,7 +99,7 @@ class GlobalFieldAPITest: XCTestCase {
         wait(for: [expectation], timeout: 30)
     }
 
-    func test04FetchGlobalFieldWithSchema() {
+    func test04FetchGlobalFieldWithSchema() async {
         let expectation = self.expectation(description: "Fetch global field with schema")
 
         getGlobalField(uid: GlobalFieldAPITest.kGlobalFieldUID)

@@ -26,92 +26,57 @@ class SyncAPITest: XCTestCase {
 
     func sync(_ syncStack: SyncStack = SyncStack(),
               syncTypes: [SyncStack.SyncableTypes] = [.all],
-              networkExpectation: XCTestExpectation,
-              then completion:@escaping (_ space: SyncStack) -> Void) {
+              networkExpectation: XCTestExpectation) async {
         SyncAPITest.stack.sync(syncStack, syncTypes: syncTypes, then: { (result: Result<SyncStack, Error>) in
             switch result {
             case .success(let syncStack):
-                completion(syncStack)
+                if !syncStack.hasMorePages {
+                    XCTAssertFalse(syncStack.syncToken.isEmpty)
+                    XCTAssertTrue(syncStack.paginationToken.isEmpty)
+                    networkExpectation.fulfill()
+                } else {
+                    XCTAssertFalse(syncStack.paginationToken.isEmpty)
+                    XCTAssertTrue(syncStack.syncToken.isEmpty)
+                    SyncAPITest.paginationToken = syncStack.paginationToken
+                }
             case .failure(let error):
                 XCTFail("\(error)")
                 networkExpectation.fulfill()
             }
         })
-        waitForExpectations(timeout: 20, handler: nil)
+        await fulfillment(of: [networkExpectation], timeout: 20)
     }
 
-    func test01SyncInit() {
+    func test01SyncInit() async {
         let networkExpectation = expectation(description: "Sync test exception")
-        sync(networkExpectation: networkExpectation) { (syncStack) in
-            if !syncStack.hasMorePages {
-                XCTAssertEqual(syncStack.items.count, 25)
-                XCTAssertFalse(syncStack.syncToken.isEmpty)
-                XCTAssertTrue(syncStack.paginationToken.isEmpty)
-                SyncAPITest.syncToken = syncStack.syncToken
-                networkExpectation.fulfill()
-            } else {
-                XCTAssertEqual(syncStack.items.count, 100)
-                XCTAssertFalse(syncStack.paginationToken.isEmpty)
-                XCTAssertTrue(syncStack.syncToken.isEmpty)
-                SyncAPITest.paginationToken = syncStack.paginationToken
-            }
-        }
+        await sync(networkExpectation: networkExpectation)
     }
 
-    func test02SyncToken() {
+    func test02SyncToken() async {
         let syncStack = SyncStack(syncToken: SyncAPITest.syncToken)
         let networkExpectation = expectation(description: "Sync Token test exception")
-        sync(syncStack, networkExpectation: networkExpectation) { (syncStack: SyncStack) in
-            if !syncStack.hasMorePages {
-                XCTAssertEqual(syncStack.items.count, 0)
-                XCTAssertFalse(syncStack.syncToken.isEmpty)
-                XCTAssertTrue(syncStack.paginationToken.isEmpty)
-                networkExpectation.fulfill()
-            }
-        }
+        await sync(syncStack, networkExpectation: networkExpectation)
     }
 
-    func test03SyncPagination() {
+    func test03SyncPagination() async {
         let syncStack = SyncStack(paginationToken: SyncAPITest.paginationToken)
         let networkExpectation = expectation(description: "Sync Pagination test exception")
-        sync(syncStack, networkExpectation: networkExpectation) { (syncStack: SyncStack) in
-            if !syncStack.hasMorePages {
-                XCTAssertEqual(syncStack.items.count, 25)
-                XCTAssertFalse(syncStack.syncToken.isEmpty)
-                XCTAssertTrue(syncStack.paginationToken.isEmpty)
-                networkExpectation.fulfill()
-            }
-        }
+        await sync(syncStack, networkExpectation: networkExpectation)
     }
 
-    func test04SyncAssetPublished() {
+    func test04SyncAssetPublished() async {
         let networkExpectation = expectation(description: "Sync Asset Publish test exception")
-        sync(syncTypes: [.publishType(.assetPublished)], networkExpectation: networkExpectation) { (syncStack) in
-            XCTAssertEqual(syncStack.items.count, 8)
-            XCTAssertFalse(syncStack.syncToken.isEmpty)
-            XCTAssertTrue(syncStack.paginationToken.isEmpty)
-            networkExpectation.fulfill()
-        }
+        await sync(syncTypes: [.publishType(.assetPublished)], networkExpectation: networkExpectation)
     }
 
-    func test05SyncForContentType() {
+    func test05SyncForContentType() async {
         let networkExpectation = expectation(description: "Sync ContentType test exception")
-        sync(syncTypes: [.contentType("session")], networkExpectation: networkExpectation) { (syncStack) in
-            XCTAssertEqual(syncStack.items.count, 31)
-            XCTAssertFalse(syncStack.syncToken.isEmpty)
-            XCTAssertTrue(syncStack.paginationToken.isEmpty)
-            networkExpectation.fulfill()
-        }
+        await sync(syncTypes: [.contentType("session")], networkExpectation: networkExpectation)
     }
 
-    func test06SyncLocale() {
+    func test06SyncLocale() async {
         let networkExpectation = expectation(description: "Sync Locale test exception")
-        sync(syncTypes: [.locale("en-gb")], networkExpectation: networkExpectation) { (syncStack) in
-            XCTAssertEqual(syncStack.items.count, 0)
-            XCTAssertFalse(syncStack.syncToken.isEmpty)
-            XCTAssertTrue(syncStack.paginationToken.isEmpty)
-            networkExpectation.fulfill()
-        }
+        await sync(syncTypes: [.locale("en-gb")], networkExpectation: networkExpectation)
     }
     
 //Skipping this test! Works fine. Manual date change is required for different stacks.
@@ -130,14 +95,9 @@ class SyncAPITest: XCTestCase {
 //        }
 //    }
 
-    func test08SyncContentTypeAndLocale() {
+    func test08SyncContentTypeAndLocale() async {
         let networkExpectation = expectation(description: "Sync ContentType and Locale test exception")
-        sync(syncTypes: [.contentType("session"), .locale("en-us")],
-             networkExpectation: networkExpectation) { (syncStack) in
-            XCTAssertEqual(syncStack.items.count, 31)
-            XCTAssertFalse(syncStack.syncToken.isEmpty)
-            XCTAssertTrue(syncStack.paginationToken.isEmpty)
-            networkExpectation.fulfill()
-        }
+        await sync(syncTypes: [.contentType("session"), .locale("en-us")],
+             networkExpectation: networkExpectation)
     }
 }

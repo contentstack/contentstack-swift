@@ -45,7 +45,7 @@ class AssetQueryAPITest: XCTestCase {
         (stack.urlSession as? DVR.Session)?.endRecording()
     }
 
-    func test01FindAll_AssetQuery() {
+    func test01FindAll_AssetQuery() async {
         let networkExpectation = expectation(description: "Fetch All Assets Test")
         self.getAssetQuery().locale("en-us").find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
             switch result {
@@ -64,7 +64,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
     
-    func test02Find_AssetQuery_whereUIDEquals() {
+    func test02Find_AssetQuery_whereUIDEquals() async {
         let networkExpectation = expectation(description: "Fetch where UID equals Assets Test")
         self.queryWhere(.uid, operation: .equals(AssetQueryAPITest.kAssetUID)) { (result: Result<ContentstackResponse<AssetModel>, Error>) in
             switch result {
@@ -80,7 +80,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
     
-    func test03Find_AssetQuery_whereTitleDNotEquals() {
+    func test03Find_AssetQuery_whereTitleDNotEquals() async {
         let networkExpectation = expectation(description: "Fetch where Title equals Assets Test")
         self.queryWhere(.title, operation: .notEquals(AssetQueryAPITest.kAssetTitle)) { (result: Result<ContentstackResponse<AssetModel>, Error>) in
             switch result {
@@ -96,7 +96,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
 
-    func test03Find_AssetQuery_whereFileNameEquals() {
+    func test03Find_AssetQuery_whereFileNameEquals() async {
         let networkExpectation = expectation(description: "Fetch where Title equals Assets Test")
         self.queryWhere(.fileName, operation: .notEquals(AssetQueryAPITest.kFileName)) { (result: Result<ContentstackResponse<AssetModel>, Error>) in
             switch result {
@@ -112,7 +112,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
 
-    func test04Find_AssetQuery_whereFileNameexists() {
+    func test04Find_AssetQuery_whereFileNameexists() async {
         let networkExpectation = expectation(description: "Fetch where fileName exists Assets Test")
         self.queryWhere(.fileName, operation: .exists(true)) { (result: Result<ContentstackResponse<AssetModel>, Error>) in
             switch result {
@@ -126,7 +126,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
     
-    func test05Find_AssetQuery_whereTitleMatchRegex() {
+    func test05Find_AssetQuery_whereTitleMatchRegex() async {
         let networkExpectation = expectation(description: "Fetch where Title Match Regex Assets Test")
         self.queryWhere(.title, operation: .matches("im")) { (result: Result<ContentstackResponse<AssetModel>, Error>) in
             switch result {
@@ -140,7 +140,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
 
-    func test06Fetch_Asset_fromUID() {
+    func test06Fetch_Asset_fromUID() async {
         let networkExpectation = expectation(description: "Fetch Assets from UID Test")
         self.getAsset(uid: AssetQueryAPITest.kAssetUID).fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
             switch result {
@@ -154,7 +154,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
 
-    func test07Fetch_AssetQuery_WithDimentsions() {
+    func test07Fetch_AssetQuery_WithDimentsions() async {
         let networkExpectation = expectation(description: "Fetch Assets with GLobalFields Test")
         self.getAssetQuery()
             .include(params: .dimension)
@@ -173,7 +173,7 @@ class AssetQueryAPITest: XCTestCase {
 
     }
     
-    func test08Fetch_Asset_WithGlobalFields() {
+    func test08Fetch_Asset_WithGlobalFields() async {
         let networkExpectation = expectation(description: "Fetch Assets with GlobalFields Test")
         self.getAsset(uid: AssetQueryAPITest.kAssetUID)
             .includeDimension()
@@ -189,7 +189,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
     
-    func test09Fetch_AssetQuery_WithCount() {
+    func test09Fetch_AssetQuery_WithCount() async {
         let networkExpectation = expectation(description: "Fetch Assets with Count Test")
         self.getAssetQuery()
             .locale("en-us")
@@ -207,7 +207,7 @@ class AssetQueryAPITest: XCTestCase {
 
     }
 
-    func test11Fetch_Asset_WithWrongUID_shouldFail() {
+    func test11Fetch_Asset_WithWrongUID_shouldFail() async {
          let networkExpectation = expectation(description: "Fetch Assets from wrong UID Test")
         self.getAsset(uid: "UID").fetch { (result: Result<AssetModel, Error>, response: ResponseType) in
             switch result {
@@ -224,7 +224,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
     
-    func test12Fetch_AssetQuery_WithoutFallback_Result() {
+    func test12Fetch_AssetQuery_WithoutFallback_Result() async {
         let networkExpectation = expectation(description: "Fetch Assets without Fallback Test")
         self.getAssetQuery().locale(AssetQueryAPITest.locale)
             .find { (result: Result<ContentstackResponse<AssetModel>, Error>, response: ResponseType) in
@@ -245,7 +245,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
     
-    func test13Fetch_AssetQuery_Fallback_Result() {
+    func test13Fetch_AssetQuery_Fallback_Result() async {
         let networkExpectation = expectation(description: "Fetch Assets without Fallback Test")
         self.getAssetQuery()
             .locale(AssetQueryAPITest.locale)
@@ -278,7 +278,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
     
-    func test14Fetch_Asset_UIDWithoutFallback_NoResult() {
+    func test14Fetch_Asset_UIDWithoutFallback_NoResult() async {
         let networkExpectation = expectation(description: "Fetch Asset from UID without Fallback Test")
         self.getAsset(uid: AssetQueryAPITest.kAssetLocaliseUID)
             .locale("en-gb")
@@ -297,7 +297,7 @@ class AssetQueryAPITest: XCTestCase {
         wait(for: [networkExpectation], timeout: 30)
     }
     
-    func test15Fetch_Asset_UIDWithFallback_NoResult() {
+    func test15Fetch_Asset_UIDWithFallback_NoResult() async {
         let networkExpectation = expectation(description: "Fetch Asset from UID without Fallback Test")
         self.getAsset(uid: AssetQueryAPITest.kAssetLocaliseUID)
             .locale(AssetQueryAPITest.locale)
