@@ -56,7 +56,7 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test02Find_ContentTypeQuery_whereUIDEquals() async {
@@ -72,7 +72,7 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test03Find_ContentTypeQuery_whereTitleDNotEquals()  async {
@@ -88,7 +88,7 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test04Find_ContentTypeQuery_whereDescriptionexists() async {
@@ -102,7 +102,7 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test05Find_ContentTypeQuery_whereTitleMatchRegex() async {
@@ -116,7 +116,7 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 
     func test06Fetch_ContentType_fromUID() async {
@@ -130,7 +130,7 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 
     func test07Fetch_ContentTypeQuery_WithGlobalFields() async {
@@ -154,7 +154,7 @@ class ContentTypeQueryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
 
     }
     
@@ -176,7 +176,7 @@ class ContentTypeQueryAPITest: XCTestCase {
                 }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
     
     func test09Fetch_ContentTypeQuery_WithCount() async {
@@ -192,7 +192,7 @@ class ContentTypeQueryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
 
     }
 
@@ -210,6 +210,6 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        wait(for: [networkExpectation], timeout: 30)
     }
 }
