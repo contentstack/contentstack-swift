@@ -47,4 +47,26 @@ extension Taxonomy: ResourceQueryable {
             }
         })
     }
+    
+    // MARK: - Async/Await Implementation for fetch
+    
+    /// Async version of fetch that returns the Taxonomy directly
+    /// - Returns: The fetched Taxonomy
+    /// - Throws: Network, decoding, or cache errors
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    public func fetch<ResourceType>() async throws -> ResourceType
+        where ResourceType: EndpointAccessible & Decodable {
+        let response: ContentstackResponse<ResourceType> = try await self.stack.fetch(
+            endpoint: ResourceType.endpoint,
+            cachePolicy: self.cachePolicy,
+            parameters: parameters,
+            headers: headers
+        )
+        
+        if let resource = response.items.first {
+            return resource
+        } else {
+            throw SDKError.invalidURL(string: "Something went wrong.")
+        }
+    }
 }

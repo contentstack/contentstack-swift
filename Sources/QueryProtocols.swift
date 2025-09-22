@@ -75,6 +75,22 @@ extension BaseQuery {
         self.stack.fetch(endpoint: ResourceType.endpoint,
                 cachePolicy: self.cachePolicy, parameters: parameters, headers: headers, then: completion)
     }
+    
+    /// Async version of find that returns the ContentstackResponse directly
+    /// - Returns: The ContentstackResponse with the requested resources
+    /// - Throws: Network, decoding, or cache errors
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    public func find<ResourceType>() async throws -> ContentstackResponse<ResourceType>
+        where ResourceType: Decodable & EndpointAccessible {
+        if self.queryParameter.count > 0,
+            let query = self.queryParameter.jsonString {
+            self.parameters[QueryParameter.query] = query
+        }
+        return try await self.stack.fetch(endpoint: ResourceType.endpoint,
+                                         cachePolicy: self.cachePolicy,
+                                         parameters: parameters,
+                                         headers: headers)
+    }
 }
 /// A concrete implementation of BaseQuery which serves as the base class for `Query`,
 /// `ContentTypeQuery` and `AssetQuery`.
@@ -557,6 +573,13 @@ public protocol ResourceQueryable {
     ///   - completion: A handler which will be called on completion of the operation.
     func fetch<ResourceType>(_ completion: @escaping ResultsHandler<ResourceType>)
         where ResourceType: Decodable & EndpointAccessible
+
+    /// Async version of fetch that returns the resource directly
+    /// - Returns: The fetched resource
+    /// - Throws: Network, decoding, or cache errors
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    func fetch<ResourceType>() async throws -> ResourceType
+        where ResourceType: Decodable & EndpointAccessible
 }
 
 /// The base Queryable protocol to find collections for content types, assets, and entries.
@@ -566,5 +589,12 @@ public protocol Queryable {
     /// - Parameters:
     ///   - completion: A handler which will be called on completion of the operation.
     func find<ResourceType>(_ completion: @escaping ResultsHandler<ContentstackResponse<ResourceType>>)
+        where ResourceType: Decodable & EndpointAccessible
+
+    /// Async version of find that returns the ContentstackResponse directly
+    /// - Returns: The ContentstackResponse with the requested resources
+    /// - Throws: Network, decoding, or cache errors
+    @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
+    func find<ResourceType>() async throws -> ContentstackResponse<ResourceType>
         where ResourceType: Decodable & EndpointAccessible
 }

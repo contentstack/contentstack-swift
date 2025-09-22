@@ -41,7 +41,7 @@ class ContentTypeQueryAPITest: XCTestCase {
         (stack.urlSession as? DVR.Session)?.endRecording()
     }
 
-    func test01FindAll_ContentTypeQuery() {
+    func test01FindAll_ContentTypeQuery() async { 
         let networkExpectation = expectation(description: "Fetch All ContentTypes Test")
         self.getContentTypeQuery().find { (result: Result<ContentstackResponse<ContentTypeModel>, Error>, response: ResponseType) in
             switch result {
@@ -56,10 +56,10 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
-    func test02Find_ContentTypeQuery_whereUIDEquals() {
+    func test02Find_ContentTypeQuery_whereUIDEquals() async {
         let networkExpectation = expectation(description: "Fetch where UID equals ContentTypes Test")
         self.queryWhere(.uid, operation: .equals(ContentTypeQueryAPITest.kContentTypeUID)) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
             switch result {
@@ -72,10 +72,10 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
-    func test03Find_ContentTypeQuery_whereTitleDNotEquals() {
+    func test03Find_ContentTypeQuery_whereTitleDNotEquals()  async {
         let networkExpectation = expectation(description: "Fetch where Title equals ContentTypes Test")
         self.queryWhere(.title, operation: .notEquals(ContentTypeQueryAPITest.kContentTitle)) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
             switch result {
@@ -88,10 +88,10 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
-    func test04Find_ContentTypeQuery_whereDescriptionexists() {
+    func test04Find_ContentTypeQuery_whereDescriptionexists() async {
         let networkExpectation = expectation(description: "Fetch where description exists ContentTypes Test")
         self.queryWhere(.description, operation: .exists(true)) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
             switch result {
@@ -102,10 +102,10 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
-    func test05Find_ContentTypeQuery_whereTitleMatchRegex() {
+    func test05Find_ContentTypeQuery_whereTitleMatchRegex() async {
         let networkExpectation = expectation(description: "Fetch where Title Match Regex ContentTypes Test")
         self.queryWhere(.title, operation: .matches("Tr")) { (result: Result<ContentstackResponse<ContentTypeModel>, Error>) in
             switch result {
@@ -116,10 +116,10 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
-    func test06Fetch_ContentType_fromUID() {
+    func test06Fetch_ContentType_fromUID() async {
         let networkExpectation = expectation(description: "Fetch ContentTypes from UID Test")
         self.getContentType(uid: ContentTypeQueryAPITest.kContentTypeUID).fetch { (result: Result<ContentTypeModel, Error>, response: ResponseType) in
             switch result {
@@ -130,10 +130,10 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
-    func test07Fetch_ContentTypeQuery_WithGlobalFields() {
+    func test07Fetch_ContentTypeQuery_WithGlobalFields() async {
         let networkExpectation = expectation(description: "Fetch ContentTypes with GLobalFields Test")
         self.getContentTypeQuery()
             .include(params: .globalFields)
@@ -154,11 +154,11 @@ class ContentTypeQueryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
 
     }
     
-    func test08Fetch_ContentType_WithGlobalFields() {
+    func test08Fetch_ContentType_WithGlobalFields() async {
         let networkExpectation = expectation(description: "Fetch ContentTypes with GlobalFields Test")
         self.getContentType(uid: ContentTypeQueryAPITest.kContentTypeUID)
             .includeGlobalFields()
@@ -176,10 +176,10 @@ class ContentTypeQueryAPITest: XCTestCase {
                 }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
-    func test09Fetch_ContentTypeQuery_WithCount() {
+    func test09Fetch_ContentTypeQuery_WithCount() async {
         let networkExpectation = expectation(description: "Fetch ContentTypes with Count Test")
         self.getContentTypeQuery()
             .include(params: .count)
@@ -192,11 +192,11 @@ class ContentTypeQueryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
 
     }
 
-    func test11Fetch_ContentType_WithWrongUID_shouldFail() {
+    func test11Fetch_ContentType_WithWrongUID_shouldFail() async { 
          let networkExpectation = expectation(description: "Fetch ContentTypes from wrong UID Test")
         self.getContentType(uid: "UID").fetch { (result: Result<ContentTypeModel, Error>, response: ResponseType) in
             switch result {
@@ -210,6 +210,6 @@ class ContentTypeQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 }
