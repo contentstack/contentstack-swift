@@ -49,7 +49,7 @@
 //                }
 //                networkExpectation.fulfill()
 //            }
-//        wait(for: [networkExpectation], timeout: 30)
+//        await fulfillment(of: [networkExpectation], timeout: 30.0)
 //
 //    }
 //    
@@ -75,7 +75,7 @@
 //            }
 //            networkExpectation.fulfill()
 //        }
-//        wait(for: [networkExpectation], timeout: 30)
+//        await fulfillment(of: [networkExpectation], timeout: 30.0)
 //
 //    }
 //

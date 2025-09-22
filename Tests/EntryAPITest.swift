@@ -56,7 +56,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test02Find_EntryQuery_whereUIDEquals() async {
@@ -72,7 +72,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test03Find_EntryQuery_whereTitleDNotEquals() async {
@@ -88,7 +88,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test04Find_EntryQuery_whereTitleexists() async {
@@ -102,7 +102,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func testtest05Find_EntryQuery_whereTitleMatchRegex() async {
@@ -116,7 +116,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test06Fetch_Entry_fromUID() async {
@@ -130,7 +130,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test07Fetch_EntryQuery_WithIncludeContentType() async {
@@ -146,7 +146,7 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
 
     }
     
@@ -170,7 +170,7 @@ class EntryAPITest: XCTestCase {
                 }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test09Fetch_EntryQuery_WithCount() async {
@@ -186,7 +186,7 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
 
     }
 
@@ -203,7 +203,7 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test11Fetch_Entry_WithWrongUID_shouldFail() async {
@@ -221,7 +221,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test12Fetch_EntryQuery_WithGlobalFields() async {
@@ -244,7 +244,7 @@ class EntryAPITest: XCTestCase {
                 }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test13Find_EntryQuery_whereTitleIncludes() async {
@@ -264,7 +264,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test14Find_EntryQuery_whereTitleExclude()  async {
@@ -284,7 +284,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test15Find_EntryQuery_wherelessThan() async {
@@ -681,7 +681,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test25Find_EntryQuery_ExcludeFields() async {
@@ -706,7 +706,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func testtest26Find_EntryQuery_IncludeReference() async {
@@ -736,7 +736,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
 
     }
 
@@ -763,7 +763,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
 
     }
     func test28Find_EntryQuery_IncludeReferenceOnly() async {
@@ -791,7 +791,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
 
     }
 
@@ -819,7 +819,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
 
     }
     func test30Find_EntryQuery_IncludeReferenceExceot() async {
@@ -847,7 +847,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
 
     }
 
@@ -874,7 +874,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30)
 
     }
     
@@ -896,7 +896,7 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
             }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30)
     }
     
     func test33Fetch_EntryQuery_Fallback_Result() async {
@@ -929,7 +929,7 @@ class EntryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
             }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test34Fetch_Entry_UIDWithoutFallback_NoResult() async {
@@ -948,7 +948,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test35Fetch_Entry_UIDWithFallback_NoResult() async {
@@ -967,7 +967,7 @@ class EntryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        wait(for: [networkExpectation], timeout: 30)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
 }
