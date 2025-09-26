@@ -61,7 +61,7 @@ class AssetQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test02Find_AssetQuery_whereUIDEquals() async {
@@ -77,7 +77,7 @@ class AssetQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test03Find_AssetQuery_whereTitleDNotEquals() async {
@@ -93,7 +93,7 @@ class AssetQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test03Find_AssetQuery_whereFileNameEquals() async {
@@ -109,7 +109,7 @@ class AssetQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test04Find_AssetQuery_whereFileNameexists() async {
@@ -123,7 +123,7 @@ class AssetQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test05Find_AssetQuery_whereTitleMatchRegex() async {
@@ -137,7 +137,7 @@ class AssetQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test06Fetch_Asset_fromUID() async {
@@ -151,7 +151,7 @@ class AssetQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 
     func test07Fetch_AssetQuery_WithDimentsions() async {
@@ -169,7 +169,7 @@ class AssetQueryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
 
     }
     
@@ -186,7 +186,7 @@ class AssetQueryAPITest: XCTestCase {
                 }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test09Fetch_AssetQuery_WithCount() async {
@@ -203,7 +203,7 @@ class AssetQueryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
 
     }
 
@@ -221,7 +221,7 @@ class AssetQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test12Fetch_AssetQuery_WithoutFallback_Result() async {
@@ -242,7 +242,7 @@ class AssetQueryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
             }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test13Fetch_AssetQuery_Fallback_Result() async {
@@ -275,7 +275,7 @@ class AssetQueryAPITest: XCTestCase {
                 }
                 networkExpectation.fulfill()
             }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test14Fetch_Asset_UIDWithoutFallback_NoResult() async {
@@ -294,7 +294,7 @@ class AssetQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test15Fetch_Asset_UIDWithFallback_NoResult() async {
@@ -315,6 +315,6 @@ class AssetQueryAPITest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 }

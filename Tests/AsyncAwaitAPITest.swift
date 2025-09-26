@@ -343,7 +343,7 @@ class AsyncAwaitSyntaxTests: XCTestCase {
             }
         }
         
-        await fulfillment(of: [expectation], timeout: 5.0)
+        await fulfillment(of: [expectation], timeout: 30.0)
     }
     
     func testAsyncLetSyntax() async {
@@ -363,6 +363,6 @@ class AsyncAwaitSyntaxTests: XCTestCase {
             }
         }
         
-        await fulfillment(of: [expectation], timeout: 5.0)
+        await fulfillment(of: [expectation], timeout: 30.0)
     }
 }

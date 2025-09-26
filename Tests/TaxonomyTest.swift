@@ -49,7 +49,7 @@ class TaxonomyTest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test02Find_TaxonomyQuery_AndOperator() async {
@@ -66,7 +66,7 @@ class TaxonomyTest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test03Find_TaxonomyQuery_InOperator() async {
@@ -81,7 +81,7 @@ class TaxonomyTest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test04Find_TaxonomyQuery_Below() async {
@@ -96,7 +96,7 @@ class TaxonomyTest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test05Find_TaxonomyQuery_EqBelow() async {
@@ -111,7 +111,7 @@ class TaxonomyTest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test06Find_TaxonomyQuery_Above() async {
@@ -126,7 +126,7 @@ class TaxonomyTest: XCTestCase {
             }
             networkExpectation.fulfill()
         }
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
     
     func test07Find_TaxonomyQuery_EqAbove() async {
@@ -142,6 +142,6 @@ class TaxonomyTest: XCTestCase {
             networkExpectation.fulfill()
         }
         
-        await fulfillment(of: [networkExpectation], timeout: 5)
+        await fulfillment(of: [networkExpectation], timeout: 30.0)
     }
 }
