@@ -1,8 +1,14 @@
 # CHANGELOG
 
+## v2.3.0
+
+### Date: 29-Sep-2025
+
+- Added AU and GCP-EU region support
+
 ## v2.2.0
 
-### Date: 01-Sep-2025
+### Date: 22-Sep-2025
 
 - Async/await support added
 
