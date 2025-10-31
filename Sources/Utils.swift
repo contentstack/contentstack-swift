@@ -29,7 +29,7 @@ internal extension Array {
     }
 }
 
-internal extension String {
+public extension String {
     // Will make a `URL` from the current `String` instance if possible.
     func toURL() throws -> URL {
         guard var urlComponents = URLComponents(string: self) else {
@@ -90,7 +90,7 @@ internal extension String {
         return url
     }
 
-    func isHexColor() -> Bool {
+    internal func isHexColor() -> Bool {
         let hexColorRegex3Deci = "[0-9A-Fa-f]{3}"
         let hexColorPred3Deci = NSPredicate(format: "SELF MATCHES %@", hexColorRegex3Deci)
 
