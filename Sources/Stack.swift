@@ -409,7 +409,6 @@ extension Stack {
     ///    }
     /// }
     ///```
-    @available(*, deprecated, message: "This method will be deprecated soon. Please use seqSync instead")
     public func sync(_ syncStack: SyncStack = SyncStack(),
                      syncTypes: [SyncStack.SyncableTypes] = [.all],
                      then completion: @escaping (_ result: Result<SyncStack, Error>) -> Void) {
