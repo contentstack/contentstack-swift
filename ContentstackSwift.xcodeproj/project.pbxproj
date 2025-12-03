@@ -269,6 +269,42 @@
 		672F769A2E55ADBE00C248D6 /* AsyncAwaitAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672F76982E55ADBE00C248D6 /* AsyncAwaitAPITest.swift */; };
 		672F769B2E55ADBE00C248D6 /* AsyncAwaitAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672F76982E55ADBE00C248D6 /* AsyncAwaitAPITest.swift */; };
 		6750778E2D3E256A0076A066 /* DVR in Frameworks */ = {isa = PBXBuildFile; productRef = 6750778D2D3E256A0076A066 /* DVR */; };
+		67AA38EA2EB9D44800C0E2C0 /* CSDefinitionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38E92EB9D44800C0E2C0 /* CSDefinitionsTest.swift */; };
+		67AA38EB2EB9D44800C0E2C0 /* CSDefinitionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38E92EB9D44800C0E2C0 /* CSDefinitionsTest.swift */; };
+		67AA38EC2EB9D44800C0E2C0 /* CSDefinitionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38E92EB9D44800C0E2C0 /* CSDefinitionsTest.swift */; };
+		67AA38EE2EB9D46200C0E2C0 /* QueryParameterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38ED2EB9D46200C0E2C0 /* QueryParameterTest.swift */; };
+		67AA38EF2EB9D46200C0E2C0 /* QueryParameterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38ED2EB9D46200C0E2C0 /* QueryParameterTest.swift */; };
+		67AA38F02EB9D46200C0E2C0 /* QueryParameterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38ED2EB9D46200C0E2C0 /* QueryParameterTest.swift */; };
+		67AA38F22EB9D46800C0E2C0 /* QueryOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38F12EB9D46800C0E2C0 /* QueryOperationTest.swift */; };
+		67AA38F32EB9D46800C0E2C0 /* QueryOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38F12EB9D46800C0E2C0 /* QueryOperationTest.swift */; };
+		67AA38F42EB9D46800C0E2C0 /* QueryOperationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38F12EB9D46800C0E2C0 /* QueryOperationTest.swift */; };
+		67AA38F62EB9D46D00C0E2C0 /* QueryableRangeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38F52EB9D46D00C0E2C0 /* QueryableRangeTest.swift */; };
+		67AA38F72EB9D46D00C0E2C0 /* QueryableRangeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38F52EB9D46D00C0E2C0 /* QueryableRangeTest.swift */; };
+		67AA38F82EB9D46D00C0E2C0 /* QueryableRangeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38F52EB9D46D00C0E2C0 /* QueryableRangeTest.swift */; };
+		67AA38FA2EB9D47100C0E2C0 /* ParameterEncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38F92EB9D47100C0E2C0 /* ParameterEncodingTest.swift */; };
+		67AA38FB2EB9D47100C0E2C0 /* ParameterEncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38F92EB9D47100C0E2C0 /* ParameterEncodingTest.swift */; };
+		67AA38FC2EB9D47100C0E2C0 /* ParameterEncodingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38F92EB9D47100C0E2C0 /* ParameterEncodingTest.swift */; };
+		67AA38FE2EB9D47800C0E2C0 /* ImageTransformErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38FD2EB9D47800C0E2C0 /* ImageTransformErrorTest.swift */; };
+		67AA38FF2EB9D47800C0E2C0 /* ImageTransformErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38FD2EB9D47800C0E2C0 /* ImageTransformErrorTest.swift */; };
+		67AA39002EB9D47800C0E2C0 /* ImageTransformErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA38FD2EB9D47800C0E2C0 /* ImageTransformErrorTest.swift */; };
+		67AA39022EB9D47C00C0E2C0 /* ErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39012EB9D47C00C0E2C0 /* ErrorTest.swift */; };
+		67AA39032EB9D47C00C0E2C0 /* ErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39012EB9D47C00C0E2C0 /* ErrorTest.swift */; };
+		67AA39042EB9D47C00C0E2C0 /* ErrorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39012EB9D47C00C0E2C0 /* ErrorTest.swift */; };
+		67AA39062EB9D48000C0E2C0 /* EndPointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39052EB9D48000C0E2C0 /* EndPointTest.swift */; };
+		67AA39072EB9D48000C0E2C0 /* EndPointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39052EB9D48000C0E2C0 /* EndPointTest.swift */; };
+		67AA39082EB9D48000C0E2C0 /* EndPointTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39052EB9D48000C0E2C0 /* EndPointTest.swift */; };
+		67AA390A2EB9D48400C0E2C0 /* DecodableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39092EB9D48400C0E2C0 /* DecodableTest.swift */; };
+		67AA390B2EB9D48400C0E2C0 /* DecodableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39092EB9D48400C0E2C0 /* DecodableTest.swift */; };
+		67AA390C2EB9D48400C0E2C0 /* DecodableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39092EB9D48400C0E2C0 /* DecodableTest.swift */; };
+		67AA390E2EB9D49600C0E2C0 /* CSDefinitionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA390D2EB9D49600C0E2C0 /* CSDefinitionsTest.swift */; };
+		67AA390F2EB9D49600C0E2C0 /* CSDefinitionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA390D2EB9D49600C0E2C0 /* CSDefinitionsTest.swift */; };
+		67AA39102EB9D49600C0E2C0 /* CSDefinitionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA390D2EB9D49600C0E2C0 /* CSDefinitionsTest.swift */; };
+		67AA39122EBA063300C0E2C0 /* TaxonomyUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39112EBA063300C0E2C0 /* TaxonomyUnitTest.swift */; };
+		67AA39132EBA063300C0E2C0 /* TaxonomyUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39112EBA063300C0E2C0 /* TaxonomyUnitTest.swift */; };
+		67AA39142EBA063300C0E2C0 /* TaxonomyUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39112EBA063300C0E2C0 /* TaxonomyUnitTest.swift */; };
+		67AA39162EBA065000C0E2C0 /* StackInitializationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39152EBA065000C0E2C0 /* StackInitializationTest.swift */; };
+		67AA39172EBA065000C0E2C0 /* StackInitializationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39152EBA065000C0E2C0 /* StackInitializationTest.swift */; };
+		67AA39182EBA065000C0E2C0 /* StackInitializationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39152EBA065000C0E2C0 /* StackInitializationTest.swift */; };
 		67EE21DF2DDB4013005AC119 /* CSURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE21DE2DDB3FFE005AC119 /* CSURLSessionDelegate.swift */; };
 		67EE21E02DDB4013005AC119 /* CSURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE21DE2DDB3FFE005AC119 /* CSURLSessionDelegate.swift */; };
 		67EE21E12DDB4013005AC119 /* CSURLSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67EE21DE2DDB3FFE005AC119 /* CSURLSessionDelegate.swift */; };
@@ -420,6 +456,18 @@
 		47B4DC612C232A8200370CFC /* TaxonomyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyTest.swift; sourceTree = "<group>"; };
 		47C6EFC12C0B5B9400F0D5CF /* Taxonomy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taxonomy.swift; sourceTree = "<group>"; };
 		672F76982E55ADBE00C248D6 /* AsyncAwaitAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncAwaitAPITest.swift; sourceTree = "<group>"; };
+		67AA38E92EB9D44800C0E2C0 /* CSDefinitionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSDefinitionsTest.swift; sourceTree = "<group>"; };
+		67AA38ED2EB9D46200C0E2C0 /* QueryParameterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryParameterTest.swift; sourceTree = "<group>"; };
+		67AA38F12EB9D46800C0E2C0 /* QueryOperationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOperationTest.swift; sourceTree = "<group>"; };
+		67AA38F52EB9D46D00C0E2C0 /* QueryableRangeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryableRangeTest.swift; sourceTree = "<group>"; };
+		67AA38F92EB9D47100C0E2C0 /* ParameterEncodingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncodingTest.swift; sourceTree = "<group>"; };
+		67AA38FD2EB9D47800C0E2C0 /* ImageTransformErrorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTransformErrorTest.swift; sourceTree = "<group>"; };
+		67AA39012EB9D47C00C0E2C0 /* ErrorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTest.swift; sourceTree = "<group>"; };
+		67AA39052EB9D48000C0E2C0 /* EndPointTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointTest.swift; sourceTree = "<group>"; };
+		67AA39092EB9D48400C0E2C0 /* DecodableTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableTest.swift; sourceTree = "<group>"; };
+		67AA390D2EB9D49600C0E2C0 /* CSDefinitionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSDefinitionsTest.swift; sourceTree = "<group>"; };
+		67AA39112EBA063300C0E2C0 /* TaxonomyUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyUnitTest.swift; sourceTree = "<group>"; };
+		67AA39152EBA065000C0E2C0 /* StackInitializationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackInitializationTest.swift; sourceTree = "<group>"; };
 		67EE21DE2DDB3FFE005AC119 /* CSURLSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSURLSessionDelegate.swift; sourceTree = "<group>"; };
 		67EE222B2DE4868F005AC119 /* GlobalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalField.swift; sourceTree = "<group>"; };
 		67EE22302DE58B51005AC119 /* GlobalFieldModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFieldModel.swift; sourceTree = "<group>"; };
@@ -649,10 +697,22 @@
 				0FFA5D49241F4DED003B3AF5 /* ContentstackConfigTest.swift */,
 				0FFA5D88241F8113003B3AF5 /* StackTest.swift */,
 				0F4A7641241BB3C600E3A024 /* ContentstackTests.swift */,
+				67AA390D2EB9D49600C0E2C0 /* CSDefinitionsTest.swift */,
 				0FFA5D9E241F8FFE003B3AF5 /* ContentTypeTest.swift */,
 				0F4FBC9F2420B0E4007B8CAE /* DateTest.swift */,
 				0F4FBCA82420B615007B8CAE /* UtilsTest.swift */,
 				0FD39D4924237A0400E34826 /* ContentTypeQueryTest.swift */,
+				67AA38E92EB9D44800C0E2C0 /* CSDefinitionsTest.swift */,
+				67AA38ED2EB9D46200C0E2C0 /* QueryParameterTest.swift */,
+				67AA38F12EB9D46800C0E2C0 /* QueryOperationTest.swift */,
+				67AA38F52EB9D46D00C0E2C0 /* QueryableRangeTest.swift */,
+				67AA38F92EB9D47100C0E2C0 /* ParameterEncodingTest.swift */,
+				67AA38FD2EB9D47800C0E2C0 /* ImageTransformErrorTest.swift */,
+				67AA39012EB9D47C00C0E2C0 /* ErrorTest.swift */,
+				67AA39052EB9D48000C0E2C0 /* EndPointTest.swift */,
+				67AA39092EB9D48400C0E2C0 /* DecodableTest.swift */,
+				67AA39112EBA063300C0E2C0 /* TaxonomyUnitTest.swift */,
+				67AA39152EBA065000C0E2C0 /* StackInitializationTest.swift */,
 				0F7138C42424A70C00B314B0 /* AssetQueryTest.swift */,
 				0F7138CC2424A94000B314B0 /* QueryTest.swift */,
 				0F60CA2E2428949C00ED67E6 /* EntryTest.swift */,
@@ -1143,13 +1203,19 @@
 				4706575C2B5E78B300BBFF88 /* AssetQueryAPITest.swift in Sources */,
 				0F60CA2F2428949C00ED67E6 /* EntryTest.swift in Sources */,
 				0F244FA724406A4A003C3F26 /* EntryQueriableTest.swift in Sources */,
+				67AA38EB2EB9D44800C0E2C0 /* CSDefinitionsTest.swift in Sources */,
 				0F463113243B044F001CE1FA /* SyncTest.swift in Sources */,
+				67AA39142EBA063300C0E2C0 /* TaxonomyUnitTest.swift in Sources */,
+				67AA38F72EB9D46D00C0E2C0 /* QueryableRangeTest.swift in Sources */,
 				0FFA5DBC241F9A6C003B3AF5 /* XCTestCase+Extension.swift in Sources */,
 				0F4FBCA02420B0E4007B8CAE /* DateTest.swift in Sources */,
+				67AA390A2EB9D48400C0E2C0 /* DecodableTest.swift in Sources */,
 				0FFA5D4A241F4DED003B3AF5 /* ContentstackConfigTest.swift in Sources */,
+				67AA39182EBA065000C0E2C0 /* StackInitializationTest.swift in Sources */,
 				67EE22382DE5BAFE005AC119 /* GlobalFieldAPITest.swift in Sources */,
 				47B4DC622C232A8200370CFC /* TaxonomyTest.swift in Sources */,
 				0F50EA1D244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */,
+				67AA38EE2EB9D46200C0E2C0 /* QueryParameterTest.swift in Sources */,
 				470657582B5E788400BBFF88 /* EntryAPITest.swift in Sources */,
 				672F76992E55ADBE00C248D6 /* AsyncAwaitAPITest.swift in Sources */,
 				0F096B14243610470094F042 /* ImageTransformTestAdditional.swift in Sources */,
@@ -1158,16 +1224,22 @@
 				0F77CFB824373B8A00C57764 /* ImageTransformEquatableTest.swift in Sources */,
 				0F02466B243201B500F72181 /* ImageTransformTest.swift in Sources */,
 				47AAE0902B60420E0098655A /* SyncAPITest.swift in Sources */,
+				67AA390F2EB9D49600C0E2C0 /* CSDefinitionsTest.swift in Sources */,
 				470657542B5E785C00BBFF88 /* ContentTypeQueryAPITest.swift in Sources */,
 				470657602B5E797300BBFF88 /* ContentstackTest.swift in Sources */,
 				0F4FBCA92420B615007B8CAE /* UtilsTest.swift in Sources */,
 				0F7138CD2424A94000B314B0 /* QueryTest.swift in Sources */,
+				67AA38FA2EB9D47100C0E2C0 /* ParameterEncodingTest.swift in Sources */,
 				0F50EA0E244EC3DD00E5D705 /* Session.swift in Sources */,
 				0FFA5D9F241F8FFE003B3AF5 /* ContentTypeTest.swift in Sources */,
 				0F4A7646241BB3CB00E3A024 /* ContentstackTests.swift in Sources */,
+				67AA39072EB9D48000C0E2C0 /* EndPointTest.swift in Sources */,
 				0F7138C52424A70C00B314B0 /* AssetQueryTest.swift in Sources */,
 				0FFA5D8F241F8123003B3AF5 /* StackTest.swift in Sources */,
+				67AA39022EB9D47C00C0E2C0 /* ErrorTest.swift in Sources */,
+				67AA38F32EB9D46800C0E2C0 /* QueryOperationTest.swift in Sources */,
 				0FFA5DA3241F90BF003B3AF5 /* SutBuilder.swift in Sources */,
+				67AA39002EB9D47800C0E2C0 /* ImageTransformErrorTest.swift in Sources */,
 				0F38D7E0242C7C9E00232D7F /* Product.swift in Sources */,
 				0F38D7E4242C831300232D7F /* AssetTest.swift in Sources */,
 			);
@@ -1226,13 +1298,19 @@
 				470657552B5E785C00BBFF88 /* ContentTypeQueryAPITest.swift in Sources */,
 				0F60CA302428949C00ED67E6 /* EntryTest.swift in Sources */,
 				0F244FA824406A4A003C3F26 /* EntryQueriableTest.swift in Sources */,
+				67AA38EC2EB9D44800C0E2C0 /* CSDefinitionsTest.swift in Sources */,
 				0F463114243B044F001CE1FA /* SyncTest.swift in Sources */,
+				67AA39132EBA063300C0E2C0 /* TaxonomyUnitTest.swift in Sources */,
+				67AA38F62EB9D46D00C0E2C0 /* QueryableRangeTest.swift in Sources */,
 				47AAE0912B60420E0098655A /* SyncAPITest.swift in Sources */,
 				0FFA5DBD241F9A6C003B3AF5 /* XCTestCase+Extension.swift in Sources */,
+				67AA390B2EB9D48400C0E2C0 /* DecodableTest.swift in Sources */,
 				0F4FBCA12420B0E4007B8CAE /* DateTest.swift in Sources */,
+				67AA39162EBA065000C0E2C0 /* StackInitializationTest.swift in Sources */,
 				67EE22362DE5BAFE005AC119 /* GlobalFieldAPITest.swift in Sources */,
 				47B4DC632C232A8200370CFC /* TaxonomyTest.swift in Sources */,
 				0FFA5D90241F8126003B3AF5 /* ContentstackConfigTest.swift in Sources */,
+				67AA38EF2EB9D46200C0E2C0 /* QueryParameterTest.swift in Sources */,
 				0F50EA1E244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */,
 				672F769B2E55ADBE00C248D6 /* AsyncAwaitAPITest.swift in Sources */,
 				0F096B15243610470094F042 /* ImageTransformTestAdditional.swift in Sources */,
@@ -1241,16 +1319,22 @@
 				4706575D2B5E78B300BBFF88 /* AssetQueryAPITest.swift in Sources */,
 				0F77CFB924373B8F00C57764 /* ImageTransformEquatableTest.swift in Sources */,
 				0F02466C243201B500F72181 /* ImageTransformTest.swift in Sources */,
+				67AA390E2EB9D49600C0E2C0 /* CSDefinitionsTest.swift in Sources */,
 				0F4FBCAA2420B615007B8CAE /* UtilsTest.swift in Sources */,
 				470657592B5E788400BBFF88 /* EntryAPITest.swift in Sources */,
 				0F50EA0F244EC3DD00E5D705 /* Session.swift in Sources */,
 				0F7138CE2424A94000B314B0 /* QueryTest.swift in Sources */,
+				67AA38FB2EB9D47100C0E2C0 /* ParameterEncodingTest.swift in Sources */,
 				0FFA5DA0241F8FFE003B3AF5 /* ContentTypeTest.swift in Sources */,
 				0FFA5D8E241F8122003B3AF5 /* StackTest.swift in Sources */,
 				470657612B5E797300BBFF88 /* ContentstackTest.swift in Sources */,
+				67AA39082EB9D48000C0E2C0 /* EndPointTest.swift in Sources */,
 				0F7138C62424A70C00B314B0 /* AssetQueryTest.swift in Sources */,
 				0F4A7647241BB3CC00E3A024 /* ContentstackTests.swift in Sources */,
+				67AA39042EB9D47C00C0E2C0 /* ErrorTest.swift in Sources */,
+				67AA38F22EB9D46800C0E2C0 /* QueryOperationTest.swift in Sources */,
 				0FFA5DA4241F90BF003B3AF5 /* SutBuilder.swift in Sources */,
+				67AA38FF2EB9D47800C0E2C0 /* ImageTransformErrorTest.swift in Sources */,
 				0F38D7E1242C7C9E00232D7F /* Product.swift in Sources */,
 				0F38D7E5242C831A00232D7F /* AssetTest.swift in Sources */,
 			);
@@ -1309,13 +1393,19 @@
 				470657562B5E785C00BBFF88 /* ContentTypeQueryAPITest.swift in Sources */,
 				0F60CA312428949C00ED67E6 /* EntryTest.swift in Sources */,
 				0F244FA924406A4A003C3F26 /* EntryQueriableTest.swift in Sources */,
+				67AA38EA2EB9D44800C0E2C0 /* CSDefinitionsTest.swift in Sources */,
 				0F463115243B044F001CE1FA /* SyncTest.swift in Sources */,
+				67AA39122EBA063300C0E2C0 /* TaxonomyUnitTest.swift in Sources */,
+				67AA38F82EB9D46D00C0E2C0 /* QueryableRangeTest.swift in Sources */,
 				47AAE0922B60420E0098655A /* SyncAPITest.swift in Sources */,
 				0FFA5DBE241F9A6C003B3AF5 /* XCTestCase+Extension.swift in Sources */,
+				67AA390C2EB9D48400C0E2C0 /* DecodableTest.swift in Sources */,
 				0F4FBCA22420B0E4007B8CAE /* DateTest.swift in Sources */,
+				67AA39172EBA065000C0E2C0 /* StackInitializationTest.swift in Sources */,
 				67EE22372DE5BAFE005AC119 /* GlobalFieldAPITest.swift in Sources */,
 				47B4DC642C232A8200370CFC /* TaxonomyTest.swift in Sources */,
 				0FFA5D91241F8127003B3AF5 /* ContentstackConfigTest.swift in Sources */,
+				67AA38F02EB9D46200C0E2C0 /* QueryParameterTest.swift in Sources */,
 				0F50EA1F244ED88C00E5D705 /* StackCacheAPITest.swift in Sources */,
 				672F769A2E55ADBE00C248D6 /* AsyncAwaitAPITest.swift in Sources */,
 				0F096B16243610470094F042 /* ImageTransformTestAdditional.swift in Sources */,
@@ -1324,16 +1414,22 @@
 				4706575E2B5E78B300BBFF88 /* AssetQueryAPITest.swift in Sources */,
 				0F77CFBA24373B9000C57764 /* ImageTransformEquatableTest.swift in Sources */,
 				0F02466D243201B500F72181 /* ImageTransformTest.swift in Sources */,
+				67AA39102EB9D49600C0E2C0 /* CSDefinitionsTest.swift in Sources */,
 				0F4FBCAB2420B615007B8CAE /* UtilsTest.swift in Sources */,
 				4706575A2B5E788400BBFF88 /* EntryAPITest.swift in Sources */,
 				0F50EA10244EC3DD00E5D705 /* Session.swift in Sources */,
 				0F7138CF2424A94000B314B0 /* QueryTest.swift in Sources */,
+				67AA38FC2EB9D47100C0E2C0 /* ParameterEncodingTest.swift in Sources */,
 				0FFA5DA1241F8FFE003B3AF5 /* ContentTypeTest.swift in Sources */,
 				0FFA5D8D241F8122003B3AF5 /* StackTest.swift in Sources */,
 				470657622B5E797300BBFF88 /* ContentstackTest.swift in Sources */,
+				67AA39062EB9D48000C0E2C0 /* EndPointTest.swift in Sources */,
 				0F7138C72424A70C00B314B0 /* AssetQueryTest.swift in Sources */,
 				0F4A7648241BB3CE00E3A024 /* ContentstackTests.swift in Sources */,
+				67AA39032EB9D47C00C0E2C0 /* ErrorTest.swift in Sources */,
+				67AA38F42EB9D46800C0E2C0 /* QueryOperationTest.swift in Sources */,
 				0FFA5DA5241F90BF003B3AF5 /* SutBuilder.swift in Sources */,
+				67AA38FE2EB9D47800C0E2C0 /* ImageTransformErrorTest.swift in Sources */,
 				0F38D7E2242C7C9E00232D7F /* Product.swift in Sources */,
 				0F38D7E6242C831B00232D7F /* AssetTest.swift in Sources */,
 			);
