@@ -98,11 +98,7 @@ internal enum ImageOperation: Equatable, Hashable {
         case .qualiy(let quality) where quality > 0 && quality <= 100:
             return [URLQueryItem(name: ImageParameter.quality, value: String(quality))]
         case .qualiy:
-            let message = """
-            The value for Quality parameters can be entered in
-            any whole number (taken as a percentage) between 1 and 100.
-            """
-            throw ImageTransformError(message: message)
+            throw ImageTransformError(message: ContentstackMessages.qualityParameterRange)
         case .resize(let resize):
             return resize.urlQueryItem()
         case .crop(let crop):
@@ -134,39 +130,23 @@ internal enum ImageOperation: Equatable, Hashable {
         case .dpr(let dprValue) where dprValue >= 0 && dprValue < 10000:
             return [URLQueryItem(name: ImageParameter.dpr, value: String(dprValue))]
         case .dpr:
-            let message = """
-            The value for dpr parameter could be a whole number (between 0 and 10000)
-            or any decimal number (between 0.0 and 9999.9999...).
-            """
-            throw ImageTransformError(message: message)
+            throw ImageTransformError(message: ContentstackMessages.dprParameterRange)
         case .blur(let blurvalue) where blurvalue >= 1 && blurvalue < 1000:
             return [URLQueryItem(name: ImageParameter.blur, value: String(blurvalue))]
         case .blur:
-            let message = """
-            The value for blur parameter could be a whole decimal number (between 1 and 1000).
-            """
-            throw ImageTransformError(message: message)
+            throw ImageTransformError(message: ContentstackMessages.blurParameterRange)
         case .saturation(let value) where value >= -100 && value <= 100:
             return [URLQueryItem(name: ImageParameter.saturation, value: value.stringValue)]
         case .saturation:
-            let message = """
-            The value for saturation parameter could be a whole decimal number (between -100 and 100).
-            """
-            throw ImageTransformError(message: message)
+            throw ImageTransformError(message: ContentstackMessages.saturationParameterRange)
         case .contrast(let value) where value >= -100 && value <= 100:
             return [URLQueryItem(name: ImageParameter.contrast, value: value.stringValue)]
         case .contrast:
-            let message = """
-            The value for contrast parameter could be a whole decimal number (between -100 and 100).
-            """
-            throw ImageTransformError(message: message)
+            throw ImageTransformError(message: ContentstackMessages.contrastParameterRange)
         case .brightness(let value) where value >= -100 && value <= 100:
             return [URLQueryItem(name: ImageParameter.brightness, value: value.stringValue)]
         case .brightness:
-            let message = """
-            The value for brightness parameter could be a whole decimal number (between -100 and 100).
-            """
-            throw ImageTransformError(message: message)
+            throw ImageTransformError(message: ContentstackMessages.brightnessParameterRange)
         case .fetchFirstFrame:
             return [URLQueryItem(name: ImageParameter.frame, value: "1")]
         case .sharpen(amount: let amount, radius: let radius, threshold: let threshold)
@@ -175,12 +155,7 @@ internal enum ImageOperation: Equatable, Hashable {
                 && threshold >= 0 && threshold <= 255:
             return [URLQueryItem(name: ImageParameter.sharpen, value: "a\(amount),r\(radius),t\(threshold)")]
         case .sharpen:
-            let message = """
-            The value for `amount` parameter could be a whole decimal number (between 0 and 10).
-            The value for `radius` parameter could be a whole decimal number (between 1 and 1000).
-            The value for `threshold` parameter could be a whole decimal number (between 0 and 255).
-            """
-            throw ImageTransformError(message: message)
+            throw ImageTransformError(message: ContentstackMessages.sharpenParameterRange)
         }
     }
 

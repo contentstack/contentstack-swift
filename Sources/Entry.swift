@@ -54,7 +54,7 @@ public class Entry: EntryQueryable, CachePolicyAccessible {
     /// }
     public func query() -> Query {
         if self.contentType.uid == nil {
-            fatalError("Please provide ContentType uid")
+            fatalError(ContentstackMessages.contentTypeUIDRequired)
         }
         let query = Query(contentType: self.contentType)
         if let uid = self.uid {
@@ -85,7 +85,7 @@ public class Entry: EntryQueryable, CachePolicyAccessible {
     public func query<EntryType>(_ entry: EntryType.Type) -> QueryOn<EntryType>
         where EntryType: EntryDecodable & FieldKeysQueryable {
             if self.contentType.uid == nil {
-                fatalError("Please provide ContentType uid")
+                fatalError(ContentstackMessages.contentTypeUIDRequired)
             }
             let query = QueryOn<EntryType>(contentType: self.contentType)
             if let uid = self.uid {
@@ -156,7 +156,7 @@ extension Entry: ResourceQueryable {
     /// ```
     public func fetch<ResourceType>(_ completion: @escaping (Result<ResourceType, Error>, ResponseType) -> Void)
         where ResourceType: EndpointAccessible, ResourceType: Decodable {
-        guard let uid = self.uid else { fatalError("Please provide Entry uid") }
+        guard let uid = self.uid else { fatalError(ContentstackMessages.entryUIDRequired) }
         self.stack.fetch(endpoint: ResourceType.endpoint,
                          cachePolicy: self.cachePolicy,
                          parameters: parameters + [QueryParameter.uid: uid,
@@ -184,7 +184,7 @@ extension Entry: ResourceQueryable {
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     public func fetch<ResourceType>() async throws -> ResourceType
         where ResourceType: EndpointAccessible & Decodable {
-        guard let uid = self.uid else { fatalError("Please provide Entry uid") }
+        guard let uid = self.uid else { fatalError(ContentstackMessages.entryUIDRequired) }
         let response: ContentstackResponse<ResourceType> = try await self.stack.fetch(
             endpoint: ResourceType.endpoint,
             cachePolicy: self.cachePolicy,

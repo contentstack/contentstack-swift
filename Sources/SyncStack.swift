@@ -48,7 +48,7 @@ public final class SyncStack: Decodable {
     ///   - paginationToken: The paginationToken to fetch next batch of data.
     public init(syncToken: String = "", paginationToken: String = "") {
         if !syncToken.isEmpty && !paginationToken.isEmpty {
-            fatalError("Both Sync Token and Pagination Token can not be presnet.")
+            fatalError(ContentstackMessages.syncTokenConflict)
         }
         self.syncToken = syncToken
         self.paginationToken = paginationToken

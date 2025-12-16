@@ -23,14 +23,14 @@ class EntryTest: XCTestCase {
 //    }
 
     func testEntryQuery_ContentTypeUidNotProvided_FatalError() {
-        expectFatalError(expectedMessage: "Please provide ContentType uid") {
+        expectFatalError(expectedMessage: "Content Type UID is required. Provide a valid Content Type UID and try again.") {
             let query = Entry(nil, contentType: makeContentTypeSut()).query()
             XCTAssertNil(query)
         }
     }
 
     func testEntryQueryTyped_ContentTypeUidNotProvided_FatalError() {
-        expectFatalError(expectedMessage: "Please provide ContentType uid") {
+        expectFatalError(expectedMessage: "Content Type UID is required. Provide a valid Content Type UID and try again.") {
             let query = Entry(nil, contentType: makeContentTypeSut()).query(Product.self)
             XCTAssertNil(query)
         }
