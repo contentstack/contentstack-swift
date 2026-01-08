@@ -33,7 +33,7 @@ public extension String {
     // Will make a `URL` from the current `String` instance if possible.
     func toURL() throws -> URL {
         guard var urlComponents = URLComponents(string: self) else {
-            throw ImageTransformError(message: "Invalid URL String: \(self)")
+            throw ImageTransformError(message: ContentstackMessages.invalidURLString)
         }
 
         // Append https scheme if not present.
@@ -42,7 +42,7 @@ public extension String {
         }
 
         guard let url = urlComponents.url else {
-            throw ImageTransformError(message: "Invalid URL String: \(self)")
+            throw ImageTransformError(message: ContentstackMessages.invalidURLString)
         }
         return url
     }
@@ -63,8 +63,7 @@ public extension String {
         let imageOperation = imageTransform.imageOperation
         let uniqueImageOptions = Array(Set<ImageOperation>(imageOperation))
         guard uniqueImageOptions.count == imageOperation.count else {
-            throw ImageTransformError(message: "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+            throw ImageTransformError(message: ContentstackMessages.duplicateImageTransform)
         }
 
         guard !imageOperation.isEmpty else {
@@ -73,7 +72,7 @@ public extension String {
 
         let urlString = try toURL().absoluteString
         guard var urlComponents = URLComponents(string: urlString) else {
-            throw ImageTransformError(message: "The url string is not valid: \(urlString)")
+            throw ImageTransformError(message: ContentstackMessages.invalidURLString)
         }
 
         urlComponents.queryItems = try imageOperation.flatMap { option in
@@ -81,11 +80,7 @@ public extension String {
         }
 
         guard let url = urlComponents.url else {
-            let message = """
-            The SDK was unable to generate a valid URL for the given ImageOptions.
-            Please contact the maintainer on Github with a copy of the query \(urlString)
-            """
-            throw ImageTransformError(message: message)
+            throw ImageTransformError(message: ContentstackMessages.invalidImageOptions + " \(urlString)")
         }
         return url
     }

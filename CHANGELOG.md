@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v2.3.2
+
+### Date: 12-Jan-2026
+
+- Improved error messages
+
 ## v2.3.1
 
 ### Date: 03-Nov-2025

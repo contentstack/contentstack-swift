@@ -124,7 +124,7 @@ class ImageTransformTestAdditional: XCTestCase {
 
     func testBackgroundColorHex_withInvalidValues_shouldThrowError() {
         let message = """
-        Invalid Hexadecimal value,
+        Invalid Hexadecimal value, \
         it should be 3-digit or 6-digit hexadecimal value.
         """
         do {
@@ -177,7 +177,7 @@ class ImageTransformTestAdditional: XCTestCase {
 
     func  testBackgroundColorRGB_withInvalidValues_shouldThrowError() {
         let message = """
-        Invalid Red or Blue or Green or alpha value,
+        Invalid Red or Blue or Green or alpha value, \
         the value ranging anywhere between 0 and 255 for each.
         """
         do {
@@ -211,9 +211,9 @@ class ImageTransformTestAdditional: XCTestCase {
 
     func  testBackgroundColorRGBA_withInvalidValues_shouldThrowError() {
         let message = """
-        Invalid Red or Blue or Green or alpha value,
-        the value ranging anywhere between 0 and 255 for each
-        and the alpha value with 0.0 being fully transparent
+        Invalid Red or Blue or Green or alpha value, \
+        the value ranging anywhere between 0 and 255 for each \
+        and the alpha value with 0.0 being fully transparent \
         and 1.0 being completely opaque.
         """
         do {
@@ -274,7 +274,7 @@ class ImageTransformTestAdditional: XCTestCase {
 
     func testDPR_InvalidParam_shouldThrow() {
         let message = """
-        The value for dpr parameter could be a whole number (between 0 and 10000)
+        The value for dpr parameter could be a whole number (between 0 and 10000) \
         or any decimal number (between 0.0 and 9999.9999...).
         """
         do {
