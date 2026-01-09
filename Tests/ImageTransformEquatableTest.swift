@@ -12,8 +12,8 @@ class ImageTransformEquatableTest: XCTestCase {
 
     func testSharpen_invalidParams_shouldThrowError() {
         let message = """
-        The value for `amount` parameter could be a whole decimal number (between 0 and 10).
-        The value for `radius` parameter could be a whole decimal number (between 1 and 1000).
+        The value for `amount` parameter could be a whole decimal number (between 0 and 10). \
+        The value for `radius` parameter could be a whole decimal number (between 1 and 1000). \
         The value for `threshold` parameter could be a whole decimal number (between 0 and 255).
         """
         do {
@@ -96,8 +96,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
         do {
@@ -105,8 +104,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -115,8 +113,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -125,8 +122,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -135,8 +131,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -145,8 +140,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -155,8 +149,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -165,8 +158,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
     }
@@ -177,8 +169,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -187,8 +178,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -197,8 +187,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -207,8 +196,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -217,8 +205,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -227,8 +214,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -237,8 +223,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -247,8 +232,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
 
@@ -257,8 +241,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
         do {
@@ -266,8 +249,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
         do {
@@ -275,8 +257,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
         do {
@@ -284,8 +265,7 @@ class ImageTransformEquatableTest: XCTestCase {
             XCTAssertNil(url)
         } catch let error {
             if let imageError = error as? ImageTransformError {
-                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case."
-                + "i.e. `[.format(.png), .format(.jpg)]` is invalid.")
+                XCTAssertEqual(imageError.message, "Cannot specify two instances of ImageTransform of the same case.i.e. `[.format(.png), .format(.jpg)]` is invalid.")
             }
         }
     }

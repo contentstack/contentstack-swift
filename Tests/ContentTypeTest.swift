@@ -25,7 +25,7 @@ final class ContentTypeTests: XCTestCase {
 //    }
 
     func testEntry_ContentTypeUidNotProvided_FatalError() {
-        expectFatalError(expectedMessage: "Please provide ContentType uid") {
+        expectFatalError(expectedMessage: "Content Type UID is required. Provide a valid Content Type UID and try again.") {
             _ = makeEntrySut()
         }
     }
