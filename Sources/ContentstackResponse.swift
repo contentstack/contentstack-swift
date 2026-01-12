@@ -108,7 +108,7 @@ where ItemType: EndpointAccessible & Decodable {
             }
 
         default:
-            print("sync")
+            ContentstackLogger.log(.error, message: ContentstackMessages.unsupportedEndpointType)
         }
     }
 }

@@ -160,12 +160,7 @@ public enum Crop {
         case .aspectRatio(let sizes, let ratio, let mode):
             sizes.urlQueryItem(queryItems: &queryItems)
             if queryItems.count == 0 {
-                let message = """
-                Along with the crop parameter aspect-ration,
-                you also need to specify either the width or height parameter or both
-                in the API request to return an output image with the correct dimensions.
-                """
-                throw ImageTransformError(message: message)
+                throw ImageTransformError(message: ContentstackMessages.cropAspectRatioRequired)
             }
             values = [ratio]
             if let value = mode.value {
@@ -223,12 +218,7 @@ public enum Canvas {
         case .aspectRatio(let sizes, let ratio):
             sizes.urlQueryItem(queryItems: &queryItems)
             if queryItems.count == 0 {
-                let message = """
-                Along with the canvas parameter aspect-ration,
-                you also need to specify either the width or height parameter or both
-                in the API request to return an output image with the correct dimensions.
-                """
-                throw ImageTransformError(message: message)
+                throw ImageTransformError(message: ContentstackMessages.canvasAspectRatioRequired)
             }
             values = [ratio]
         case .region(let region):
@@ -396,25 +386,11 @@ public enum Color {
                 && alpha >= 0.0 && alpha <= 1.0:
             return [URLQueryItem(name: ImageParameter.backgroundColor, value: "\(red)\(green)\(blue)\(alpha)")]
         case .hex:
-            let message = """
-            Invalid Hexadecimal value,
-            it should be 3-digit or 6-digit hexadecimal value.
-            """
-            throw ImageTransformError(message: message)
+            throw ImageTransformError(message: ContentstackMessages.invalidHexColor)
         case .rgb:
-            let message = """
-            Invalid Red or Blue or Green or alpha value,
-            the value ranging anywhere between 0 and 255 for each.
-            """
-            throw ImageTransformError(message: message)
+            throw ImageTransformError(message: ContentstackMessages.invalidRGBColor)
         case .rgba:
-            let message = """
-            Invalid Red or Blue or Green or alpha value,
-            the value ranging anywhere between 0 and 255 for each
-            and the alpha value with 0.0 being fully transparent
-            and 1.0 being completely opaque.
-            """
-            throw ImageTransformError(message: message)
+            throw ImageTransformError(message: ContentstackMessages.invalidRGBAColor)
         }
     }
 }

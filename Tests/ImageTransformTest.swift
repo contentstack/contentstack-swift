@@ -41,7 +41,7 @@ class ImageTransformTest: XCTestCase {
         let quality: UInt = 101
         let imageTransform = makeImageTransformSUT().qualiy(quality)
         let message = """
-        The value for Quality parameters can be entered in
+        The value for Quality parameters can be entered in \
         any whole number (taken as a percentage) between 1 and 100.
         """
         do {
@@ -190,13 +190,13 @@ class ImageTransformTest: XCTestCase {
     func testCropCanvasAspectRatio_NoSizeSpecified_Throws() {
         let ratio = "1:2"
         let cropMessage = """
-        Along with the crop parameter aspect-ration,
-        you also need to specify either the width or height parameter or both
+        Along with the crop parameter aspect-ration, \
+        you also need to specify either the width or height parameter or both \
         in the API request to return an output image with the correct dimensions.
         """
         let canvasMessage = """
-        Along with the canvas parameter aspect-ration,
-        you also need to specify either the width or height parameter or both
+        Along with the canvas parameter aspect-ration, \
+        you also need to specify either the width or height parameter or both \
         in the API request to return an output image with the correct dimensions.
         """
 
