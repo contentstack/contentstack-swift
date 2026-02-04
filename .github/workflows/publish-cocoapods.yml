@@ -8,8 +8,6 @@ on:
   push:
     tags:
       - 'v*'   # Triggers when you push a version tag (e.g. v2.0.1, v2.4.0-beta.1)
-    branches:
-      - fix/DX-2918-cocoapods-fix   # Trigger on branch push to test workflow (lint only; no publish)
   release:
     types: [published]   # Also triggers when a GitHub Release is published
 
