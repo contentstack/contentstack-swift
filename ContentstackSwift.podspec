@@ -10,7 +10,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ContentstackSwift'
-  s.version          = '2.0.1'
+  s.version          = '2.3.3-beta.1'
   s.summary          = 'Contentstack is a headless CMS with an API-first approach that puts content at the centre.'
 
   s.description      = <<-DESC
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
     'uttamukkoji' => 'uttamukkoji@gmail.com',
     'Contentstack' => 'support@contentstack.io'
   }
-  s.source           = { :git => 'https://github.com/contentstack/contentstack-swift.git', :tag => s.version }
+  s.source           = { :git => 'https://github.com/contentstack/contentstack-swift.git', :tag => "v#{s.version}" }
   s.social_media_url = 'https://x.com/Contentstack'
   s.swift_version             = '5.6'
 
