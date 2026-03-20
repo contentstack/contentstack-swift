@@ -1,0 +1,36 @@
+---
+description: PR and code review checklist – API stability, errors, compatibility, security
+alwaysApply: true
+---
+
+# Code Review Checklist – Contentstack Swift CDA SDK
+
+Use this checklist when reviewing pull requests or before opening a PR.
+
+## API design and stability
+
+- [ ] **Public API:** New or changed public types/methods/properties are necessary and clearly documented (Swift documentation comments where the project documents public API).
+- [ ] **Backward compatibility:** No breaking changes to public API unless explicitly called out and justified (e.g. major version).
+- [ ] **Naming:** Names are consistent with existing SDK style and CDA terminology.
+
+## Error handling and robustness
+
+- [ ] **Errors:** API failures surface through the SDK **`Error`** type and existing **`Result` / `ResultsHandler`** patterns (or `async`/`throws` where the API already uses them).
+- [ ] **Optionals:** No unintended force-unwraps; optional values are handled or documented; public contracts use optionals intentionally.
+- [ ] **Throws:** Thrown errors are appropriate for the API; callers can distinguish failure modes where the SDK promises it.
+
+## Dependencies and security
+
+- [ ] **Dependencies:** No new dependencies without justification; version bumps are intentional and do not introduce known vulnerabilities.
+- [ ] **SCA:** Address any security findings (e.g. from Snyk or similar) in the scope of the PR or in a follow-up.
+
+## Testing
+
+- [ ] **Coverage:** New or modified behavior is covered by unit and/or integration tests as appropriate.
+- [ ] **Test quality:** Tests are readable, stable (no flakiness), and follow project conventions (see **testing.mdc**).
+
+## Severity (optional)
+
+- **Blocker:** Must fix before merge (e.g. breaking public API without approval, security issue, no tests for new code).
+- **Major:** Should fix (e.g. inconsistent error handling, missing documentation on new public API).
+- **Minor:** Nice to fix (e.g. style, minor docs).
