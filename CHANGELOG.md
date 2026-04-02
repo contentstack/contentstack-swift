@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v2.3.3
+
+### Date: 02-Apr-2026
+
+### Documentation
+
+- Announced deprecation of **CocoaPods** as the recommended distribution for the Contentstack Swift SDK; **Swift Package Manager** is recommended for new integrations. Updated [README.md](README.md), [Docs/overview.md](Docs/overview.md), and [DEPRECATION.md](DEPRECATION.md).
+
 ## v2.3.2
 
 ### Date: 12-Jan-2026
