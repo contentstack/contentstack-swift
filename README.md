@@ -3,6 +3,13 @@
 # Contentstack Swift SDK
 ![Contentstack CI](https://github.com/contentstack/contentstack-swift/workflows/Contentstack%20CI/badge.svg)
 
+## Important
+
+This repo is the supported **Contentstack Swift SDK** for the Content Delivery API. **Use Swift Package Manager (SPM) for new projects.** The **`ContentstackSwift`** CocoaPods distribution is **deprecated for new integrations**—prefer SPM. That applies only to **how you install** the SDK, not to Swift or this library.
+
+- **SPM:** [Swift Package Index](https://swiftpackageindex.com/contentstack/contentstack-swift) · [GitHub](https://github.com/contentstack/contentstack-swift)
+- **API docs:** [Swift CDA reference](https://www.contentstack.com/docs/developers/sdks/content-delivery-sdk/swift/reference)
+- **Background:** [DEPRECATION.md](DEPRECATION.md) · [Docs overview](Docs/overview.md)
 
 Contentstack is a headless CMS with an API-first approach. It is a CMS that developers can use to build powerful cross-platform applications in their favorite languages. Build your application frontend, and Contentstack will take care of the rest. [Read More](https://www.contentstack.com/).
 
@@ -18,7 +25,17 @@ Latest Xcode and Mac OS X
 
 To use this SDK on iOS platform, you will have to install the SDK according to the steps given below.
 
+##### Swift Package Manager
+
+1. In Xcode: **File → Add Package Dependencies…**
+2. Enter `https://github.com/contentstack/contentstack-swift`
+3. Add the **ContentstackSwift** product to your target.
+
+See also the [Swift Package Index listing](https://swiftpackageindex.com/contentstack/contentstack-swift).
+
 ##### CocoaPods
+
+> **Note:** Not recommended for **new** projects—use **SPM** above. Existing Podfile users can keep the pod; see [DEPRECATION.md](DEPRECATION.md).
 
 1. Add the following line to your Podfile:
 2. pod 'ContentstackSwift'
