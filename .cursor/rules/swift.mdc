@@ -1,0 +1,45 @@
+---
+description: Swift standards and ContentstackSwift module conventions for the CDA SDK
+globs: "**/*.swift"
+---
+
+# Swift Standards – Contentstack Swift CDA SDK
+
+Apply these conventions when editing Swift code in this repository.
+
+## Language and tooling
+
+- Match the **Swift** language version expected by `Package.swift` (swift-tools-version) and the Xcode project; avoid APIs that require a newer OS/SDK than declared platforms unless the change is intentional.
+- Prefer clear, idiomatic Swift over Objective-C patterns.
+
+## Module and layout
+
+- Library code lives under **`Sources/`** and builds the **`ContentstackSwift`** module.
+- Tests live under **`Tests/`** and depend on **ContentstackSwift** (see **testing.mdc** for test-specific rules).
+
+## Naming
+
+- **Types:** PascalCase (e.g. `Stack`, `ContentstackConfig`, `ContentstackResponse`).
+- **Methods and variables:** camelCase.
+- **Cases in enums:** lowerCamelCase unless matching external API raw values.
+
+## SDK structure
+
+- **`Contentstack`** is the factory; **`Stack`** owns networking and resource accessors (`contentType`, `asset`, `sync`, `taxonomy`, etc.).
+- Keep public surface area minimal; use `internal` for implementation details unless a wider API is required.
+
+## Logging
+
+- Use **`ContentstackLogger`** (or existing logging helpers in the SDK) consistently with current call sites.
+- Avoid `print` in library code unless that is already the established pattern for a specific diagnostic path.
+
+## Optionals and errors
+
+- Prefer **`Result<Success, Error>`** and **`ResultsHandler`** for async completion APIs where that is the existing pattern.
+- Avoid force unwraps (`!`); use `guard let` / `if let` or explicit error handling.
+- When adding `throws`, document which errors callers should handle.
+
+## General
+
+- Prefer value types where appropriate; reference types (`class`) are used where identity or inheritance is required (e.g. `Stack`).
+- Document public API with `///` comments where the project already documents symbols; keep examples aligned with real usage (`Contentstack.stack(...)`, `ContentstackConfig`).
