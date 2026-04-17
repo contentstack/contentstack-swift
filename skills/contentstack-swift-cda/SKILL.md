@@ -1,51 +1,25 @@
 ---
 name: contentstack-swift-cda
-description: Use when implementing or changing CDA features – Stack/ContentstackConfig, entries, assets, sync, taxonomy, URLSession, callbacks, and Content Delivery API alignment
+description: Use for the Swift Content Delivery API, Stack and query types, and dependency on ContentstackUtils.
 ---
 
-# Contentstack Swift CDA SDK – CDA Implementation
-
-Use this skill when implementing or changing Content Delivery API (CDA) behavior in the Swift SDK.
+# Swift CDA SDK – contentstack-swift
 
 ## When to use
 
-- Adding or modifying Stack, Entry, Query, Asset, Content Type, Sync, Taxonomy, or Global Field behavior.
-- Changing `Contentstack.stack(...)` parameters or regional/host/branch handling.
-- Working with URLSession-backed requests, response decoding, or `Result` / `ResultsHandler` error delivery.
+- Editing public Swift APIs under `Sources/`
+- Integrating with **contentstack-utils-swift** for RTE or shared helpers
 
 ## Instructions
 
-### Stack and ContentstackConfig
+### Package
 
-- **Entry point:** `Contentstack.stack(apiKey:deliveryToken:environment:region:host:apiVersion:branch:config:)`. Optional **`ContentstackConfig`** controls session configuration, decoding, early access, and `urlSessionDelegate`.
-- **Defaults:** `Host.delivery` (`cdn.contentstack.io`), `apiVersion` default `v3`, `ContentstackRegion.us` unless overridden.
-- **Reference:** `Sources/Contentstack.swift`, `Sources/Stack.swift`, `Sources/ContentstackConfig.swift`.
+- Library target **`ContentstackSwift`** depends on **ContentstackUtils** (see `Package.swift`).
 
-### CDA resources
+### API
 
-- **Entries / content types:** `Stack.contentType(uid:)`, `Entry`, `Query`, models such as `EntryModel`, `ContentTypeModel`.
-- **Assets:** `Stack.asset`, asset query/fetch patterns and `AssetModel`.
-- **Sync:** `SyncStack` and sync endpoint usage under `Endpoint.sync`.
-- **Taxonomy / global fields:** `Taxonomy`, `GlobalField`, related models and queries.
-- **Official API:** Align with [Content Delivery API](https://www.contentstack.com/docs/apis/content-delivery-api/) for parameters, response shape, and semantics.
+- Preserve semver for public types and methods; document breaking changes in changelog/README.
 
-### HTTP and session
+### Cross-platform
 
-- **HTTP:** CDA calls go through **`Stack`**’s **`URLSession`**, built from **`ContentstackConfig.sessionConfiguration`** (with SDK headers applied). Do not duplicate ad-hoc sessions for standard CDA traffic.
-- **Retry:** There is no separate retry framework like the Java SDK’s `RetryInterceptor`; if you add retries, integrate via config/session and document behavior (see **framework** skill).
-
-### Errors and callbacks
-
-- **Errors:** Use the SDK **`Error`** type and surface failures via **`Result<Success, Error>`** and **`ResultsHandler`** (or existing async APIs).
-- **Callbacks:** Preserve completion-handler signatures for public API; additive overloads (e.g. `async`) should map to the same error and response semantics.
-
-## Key types
-
-- **Entry points:** `Contentstack`, `Stack`, `ContentstackConfig`
-- **CDA:** `Entry`, `Query`, `Asset`, `ContentType`, `SyncStack`, `Taxonomy`, `GlobalField`, `Endpoint`
-- **Responses / errors:** `ContentstackResponse`, `Error`, `ResponseType`
-
-## References
-
-- [Content Delivery API – Contentstack Docs](https://www.contentstack.com/docs/apis/content-delivery-api/)
-- Project rules: `.cursor/rules/contentstack-swift-cda.mdc`, `.cursor/rules/swift.mdc`
+- Respect minimum OS versions in `Package.swift` when using newer APIs—keep availability checks consistent.

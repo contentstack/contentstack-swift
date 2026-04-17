@@ -1,53 +1,25 @@
 ---
 name: framework
-description: Use when touching ContentstackConfig, URLSession, CSURLSessionDelegate, headers, cache – configuration and HTTP transport layer
+description: Use for Xcode workspace, schemes, Carthage, CocoaPods publish, and platform matrix in contentstack-swift.
 ---
 
-# Framework – Contentstack Swift CDA SDK
-
-Use this skill when changing configuration, URL session setup, or transport-level behavior (not CDA resource semantics).
+# Build & platform – contentstack-swift
 
 ## When to use
 
-- Modifying **`ContentstackConfig`** (session configuration, decoding, early access, delegate hook).
-- Changing how **`Stack`** builds **`URLSession`** or merges headers with `URLSessionConfiguration`.
-- Adjusting **`CSURLSessionDelegate`**, SSL pinning, or cache usage (`URLCache`, cache policy on `Stack`).
-- Introducing or changing timeouts, additional headers, or retry behavior at the session level.
+- Changing `ContentstackSwift.xcworkspace`, shared schemes, or pod publish flow
+- Updating minimum OS versions or SPM dependencies
 
 ## Instructions
 
-### ContentstackConfig
+### Xcode
 
-- Holds **`URLSessionConfiguration`** (default `.default`), optional **`dateDecodingStrategy`** and **`timeZone`**, **`earlyAccess`**, **`urlSessionDelegate`**, and helpers for user agent / SDK version strings.
-- SDK code sets **`httpAdditionalHeaders`** (e.g. `User-Agent`, `X-User-Agent`, `branch`); preserve merge semantics so caller-supplied headers are not dropped unintentionally.
-- **Reference:** `Sources/ContentstackConfig.swift`.
+- CI uses **`ContentstackSwift.xcworkspace`** and scheme **"ContentstackSwift macOS Tests"** on Apple Silicon—verify scheme names when renaming.
 
-### URLSession in Stack
+### CocoaPods
 
-- **`Stack`** initializes **`URLSession`** with `config.sessionConfiguration` and optional **`CSURLSessionDelegate`**.
-- **`URLCache.shared`** is applied to the session configuration in current code paths—understand impact before changing cache defaults.
-- **Reference:** `Sources/Stack.swift`.
+- Publishing pipeline in **`.github/workflows/publish-cocoapods.yml`**—coordinate version bumps with podspec if present at repo root.
 
-### CSURLSessionDelegate
+### Carthage
 
-- Used for SSL pinning and session customization; changes should remain backward compatible for adopters implementing the delegate.
-- **Reference:** `Sources/CSURLSessionDelegate.swift`.
-
-### Retry and resilience
-
-- Unlike the Java SDK, retry is not centralized in an interceptor. Prefer **`URLSessionConfiguration`** (timeouts, waits for connectivity) or explicit documented retry in the SDK if adding it—coordinate with **contentstack-swift-cda** skill for API surface.
-
-### Error handling
-
-- Transport failures should still surface as SDK **`Error`** instances through existing **`Result`** / handler paths after session tasks complete.
-
-## Key types
-
-- **Config / session:** `ContentstackConfig`, `URLSessionConfiguration`, `URLSession`
-- **Delegate / cache:** `CSURLSessionDelegate`, `URLCache`, `CachePolicy` (on `Stack`)
-- **Errors:** `Error` (SDK), mapping from `URLError` / HTTP status as implemented in request code
-
-## References
-
-- Project rules: `.cursor/rules/contentstack-swift-cda.mdc`, `.cursor/rules/swift.mdc`
-- CDA skill: `skills/contentstack-swift-cda/SKILL.md` for how Stack uses the session for CDA calls
+- CI bootstraps Carthage with **`--use-xcframeworks`**—local changes to binary deps should be validated with the same flow.
