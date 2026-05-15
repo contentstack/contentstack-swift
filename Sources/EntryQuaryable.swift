@@ -266,7 +266,92 @@ extension EntryQueryable {
         }
         return query
     }
-    
-    
-    
+
+    /// Sets the variant UID header so the request fetches a specific entry variant.
+    /// - Parameter uid: A single variant UID.
+    /// - Returns: A reference to the receiving object to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// stack.contentType(uid: contentTypeUID).entry(uid: entryUID)
+    ///     .variants(uid: "variant_uid")
+    ///     .fetch { ... }
+    ///
+    /// stack.contentType(uid: contentTypeUID).entry().query()
+    ///     .variants(uid: "variant_uid")
+    ///     .find { ... }
+    /// ```
+    @discardableResult
+    public func variants(uid: String) -> Self {
+        self.headers["x-cs-variant-uid"] = uid
+        return self
+    }
+
+    /// Sets the variant UID header for multiple variant UIDs.
+    /// - Parameter uids: An array of variant UIDs.
+    /// - Returns: A reference to the receiving object to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// stack.contentType(uid: contentTypeUID).entry(uid: entryUID)
+    ///     .variants(uids: ["v1", "v2"])
+    ///     .fetch { ... }
+    ///
+    /// stack.contentType(uid: contentTypeUID).entry().query()
+    ///     .variants(uids: ["v1", "v2"])
+    ///     .find { ... }
+    /// ```
+    @discardableResult
+    public func variants(uids: [String]) -> Self {
+        self.headers["x-cs-variant-uid"] = uids.joined(separator: ",")
+        return self
+    }
+
+    /// Sets the variant UID and branch headers so the request fetches a specific entry variant
+    /// scoped to the given branch.
+    /// - Parameters:
+    ///   - uid: A single variant UID.
+    ///   - branch: The branch name to scope the request to.
+    /// - Returns: A reference to the receiving object to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// stack.contentType(uid: contentTypeUID).entry(uid: entryUID)
+    ///     .variants(uid: "variant_uid", branch: "staging")
+    ///     .fetch { ... }
+    ///
+    /// stack.contentType(uid: contentTypeUID).entry().query()
+    ///     .variants(uid: "variant_uid", branch: "staging")
+    ///     .find { ... }
+    /// ```
+    @discardableResult
+    public func variants(uid: String, branch: String) -> Self {
+        self.headers["x-cs-variant-uid"] = uid
+        self.headers["branch"] = branch
+        return self
+    }
+
+    /// Sets the variant UIDs and branch headers so the request fetches specific entry variants
+    /// scoped to the given branch.
+    /// - Parameters:
+    ///   - uids: An array of variant UIDs.
+    ///   - branch: The branch name to scope the request to.
+    /// - Returns: A reference to the receiving object to enable chaining.
+    ///
+    /// Example usage:
+    /// ```
+    /// stack.contentType(uid: contentTypeUID).entry(uid: entryUID)
+    ///     .variants(uids: ["v1", "v2"], branch: "staging")
+    ///     .fetch { ... }
+    ///
+    /// stack.contentType(uid: contentTypeUID).entry().query()
+    ///     .variants(uids: ["v1", "v2"], branch: "staging")
+    ///     .find { ... }
+    /// ```
+    @discardableResult
+    public func variants(uids: [String], branch: String) -> Self {
+        self.headers["x-cs-variant-uid"] = uids.joined(separator: ",")
+        self.headers["branch"] = branch
+        return self
+    }
 }

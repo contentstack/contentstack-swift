@@ -334,6 +334,32 @@ class QueryTest: XCTestCase {
         XCTAssertEqual(addValueQuery.headers["key1"], "value1")
     }
 
+    func testQuery_singleVariant() {
+        let query = makeQuerySUT().variants(uid: "variant1")
+        XCTAssertEqual(query.headers.keys.count, 1)
+        XCTAssertEqual(query.headers["x-cs-variant-uid"], "variant1")
+    }
+
+    func testQuery_multipleVariants() {
+        let query = makeQuerySUT().variants(uids: ["variant1", "variant2", "variant3"])
+        XCTAssertEqual(query.headers.keys.count, 1)
+        XCTAssertEqual(query.headers["x-cs-variant-uid"], "variant1,variant2,variant3")
+    }
+
+    func testQuery_singleVariantWithBranch() {
+        let query = makeQuerySUT().variants(uid: "variant1", branch: "staging")
+        XCTAssertEqual(query.headers.keys.count, 2)
+        XCTAssertEqual(query.headers["x-cs-variant-uid"], "variant1")
+        XCTAssertEqual(query.headers["branch"], "staging")
+    }
+
+    func testQuery_multipleVariantsWithBranch() {
+        let query = makeQuerySUT().variants(uids: ["variant1", "variant2"], branch: "staging")
+        XCTAssertEqual(query.headers.keys.count, 2)
+        XCTAssertEqual(query.headers["x-cs-variant-uid"], "variant1,variant2")
+        XCTAssertEqual(query.headers["branch"], "staging")
+    }
+
     static var allTests = [
            ("testCTQuery_whereCondition", testCTQuery_whereCondition),
            ("testCTQuery_SkipLimit", testCTQuery_SkipLimit),
@@ -350,7 +376,11 @@ class QueryTest: XCTestCase {
            ("testQuery_includeReferenceFieldExcept", testQuery_includeReferenceFieldExcept),
            ("testQuery_includeReferenceFieldBoth", testQuery_includeReferenceFieldBoth),
            ("testQuery_andOrOperator", testQuery_andOrOperator),
-           ("testAssetQuery_addValue", testAssetQuery_addValue)
+           ("testAssetQuery_addValue", testAssetQuery_addValue),
+           ("testQuery_singleVariant", testQuery_singleVariant),
+           ("testQuery_multipleVariants", testQuery_multipleVariants),
+           ("testQuery_singleVariantWithBranch", testQuery_singleVariantWithBranch),
+           ("testQuery_multipleVariantsWithBranch", testQuery_multipleVariantsWithBranch)
        ]
 }
 
