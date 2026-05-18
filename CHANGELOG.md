@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v2.3.4
+
+### Date: 18-May-2026
+
+- Scope DVR dependency to test target only
+
 ## v2.3.3
 
 ### Date: 02-Apr-2026

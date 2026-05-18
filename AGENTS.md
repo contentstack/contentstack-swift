@@ -1,51 +1,44 @@
-# Contentstack Swift CDA SDK – Agent Guide
+# Contentstack Swift CDA SDK – Agent guide
 
-This document is the main entry point for AI agents working in this repository.
+**Universal entry point** for contributors and AI agents. Detailed conventions live in **`skills/*/SKILL.md`**.
 
-## Project
+## What this repo is
 
-- **Name:** Contentstack Swift CDA SDK (contentstack-swift)
-- **Purpose:** Swift client for the Contentstack **Content Delivery API (CDA)**. It fetches content (entries, assets, content types, sync, taxonomy, global fields) from Contentstack for iOS, macOS, tvOS, watchOS, and Swift Package Manager consumers.
-- **Repo:** [contentstack-swift](https://github.com/contentstack/contentstack-swift)
+| Field | Detail |
+|--------|--------|
+| **Name:** | [contentstack-swift](https://github.com/contentstack/contentstack-swift) (SwiftPM product **ContentstackSwift**) |
+| **Purpose:** | Swift Package for Contentstack Content Delivery—queries, entries, sync, etc.—for Apple platforms. |
+| **Out of scope:** | Not the legacy Objective-C iOS CocoaPods SDK (`contentstack-ios`); new apps should prefer this Swift SDK per product direction. |
 
-## Tech stack
+## Tech stack (at a glance)
 
-- **Language:** Swift (SPM minimum **swift-tools-version 5.6**; align with Xcode requirements in README)
-- **Build:** Swift Package Manager (`Package.swift`), **Xcode** (`ContentstackSwift.xcodeproj`) for multi-platform frameworks and CocoaPods (`ContentstackSwift.podspec`)
-- **Testing:** **XCTest** (`Tests/`), optional **DVR** (HTTP recording) for some tests; integration-style tests may use `Tests/config.json` / stack credentials
-- **HTTP:** **URLSession** (configured via `ContentstackConfig.sessionConfiguration`), optional **`CSURLSessionDelegate`** (SSL pinning / customization)
-- **Other:** [contentstack-utils-swift](https://github.com/contentstack/contentstack-utils-swift) (Rich text rendering)
+| Area | Details |
+|------|---------|
+| Language | Swift (Package.swift tools **5.6+**); platforms include iOS 13+, macOS 10.15+, tvOS, watchOS per `Package.swift` |
+| Build | SwiftPM; Xcode workspace **`ContentstackSwift.xcworkspace`**; Carthage used in CI |
+| Tests | XCTest in **`Tests/`**; CI runs `xcodebuild test` (see `.github/workflows/ci.yml`) |
+| Lint / coverage | SwiftLint **`.swiftlint.yml`** |
+| CI | `.github/workflows/ci.yml`, `check-branch.yml`, `sca-scan.yml`, `policy-scan.yml`, `publish-cocoapods.yml` |
 
-## Main entry points
+## Commands (quick reference)
 
-- **`Contentstack`** – Static factory: `Contentstack.stack(apiKey:deliveryToken:environment:region:host:apiVersion:branch:config:)` returns a `Stack`.
-- **`Stack`** – Main API surface: content types, entries, assets, sync, taxonomy, queries, cache policy, JSON decoding.
-- **`ContentstackConfig`** – Optional configuration: `URLSessionConfiguration`, date/time zone decoding, early access headers, `urlSessionDelegate`, user agent.
-- **Paths:** `Sources/` (library target **ContentstackSwift**), `Tests/` (test target **ContentstackTests**).
+| Command type | Command |
+|--------------|---------|
+| SPM | `swift build` / `swift test` |
+| Lint | `swiftlint` (if installed) |
+| Xcode (CI-style) | `xcodebuild test -workspace ContentstackSwift.xcworkspace -scheme "ContentstackSwift macOS Tests" ...` (see `ci.yml`) |
 
-## Commands
+## Where the documentation lives: skills
 
-- **SPM build:** `swift build`
-- **SPM tests:** `swift test`
-- **Xcode:** Open `ContentstackSwift.xcodeproj`, then build/test schemes such as **ContentstackSwift iOS**, **ContentstackSwift macOS**, **ContentstackSwift tvOS** (and matching test targets).
-- **xcodebuild (example – adjust simulator/OS):**  
-  `xcodebuild -project ContentstackSwift.xcodeproj -scheme "ContentstackSwift iOS" -destination 'platform=iOS Simulator,name=iPhone 16' build test`
+| Skill | Path | What it covers |
+|-------|------|----------------|
+| **Development workflow** | [`skills/dev-workflow/SKILL.md`](skills/dev-workflow/SKILL.md) | Branches, CI, Carthage, SPM resolve |
+| **Swift CDA SDK** | [`skills/contentstack-swift-cda/SKILL.md`](skills/contentstack-swift-cda/SKILL.md) | Public API, Stack types, dependencies on utils |
+| **Swift style & layout** | [`skills/swift-style/SKILL.md`](skills/swift-style/SKILL.md) | `Sources/`, `Tests/`, SwiftLint |
+| **Testing** | [`skills/testing/SKILL.md`](skills/testing/SKILL.md) | XCTest, DVR, `Tests/config.json` for CI |
+| **Build & platform** | [`skills/framework/SKILL.md`](skills/framework/SKILL.md) | Workspace, schemes, CocoaPods publish |
+| **Code review** | [`skills/code-review/SKILL.md`](skills/code-review/SKILL.md) | PR checklist |
 
-Run tests before opening a PR. API/integration tests that hit a live stack need valid credentials (see test helpers and `Tests/config.json` where applicable); do not commit secrets.
+## Using Cursor (optional)
 
-## Rules and skills
-
-- **`.cursor/rules/`** – Cursor rules for this repo:
-  - **README.md** – Index of all rules and when each applies (globs / always-on).
-  - **dev-workflow.md** – Development workflow (branches, tests, PR expectations).
-  - **swift.mdc** – Applies to `**/*.swift`: Swift style, module layout, logging, optionals.
-  - **contentstack-swift-cda.mdc** – Applies to `Sources/**/*.swift`: CDA patterns, Stack/Config, host/version/region/branch, callbacks, alignment with Content Delivery API.
-  - **testing.mdc** – Applies to `Tests/**/*.swift`: test naming, unit vs integration, XCTest.
-  - **code-review.mdc** – Always applied: PR/review checklist (aligned with other Contentstack CDA SDKs).
-- **`skills/`** – Reusable skill docs:
-  - Use **contentstack-swift-cda** when implementing or changing CDA API usage or SDK core behavior.
-  - Use **testing** when adding or refactoring tests.
-  - Use **code-review** when reviewing PRs or before opening one.
-  - Use **framework** when changing config, URL session setup, or HTTP-related behavior (`ContentstackConfig`, `Stack` networking).
-
-Refer to `.cursor/rules/README.md` for when each rule applies and to `skills/README.md` for skill details.
+If you use **Cursor**, [`.cursor/rules/README.md`](.cursor/rules/README.md) only points to **`AGENTS.md`**—same docs as everyone else.
