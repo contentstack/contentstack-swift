@@ -306,6 +306,9 @@
 		67AA39162EBA065000C0E2C0 /* StackInitializationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39152EBA065000C0E2C0 /* StackInitializationTest.swift */; };
 		67AA39172EBA065000C0E2C0 /* StackInitializationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39152EBA065000C0E2C0 /* StackInitializationTest.swift */; };
 		67AA39182EBA065000C0E2C0 /* StackInitializationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AA39152EBA065000C0E2C0 /* StackInitializationTest.swift */; };
+		67B30E7B2FB6F98D00C9FA26 /* EntryVariantsAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B30E7A2FB6F98D00C9FA26 /* EntryVariantsAPITest.swift */; };
+		67B30E7C2FB6F98D00C9FA26 /* EntryVariantsAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B30E7A2FB6F98D00C9FA26 /* EntryVariantsAPITest.swift */; };
+		67B30E7D2FB6F98D00C9FA26 /* EntryVariantsAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B30E7A2FB6F98D00C9FA26 /* EntryVariantsAPITest.swift */; };
 		67BA83032F6D36F3005006B8 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 67BA83022F6D36ED005006B8 /* config.json */; };
 		67BA83042F6D36F3005006B8 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 67BA83022F6D36ED005006B8 /* config.json */; };
 		67BA83052F6D36F3005006B8 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = 67BA83022F6D36ED005006B8 /* config.json */; };
@@ -472,6 +475,7 @@
 		67AA390D2EB9D49600C0E2C0 /* CSDefinitionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSDefinitionsTest.swift; sourceTree = "<group>"; };
 		67AA39112EBA063300C0E2C0 /* TaxonomyUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyUnitTest.swift; sourceTree = "<group>"; };
 		67AA39152EBA065000C0E2C0 /* StackInitializationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackInitializationTest.swift; sourceTree = "<group>"; };
+		67B30E7A2FB6F98D00C9FA26 /* EntryVariantsAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryVariantsAPITest.swift; sourceTree = "<group>"; };
 		67BA83022F6D36ED005006B8 /* config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 		67EE21DE2DDB3FFE005AC119 /* CSURLSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSURLSessionDelegate.swift; sourceTree = "<group>"; };
 		67EE222B2DE4868F005AC119 /* GlobalField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalField.swift; sourceTree = "<group>"; };
@@ -740,6 +744,7 @@
 				0F50EA1C244ED88C00E5D705 /* StackCacheAPITest.swift */,
 				470657532B5E785C00BBFF88 /* ContentTypeQueryAPITest.swift */,
 				470657572B5E788400BBFF88 /* EntryAPITest.swift */,
+				67B30E7A2FB6F98D00C9FA26 /* EntryVariantsAPITest.swift */,
 				4706575B2B5E78B300BBFF88 /* AssetQueryAPITest.swift */,
 				4706575F2B5E797300BBFF88 /* ContentstackTest.swift */,
 				47AAE08F2B60420E0098655A /* SyncAPITest.swift */,
@@ -1211,6 +1216,7 @@
 				0F60CA2F2428949C00ED67E6 /* EntryTest.swift in Sources */,
 				0F244FA724406A4A003C3F26 /* EntryQueriableTest.swift in Sources */,
 				67AA38EB2EB9D44800C0E2C0 /* CSDefinitionsTest.swift in Sources */,
+				67B30E7C2FB6F98D00C9FA26 /* EntryVariantsAPITest.swift in Sources */,
 				0F463113243B044F001CE1FA /* SyncTest.swift in Sources */,
 				67AA39142EBA063300C0E2C0 /* TaxonomyUnitTest.swift in Sources */,
 				67AA38F72EB9D46D00C0E2C0 /* QueryableRangeTest.swift in Sources */,
@@ -1307,6 +1313,7 @@
 				0F60CA302428949C00ED67E6 /* EntryTest.swift in Sources */,
 				0F244FA824406A4A003C3F26 /* EntryQueriableTest.swift in Sources */,
 				67AA38EC2EB9D44800C0E2C0 /* CSDefinitionsTest.swift in Sources */,
+				67B30E7D2FB6F98D00C9FA26 /* EntryVariantsAPITest.swift in Sources */,
 				0F463114243B044F001CE1FA /* SyncTest.swift in Sources */,
 				67AA39132EBA063300C0E2C0 /* TaxonomyUnitTest.swift in Sources */,
 				67AA38F62EB9D46D00C0E2C0 /* QueryableRangeTest.swift in Sources */,
@@ -1403,6 +1410,7 @@
 				0F60CA312428949C00ED67E6 /* EntryTest.swift in Sources */,
 				0F244FA924406A4A003C3F26 /* EntryQueriableTest.swift in Sources */,
 				67AA38EA2EB9D44800C0E2C0 /* CSDefinitionsTest.swift in Sources */,
+				67B30E7B2FB6F98D00C9FA26 /* EntryVariantsAPITest.swift in Sources */,
 				0F463115243B044F001CE1FA /* SyncTest.swift in Sources */,
 				67AA39122EBA063300C0E2C0 /* TaxonomyUnitTest.swift in Sources */,
 				67AA38F82EB9D46D00C0E2C0 /* QueryableRangeTest.swift in Sources */,
