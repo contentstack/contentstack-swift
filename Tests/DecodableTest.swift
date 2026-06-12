@@ -595,6 +595,32 @@ class DecodableTest: XCTestCase {
         XCTAssertEqual(asset?["url"] as? String, "https://images.contentstack.io/mock/hero.png")
     }
 
+    /// A standalone asset (e.g. fetched via the assets endpoint) round-trips through toJSON().
+    func testAssetModel_toJSON_isJSONSerializable() throws {
+        let apiResponseJSON = """
+        {
+            "uid": "mock_asset_uid",
+            "title": "hero.png",
+            "filename": "hero.png",
+            "url": "https://images.contentstack.io/mock/hero.png",
+            "content_type": "image/png",
+            "file_size": "20480",
+            "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+            "created_by": "mock_user", "updated_by": "mock_user"
+        }
+        """
+
+        let data = apiResponseJSON.data(using: .utf8)!
+        let asset = try JSONDecoder.dateDecodingStrategy().decode(AssetModel.self, from: data)
+
+        let normalized = asset.toJSON()
+        XCTAssertTrue(JSONSerialization.isValidJSONObject(normalized))
+        XCTAssertEqual(normalized["uid"] as? String, "mock_asset_uid")
+        XCTAssertEqual(normalized["filename"] as? String, "hero.png")
+        XCTAssertEqual(normalized["url"] as? String, "https://images.contentstack.io/mock/hero.png")
+        XCTAssertNoThrow(try JSONSerialization.data(withJSONObject: normalized))
+    }
+
     /// An entry containing BOTH a nested entry reference and an asset reference.
     func testEntryModel_toJSON_mixedEntryAndAssetReferences() throws {
         let apiResponseJSON = """
@@ -708,6 +734,7 @@ class DecodableTest: XCTestCase {
         ("testEntryModel_includeAll_referenceFieldIsEntry_parsesViaToJSON", testEntryModel_includeAll_referenceFieldIsEntry_parsesViaToJSON),
         ("testEntryModel_toJSON_deeplyNestedReferences_5Levels", testEntryModel_toJSON_deeplyNestedReferences_5Levels),
         ("testEntryModel_toJSON_assetReference_isJSONSerializable", testEntryModel_toJSON_assetReference_isJSONSerializable),
+        ("testAssetModel_toJSON_isJSONSerializable", testAssetModel_toJSON_isJSONSerializable),
         ("testEntryModel_toJSON_mixedEntryAndAssetReferences", testEntryModel_toJSON_mixedEntryAndAssetReferences),
         ("testEntryModel_toJSON_noReferences_isUnchangedAndSerializable", testEntryModel_toJSON_noReferences_isUnchangedAndSerializable),
         ("testEntryModel_toJSON_preservesScalarValues", testEntryModel_toJSON_preservesScalarValues)
