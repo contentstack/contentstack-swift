@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v2.3.4
+
+### Date: 12-Jun-2026
+
+### Bug Fixes
+
+- Added `toJSON()` to `EntryModel`, `AssetModel`, and `ContentTypeModel` to make entries with resolved references serializable via `JSONSerialization`.
+
 ## v2.3.3
 
 ### Date: 18-May-2026
