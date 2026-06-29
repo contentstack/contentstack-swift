@@ -10,6 +10,7 @@ public func allTests() -> [XCTestCaseEntry] {
         testCase(QueryOperationTest.allTests),
         testCase(QueryParameterTest.allTests),
         testCase(EndPointTest.allTests),
+        testCase(ContentstackEndpointTest.allTests),
         testCase(DecodableTest.allTests),
         testCase(CSDefinitionsTest.allTests),
         testCase(ImageTransformErrorTest.allTests),
