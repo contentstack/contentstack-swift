@@ -31,8 +31,8 @@ let package = Package(
         .target(
             name: "ContentstackSwift",
             dependencies: [
-                .product(name: "ContentstackUtils", package: "contentstack-utils-swift"), 
-                .product(name: "DVR", package: "contentstack-swift-dvr")],
+                .product(name: "ContentstackUtils", package: "contentstack-utils-swift")
+            ],
             path: "Sources"),
         .testTarget(
             name: "ContentstackTests",

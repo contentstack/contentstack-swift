@@ -1,12 +1,31 @@
 # CHANGELOG
 
+
+## v2.4.0
+
+### Date: 29-Jun-2026
+
+### Enhancement
+
+- Feature: Dynamic endpoint resolution via `Endpoint.getContentstackEndpoint()` and `Builder.setRegion()` backed by the Contentstack Regions Registry.
+
+## v2.3.4
+
+### Date: 12-Jun-2026
+
+### Bug Fixes
+
+- Added `toJSON()` to `EntryModel`, `AssetModel`, and `ContentTypeModel` to make entries with resolved references serializable via `JSONSerialization`.
+
 ## v2.3.3
 
-### Date: 02-Apr-2026
+### Date: 18-May-2026
 
 ### Documentation
 
 - Announced deprecation of **CocoaPods** as the recommended distribution for the Contentstack Swift SDK; **Swift Package Manager** is recommended for new integrations. Updated [README.md](README.md), [Docs/overview.md](Docs/overview.md), and [DEPRECATION.md](DEPRECATION.md).
+
+- Scope DVR dependency to test target only
 
 ## v2.3.2
 

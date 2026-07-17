@@ -420,6 +420,298 @@ class DecodableTest: XCTestCase {
         }
     }
     
+    // MARK: - EntryModel.toJSON() Tests
+
+    // Decodes an entry's fields into a Codable model via JSONSerialization + JSONDecoder.
+    private static func parseModel<T: Decodable>(_ model: [String: Any]) -> T? {
+        do {
+            let data = try JSONSerialization.data(withJSONObject: model)
+            return try JSONDecoder().decode(T.self, from: data)
+        } catch {
+            return nil
+        }
+    }
+
+    private struct ParsedEntry: Decodable {
+        let uid: String
+        let title: String
+        let author_group: ParsedReferenceGroup
+    }
+    private struct ParsedReferenceGroup: Decodable {
+        let show_author: Bool
+        let authors: [ParsedReferencedEntry]
+    }
+    private struct ParsedReferencedEntry: Decodable {
+        let uid: String
+        let title: String
+    }
+
+    /// A reference field resolved (via include_all) to a full entry is decoded as an `EntryModel`
+    /// inside `fields`, which is not JSON-native. `toJSON()` flattens it so it can be serialized.
+    func testEntryModel_includeAll_referenceFieldIsEntry_parsesViaToJSON() throws {
+        let apiResponseJSON = """
+        {
+            "uid": "mock_parent_uid",
+            "title": "Blog Post",
+            "locale": "en-us",
+            "created_at": "2024-01-01T00:00:00.000Z",
+            "updated_at": "2024-01-01T00:00:00.000Z",
+            "created_by": "mock_user",
+            "updated_by": "mock_user",
+            "author_group": {
+                "show_author": true,
+                "authors": [
+                    {
+                        "uid": "mock_referenced_uid",
+                        "title": "Referenced Author Entry",
+                        "locale": "en-us",
+                        "created_at": "2024-01-01T00:00:00.000Z",
+                        "updated_at": "2024-01-01T00:00:00.000Z",
+                        "created_by": "mock_user",
+                        "updated_by": "mock_user"
+                    }
+                ]
+            }
+        }
+        """
+
+        let data = apiResponseJSON.data(using: .utf8)!
+        let entry = try JSONDecoder.dateDecodingStrategy().decode(EntryModel.self, from: data)
+
+        // Reference field is resolved into an EntryModel inside fields.
+        let group = entry.fields?["author_group"] as? [String: Any]
+        let refArray = group?["authors"] as? [Any]
+        XCTAssertTrue(refArray?.first is EntryModel)
+
+        // Raw fields contain a Swift object, so they are not a valid JSON object.
+        // (Avoid JSONSerialization.data on raw fields — it raises an uncatchable NSException.)
+        XCTAssertFalse(JSONSerialization.isValidJSONObject(entry.fields ?? [:]))
+
+        // toJSON() yields a valid JSON object that round-trips into a Codable struct.
+        let normalized = entry.toJSON()
+        XCTAssertTrue(JSONSerialization.isValidJSONObject(normalized))
+
+        let parsed: ParsedEntry? = DecodableTest.parseModel(normalized)
+        XCTAssertNotNil(parsed)
+        XCTAssertEqual(parsed?.uid, "mock_parent_uid")
+        XCTAssertEqual(parsed?.author_group.show_author, true)
+        XCTAssertEqual(parsed?.author_group.authors.first?.uid, "mock_referenced_uid")
+        XCTAssertEqual(parsed?.author_group.authors.first?.title, "Referenced Author Entry")
+    }
+
+    // Codable models mirroring a 5-level chain: each level references the next.
+    private struct DeepL1: Decodable { let uid: String; let level_2: [DeepL2] }
+    private struct DeepL2: Decodable { let uid: String; let level_3: [DeepL3] }
+    private struct DeepL3: Decodable { let uid: String; let level_4: [DeepL4] }
+    private struct DeepL4: Decodable { let uid: String; let level_5: [DeepL5] }
+    private struct DeepL5: Decodable { let uid: String; let title: String }
+
+    /// Verifies toJSON() flattens references nested 5 levels deep (e.g. include_all_depth=5).
+    /// The recursion follows the resolved object graph regardless of depth.
+    func testEntryModel_toJSON_deeplyNestedReferences_5Levels() throws {
+        // entry1 → entry2 → entry3 → entry4 → entry5, each resolved as a nested entry.
+        let apiResponseJSON = """
+        {
+            "uid": "uid_1", "title": "Level 1", "locale": "en-us",
+            "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+            "created_by": "mock_user", "updated_by": "mock_user",
+            "level_2": [{
+                "uid": "uid_2", "title": "Level 2", "locale": "en-us",
+                "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+                "created_by": "mock_user", "updated_by": "mock_user",
+                "level_3": [{
+                    "uid": "uid_3", "title": "Level 3", "locale": "en-us",
+                    "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+                    "created_by": "mock_user", "updated_by": "mock_user",
+                    "level_4": [{
+                        "uid": "uid_4", "title": "Level 4", "locale": "en-us",
+                        "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+                        "created_by": "mock_user", "updated_by": "mock_user",
+                        "level_5": [{
+                            "uid": "uid_5", "title": "Level 5", "locale": "en-us",
+                            "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+                            "created_by": "mock_user", "updated_by": "mock_user"
+                        }]
+                    }]
+                }]
+            }]
+        }
+        """
+
+        let data = apiResponseJSON.data(using: .utf8)!
+        let entry = try JSONDecoder.dateDecodingStrategy().decode(EntryModel.self, from: data)
+
+        // The deepest reference is decoded as an EntryModel, so raw fields are not serializable.
+        XCTAssertFalse(JSONSerialization.isValidJSONObject(entry.fields ?? [:]))
+
+        // toJSON() flattens all 5 levels into JSON-native types.
+        let normalized = entry.toJSON()
+        XCTAssertTrue(JSONSerialization.isValidJSONObject(normalized))
+
+        // Round-trip the full 5-level chain and assert the deepest entry's data survived.
+        let parsed: DeepL1? = DecodableTest.parseModel(normalized)
+        XCTAssertNotNil(parsed)
+        let level5 = parsed?
+            .level_2.first?
+            .level_3.first?
+            .level_4.first?
+            .level_5.first
+        XCTAssertEqual(level5?.uid, "uid_5")
+        XCTAssertEqual(level5?.title, "Level 5")
+    }
+
+    /// An asset (file/image) field also decodes into a non-JSON `AssetModel` inside fields.
+    /// toJSON() must flatten it the same way it flattens nested entries.
+    func testEntryModel_toJSON_assetReference_isJSONSerializable() throws {
+        let apiResponseJSON = """
+        {
+            "uid": "mock_parent_uid", "title": "Entry With Image", "locale": "en-us",
+            "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+            "created_by": "mock_user", "updated_by": "mock_user",
+            "hero_image": {
+                "uid": "mock_asset_uid",
+                "title": "hero.png",
+                "filename": "hero.png",
+                "url": "https://images.contentstack.io/mock/hero.png",
+                "content_type": "image/png",
+                "file_size": "20480",
+                "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+                "created_by": "mock_user", "updated_by": "mock_user"
+            }
+        }
+        """
+
+        let data = apiResponseJSON.data(using: .utf8)!
+        let entry = try JSONDecoder.dateDecodingStrategy().decode(EntryModel.self, from: data)
+
+        XCTAssertTrue(entry.fields?["hero_image"] is AssetModel)
+        XCTAssertFalse(JSONSerialization.isValidJSONObject(entry.fields ?? [:]))
+
+        let normalized = entry.toJSON()
+        XCTAssertTrue(JSONSerialization.isValidJSONObject(normalized))
+
+        let asset = normalized["hero_image"] as? [String: Any]
+        XCTAssertEqual(asset?["uid"] as? String, "mock_asset_uid")
+        XCTAssertEqual(asset?["url"] as? String, "https://images.contentstack.io/mock/hero.png")
+    }
+
+    /// A standalone asset (e.g. fetched via the assets endpoint) round-trips through toJSON().
+    func testAssetModel_toJSON_isJSONSerializable() throws {
+        let apiResponseJSON = """
+        {
+            "uid": "mock_asset_uid",
+            "title": "hero.png",
+            "filename": "hero.png",
+            "url": "https://images.contentstack.io/mock/hero.png",
+            "content_type": "image/png",
+            "file_size": "20480",
+            "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+            "created_by": "mock_user", "updated_by": "mock_user"
+        }
+        """
+
+        let data = apiResponseJSON.data(using: .utf8)!
+        let asset = try JSONDecoder.dateDecodingStrategy().decode(AssetModel.self, from: data)
+
+        let normalized = asset.toJSON()
+        XCTAssertTrue(JSONSerialization.isValidJSONObject(normalized))
+        XCTAssertEqual(normalized["uid"] as? String, "mock_asset_uid")
+        XCTAssertEqual(normalized["filename"] as? String, "hero.png")
+        XCTAssertEqual(normalized["url"] as? String, "https://images.contentstack.io/mock/hero.png")
+        XCTAssertNoThrow(try JSONSerialization.data(withJSONObject: normalized))
+    }
+
+    /// An entry containing BOTH a nested entry reference and an asset reference.
+    func testEntryModel_toJSON_mixedEntryAndAssetReferences() throws {
+        let apiResponseJSON = """
+        {
+            "uid": "mock_parent_uid", "title": "Mixed Entry", "locale": "en-us",
+            "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+            "created_by": "mock_user", "updated_by": "mock_user",
+            "related_entry": [{
+                "uid": "mock_ref_uid", "title": "Related", "locale": "en-us",
+                "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+                "created_by": "mock_user", "updated_by": "mock_user"
+            }],
+            "attachment": {
+                "uid": "mock_asset_uid", "title": "file.pdf", "filename": "file.pdf",
+                "url": "https://images.contentstack.io/mock/file.pdf", "content_type": "application/pdf",
+                "file_size": "10240",
+                "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+                "created_by": "mock_user", "updated_by": "mock_user"
+            }
+        }
+        """
+
+        let data = apiResponseJSON.data(using: .utf8)!
+        let entry = try JSONDecoder.dateDecodingStrategy().decode(EntryModel.self, from: data)
+
+        // Both reference types present as non-JSON Swift objects.
+        let relatedArray = entry.fields?["related_entry"] as? [Any]
+        XCTAssertTrue(relatedArray?.first is EntryModel)
+        XCTAssertTrue(entry.fields?["attachment"] is AssetModel)
+        XCTAssertFalse(JSONSerialization.isValidJSONObject(entry.fields ?? [:]))
+
+        let normalized = entry.toJSON()
+        XCTAssertTrue(JSONSerialization.isValidJSONObject(normalized))
+
+        let related = (normalized["related_entry"] as? [Any])?.first as? [String: Any]
+        XCTAssertEqual(related?["uid"] as? String, "mock_ref_uid")
+        let attachment = normalized["attachment"] as? [String: Any]
+        XCTAssertEqual(attachment?["uid"] as? String, "mock_asset_uid")
+    }
+
+    /// toJSON() on an entry with no resolved references is a no-op that stays serializable.
+    func testEntryModel_toJSON_noReferences_isUnchangedAndSerializable() throws {
+        let apiResponseJSON = """
+        {
+            "uid": "mock_uid", "title": "Plain Entry", "locale": "en-us",
+            "created_at": "2024-01-01T00:00:00.000Z", "updated_at": "2024-01-01T00:00:00.000Z",
+            "created_by": "mock_user", "updated_by": "mock_user",
+            "body": "Some text", "views": 10
+        }
+        """
+
+        let data = apiResponseJSON.data(using: .utf8)!
+        let entry = try JSONDecoder.dateDecodingStrategy().decode(EntryModel.self, from: data)
+
+        // No references → raw fields are already JSON-native.
+        XCTAssertTrue(JSONSerialization.isValidJSONObject(entry.fields ?? [:]))
+
+        let normalized = entry.toJSON()
+        XCTAssertTrue(JSONSerialization.isValidJSONObject(normalized))
+        XCTAssertEqual(normalized["body"] as? String, "Some text")
+        XCTAssertEqual(normalized["views"] as? Int, 10)
+    }
+
+    func testEntryModel_toJSON_preservesScalarValues() throws {
+        let jsonString = """
+        {
+            "uid": "mock_uid",
+            "title": "Test Entry",
+            "locale": "en-us",
+            "created_at": "2024-01-01T00:00:00.000Z",
+            "updated_at": "2024-01-01T00:00:00.000Z",
+            "created_by": "mock_user",
+            "updated_by": "mock_user",
+            "is_active": true,
+            "count": 42,
+            "name": "Test"
+        }
+        """
+
+        let data = jsonString.data(using: .utf8)!
+        let entry = try JSONDecoder.dateDecodingStrategy().decode(EntryModel.self, from: data)
+        let json = entry.toJSON()
+
+        XCTAssertEqual(json["uid"] as? String, "mock_uid")
+        XCTAssertEqual(json["title"] as? String, "Test Entry")
+        XCTAssertEqual(json["is_active"] as? Bool, true)
+        XCTAssertEqual(json["count"] as? Int, 42)
+        XCTAssertEqual(json["name"] as? String, "Test")
+        XCTAssertNoThrow(try JSONSerialization.data(withJSONObject: json))
+    }
+
     static var allTests = [
         ("testJSONDecoder_dateDecodingStrategy", testJSONDecoder_dateDecodingStrategy),
         ("testJSONDecoder_dateDecodingStrategy_withISO8601Date", testJSONDecoder_dateDecodingStrategy_withISO8601Date),
@@ -438,7 +730,14 @@ class DecodableTest: XCTestCase {
         ("testKeyedDecodingContainer_decodeArray", testKeyedDecodingContainer_decodeArray),
         ("testKeyedDecodingContainer_decodeIfPresentArray", testKeyedDecodingContainer_decodeIfPresentArray),
         ("testKeyedDecodingContainer_decodeNestedDictionaries", testKeyedDecodingContainer_decodeNestedDictionaries),
-        ("testKeyedDecodingContainer_decodeMixedTypes", testKeyedDecodingContainer_decodeMixedTypes)
+        ("testKeyedDecodingContainer_decodeMixedTypes", testKeyedDecodingContainer_decodeMixedTypes),
+        ("testEntryModel_includeAll_referenceFieldIsEntry_parsesViaToJSON", testEntryModel_includeAll_referenceFieldIsEntry_parsesViaToJSON),
+        ("testEntryModel_toJSON_deeplyNestedReferences_5Levels", testEntryModel_toJSON_deeplyNestedReferences_5Levels),
+        ("testEntryModel_toJSON_assetReference_isJSONSerializable", testEntryModel_toJSON_assetReference_isJSONSerializable),
+        ("testAssetModel_toJSON_isJSONSerializable", testAssetModel_toJSON_isJSONSerializable),
+        ("testEntryModel_toJSON_mixedEntryAndAssetReferences", testEntryModel_toJSON_mixedEntryAndAssetReferences),
+        ("testEntryModel_toJSON_noReferences_isUnchangedAndSerializable", testEntryModel_toJSON_noReferences_isUnchangedAndSerializable),
+        ("testEntryModel_toJSON_preservesScalarValues", testEntryModel_toJSON_preservesScalarValues)
     ]
 }
 

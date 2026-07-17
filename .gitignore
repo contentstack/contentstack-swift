@@ -6,6 +6,9 @@
 build/
 DerivedData/
 
+## Regions registry — downloaded at runtime, never committed
+Sources/Resources/regions.json
+
 ## Various settings
 *.pbxuser
 !default.pbxuser

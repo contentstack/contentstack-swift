@@ -84,6 +84,13 @@ public final class AssetModel: AssetDecodable {
         fields = try containerFields.decode(Dictionary<String, Any>.self)
     }
 
+    /// Returns a JSON-serializable `[String: Any]` dictionary suitable for use with
+    /// `JSONSerialization`. Recursively converts any nested SDK model objects to plain
+    /// dictionaries. See `EntryModel.toJSON()` for context on why this is needed.
+    public func toJSON() -> [String: Any] {
+        return EntryModel.normalizeForJSON(fields ?? [:]) as? [String: Any] ?? [:]
+    }
+
     public enum QueryableCodingKey: String, CodingKey {
         case uid, title
         case fileName = "filename"
