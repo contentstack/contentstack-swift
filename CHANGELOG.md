@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v2.5.0
+
+### Date: 27-Jul-2026
+
+### Feature
+
+- Branch support in entry variants
 
 ## v2.4.0
 
