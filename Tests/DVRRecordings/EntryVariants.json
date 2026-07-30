@@ -1,0 +1,71 @@
+{
+  "name" : "EntryVariants",
+  "interactions" : [
+    {
+      "request" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/blog\/entries?environment=environment",
+        "headers" : {
+          "access_token" : "delivery_token",
+          "api_key" : "api_key",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "x-cs-variant-uid" : "cs7587bd1cb52b5479"
+        },
+        "method" : "GET"
+      },
+      "recorded_at" : 1715769600.0,
+      "response" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/blog\/entries?environment=environment",
+        "status" : 200,
+        "headers" : {
+          "Content-Type" : "application\/json",
+          "Access-Control-Allow-Origin" : "*"
+        },
+        "body" : {
+          "entries" : [
+            {
+              "uid" : "blog_entry_uid_1",
+              "title" : "Variant Test Blog Post",
+              "locale" : "en-us",
+              "created_at" : "2024-01-10T05:47:46.833Z",
+              "updated_at" : "2024-04-20T07:05:15.592Z",
+              "created_by" : "user_uid_1",
+              "updated_by" : "user_uid_1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "request" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/blog\/entries\/blog_entry_uid_1?environment=environment",
+        "headers" : {
+          "access_token" : "delivery_token",
+          "api_key" : "api_key",
+          "X-User-Agent" : "contentstack-swift\/1.0.0",
+          "x-cs-variant-uid" : "cs7587bd1cb52b5479"
+        },
+        "method" : "GET"
+      },
+      "recorded_at" : 1715769600.0,
+      "response" : {
+        "url" : "https:\/\/cdn.contentstack.io\/v3\/content_types\/blog\/entries\/blog_entry_uid_1?environment=environment",
+        "status" : 200,
+        "headers" : {
+          "Content-Type" : "application\/json",
+          "Access-Control-Allow-Origin" : "*"
+        },
+        "body" : {
+          "entry" : {
+            "uid" : "blog_entry_uid_1",
+            "title" : "Variant Test Blog Post",
+            "locale" : "en-us",
+            "created_at" : "2024-01-10T05:47:46.833Z",
+            "updated_at" : "2024-04-20T07:05:15.592Z",
+            "created_by" : "user_uid_1",
+            "updated_by" : "user_uid_1"
+          }
+        }
+      }
+    }
+  ]
+}
