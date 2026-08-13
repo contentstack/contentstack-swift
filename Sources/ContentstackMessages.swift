@@ -99,8 +99,16 @@ internal enum ContentstackMessages {
         Please contact the maintainer on Github with a copy of the query
         """
     
+    // MARK: - Cache Policy Messages
+
+    static let cacheThenNetworkUnsupportedInAsync = """
+        CachePolicy.cacheThenNetwork delivers two results and cannot be represented by a single \
+        async/await return value. This request is being served as CachePolicy.cacheElseNetwork. \
+        Use the completion-handler APIs if both the cached and the network result are required.
+        """
+
     // MARK: - Internal/Debug Messages
-    
+
     static let unsupportedEndpointType = "Unsupported endpoint type encountered during response decoding"
 }
 

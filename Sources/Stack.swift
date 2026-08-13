@@ -14,6 +14,28 @@ public enum Host {
 
 public typealias ResultsHandler<T> = (_ result: Result<T, Error>, ResponseType) -> Void
 
+/// Ensures a `CheckedContinuation` is resumed at most once.
+///
+/// A checked continuation traps the process on a second resume, so a completion handler that can
+/// fire more than once must be gated. `CachePolicy.cacheThenNetwork` is the known case and is
+/// coerced away before it reaches an `async` call, which makes this defence-in-depth: any future
+/// multi-callback path degrades to "first result wins" rather than crashing. The two callbacks
+/// arrive on different queues, so the flag is lock-protected.
+internal final class ResumeOnceGuard: @unchecked Sendable {
+    private let lock = NSLock()
+    private var hasResumed = false
+
+    /// Claims the sole right to resume.
+    /// - Returns: `true` for the first caller only, `false` for every subsequent one.
+    func claim() -> Bool {
+        lock.lock()
+        defer { lock.unlock() }
+        if hasResumed { return false }
+        hasResumed = true
+        return true
+    }
+}
+
 /// Stack is instance for performing Contentstack Delivery API request.
 public class Stack: CachePolicyAccessible {
     internal var urlSession: URLSession
@@ -245,7 +267,7 @@ public class Stack: CachePolicyAccessible {
             }
 
             if let error = error {
-                if self.cachePolicy == .networkElseCache,
+                if cachePolicy == .networkElseCache,
                     self.canFullfillRequestWithCache(request) {
                     self.fullfillRequestWithCache(request, then: completion)
                     return
@@ -259,6 +281,10 @@ public class Stack: CachePolicyAccessible {
                 return
             }
 
+            // Neither data nor error: not a documented URLSession outcome, but every path here
+            // must be terminal. Falling through would leave an awaiting continuation unresumed
+            // and suspend the calling task indefinitely.
+            completion(Result.failure(SDKError.invalidHTTPResponse(response: response)), .network)
         })
         performDataTask(dataTask!, request: request, cachePolicy: cachePolicy, then: completion)
     }
@@ -274,8 +300,11 @@ public class Stack: CachePolicyAccessible {
     /// - Throws: Network or cache errors
     @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
     private func fetchUrl(_ url: URL, headers: [String: String], cachePolicy: CachePolicy) async throws -> (Data, ResponseType) {
+        let effectiveCachePolicy = Stack.asyncCachePolicy(for: cachePolicy)
+        let resumeGuard = ResumeOnceGuard()
         return try await withCheckedThrowingContinuation { continuation in
-            fetchUrl(url, headers: headers, cachePolicy: cachePolicy) { result, responseType in
+            fetchUrl(url, headers: headers, cachePolicy: effectiveCachePolicy) { result, responseType in
+                guard resumeGuard.claim() else { return }
                 switch result {
                 case .success(let data):
                     continuation.resume(returning: (data, responseType))
@@ -284,6 +313,18 @@ public class Stack: CachePolicyAccessible {
                 }
             }
         }
+    }
+
+    /// Resolves the cache policy an `async` request can actually honour.
+    ///
+    /// A single `await` produces exactly one value, so `CachePolicy.cacheThenNetwork` — defined to
+    /// deliver both a cached and a network result — cannot be represented. It is served as
+    /// `CachePolicy.cacheElseNetwork`, the only single-emission reading of it, and the
+    /// substitution is logged. The completion-handler APIs still deliver both results.
+    internal static func asyncCachePolicy(for cachePolicy: CachePolicy) -> CachePolicy {
+        guard cachePolicy == .cacheThenNetwork else { return cachePolicy }
+        ContentstackLogger.log(.error, message: ContentstackMessages.cacheThenNetworkUnsupportedInAsync)
+        return .cacheElseNetwork
     }
     
     internal func fetch<ResourceType>(endpoint: Endpoint,

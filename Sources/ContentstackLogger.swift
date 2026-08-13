@@ -65,7 +65,11 @@ public enum ContentstackLogger {
         case .print:
             Swift.print(formattedMessage)
         case .nsLog:
-            NSLog(formattedMessage)
+            // `formattedMessage` must be passed as an argument, never as the format string.
+            // Logged messages carry percent-encoded URLs and server-supplied error text, so a
+            // message used as a format string is parsed for conversion specifiers (`%22s` from
+            // `{"sku":..}`, for example) and reads arguments that were never supplied.
+            NSLog("%@", formattedMessage)
         case .custom(let customLogger):
             customLogger.log(message: formattedMessage)
         }

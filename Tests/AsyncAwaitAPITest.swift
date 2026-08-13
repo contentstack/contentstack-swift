@@ -362,7 +362,102 @@ class AsyncAwaitSyntaxTests: XCTestCase {
                 expectation.fulfill()
             }
         }
-        
+
         await fulfillment(of: [expectation], timeout: 30.0)
+    }
+}
+
+// MARK: - Cache Policy Under Async (DX-10148)
+
+/// `CachePolicy.cacheThenNetwork` invokes its completion handler twice by design. Fed into
+/// `withCheckedThrowingContinuation` that traps the process, because a checked continuation
+/// permits exactly one resume. These cover both halves of the fix: the policy is coerced to a
+/// single-emission equivalent, and the continuation is guarded regardless.
+class AsyncCachePolicyTests: XCTestCase {
+
+    private var originalLogType: ContentstackLogger.LogType!
+    private var originalLogLevel: ContentstackLogger.LogLevel!
+
+    override func setUp() {
+        super.setUp()
+        originalLogType = ContentstackLogger.logType
+        originalLogLevel = ContentstackLogger.logLevel
+    }
+
+    override func tearDown() {
+        ContentstackLogger.logType = originalLogType
+        ContentstackLogger.logLevel = originalLogLevel
+        super.tearDown()
+    }
+
+    // MARK: Policy resolution
+
+    func testCacheThenNetworkIsServedAsCacheElseNetwork() {
+        ContentstackLogger.logLevel = .none // suppress the substitution notice
+        XCTAssertEqual(Stack.asyncCachePolicy(for: .cacheThenNetwork), .cacheElseNetwork)
+    }
+
+    func testEveryOtherPolicyIsPassedThroughUnchanged() {
+        ContentstackLogger.logLevel = .none
+        for policy in [CachePolicy.networkOnly, .cacheOnly, .cacheElseNetwork, .networkElseCache] {
+            XCTAssertEqual(Stack.asyncCachePolicy(for: policy), policy,
+                           "\(policy) must not be rewritten")
+        }
+    }
+
+    /// The substitution changes behaviour, so it has to be discoverable rather than silent.
+    func testCacheThenNetworkSubstitutionIsLogged() {
+        let spy = CustomeLogMessage()
+        ContentstackLogger.logType = .custom(spy)
+        ContentstackLogger.logLevel = .error
+
+        _ = Stack.asyncCachePolicy(for: .cacheThenNetwork)
+
+        let logged = spy.customeMessage
+        XCTAssertNotNil(logged, "Substituting the cache policy must be logged")
+        XCTAssertTrue(logged?.contains("cacheThenNetwork") ?? false,
+                      "The notice must name the requested policy. Got: \(logged ?? "nil")")
+        XCTAssertTrue(logged?.contains("cacheElseNetwork") ?? false,
+                      "The notice must name the substituted policy. Got: \(logged ?? "nil")")
+    }
+
+    func testPassthroughPolicyIsNotLogged() {
+        let spy = CustomeLogMessage()
+        ContentstackLogger.logType = .custom(spy)
+        ContentstackLogger.logLevel = .error
+
+        _ = Stack.asyncCachePolicy(for: .networkOnly)
+
+        XCTAssertNil(spy.customeMessage, "A policy needing no substitution must log nothing")
+    }
+
+    // MARK: Continuation guard
+
+    func testResumeGuardGrantsExactlyOneClaim() {
+        let resumeGuard = ResumeOnceGuard()
+        XCTAssertTrue(resumeGuard.claim(), "the first claim must succeed")
+        XCTAssertFalse(resumeGuard.claim(), "the second claim must be refused")
+        XCTAssertFalse(resumeGuard.claim(), "every later claim must be refused")
+    }
+
+    /// The cache and network callbacks arrive on different queues, so the guard must hold under
+    /// contention — a bare `Bool` would let two callers through and trap the continuation.
+    func testResumeGuardGrantsOneClaimUnderConcurrency() {
+        for _ in 0..<200 {
+            let resumeGuard = ResumeOnceGuard()
+            let lock = NSLock()
+            var grantedCount = 0
+
+            DispatchQueue.concurrentPerform(iterations: 16) { _ in
+                if resumeGuard.claim() {
+                    lock.lock()
+                    grantedCount += 1
+                    lock.unlock()
+                }
+            }
+
+            XCTAssertEqual(grantedCount, 1,
+                           "exactly one concurrent caller may claim the continuation")
+        }
     }
 }
