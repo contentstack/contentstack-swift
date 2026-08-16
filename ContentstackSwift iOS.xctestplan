@@ -1,0 +1,44 @@
+{
+  "configurations" : [
+    {
+      "id" : "5614AFE7-8607-4A8A-A359-3CC22B4E26AF",
+      "name" : "Test Scheme Action",
+      "options" : {
+        "targetForVariableExpansion" : {
+          "containerPath" : "container:ContentstackSwift.xcodeproj",
+          "identifier" : "0F4A75CA241BAC4300E3A024",
+          "name" : "ContentstackSwift iOS"
+        }
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "performanceAntipatternCheckerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:ContentstackSwift.xcodeproj",
+        "identifier" : "0F4A75F2241BAE6C00E3A024",
+        "name" : "ContentstackSwift macOS Tests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:ContentstackSwift.xcodeproj",
+        "identifier" : "0F4A75D2241BAC4300E3A024",
+        "name" : "ContentstackSwift iOS Tests"
+      }
+    },
+    {
+      "enabled" : false,
+      "target" : {
+        "containerPath" : "container:ContentstackSwift.xcodeproj",
+        "identifier" : "0F4A760E241BAFE000E3A024",
+        "name" : "ContentstackSwift tvOS Tests"
+      }
+    }
+  ],
+  "version" : 1
+}
