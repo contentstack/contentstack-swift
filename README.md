@@ -122,6 +122,65 @@ To fetch a specific entry from a content type, use the following query:
      }
   }
  ```
+#### Using async/await
+
+Every query and fetch is also available as an `async throws` method (iOS 13, macOS 10.15, tvOS 13,
+watchOS 6 and later):
+
+ ```
+ let stack = Contentstack.stack(apiKey: apiKey,
+             deliveryToken: deliveryToken,
+             environment: environment)
+
+ do {
+     let response: ContentstackResponse<EntryModel> = try await stack
+         .contentType(uid: contentTypeUID).entry().query().find()
+     // response.items contains the entries
+ } catch {
+     // Error Message
+ }
+ ```
+
+#### Caching
+
+Set `cachePolicy` on the `Stack` to change where content is read from, or set it on an individual
+query, entry or asset to override the `Stack` default:
+
+ ```
+ stack.cachePolicy = .networkElseCache
+ ```
+
+| Policy | Behaviour |
+| --- | --- |
+| `.networkOnly` | Network call only, and the response is cached. This is the default. |
+| `.cacheOnly` | Cache only. |
+| `.cacheElseNetwork` | Cache, falling back to a network call when the cache misses. |
+| `.networkElseCache` | Network call, falling back to the cache when the call fails. |
+| `.cacheThenNetwork` | Cache first, then a network call. **The completion handler is invoked twice.** |
+
+`.cacheThenNetwork` is supported by the completion-handler APIs only. A single `await` returns one
+value, so the `async` APIs cannot deliver both results — they serve that policy as
+`.cacheElseNetwork` and log the substitution. Use the completion-handler APIs when both the cached
+and the network result are needed.
+
+Note that `cachePolicy` set on the `Stack` propagates to queries created from it, but single
+resource `fetch()` calls on `Entry`, `Asset`, `ContentType`, `GlobalField` and `Taxonomy` default
+to `.networkOnly` independently; set the policy on those objects directly.
+
+#### Logging
+
+`ContentstackLogger.logLevel` defaults to `.error` and `ContentstackLogger.logType` to `.nsLog` on
+Apple platforms. Supply your own logger with `.custom`:
+
+ ```
+ ContentstackLogger.logType = .custom(MyLogger())
+ ```
+
+A `CustomLogger` receives an already-formatted message. Pass it to logging APIs as an *argument*,
+never as a format string — `NSLog("%@", message)`, not `NSLog(message)` — because messages contain
+percent-encoded URLs and server-supplied error text that would otherwise be parsed as format
+conversion specifiers.
+
 ### Advanced Queries
 
 You can query for content types, entries, assets and more using our iOS API Reference.

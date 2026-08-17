@@ -57,6 +57,10 @@ public enum CachePolicy {
     ///The SDK gets data using a network call. However, if the call fails, it retrieves data from cache.
     case networkElseCache
     ///The SDK gets data from cache, and then makes a network call. (A success callback will be invoked twice.)
+    ///
+    ///Supported by the completion-handler APIs only. A single `await` returns one value, so the
+    ///`async` APIs cannot deliver both results; they serve this policy as ``cacheElseNetwork``
+    ///and log that substitution. Use the completion-handler APIs when both results are required.
     case cacheThenNetwork
 }
 

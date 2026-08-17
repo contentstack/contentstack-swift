@@ -152,10 +152,10 @@ public enum Crop {
         var values = [String]()
         var queryItems = [URLQueryItem]()
         switch self {
-        case .default(let size):
+        case .default(let width, let height):
             values = [
-                String(size.width),
-                String(size.height)
+                String(width),
+                String(height)
             ]
         case .aspectRatio(let sizes, let ratio, let mode):
             sizes.urlQueryItem(queryItems: &queryItems)
@@ -166,24 +166,24 @@ public enum Crop {
             if let value = mode.value {
                 values.append(value)
             }
-        case .region(let region):
+        case .region(let width, let height, let xRegion, let yRegion, let mode):
             values = [
-                String(region.width),
-                String(region.height),
-                "x\(String(region.xRegion))",
-                "y\(String(region.yRegion))"
+                String(width),
+                String(height),
+                "x\(String(xRegion))",
+                "y\(String(yRegion))"
             ]
-            if let value = region.mode.value {
+            if let value = mode.value {
                 values.append(value)
             }
-        case .offset(let offset):
+        case .offset(let width, let height, let xOffset, let yOffset, let mode):
             values = [
-                String(offset.width),
-                String(offset.height),
-                "offset-x\(String(offset.xOffset))",
-                "offset-y\(String(offset.yOffset))"
+                String(width),
+                String(height),
+                "offset-x\(String(xOffset))",
+                "offset-y\(String(yOffset))"
             ]
-            if let value = offset.mode.value {
+            if let value = mode.value {
                 values.append(value)
             }
         }
@@ -210,10 +210,10 @@ public enum Canvas {
         var values = [String]()
         var queryItems = [URLQueryItem]()
         switch self {
-        case .default(let size):
+        case .default(let width, let height):
             values = [
-                String(size.width),
-                String(size.height)
+                String(width),
+                String(height)
             ]
         case .aspectRatio(let sizes, let ratio):
             sizes.urlQueryItem(queryItems: &queryItems)
@@ -221,19 +221,19 @@ public enum Canvas {
                 throw ImageTransformError(message: ContentstackMessages.canvasAspectRatioRequired)
             }
             values = [ratio]
-        case .region(let region):
+        case .region(let width, let height, let xRegion, let yRegion):
             values = [
-                String(region.width),
-                String(region.height),
-                "x\(String(region.xRegion))",
-                "y\(String(region.yRegion))"
+                String(width),
+                String(height),
+                "x\(String(xRegion))",
+                "y\(String(yRegion))"
             ]
-        case .offset(let offset):
+        case .offset(let width, let height, let xOffset, let yOffset):
             values = [
-                String(offset.width),
-                String(offset.height),
-                "offset-x\(String(offset.xOffset))",
-                "offset-y\(String(offset.yOffset))"
+                String(width),
+                String(height),
+                "offset-x\(String(xOffset))",
+                "offset-y\(String(yOffset))"
             ]
         }
         if values.count > 0 {
@@ -394,3 +394,4 @@ public enum Color {
         }
     }
 }
+

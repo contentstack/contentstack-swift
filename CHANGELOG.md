@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v2.5.1
+
+### Date: 17-Aug-2026
+
+### Bug Fixes
+
+- Fixed a crash in `ContentstackLogger` caused by passing the log message to `NSLog` as the format string. Affects the default logger configuration (`logType = .nsLog`, `logLevel = .error`).
+- `CachePolicy.cacheThenNetwork` no longer crashes the `async`/`await` APIs; it is served as `CachePolicy.cacheElseNetwork`. The completion-handler APIs are unchanged.
+- `CachePolicy.networkElseCache` set per request now falls back to the cache on transport errors.
+- A response with neither data nor an error no longer leaves an `async` call suspended indefinitely.
+
 ## v2.5.0
 
 ### Date: 27-Jul-2026
